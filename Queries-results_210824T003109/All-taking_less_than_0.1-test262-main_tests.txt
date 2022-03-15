@@ -1,0 +1,9 @@
+test/test262/tests/language/comments/S7.4_A4_T3.js
+test/test262/tests/language/comments/S7.4_A4_T5.js
+test/test262/tests/language/comments/S7.4_A4_T2.js
+test/test262/tests/language/comments/S7.4_A4_T7.js
+test/test262/tests/language/comments/S7.4_A4_T6.js
+test/test262/tests/language/comments/S7.4_A1_T2.js
+test/test262/tests/language/expressions/dynamic-import/empty_FIXTURE.js
+test/test262/tests/language/expressions/dynamic-import/namespace/empty_FIXTURE.js
+test/test262/tests/language/expressions/dynamic-import/syntax/valid/empty_FIXTURE.js
