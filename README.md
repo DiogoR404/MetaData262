@@ -74,28 +74,42 @@ The command to run this approach is:
 
 The results for this approach are written in the file named **"functions_metadata.json"**, that contains the tests that are supposed to return an error, the tests that had the wrong execution and the functions and built-ins obtained.
 
-# Metadata construct
+# Search Metadata
 
-`node add_metadata.js`
+In order to build the full metadata of the the scope of our project, where it will be calculated the lines, asserts, errors, built-ins, syntactic constructs and version of each test. This file is going to grab the results of the mixed analyses and will do the same as the search for the built-ins and for the syntactic constructs, as well as compute the lines, asserts and errors present in the test.
+
+To run this file the following  command is used:
+
+`node search_metadata.js`
+
+The results for this file are going to be saved in a JSON file **"metadata_version.json"**, that will have an object with a field for each test and its value is an object with the full computed metadata.
 
 # Metadata Application
 
+The application to filter the test by the metadata starts by loading the mongo database with the latest results of the "metadata_version.json", after it runs the terminal will show a menu for the user to interact and filter by the offer options. This application starts with the command bellow:
+
 `python3 app.py`
+
+The results of the show tests option are saved in the directory "Selected_tests" with a name associated to the query used.
 
 # Results Application
 
-`python3 app_metadata.py`
+The application to analyse the results of the tests will need an agument with the path to the file with the results to be analysed. After that it will upload the file to a mongo database in order ot filter the results and print in the console the menu for the user to interact. The main menu offers a range of options to filter the results.
+
+`python3 app_metadata.py <filepath>`
+
+After selecting for the application to show the results a directory is created with the name "Queries-<filepath>" that will have all the queries executed for that results. The files for the queries are have a name associated with the desired query.
 
 # Characterization of the metadata
 
 ## Characterization of Lines, Asserts and Errors
 
-`python3 characterization.py`
+`python3 characterization_line_asserts_errors.py`
 
 ## Characterization of the Versions
 
-`python3 characterization2.py`
+`python3 characterization_version.py`
 
 ## Characterization of the Built-ins
 
-`python3 characterization4.py`
+`python3 characterization_built-ins.py`
