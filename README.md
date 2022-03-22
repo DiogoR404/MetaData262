@@ -41,6 +41,13 @@ or
 
 The results are saved in the directory dynamic_results with the names **"mixed_analysis.json"** and **"mixed_analysis_sm.json"** for the results of nodejs and spidermonkey, respectively. Each file contains an object with arrays for the test filtrated for each version.
 
+# Metadata Search
+
+The first step in the search for metadata will be to collect all the metadata already present in the test of the testsuite Test262 for this we will go through all the test and parse the metadata that it contains. For this the next command will be executed:
+
+`node search_metadata_from_test262.js`
+
+The results are saved in the json file with the name **"metadata_test262.json"**
 
 # Syntactic Constructs Search
 
@@ -104,12 +111,57 @@ After selecting for the application to show the results a directory is created w
 
 ## Characterization of Lines, Asserts and Errors
 
+To obtain the data of the characterization of the number of lines, asserts and errors in the tests it will be utilize mongodb queries. Starting by dividing the built-ins by the groups they belong to and query for each group adding to an array the number of lines, asserts and errors of each test. After obtaining this array it will be saved in a JSON file with the name **"characterization_lines_asserts_erros.json"** in the "characterization" directory. The following command is used to execute this characterization:
+  
 `python3 characterization_line_asserts_errors.py`
 
 ## Characterization of the Versions
 
+In order to obtain the characterization of the versions of the tests by groups again utilizing the mongodb capabilities. By loading the already created database with the computed metadata we can acquire the versions for all tests in a specific group and save it in an array. To run this file the next command is needed:
+  
 `python3 characterization_version.py`
+  
+The results will be saved in a JSON file with the field as the name of the group and an array associated that contains the version of the tests in that group, with the name **"characterization_version.json"** in the "characterization" directory.
 
 ## Characterization of the Built-ins
 
+The characterization of the built-ins will also use the mongodb already estabilished in order to catch every built-in in the tests of each group. building an object that has as the fields the number of the groups of built-ins and associated to it an object with each built-in and the number of times it appears. To run this analyses the following command is ran:
+  
 `python3 characterization_built-ins.py`
+
+The results are saved in the directory "characterization" with the name **"characterization_built-in"**
+
+# Other  
+
+## Harness
+  
+In order to execute the dynamic analysis it is necessary to use a harness. For the older versions a simpler harness can be used. This harness is saved as **"harness.js"**, however for newer versions a more complex harness is needed and is saved as **"harness_finalissimo.js"** which waas built using the following command:
+  
+`python3 make_harness.py`
+  
+## Wrapper
+  
+For the wrapper of the functions we analysed the html of the ecmascript which is saved in the directory "html" and we take every function of the built-ins, executing the command:
+  
+`python3 html_parse.py` 
+  
+This command will create a list with all the functions saved in the directory "functions", finally we can prodeuce the wrappers for the functions with the command:
+  
+`node produce_re-function.js`
+  
+This command will create the file **"func.js"** that contains every function wrapped.
+  
+## Parse ECMARef results
+  
+The results of the ECMARef needed to be parsed in order to evaluate our work, mainly removing the tests that expect a negative result that our analysis doesn't work. In order to do so the next code is ran:
+  
+`python3 parse_ECMAREF_results.py`
+  
+And the results are saved in the file **"es5_tests.json"**.
+  
+## Parsing the results log
+  
+To use the results of the tests of an implementation the results need to be in json format, to put the results in a json the following command is executed:
+  
+`node results_parse.js`
+  
