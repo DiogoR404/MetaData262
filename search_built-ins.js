@@ -1,7 +1,7 @@
 //node taintedAnalysis.js 
 var p = require('esprima').parse;
 const fs = require('fs');
-var map = require('./tese/Tese/javascript/map.js')
+var map = require('./map.js')
 
 //function to read a file
 function readFileContent(file) {
