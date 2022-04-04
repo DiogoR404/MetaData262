@@ -1,3 +1,12 @@
+# Existing Metadata
+
+The first step in the search for metadata will be to collect all the metadata already present in the test of the testsuite Test262 for this we will go through all the test and parse the metadata that it contains. For this the next command will be executed:
+
+`node search_metadata_from_test262.js`
+
+The results are saved in the json file with the name **"metadata_test262.json"**
+
+
 # Version Search
 
 ## Tainted Analysis
@@ -41,15 +50,8 @@ or
 
 The results are saved in the directory dynamic_results with the names **"mixed_analysis.json"** and **"mixed_analysis_sm.json"** for the results of nodejs and spidermonkey, respectively. Each file contains an object with arrays for the test filtrated for each version.
 
-# Metadata Search
 
-The first step in the search for metadata will be to collect all the metadata already present in the test of the testsuite Test262 for this we will go through all the test and parse the metadata that it contains. For this the next command will be executed:
-
-`node search_metadata_from_test262.js`
-
-The results are saved in the json file with the name **"metadata_test262.json"**
-
-## Syntactic Constructs Search
+# Syntactic Constructs Search
 
 The search for the syntactic constructs present on each test utilizes esprima to obtain the syntactic tree of the test. After that we recursively search every syntactic construct in the test and add every different syntactic construct to an array. An important note is that tests that esprima is unable to parse are not analysed.
 
@@ -59,9 +61,9 @@ In order to run the search it will be utilized the nodejs engine using the follo
 
 The results are saved in a JSON file named **"metadata_syntactic.json"**, which contains the name of the file and an array with all syntactic constructions found on the test.
 
-## Built-ins Search
+# Built-ins Search
 
-### Static Approach
+## Static Approach
 
 The static approach for the built-in that appear in the test is made with the resource to esprima. We analyse the syntactic tree of the test and try to find every built-in, as well as the functions and field associated with that built-in.
 
@@ -71,7 +73,7 @@ To run this analyses we execute the following command:
 
 The results are written in a JSON file named **"metadata_built-in.json"**, this file object contains the test with the built-in found and each built-in contains an array with the functions and fields found in the test.
 
-### Dynamic Approach
+## Dynamic Approach
 
 The dynamic approach for searching built-ins utilizes a file that redefines all built-in functions in order to once called adds to an array the name of the function and then runs normally. After we have that file we just add to it the harness and the actual test, and run it. However in the tests that return error we cannot retrieve the array with the built-ins and functions called.
 
@@ -81,7 +83,7 @@ The command to run this approach is:
 
 The results for this approach are written in the file named **"functions_metadata.json"**, that contains the tests that are supposed to return an error, the tests that had the wrong execution and the functions and built-ins obtained.
 
-## All Metadata
+# All Metadata
 
 The complete metadata calculated in this project is made of the calculated number of lines, asserts and errors, as well as the built-ins, syntactic constructs in the test, and version of each test. This code is going to grab the results of the mixed analyses and will do the search for the built-ins and for the syntactic constructs, as well as compute the lines, asserts and errors present in the test.
 
