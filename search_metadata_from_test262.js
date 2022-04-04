@@ -5,7 +5,7 @@
 
 var p = require('esprima').parse;
 const fs = require('fs');
-var map = require('./tese/Tese/javascript/map.js')
+var map = require('./map.js')
 
 //reads file
 function readFileContent(file) {
