@@ -173,5 +173,5 @@ And the results are saved in the file **"es5_tests.json"**.
   
 To use the results of the tests of an implementation the results need to be in json format, to put the results in a json the following command is executed:
   
-`node results_parse.js`
+`node results_parse.js <filepath>`
   
