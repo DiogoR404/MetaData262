@@ -18,8 +18,8 @@ function GetMetadata(path){
     function multiple_lines(intial_string){
         var i = 1;
         var string = intial_string;
-        
-        while (!(program[line + i].charAt(0) !== " " && program[line + i].split(":").length > 1) && program[line + i] !== "---*/") {
+
+        while (!(program[line + i].charAt(0) !== " " && program[line + i].split(":").length > 1) && !program[line + i].includes("---*/")) {
 
             string = string.concat(program[line + i].replace(/\s{2,}/g, '') + "\n");
             i++;
@@ -126,7 +126,7 @@ function recursive(path, json) {
             const stat = fs.lstatSync(path + "/" + files[file]);
     
             if (stat.isDirectory()){
-                if (files[file] !== "harness" && files[file] !== "annexB"){
+                if (files[file] !== "harness" && files[file] !== "annexB" && files[file] !== "intl402"){
                     recursive(path + "/" + files[file], json);
                 }
             }
@@ -149,6 +149,6 @@ function recursive(path, json) {
     return json;
 }
 
-var new_prog_str = recursive(process.argv[2], []);
+var new_prog_str = recursive("./test262/test", []);
 
 fs.writeFile("metadata_test262.json", JSON.stringify(new_prog_str), function(){});

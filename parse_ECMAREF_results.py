@@ -12,7 +12,7 @@ file = f.read().split("\n")
 L={"correct":[], "negative":[], "notFound":[]}
 for line in file:
     try:
-        test = open("./test262-main/test/" + line[19:]).read()
+        test = open("./test262/test/" + line[19:]).read()
         print(test)
         print("SyntaxError" in test)
         #for l in test:

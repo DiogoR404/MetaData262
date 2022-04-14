@@ -7,7 +7,7 @@ function readFileContent(file) {
 
 }
 
-var path = "./test262-main/test/harness/"
+var path = "./test262/test/harness/"
 var stream = fs.createWriteStream("harness2.js", {flags:'a'});
 
 fs.readdirSync(path).forEach(file => {

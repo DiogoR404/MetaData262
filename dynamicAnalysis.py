@@ -85,7 +85,7 @@ for version in nodes_versions.keys():
 
                     for file in line["includes"]:
                         try:
-                            filename="./test262-main/harness/"+file
+                            filename="./test262/harness/"+file
                             f = open(filename, "r")
                             harness.write(f.read())
                             f.close()
@@ -133,7 +133,7 @@ for version in nodes_versions.keys():
 
                     for file in line["includes"]:
                         try:
-                            filename="./test262-main/harness/"+file
+                            filename="./test262/harness/"+file
                             f = open(filename, "r")
                             harness.write(f.read())
                             f.close()
@@ -177,7 +177,7 @@ for version in nodes_versions.keys():
 
                 for file in line["includes"]:
                     try:
-                        filename="./test262-main/harness/"+file
+                        filename="./test262/harness/"+file
                         f = open(filename, "r")
                         harness.write(f.read())
                         f.close()

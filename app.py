@@ -28,7 +28,7 @@ if file[:-3] not in mydb.list_collection_names():
     mycol.insert_many(file_data)
 
 arr = {}
-current_folder = "test262-main/tests"
+current_folder = "test262/tests"
 i=8
 status = "All"
 time_status= ""
@@ -113,7 +113,7 @@ while(True):
         arr = {}
         i = 8
         status = "All"
-        current_folder = "test262-main/tests"
+        current_folder = "test262/tests"
         time_status= ""
 
     elif(option == "8"):

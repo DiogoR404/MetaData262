@@ -36,7 +36,7 @@ var results = {"node":JSON.parse(JSON.stringify(r)), "mixed":JSON.parse(JSON.str
 
 for(line in file){
     var hasVersion ={"node":false, "spidermonkey":false, "mixed":false}
-    test = "./test262-main/test" + file[line].substring(18)
+    test = "./test262/test" + file[line].substring(18)
     for(version in r){
         if(version =="unknown"){
             continue

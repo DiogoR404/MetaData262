@@ -33,7 +33,7 @@ for line in Lines:
                 h.close()
                 for file in line["includes"]:
                     try:
-                        filename="./test262-main/harness/"+file
+                        filename="./test262/harness/"+file
                         f = open(filename, "r")
                         harness.write(f.read())
                         f.close()
@@ -76,7 +76,7 @@ for line in Lines:
                 h.close()
                 for file in line["includes"]:
                     try:
-                        filename="./test262-main/harness/"+file
+                        filename="./test262/harness/"+file
                         f = open(filename, "r")
                         harness.write(f.read())
                         f.close()
@@ -121,7 +121,7 @@ for line in Lines:
             h.close()
             for file in line["includes"]:
                 try:
-                    filename="./test262-main/harness/"+file
+                    filename="./test262/harness/"+file
                     f = open(filename, "r")
                     harness.write(f.read())
                     f.close()

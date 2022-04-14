@@ -211,7 +211,7 @@ function getLines(file){
 }
 
 function directories(filepath, metadata){
-    var path = filepath.replace('./test262-main/test/','');
+    var path = filepath.replace('./test262/test/','');
     var folders = path.split('/');
     
     for (f in folders){
@@ -229,7 +229,7 @@ function directories(filepath, metadata){
 //loads all metadata file
 var file = readFileContent("metadata_test262.json");
 var metadata = JSON.parse(file);
-//var metadata =[{"path":"./test262-main/test/built-ins/Array/15.4.5-1.js","info":" |The [[Prototype]] property of the newly constructed object\nis set to the original Array prototype object, the one that\nis the initial value of Array.prototype\n","version":5,"esid":" 15.4.1_A1.1_T1","description":" >Create new property of Array.prototype. When new Array object has\nthis property\n"}]
+//var metadata =[{"path":"./test262/test/built-ins/Array/15.4.5-1.js","info":" |The [[Prototype]] property of the newly constructed object\nis set to the original Array prototype object, the one that\nis the initial value of Array.prototype\n","version":5,"esid":" 15.4.1_A1.1_T1","description":" >Create new property of Array.prototype. When new Array object has\nthis property\n"}]
 version =parseVersion();
 
 //cycles all selected tests initializing at version es5, and if the test contains a function, variable, syntax or operator
@@ -243,7 +243,7 @@ for (var i=0; i < metadata.length; i++){
     var program_text = readFileContent(fileToAnalyse);
     directories(fileToAnalyse, metadata[i])
     //use of esprima to analyse the test
-    var path = fileToAnalyse.replace('./test262-main/test/','');
+    var path = fileToAnalyse.replace('./test262/test/','');
     var folders = path.split('/');
     
     for (f in folders){

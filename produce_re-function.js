@@ -21,7 +21,7 @@ const file = readFileContent("./functions/functions_11.txt");
 const lines = file.split("\n");
 const typedArray = ["Int8Array", "Uint8Array", "Uint8ClampedArray", "Int16Array", "Uint16Array", "Int32Array", "Uint32Array", "BigInt64Array", "BigUint64Array", "Float32Array", "Float64Array"]
 for (line in lines){
-    if (lines[line].includes('.prototype.')){
+    if (lines[line].includes('.prototype.') && !lines[line].includes("Generator")){
         if (lines[line].includes("TypedArray")){
             for (ta in typedArray){
                 write_to_file(lines[line].replace("TypedArray", typedArray[ta]))

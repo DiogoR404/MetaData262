@@ -140,7 +140,7 @@ function analysis(stmt, fileToAnalyse, results){
 
 //loads all metadata_global file
 var file = readFileContent("metadata_test262.json");
-//var metadata_global =[{"path":"./test262-main/test/built-ins/AsyncGeneratorFunction/name.js","info":" |The [[Prototype]] property of the newly constructed object\nis set to the original Array prototype object, the one that\nis the initial value of Array.prototype\n","version":5,"esid":" 15.4.1_A1.1_T1","description":" >Create new property of Array.prototype. When new Array object has\nthis property\n"}]
+//var metadata_global =[{"path":"./test262/test/built-ins/AsyncGeneratorFunction/name.js","info":" |The [[Prototype]] property of the newly constructed object\nis set to the original Array prototype object, the one that\nis the initial value of Array.prototype\n","version":5,"esid":" 15.4.1_A1.1_T1","description":" >Create new property of Array.prototype. When new Array object has\nthis property\n"}]
 var metadata_global = JSON.parse(file);
 var results = {};
 //cycles all selected tests initializing at version es5, and if the test contains a function, variable, syntax or operator
