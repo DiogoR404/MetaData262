@@ -1,3 +1,11 @@
+# Installation
+
+To run this project it is necessary to have nodejs, npm, python3 and pip installed. To have access to the test262 it is necessary to run the command:
+
+`git submodule update`
+
+Finally to install the dependecies of the project the makefile has to be executed:
+
 # Existing Metadata
 
 The first step in the search for metadata will be to collect all the metadata already present in the test of the testsuite Test262 for this we will go through all the test and parse the metadata that it contains. For this the next command will be executed:
