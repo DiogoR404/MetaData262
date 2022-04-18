@@ -4,7 +4,9 @@ To run this project it is necessary to have nodejs, npm, python3 and pip install
 
 `git submodule update`
 
-Finally to install the dependecies of the project the makefile has to be executed:
+Finally to install the dependecies of the project the makefile has to be executed.
+
+`make`
 
 # Existing Metadata
 
