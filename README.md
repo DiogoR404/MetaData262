@@ -1,12 +1,15 @@
 # Installation
 
-To run this project it is necessary to have nodejs, npm, python3 and pip installed. To have access to the test262 it is necessary to run the command:
+To run this project it is necessary to have nodejs, npm, python3 and pip installed. 
+To have access to the test262 it is necessary to run the following two commands inside the folder **test262**:
+
+`git submodule init`
 
 `git submodule update`
 
 Finally to install the dependecies of the project the makefile has to be executed.
 
-`make`
+`sudo make`
 
 # Existing Metadata
 
@@ -38,11 +41,11 @@ The dynamic analysis is made in the file dynamicAnalysis.py, where the code will
 In order to run the file one of the following command will be executed where the flag e corresponds to the engine (node or spidermonkey):
 
 
-`python3 dynamicAnalysis.py -e node`
+`sudo python3 dynamicAnalysis.py -e node`
 
 or
 
-`python3 dynamicAnalysis.py -e spidermonkey`
+`sudo python3 dynamicAnalysis.py -e spidermonkey`
 
 the results are saved within the directory dynamic_result_ + the engine name, so **"/dynamic_result_node"** and **"/dynamic_result_spidermonkey"** for nodejs and spidermonkey respectively. Similary to the tainted analysis the results will be saved in JSON files for each version and an overall JSON file that possesses every version. 
 
