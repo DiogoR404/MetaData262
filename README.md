@@ -116,7 +116,7 @@ The results of the show tests option are saved in the directory "Selected_tests"
 
 # Results Application
 
-The application to analyse the results of the tests will need an agument with the path to the file with the results to be analysed. After that it will upload the file to a mongo database in order ot filter the results and print in the console the menu for the user to interact. The main menu offers a range of options to filter the results.
+The application to analyse the results of the tests will need an agument with the path to the file with the results to be analysed. After that it will upload the file to a mongo database in order to filter the results and print in the console the menu for the user to interact. The main menu offers a range of options to filter the results.
 
 `python3 app_metadata.py <filepath>`
 
