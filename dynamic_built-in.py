@@ -159,6 +159,6 @@ count=0
 for out in results:
     if results[out] == "error":
         count+=1
-print(count)
+print("Number of errors: " + count)
 #writes in a file with the name of the version the tests associated to it
 prints.write(json.dumps(results))
