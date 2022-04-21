@@ -62,9 +62,9 @@ To run the analysis it will be needed to execute one javascript engine. below ar
 
 `node mixedAnalysis.js`
 
-or 
+To run the mixed analysis for only one engine you simply need to add as an argument the name of the desired engine (node or spidermonkey).
 
-`js78 mixedAnalysis.js`
+`node mixedAnalysis.js node` or `node mixedAnalysis.js spidermonkey`
 
 The results are saved in the directory dynamic_results with the names **"mixed_analysis.json"** and **"mixed_analysis_sm.json"** for the results of nodejs and spidermonkey, respectively. Each file contains an object with arrays for the test filtrated for each version.
 
