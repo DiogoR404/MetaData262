@@ -38,7 +38,7 @@ for line in Lines:
                         harness.write(f.read())
                         f.close()
                     except:
-                        print("include empty")
+                        continue
 
                 harness.close()
                 harness = open("harness2.js", "r")
@@ -81,7 +81,7 @@ for line in Lines:
                         harness.write(f.read())
                         f.close()
                     except:
-                        print("include empty")
+                        continue
 
                 harness.close()
                 harness = open("harness2.js", "r")
@@ -126,7 +126,7 @@ for line in Lines:
                     harness.write(f.read())
                     f.close()
                 except:
-                    print("include empty")
+                    continue
 
             harness.close()
             harness = open("harness2.js", "r")
