@@ -32,7 +32,6 @@ var table_syntax = table[2]
 var table_operators = table[3]
 var table_global=table[4]
 
-
 function mixedAnalysisNode(){
     var results = {}
     for (v in results_dynamic){
@@ -184,8 +183,7 @@ function mixedAnalysisSM(){
     
 }
 
-
-if (process.argv.length() === 2){
+if (process.argv.length === 2){
     mixedAnalysisNode()
     mixedAnalysisSM()
 }
