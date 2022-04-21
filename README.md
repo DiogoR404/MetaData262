@@ -19,6 +19,11 @@ The first step in the search for metadata will be to collect all the metadata al
 
 The results are saved in the json file with the name **"metadata_test262.json"**
 
+# Harness
+  
+In order to execute the dynamic analysis it is necessary to use a harness. For the older versions a simpler harness can be used. This harness is saved as **"harness.js"**, however for newer versions a more complex harness is needed and is saved as **"harness_finalissimo.js"** which waas built using the following command:
+  
+`python3 make_harness.py`
 
 # Version Search
 
@@ -90,7 +95,17 @@ The results are written in a JSON file named **"metadata_built-in.json"**, this 
 
 The dynamic approach for searching built-ins utilizes a file that redefines all built-in functions in order to once called adds to an array the name of the function and then runs normally. After we have that file we just add to it the harness and the actual test, and run it. However in the tests that return error we cannot retrieve the array with the built-ins and functions called.
 
-The command to run this approach is:
+In order to create the wrappers of the functions we analysed the html of the ecmascript which is saved in the directory "html" and we take every function of the built-ins, executing the command:
+  
+`python3 html_parse.py` 
+  
+This command will create a list with all the functions saved in the directory "functions", finally we can prodeuce the wrappers for the functions with the command:
+  
+`node produce_re-function.js`
+  
+This command will create the file **"func.js"** that contains every function wrapped.
+
+To run the dynamic analysis to search for the built-ins in the tests the command used is:
 
 `python3 dynamic_built-in.py`
 
@@ -148,24 +163,6 @@ The results are saved in the directory "characterization" with the name **"chara
 
 # Other  
 
-## Harness
-  
-In order to execute the dynamic analysis it is necessary to use a harness. For the older versions a simpler harness can be used. This harness is saved as **"harness.js"**, however for newer versions a more complex harness is needed and is saved as **"harness_finalissimo.js"** which waas built using the following command:
-  
-`python3 make_harness.py`
-  
-## Wrapper
-  
-For the wrapper of the functions we analysed the html of the ecmascript which is saved in the directory "html" and we take every function of the built-ins, executing the command:
-  
-`python3 html_parse.py` 
-  
-This command will create a list with all the functions saved in the directory "functions", finally we can prodeuce the wrappers for the functions with the command:
-  
-`node produce_re-function.js`
-  
-This command will create the file **"func.js"** that contains every function wrapped.
-  
 ## Parse ECMARef results
   
 The results of the ECMARef needed to be parsed in order to evaluate our work, mainly removing the tests that expect a negative result that our analysis doesn't work. In order to do so the next code is ran:
