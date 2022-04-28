@@ -213,15 +213,30 @@ function getLines(file){
 function directories(filepath, metadata){
     var path = filepath.replace('./test262/test/','');
     var folders = path.split('/');
-    
+    var prototype = false;
+
     for (f in folders){
         if (!path.includes('/')){
             break;
         }
 
-        path = path.replace(folders[f]+'/','')
-        metadata[folders[f]] = folders[parseInt(f)+1]
-    } ;
+        if (folders[f]==="prototype"){
+            prototype=true;
+            path = path.replace(folders[f]+'/','');
+            metadata[folders[f]] = folders[parseInt(f)+1]
+        }
+
+        else if (prototype){
+            path = path.replace(folders[f]+'/','');
+            var name= "prototype_" + folders[f];
+            metadata[name] = folders[parseInt(f)+1]
+        }
+        else{
+            path = path.replace(folders[f]+'/','');
+            metadata[folders[f]] = folders[parseInt(f)+1]
+        }
+
+    } ;    
     
 }
 
@@ -244,16 +259,6 @@ for (var i=0; i < metadata.length; i++){
     directories(fileToAnalyse, metadata[i])
     //use of esprima to analyse the test
     var path = fileToAnalyse.replace('./test262/test/','');
-    var folders = path.split('/');
-    
-    for (f in folders){
-        if (!path.includes('/')){
-            break;
-        }
-
-        path = path.replace(folders[f]+'/','')
-        metadata[i][folders[f]] = folders[parseInt(f)+1]
-    };
 
     if (version.hasOwnProperty(fileToAnalyse)) {
         if (version[fileToAnalyse].substring(0, 2) ==="es"){
