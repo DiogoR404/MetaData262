@@ -107,7 +107,7 @@ This command will create the file **"func.js"** that contains every function wra
 
 To run the dynamic analysis to search for the built-ins in the tests the command used is:
 
-`python3 dynamic_built-in.py`
+`sudo python3 dynamic_built-in.py`
 
 The results for this approach are written in the file named **"functions_metadata.json"**, that contains the tests that are supposed to return an error, the tests that had the wrong execution and the functions and built-ins obtained.
 
