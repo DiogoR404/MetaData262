@@ -210,41 +210,12 @@ function getLines(file){
     return count
 }
 
-function directories(filepath, metadata){
-    var path = filepath.replace('./test262/test/','');
-    var folders = path.split('/');
-    var prototype = false;
-
-    for (f in folders){
-        if (!path.includes('/')){
-            break;
-        }
-
-        if (folders[f]==="prototype"){
-            prototype=true;
-            path = path.replace(folders[f]+'/','');
-            metadata[folders[f]] = folders[parseInt(f)+1]
-        }
-
-        else if (prototype){
-            path = path.replace(folders[f]+'/','');
-            var name= "prototype_" + folders[f];
-            metadata[name] = folders[parseInt(f)+1]
-        }
-        else{
-            path = path.replace(folders[f]+'/','');
-            metadata[folders[f]] = folders[parseInt(f)+1]
-        }
-
-    } ;    
-    
-}
 
 
 //loads all metadata file
 var file = readFileContent("metadata_test262.json");
 var metadata = JSON.parse(file);
-//var metadata =[{"path":"./test262/test/built-ins/Array/15.4.5-1.js","info":" |The [[Prototype]] property of the newly constructed object\nis set to the original Array prototype object, the one that\nis the initial value of Array.prototype\n","version":5,"esid":" 15.4.1_A1.1_T1","description":" >Create new property of Array.prototype. When new Array object has\nthis property\n"}]
+// var metadata =[{"path":"./test262/test/built-ins/Array/15.4.5-1.js","info":" |The [[Prototype]] property of the newly constructed object\nis set to the original Array prototype object, the one that\nis the initial value of Array.prototype\n","version":5,"esid":" 15.4.1_A1.1_T1","description":" >Create new property of Array.prototype. When new Array object has\nthis property\n"}]
 version =parseVersion();
 
 //cycles all selected tests initializing at version es5, and if the test contains a function, variable, syntax or operator
@@ -256,10 +227,10 @@ for (var i=0; i < metadata.length; i++){
     //loads the test
     var fileToAnalyse = metadata[i].path;
     var program_text = readFileContent(fileToAnalyse);
-    directories(fileToAnalyse, metadata[i])
-    //use of esprima to analyse the test
     var path = fileToAnalyse.replace('./test262/test/','');
+    metadata[i]['pathSplit'] = path.split('/');
 
+    //use of esprima to analyse the test
     if (version.hasOwnProperty(fileToAnalyse)) {
         if (version[fileToAnalyse].substring(0, 2) ==="es"){
             metadata[i]["version"] = parseInt(version[fileToAnalyse].substring(2), 10)
