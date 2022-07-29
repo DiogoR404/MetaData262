@@ -4,6 +4,8 @@ from os.path import isfile, join
 mypath= "./test262/harness"
 
 onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
+onlyfiles = list(filter(lambda x: x.endswith('.js'), onlyfiles))
+
 
 harness = open("harness_finalissimo.js", "w")
 
