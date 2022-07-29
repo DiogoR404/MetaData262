@@ -2663,7 +2663,7 @@ var TemporalHelpers = {
       getOffsetNanosecondsFor(instant) {
         if (Temporal.Instant.compare(instant, "2030-01-01T00:00Z") >= 0 &&
           Temporal.Instant.compare(instant, "2030-01-03T01:00Z") < 0) {
-          return 3600_000_000_000;
+          return 3600000000000;
         } else {
           return 0;
         }
@@ -2732,7 +2732,7 @@ var TemporalHelpers = {
     const plainDateTime = new Temporal.PlainDateTime(2000, 5, 2, 12, 34, 56, 987, 654, 321, calendar);
     const plainMonthDay = new Temporal.PlainMonthDay(5, 2, calendar);
     const plainYearMonth = new Temporal.PlainYearMonth(2000, 5, calendar);
-    const zonedDateTime = new Temporal.ZonedDateTime(1_000_000_000_000_000_000n, "UTC", calendar);
+    const zonedDateTime = new Temporal.ZonedDateTime(1000000000000000000n, "UTC", calendar);
 
     [plainDate, plainDateTime, plainMonthDay, plainYearMonth, zonedDateTime].forEach((temporalObject) => {
       const actual = [];
@@ -2754,7 +2754,7 @@ var TemporalHelpers = {
     const actual = [];
     const expected = [];
 
-    const datetime = new Temporal.ZonedDateTime(1_000_000_000_987_654_321n, "UTC");
+    const datetime = new Temporal.ZonedDateTime(1000000000987654321n, "UTC");
     Object.defineProperty(datetime, 'toString', {
       get() {
         actual.push("get toString");
@@ -3257,9 +3257,9 @@ var TemporalHelpers = {
   springForwardFallBackTimeZone() {
     const { compare } = Temporal.PlainDateTime;
     const springForwardLocal = new Temporal.PlainDateTime(2000, 4, 2, 2);
-    const springForwardEpoch = 954669600_000_000_000n;
+    const springForwardEpoch = 954669600000000000n;
     const fallBackLocal = new Temporal.PlainDateTime(2000, 10, 29, 1);
-    const fallBackEpoch = 972810000_000_000_000n;
+    const fallBackEpoch = 972810000000000000n;
     const winterOffset = new Temporal.TimeZone('-08:00');
     const summerOffset = new Temporal.TimeZone('-07:00');
 

@@ -1,7 +1,7 @@
 //GetMetadata
-//  runs through a directory, given as argument 
+//  runs through a directory, given as argument
 //  recursively analyses every file in the directory and files in the directory
-//    for each file it takes the metadata associated to it - written in commentary in the beginning of the file  
+//    for each file it takes the metadata associated to it - written in commentary in the beginning of the file
 
 var p = require('esprima').parse;
 const fs = require('fs');
@@ -42,7 +42,7 @@ function GetMetadata(path){
         switch (lineArray[0].replace(/ /g, "")) {
             case "description":
             case "info":
-            
+
             {
                 metadata[lineArray[0].replace(/ /g, "")] = multiple_lines(lineArray[1]);
                 break;
@@ -58,9 +58,9 @@ function GetMetadata(path){
             case "flags":
             case "features":
             case "includes":{
-                var string = lineArray[1].replace("[", "").replace("]", "").replace(" ", "")
-                var array =string.split(", ");
-                metadata[lineArray[0].replace(/ /g, "")] = array;
+                var string = lineArray[1].replace("[", "").replace("]", "").replace(/\s/g, "");
+                var array =string.split(",");
+                metadata[lineArray[0].replace(/\s/g, "")] = array;
                 break;
             }
 
@@ -75,7 +75,7 @@ function GetMetadata(path){
                 metadata["esid"] = lineArray[1];
                 break;
             }
-            case "es6id":{ 
+            case "es6id":{
                 metadata["version"] = 6;
                 metadata["esid"] = lineArray[1];
                 break;
@@ -88,33 +88,6 @@ function GetMetadata(path){
     return metadata;
 }
 
-/*
-function searchEval(program_text, path){
-    try{
-        var program = p(program_text);
-    }
-    catch(e){
-        console.log(path)
-        console.log(e.stack);
-        console.log(e.name);
-        console.log(e.message);
-        console.log("\n------------------------------------------------\n")
-    }
-    var has_eval=false;
-    function mapper(stmt){
-        switch(stmt.type){
-            case "CallExpression" : {
-                if (stmt.callee !== undefined && stmt.callee.name === 'eval'){
-                    has_eval=true;
-                }
-            }
-            default: return stmt;
-
-        }
-    }
-    map(mapper, program)
-    return has_eval;
-}*/
 
 function recursive(path, json) {
     const st = fs.lstatSync(path);
@@ -124,7 +97,7 @@ function recursive(path, json) {
         files = fs.readdirSync(path);
         for (file in files){
             const stat = fs.lstatSync(path + "/" + files[file]);
-    
+
             if (stat.isDirectory()){
                 if (files[file] !== "harness" && files[file] !== "annexB" && files[file] !== "intl402"){
                     recursive(path + "/" + files[file], json);
@@ -138,13 +111,6 @@ function recursive(path, json) {
                 json.push(metadata_final);
             }
         }
-    }
-    else {
-        var metadata_final = GetMetadata(path);
-        if (metadata_final === null){
-            console.log(path + "/" + files[file]);
-        }
-        json.push(metadata_final);
     }
     return json;
 }
