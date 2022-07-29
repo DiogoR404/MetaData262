@@ -3,6 +3,7 @@ import subprocess
 import multiprocessing
 from itertools import repeat
 import os
+import tqdm
 
 def runSubProcess(command: list) -> tuple:
 
@@ -37,8 +38,9 @@ def runTest(engine: str, test: dict, harness: str) -> bool:
             t = f.read()
             appendFile.write(t)
 
-    # if 'negative' in test and test['negative']['type'] == 'SyntaxError':
-    #     return False
+    # SyntaxError are ignored
+    if 'negative' in test and test['negative']['type'] == 'SyntaxError':
+        return False
 
     # creat test file with every thing needed to run
     processName = multiprocessing.current_process().name.split('-')[1]
@@ -59,10 +61,12 @@ def runTest(engine: str, test: dict, harness: str) -> bool:
         appendFileToFile(test['path'], tmpFile)
 
     # run test
-    _, errorOutput = runSubProcess(["timeout", "-s", "SIGXCPU", "10", engine, fileName])
+    output, errorOutput = runSubProcess(["timeout", "-s", "SIGXCPU", "10", engine, fileName])
 
     # check if the result is correct
-    if errorOutput == '' and 'negative' not in test:
+    if 'flags' in test and 'async' in test['flags'] and output == 'Test262:AsyncTestComplete':
+        return True
+    elif errorOutput == '' and 'negative' not in test:
         return True
     elif 'negative' in test and test['negative']['type'] in errorOutput:
         # still need to check that phase coincides
@@ -72,7 +76,8 @@ def runTest(engine: str, test: dict, harness: str) -> bool:
 def dynamicComputation(harness: str, testMetaData: list, engine: str) -> dict:
     result = {"passed": [], "failed": []}
     with multiprocessing.Pool() as p:
-        r = p.starmap(runTest, zip(repeat(engine), testMetaData, repeat(harness)))
+        inputs = zip(repeat(engine), testMetaData, repeat(harness))
+        r = p.starmap(runTest, tqdm.tqdm(inputs, total=len(testMetaData)))
 
     for i in range(len(testMetaData)):
         if r[i]:
@@ -86,27 +91,27 @@ def loadHarness() -> dict:
     harness = {}
     with open("harness9.js", "r") as f:
          harness["es9"] = f.read()
-
-    with open("harness_finalissimo.js", "r") as f:
+    with open("harness_f.js", "r") as f:
          harness["es10"] = f.read()
          harness["es11"] = harness["es10"]
-
-    with open("harness.js", "r") as f:
+         harness["es12"] = harness["es10"]
+    with open("harness_es5.js", "r") as f:
         harness["es5"] = f.read()
-        harness["es6"] = harness["es5"]
+    with open("harness_es6_v1.js", "r") as f:
+        harness["es6"] = f.read()
         harness["es8"] = harness["es5"]
     return harness
 
 
 def main():
-    # with open('metadata_test262.json', 'r') as f:
-    with open('test.json', 'r') as f: # for testing purposes
+    with open('metadata_test262.json', 'r') as f:
+    # with open('test.json', 'r') as f: # for testing purposes
         testMetaData = json.load(f)
 
-    listVersions = ("es5", "es6", "es8", "es9", "es10", "es11")
+    listVersions = ("es5", "es6", "es8", "es9", "es10", "es11", "es12")
 
     engineVersions = {
-            "node": {"es5": "0.10.48", "es6":"6.17.1", "es8":"8.17.0", "es9":"10.9.0", "es10":"12.11.0", "es11": "14.5.0"},
+            "node": {"es5": "0.10.48", "es6":"6.17.1", "es8":"8.17.0", "es9":"10.9.0", "es10":"12.11.0", "es11": "14.5.0", "es12": "18.7.0"},
             "spiderMonkey": {"es5":"js24", "es6":"js38","es8":"js52", "es9": "js60","es10": "js68", "es11": "js78"}
             }
     harness = loadHarness()
@@ -117,6 +122,7 @@ def main():
     results["notSupported"] = []
 
     for version in listVersions:
+        print('Computing', version)
         engine = changeNextEngine("node", engineVersions["node"][version])
         r = dynamicComputation(harness[version], testMetaData, engine)
 

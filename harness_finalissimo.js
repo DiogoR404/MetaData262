@@ -1,3 +1,4 @@
+
 // harness-adapt.js
 // Copyright 2011 the V8 project authors. All rights reserved.
 // Redistribution and use in source and binary forms, with or without
@@ -25,6 +26,7 @@
 // THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
 function fnGlobalObject() { return (function() { return this; })(); }
 
 var ES5Harness = (function() {
@@ -104,7 +106,7 @@ function RealmOperators(realm) {
   return $262;
 }
 
-var $262 = {};
+var $262 = RealmOperators(Realm.current());
 
 // harness-agent.js
 // Copyright 2017 the V8 project authors. All rights reserved.
@@ -246,7 +248,7 @@ $DONOTEVALUATE = () => {};
 // found in the LICENSE file.
 
 function $DETACHBUFFER(buffer) {
-  ArrayBufferDetach(buffer);
+  %ArrayBufferDetach(buffer);
 }
 
 $262.detachArrayBuffer = $DETACHBUFFER;
@@ -3876,14 +3878,6 @@ Test262Error.thrower = (message) => {
 function $DONOTEVALUATE() {
   throw "Test262: This statement should not be evaluated.";
 }
-
-//features.yml
-atomicsHelper: [Atomics]
-// typeCoercion.js: [Symbol.toPrimitive, BigInt]
-// testAtomics.js: [ArrayBuffer, Atomics, DataView, SharedArrayBuffer, Symbol, TypedArray]
-// testBigIntTypedArray.js: [BigInt, TypedArray]
-// testTypedArray.js: [TypedArray]
-// isConstructor.js: [Reflect.construct]
 
 //fnGlobalObject.js
 // Copyright (C) 2017 Ecma International.  All rights reserved.

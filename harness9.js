@@ -83,7 +83,7 @@ var ES5Harness = (function() {
 
 function $DONE(arg){
     if (arg) {
-        print('FAILED! Error: ' + arg);
+        console.log('FAILED! Error: ' + arg);
         quit(1);
     }
 
@@ -3960,7 +3960,7 @@ defines: [$DONE]
 ---*/
 
 function __consolePrintHandle__(msg) {
-  print(msg);
+  console.log(msg);
 }
 
 function $DONE(error) {
@@ -7354,4 +7354,3 @@ function testWithAtomicsNonViewValues(f) {
     }
   }
 }
-

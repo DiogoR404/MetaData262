@@ -21,7 +21,7 @@ The results are saved in the json file with the name **"metadata_test262.json"**
 
 # Harness
   
-In order to execute the dynamic analysis it is necessary to use a harness. For the older versions a simpler harness can be used. This harness is saved as **"harness.js"**, however for newer versions a more complex harness is needed and is saved as **"harness_finalissimo.js"** which waas built using the following command:
+In order to execute the dynamic analysis it is necessary to use a harness. For the older versions a simpler harness can be used. This harness is saved as **"harness.js"**, however for newer versions a more complex harness is needed and is saved as **"harness_finalissimo.js"** which was built using the following command:
   
 `python3 make_harness.py`
 
