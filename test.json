@@ -153,5 +153,6 @@
         "error": 0,
         "esprima": "not supported",
         "lines": 52
-    }
+    },{"path": "test/language/module-code/top-level-await/top-level-ticks.js", "esid": " sec-asyncblockstart", "description": " >Evaluation of await ticks order\n", "info": " |AsyncBlockStart ( promiseCapability, asyncBody, asyncContext )\n\n1. Assert: promiseCapability is a PromiseCapability Record.\n2. Let runningContext be the running execution context.\n3. Set the code evaluation state of asyncContext such that when evaluation is resumed for that execution context the following steps will be performed:\na. Let result be the result of evaluating asyncBody.\n...\n", "includes": ["compareArray.js"], "flags": ["module", "async"], "features": ["top-level-await"]}
+
 ]

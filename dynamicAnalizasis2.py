@@ -139,7 +139,6 @@ def main():
 
     with open('package.json', 'r') as f:
         package = json.load(f)
-    moduleJSON = {"type":"module"}
     for version in listVersions:
         print('Computing', version)
         os.system('rm -rf test/')
