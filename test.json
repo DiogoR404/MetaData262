@@ -1,1 +1,157 @@
-[{  "path": "./test262/test/language/module-code/instn-resolve-empty-export.js",  "description": " >A NamedExport without an ExportsList contributes to the list of requested\nmodules\n",  "esid": " sec-moduledeclarationinstantiation",  "info": " |[...]\n8. For each String required that is an element of\nmodule.[[RequestedModules]] do,\na. NOTE: Before instantiating a module, all of the modules it requested\nmust be available. An implementation may perform this test at any\ntime prior to this point.\nb. Let requiredModule be ? HostResolveImportedModule(module, required).\nc. Perform ? requiredModule.ModuleDeclarationInstantiation().\n\n15.2.2.5 Static Semantics: ModuleRequests\n\nImportDeclaration : import ImportClause FromClause;\n\n1. Return ModuleRequests of FromClause.\n\n15.2.3 Exports\n\nSyntax\n\nNamedExport:\n{ }\n{ ExportsList }\n{ ExportsList , }\n",  "negative": {    "phase": "resolution",    "type": "SyntaxError"  },  "flags": [    "module"  ],  "language": "module-code",  "module-code": "instn-resolve-empty-export.js",  "asserts": 0,  "error": 0,  "esprima": "not supported",  "lines": 2}, {  "path": "./test262/test/language/eval-code/indirect/parse-failure-2.js",  "info": " If the parse fails, throw a SyntaxError exception (but see also clause 16)",  "esid": " 15.1.2.1_A2_T2",  "version": 5,  "description": " Checking if execution of \"(0,eval)(\"x = 1; x\\u000A++\")\" fails",  "negative": {    "phase": "runtime",    "type": "SyntaxError"  },  "language": "eval-code",  "eval-code": "indirect",  "indirect": "parse-failure-2.js",  "syntactic_construct": [    "Identifier",    "VariableDeclarator",    "VariableDeclaration",    "Literal",    "SequenceExpression",    "CallExpression",    "ExpressionStatement",    "Program"  ],  "asserts": 0,  "error": 0,  "esprima": "supported",  "lines": 2}, { "path": "./test262/test/built-ins/RegExp/property-escapes/binary-property-with-value-ASCII_-_F.js",  "author": " Mathias Bynens",  "description": " >Binary properties with an explicit value must throw in Unicode property\nescapes (even if the value is valid).\n",  "esid": " sec-static-semantics-unicodematchproperty-p",  "negative": {    "phase": "parse",    "type": "SyntaxError"  },  "features": [    "regexp-unicode-property-escapes"  ],  "built-ins": "RegExp",  "RegExp": "property-escapes",  "property-escapes": "binary-property-with-value-ASCII_-_F.js",  "syntactic_construct": [    "Identifier",    "CallExpression",    "ExpressionStatement",    "Literal",    "Program"  ],  "asserts": 0,  "error": 0,  "esprima": "supported",  "lines": 2}, {  "path": "./test262/test/built-ins/Array/Symbol.species/length.js",  "version": 6,  "esid": " 22.1.2.5",  "description": " >get Array [ @@species ].length is 0.\n",  "info": " |get Array [ @@species ]\n\n17 ECMAScript Standard Built-in Objects:\nEvery built-in Function object, including constructors, has a length\nproperty whose value is an integer. Unless otherwise specified, this\nvalue is equal to the largest number of named arguments shown in the\nsubclause headings for the function description, including optional\nparameters. However, rest parameters shown using the form “...name”\nare not included in the default argument count.\n\nUnless otherwise specified, the length property of a built-in Function\nobject has the attributes { [[Writable]]: false, [[Enumerable]]: false,\n[[Configurable]]: true }.\n",  "includes": [    "propertyHelper.js"  ],  "features": [    "Symbol.species"  ],  "built-ins": "Array",  "Array": "Symbol.species",  "Symbol.species": "length.js",  "syntactic_construct": [    "Identifier",    "MemberExpression",    "CallExpression",    "VariableDeclarator",    "VariableDeclaration",    "Literal",    "ExpressionStatement",    "Program"  ],  "builtIns": {    "Object": [      "getOwnPropertyDescriptor"    ],    "Array": [],    "Symbol": [      "species"    ]  },  "asserts": 1,  "error": 0,  "esprima": "supported",  "lines": 5}, {  "_id": {    "$oid": "62d3067d507070c90312d58c"  },  "path": "./test262/test/built-ins/AsyncFromSyncIteratorPrototype/next/absent-value-not-passed.js",  "esid": " sec-%asyncfromsynciteratorprototype%.next",  "description": " >`next` method does not pass absent `value`.\n",  "info": " |%AsyncFromSyncIteratorPrototype%.next ( value )\n\n[...]\n5. If value is present, then\n[...]\n6. Else,\na. Let result be IteratorNext(syncIteratorRecord).\n[...]\n",  "flags": [    "async"  ],  "features": [    "async-iteration"  ],  "built-ins": "AsyncFromSyncIteratorPrototype",  "AsyncFromSyncIteratorPrototype": "next",  "next": "absent-value-not-passed.js",  "version": 9,  "asserts": 1,  "error": 0,  "esprima": "not supported",  "lines": 14}]
+[
+    {
+        "path": "test/built-ins/Array/Symbol.species/length.js",
+        "version": 6,
+        "esid": " 22.1.2.5",
+        "description": " >get Array [ @@species ].length is 0.\n",
+        "info": " |get Array [ @@species ]\n\n17 ECMAScript Standard Built-in Objects:\nEvery built-in Function object, including constructors, has a length\nproperty whose value is an integer. Unless otherwise specified, this\nvalue is equal to the largest number of named arguments shown in the\nsubclause headings for the function description, including optional\nparameters. However, rest parameters shown using the form “...name”\nare not included in the default argument count.\n\nUnless otherwise specified, the length property of a built-in Function\nobject has the attributes { [[Writable]]: false, [[Enumerable]]: false,\n[[Configurable]]: true }.\n",
+        "includes": [
+            "propertyHelper.js"
+        ],
+        "features": [
+            "Symbol.species"
+        ],
+        "built-ins": "Array",
+        "Array": "Symbol.species",
+        "Symbol.species": "length.js",
+        "syntactic_construct": [
+            "Identifier",
+            "MemberExpression",
+            "CallExpression",
+            "VariableDeclarator",
+            "VariableDeclaration",
+            "Literal",
+            "ExpressionStatement",
+            "Program"
+        ],
+        "builtIns": {
+            "Object": [
+                "getOwnPropertyDescriptor"
+            ],
+            "Array": [],
+            "Symbol": [
+                "species"
+            ]
+        },
+        "asserts": 1,
+        "error": 0,
+        "esprima": "supported",
+        "lines": 5
+    },
+    {
+        "_id": {
+            "$oid": "62d3067d507070c90312d58c"
+        },
+        "path": "test/built-ins/AsyncFromSyncIteratorPrototype/next/absent-value-not-passed.js",
+        "esid": " sec-%asyncfromsynciteratorprototype%.next",
+        "description": " >`next` method does not pass absent `value`.\n",
+        "info": " |%AsyncFromSyncIteratorPrototype%.next ( value )\n\n[...]\n5. If value is present, then\n[...]\n6. Else,\na. Let result be IteratorNext(syncIteratorRecord).\n[...]\n",
+        "flags": [
+            "async"
+        ],
+        "features": [
+            "async-iteration"
+        ],
+        "built-ins": "AsyncFromSyncIteratorPrototype",
+        "AsyncFromSyncIteratorPrototype": "next",
+        "next": "absent-value-not-passed.js",
+        "version": 9,
+        "asserts": 1,
+        "error": 0,
+        "esprima": "not supported",
+        "lines": 14
+    },
+    {
+        "path": "test/built-ins/ShadowRealm/prototype/importValue/import-value.js",
+        "esid": " sec-shadowrealm.prototype.importvalue",
+        "description": " >ShadowRealm.prototype.importValue can import a value.\n",
+        "flags": [
+            "async",
+            "module"
+        ],
+        "features": [
+            "ShadowRealm"
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "62d3067e507070c9031310fc"
+        },
+        "path": "test/language/eval-code/direct/export.js",
+        "description": " The `export` declaration may not appear within eval code",
+        "esid": " sec-scripts",
+        "flags": [
+            "module"
+        ],
+        "info": " |Eval code is the source text supplied to the built-in eval function. More\nprecisely, if the parameter to the built-in eval function is a String, it\nis treated as an ECMAScript Script. The eval code for a particular\ninvocation of eval is the global code portion of that Script.\n\nA.5 Scripts and Modules\n\nScript:\nScriptBodyopt\n\nScriptBody:\nStatementList\n",
+        "language": "eval-code",
+        "eval-code": "direct",
+        "direct": "export.js",
+        "version": 5,
+        "syntactic_construct": [
+            "Identifier",
+            "MemberExpression",
+            "Literal",
+            "CallExpression",
+            "ExpressionStatement",
+            "BlockStatement",
+            "FunctionExpression",
+            "Program"
+        ],
+        "builtIns": {
+            "SyntaxError": []
+        },
+        "asserts": 1,
+        "error": 0,
+        "esprima": "supported",
+        "lines": 3
+    },
+    {
+        "_id": {
+            "$oid": "62d3067e507070c90312f409"
+        },
+        "path": "test/built-ins/Proxy/preventExtensions/trap-is-undefined-target-is-proxy.js",
+        "esid": " sec-proxy-object-internal-methods-and-internal-slots-preventextensions",
+        "description": " >If \"preventExtensions\" trap is null or undefined, [[PreventExtensions]] call\nis properly forwarded to [[ProxyTarget]] (which is also a Proxy object).\n",
+        "info": " |[[PreventExtensions]] ( )\n\n[...]\n4. Let target be O.[[ProxyTarget]].\n5. Let trap be ? GetMethod(handler, \"preventExtensions\").\n6. If trap is undefined, then\na. Return ? target.[[PreventExtensions]]().\n\n[[PreventExtensions]] ( )\n\n1. Return true.\n",
+        "features": [
+            "Proxy",
+            "Reflect"
+        ],
+        "flags": [
+            "module"
+        ],
+        "built-ins": "Proxy",
+        "Proxy": "preventExtensions",
+        "preventExtensions": "trap-is-undefined-target-is-proxy.js",
+        "asserts": 1,
+        "error": 0,
+        "esprima": "not supported",
+        "lines": 6
+    },
+    {
+        "_id": {
+            "$oid": "62d3067e507070c903131bd7"
+        },
+        "path": "test/language/expressions/class/cpn-class-expr-accessors-computed-property-name-from-await-expression.js",
+        "description": " Computed property name from condition expression (ComputedPropertyName in ClassExpression)",
+        "esid": " prod-ComputedPropertyName",
+        "features": [
+            "computed-property-names",
+            "top-level-await"
+        ],
+        "flags": [
+            "generated",
+            "async",
+            "module"
+        ],
+        "info": " |ClassExpression:\nclassBindingIdentifier opt ClassTail\n\nClassTail:\nClassHeritage opt { ClassBody opt }\n\nClassBody:\nClassElementList\n\nClassElementList:\nClassElement\n\nClassElement:\nMethodDefinition\n\nMethodDefinition:\nPropertyName ...\nget PropertyName ...\nset PropertyName ...\n\nPropertyName:\nComputedPropertyName\n\nComputedPropertyName:\n[ AssignmentExpression ]\n",
+        "language": "expressions",
+        "expressions": "class",
+        "class": "cpn-class-expr-accessors-computed-property-name-from-await-expression.js",
+        "asserts": 8,
+        "error": 0,
+        "esprima": "not supported",
+        "lines": 52
+    }
+]

@@ -1,4 +1,10 @@
 
+// harness_base.js
+//harness_base.js
+function print(msg) {
+  console.log(msg);
+}
+
 // harness-adapt.js
 // Copyright 2011 the V8 project authors. All rights reserved.
 // Redistribution and use in source and binary forms, with or without

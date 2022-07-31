@@ -30,8 +30,9 @@ function GetMetadata(path){
     var program_text = readFileContent(path);
 
     var metadata = {
-        path: path
+        path: path.slice(10)
     };
+  console.log(metadata);
 
     program = program_text.split("\n");
     //metadata["eval"] = searchEval(program_text, path);
@@ -103,7 +104,7 @@ function recursive(path, json) {
                     recursive(path + "/" + files[file], json);
                 }
             }
-            else {
+            else if (-1 === files[file].indexOf('_FIXTURE')){
                 var metadata_final = GetMetadata(path + "/" + files[file]);
                 if (metadata_final === null){
                     console.log(path + "/" + files[file]);
@@ -118,3 +119,4 @@ function recursive(path, json) {
 var new_prog_str = recursive("./test262/test", []);
 
 fs.writeFile("metadata_test262.json", JSON.stringify(new_prog_str), function(){});
+console.log('Number of tests: '+ new_prog_str.length);

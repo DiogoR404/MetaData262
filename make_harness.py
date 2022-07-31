@@ -9,6 +9,10 @@ onlyfiles = list(filter(lambda x: x.endswith('.js'), onlyfiles))
 
 harness = open("harness_finalissimo.js", "w")
 
+harness.write("\n// harness_base.js\n")
+f = open("harness_base.js", "r")
+harness.write(f.read())
+
 harness.write("\n// harness-adapt.js\n")
 f = open("./test262/implementation-contributed/v8/test262/harness-adapt.js", "r")
 harness.write(f.read())
@@ -43,4 +47,3 @@ for file in onlyfiles:
     harness.write("\n//" + file + "\n")
     harness.write(f.read())
     f.close()
-    
