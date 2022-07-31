@@ -100,7 +100,7 @@ def loadHarness() -> dict:
         harness[8] = harness[5]
     return harness
 
-def partitionTests(testMetaData: dict) -> tuple[list, list, list]:
+def partitionTests(testMetaData: dict) -> tuple:
     ignore = []
     moduleToTest = []
     toTest = []
@@ -114,7 +114,7 @@ def partitionTests(testMetaData: dict) -> tuple[list, list, list]:
             toTest += [test]
     return toTest, moduleToTest, ignore
 
-def getTestMetaData() -> tuple[list, list, list]:
+def getTestMetaData() -> tuple:
     if len(sys.argv) > 1 and sys.argv[1] == '-t':
         pathMetadata = 'test.json'
     else:

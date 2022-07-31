@@ -820,6 +820,65 @@ $262.agent.trySleep = function(ms) {
   $262.agent.sleep(ms);
 };
 
+//dateConstants.js
+// Copyright (C) 2009 the Sputnik authors.  All rights reserved.
+// This code is governed by the BSD license found in the LICENSE file.
+/*---
+description: |
+    Collection of date-centric values
+defines:
+  - date_1899_end
+  - date_1900_start
+  - date_1969_end
+  - date_1970_start
+  - date_1999_end
+  - date_2000_start
+  - date_2099_end
+  - date_2100_start
+  - start_of_time
+  - end_of_time
+---*/
+
+var date_1899_end = -2208988800001;
+var date_1900_start = -2208988800000;
+var date_1969_end = -1;
+var date_1970_start = 0;
+var date_1999_end = 946684799999;
+var date_2000_start = 946684800000;
+var date_2099_end = 4102444799999;
+var date_2100_start = 4102444800000;
+
+var start_of_time = -8.64e15;
+var end_of_time = 8.64e15;
+
+//decimalToHexString.js
+// Copyright (C) 2017 André Bargull. All rights reserved.
+// This code is governed by the BSD license found in the LICENSE file.
+/*---
+description: |
+    Collection of functions used to assert the correctness of various encoding operations.
+defines: [decimalToHexString, decimalToPercentHexString]
+---*/
+
+function decimalToHexString(n) {
+  var hex = "0123456789ABCDEF";
+  n >>>= 0;
+  var s = "";
+  while (n) {
+    s = hex[n & 0xf] + s;
+    n >>>= 4;
+  }
+  while (s.length < 4) {
+    s = "0" + s;
+  }
+  return s;
+}
+
+function decimalToPercentHexString(n) {
+  var hex = "0123456789ABCDEF";
+  return "%" + hex[(n >> 4) & 0xf] + hex[n & 0xf];
+}
+
 //assert.js
 // Copyright (C) 2017 Ecma International.  All rights reserved.
 // This code is governed by the BSD license found in the LICENSE file.
@@ -940,3041 +999,6 @@ assert._toString = function (value) {
   }
 };
 
-//compareIterator.js
-// Copyright (C) 2018 Peter Wong.  All rights reserved.
-// This code is governed by the BSD license found in the LICENSE file.
-/*---
-description: Compare the values of an iterator with an array of expected values
-defines: [assert.compareIterator]
----*/
-
-// Example:
-//
-//    function* numbers() {
-//      yield 1;
-//      yield 2;
-//      yield 3;
-//    }
-//
-//    compareIterator(numbers(), [
-//      v => assert.sameValue(v, 1),
-//      v => assert.sameValue(v, 2),
-//      v => assert.sameValue(v, 3),
-//    ]);
-//
-assert.compareIterator = function(iter, validators, message) {
-  message = message || '';
-
-  var i, result;
-  for (i = 0; i < validators.length; i++) {
-    result = iter.next();
-    assert(!result.done, 'Expected ' + i + ' values(s). Instead iterator only produced ' + (i - 1) + ' value(s). ' + message);
-    validators[i](result.value);
-  }
-
-  result = iter.next();
-  assert(result.done, 'Expected only ' + i + ' values(s). Instead iterator produced more. ' + message);
-  assert.sameValue(result.value, undefined, 'Expected value of `undefined` when iterator completes. ' + message);
-}
-
-//wellKnownIntrinsicObjects.js
-// Copyright (C) 2018 the V8 project authors. All rights reserved.
-// This code is governed by the BSD license found in the LICENSE file.
-/*---
-description: |
-    An Array of all representable Well-Known Intrinsic Objects
-defines: [WellKnownIntrinsicObjects]
----*/
-
-const WellKnownIntrinsicObjects = [
-  {
-    name: '%AggregateError%',
-    source: 'AggregateError',
-  },
-  {
-    name: '%Array%',
-    source: 'Array',
-  },
-  {
-    name: '%ArrayBuffer%',
-    source: 'ArrayBuffer',
-  },
-  {
-    name: '%ArrayIteratorPrototype%',
-    source: 'Object.getPrototypeOf([][Symbol.iterator]())',
-  },
-  {
-    name: '%AsyncFromSyncIteratorPrototype%',
-    source: 'undefined',
-  },
-  {
-    name: '%AsyncFunction%',
-    source: '(async function() {}).constructor',
-  },
-  {
-    name: '%AsyncGeneratorFunction%',
-    source: 'Object.getPrototypeOf(async function * () {})',
-  },
-  {
-    name: '%AsyncIteratorPrototype%',
-    source: '((async function * () {})())[Symbol.asyncIterator]()',
-  },
-  {
-    name: '%Atomics%',
-    source: 'Atomics',
-  },
-  {
-    name: '%BigInt%',
-    source: 'BigInt',
-  },
-  {
-    name: '%BigInt64Array%',
-    source: 'BigInt64Array',
-  },
-  {
-    name: '%BigUint64Array%',
-    source: 'BigUint64Array',
-  },
-  {
-    name: '%Boolean%',
-    source: 'Boolean',
-  },
-  {
-    name: '%DataView%',
-    source: 'DataView',
-  },
-  {
-    name: '%Date%',
-    source: 'Date',
-  },
-  {
-    name: '%decodeURI%',
-    source: 'decodeURI',
-  },
-  {
-    name: '%decodeURIComponent%',
-    source: 'decodeURIComponent',
-  },
-  {
-    name: '%encodeURI%',
-    source: 'encodeURI',
-  },
-  {
-    name: '%encodeURIComponent%',
-    source: 'encodeURIComponent',
-  },
-  {
-    name: '%Error%',
-    source: 'Error',
-  },
-  {
-    name: '%eval%',
-    source: 'eval',
-  },
-  {
-    name: '%EvalError%',
-    source: 'EvalError',
-  },
-  {
-    name: '%FinalizationRegistry%',
-    source: 'FinalizationRegistry',
-  },
-  {
-    name: '%Float32Array%',
-    source: 'Float32Array',
-  },
-  {
-    name: '%Float64Array%',
-    source: 'Float64Array',
-  },
-  {
-    name: '%ForInIteratorPrototype%',
-    source: '',
-  },
-  {
-    name: '%Function%',
-    source: 'Function',
-  },
-  {
-    name: '%GeneratorFunction%',
-    source: 'Object.getPrototypeOf(function * () {})',
-  },
-  {
-    name: '%Int8Array%',
-    source: 'Int8Array',
-  },
-  {
-    name: '%Int16Array%',
-    source: 'Int16Array',
-  },
-  {
-    name: '%Int32Array%',
-    source: 'Int32Array',
-  },
-  {
-    name: '%isFinite%',
-    source: 'isFinite',
-  },
-  {
-    name: '%isNaN%',
-    source: 'isNaN',
-  },
-  {
-    name: '%IteratorPrototype%',
-    source: 'Object.getPrototypeOf(Object.getPrototypeOf([][Symbol.iterator]()))',
-  },
-  {
-    name: '%JSON%',
-    source: 'JSON',
-  },
-  {
-    name: '%Map%',
-    source: 'Map',
-  },
-  {
-    name: '%MapIteratorPrototype%',
-    source: 'Object.getPrototypeOf(new Map()[Symbol.iterator]())',
-  },
-  {
-    name: '%Math%',
-    source: 'Math',
-  },
-  {
-    name: '%Number%',
-    source: 'Number',
-  },
-  {
-    name: '%Object%',
-    source: 'Object',
-  },
-  {
-    name: '%parseFloat%',
-    source: 'parseFloat',
-  },
-  {
-    name: '%parseInt%',
-    source: 'parseInt',
-  },
-  {
-    name: '%Promise%',
-    source: 'Promise',
-  },
-  {
-    name: '%Proxy%',
-    source: 'Proxy',
-  },
-  {
-    name: '%RangeError%',
-    source: 'RangeError',
-  },
-  {
-    name: '%ReferenceError%',
-    source: 'ReferenceError',
-  },
-  {
-    name: '%Reflect%',
-    source: 'Reflect',
-  },
-  {
-    name: '%RegExp%',
-    source: 'RegExp',
-  },
-  {
-    name: '%RegExpStringIteratorPrototype%',
-    source: 'RegExp.prototype[Symbol.matchAll]("")',
-  },
-  {
-    name: '%Set%',
-    source: 'Set',
-  },
-  {
-    name: '%SetIteratorPrototype%',
-    source: 'Object.getPrototypeOf(new Set()[Symbol.iterator]())',
-  },
-  {
-    name: '%SharedArrayBuffer%',
-    source: 'SharedArrayBuffer',
-  },
-  {
-    name: '%String%',
-    source: 'String',
-  },
-  {
-    name: '%StringIteratorPrototype%',
-    source: 'Object.getPrototypeOf(new String()[Symbol.iterator]())',
-  },
-  {
-    name: '%Symbol%',
-    source: 'Symbol',
-  },
-  {
-    name: '%SyntaxError%',
-    source: 'SyntaxError',
-  },
-  {
-    name: '%ThrowTypeError%',
-    source: '(function() { "use strict"; return Object.getOwnPropertyDescriptor(arguments, "callee").get })()',
-  },
-  {
-    name: '%TypedArray%',
-    source: 'Object.getPrototypeOf(Uint8Array)',
-  },
-  {
-    name: '%TypeError%',
-    source: 'TypeError',
-  },
-  {
-    name: '%Uint8Array%',
-    source: 'Uint8Array',
-  },
-  {
-    name: '%Uint8ClampedArray%',
-    source: 'Uint8ClampedArray',
-  },
-  {
-    name: '%Uint16Array%',
-    source: 'Uint16Array',
-  },
-  {
-    name: '%Uint32Array%',
-    source: 'Uint32Array',
-  },
-  {
-    name: '%URIError%',
-    source: 'URIError',
-  },
-  {
-    name: '%WeakMap%',
-    source: 'WeakMap',
-  },
-  {
-    name: '%WeakRef%',
-    source: 'WeakRef',
-  },
-  {
-    name: '%WeakSet%',
-    source: 'WeakSet',
-  },
-];
-
-WellKnownIntrinsicObjects.forEach((wkio) => {
-  var actual;
-
-  try {
-    actual = new Function("return " + wkio.source)();
-  } catch (exception) {
-    // Nothing to do here.
-  }
-
-  wkio.value = actual;
-});
-
-//promiseHelper.js
-// Copyright (C) 2017 Ecma International.  All rights reserved.
-// This code is governed by the BSD license found in the LICENSE file.
-/*---
-description: |
-    Check that an array contains a numeric sequence starting at 1
-    and incrementing by 1 for each entry in the array. Used by
-    Promise tests to assert the order of execution in deep Promise
-    resolution pipelines.
-defines: [checkSequence, checkSettledPromises]
----*/
-
-function checkSequence(arr, message) {
-  arr.forEach(function(e, i) {
-    if (e !== (i+1)) {
-      throw new Test262Error((message ? message : "Steps in unexpected sequence:") +
-             " '" + arr.join(',') + "'");
-    }
-  });
-
-  return true;
-}
-
-function checkSettledPromises(settleds, expected, message) {
-  const prefix = message ? `${message}: ` : '';
-
-  assert.sameValue(Array.isArray(settleds), true, `${prefix}Settled values is an array`);
-
-  assert.sameValue(
-    settleds.length,
-    expected.length,
-    `${prefix}The settled values has a different length than expected`
-  );
-
-  settleds.forEach((settled, i) => {
-    assert.sameValue(
-      Object.prototype.hasOwnProperty.call(settled, 'status'),
-      true,
-      `${prefix}The settled value has a property status`
-    );
-
-    assert.sameValue(settled.status, expected[i].status, `${prefix}status for item ${i}`);
-
-    if (settled.status === 'fulfilled') {
-      assert.sameValue(
-        Object.prototype.hasOwnProperty.call(settled, 'value'),
-        true,
-        `${prefix}The fulfilled promise has a property named value`
-      );
-
-      assert.sameValue(
-        Object.prototype.hasOwnProperty.call(settled, 'reason'),
-        false,
-        `${prefix}The fulfilled promise has no property named reason`
-      );
-
-      assert.sameValue(settled.value, expected[i].value, `${prefix}value for item ${i}`);
-    } else {
-      assert.sameValue(settled.status, 'rejected', `${prefix}Valid statuses are only fulfilled or rejected`);
-
-      assert.sameValue(
-        Object.prototype.hasOwnProperty.call(settled, 'value'),
-        false,
-        `${prefix}The fulfilled promise has no property named value`
-      );
-
-      assert.sameValue(
-        Object.prototype.hasOwnProperty.call(settled, 'reason'),
-        true,
-        `${prefix}The fulfilled promise has a property named reason`
-      );
-
-      assert.sameValue(settled.reason, expected[i].reason, `${prefix}Reason value for item ${i}`);
-    }
-  });
-}
-
-//isConstructor.js
-// Copyright (C) 2017 André Bargull. All rights reserved.
-// This code is governed by the BSD license found in the LICENSE file.
-
-/*---
-description: |
-    Test if a given function is a constructor function.
-defines: [isConstructor]
----*/
-
-function isConstructor(f) {
-    try {
-        Reflect.construct(function(){}, [], f);
-    } catch (e) {
-        return false;
-    }
-    return true;
-}
-
-//async-gc.js
-// Copyright (C) 2019  Ecma International.  All rights reserved.
-// This code is governed by the BSD license found in the LICENSE file.
-/*---
-description: >
-    Collection of functions used to capture references cleanup from garbage collectors
-features: [FinalizationRegistry.prototype.cleanupSome, FinalizationRegistry, Symbol, async-functions]
-flags: [non-deterministic]
-defines: [asyncGC, asyncGCDeref, resolveAsyncGC]
----*/
-
-function asyncGC(...targets) {
-  var finalizationRegistry = new FinalizationRegistry(() => {});
-  var length = targets.length;
-
-  for (let target of targets) {
-    finalizationRegistry.register(target, 'target');
-    target = null;
-  }
-
-  targets = null;
-
-  return Promise.resolve('tick').then(() => asyncGCDeref()).then(() => {
-    var names = [];
-
-    // consume iterator to capture names
-    finalizationRegistry.cleanupSome(name => { names.push(name); });
-
-    if (!names || names.length != length) {
-      throw asyncGC.notCollected;
-    }
-  });
-}
-
-asyncGC.notCollected = Symbol('Object was not collected');
-
-async function asyncGCDeref() {
-  var trigger;
-
-  // TODO: Remove this when $262.clearKeptObject becomes documented and required
-  if ($262.clearKeptObjects) {
-    trigger = $262.clearKeptObjects();
-  }
-
-  await $262.gc();
-
-  return Promise.resolve(trigger);
-}
-
-function resolveAsyncGC(err) {
-  if (err === asyncGC.notCollected) {
-    // Do not fail as GC can't provide necessary resources.
-    $DONE();
-  }
-
-  $DONE(err);
-}
-
-//proxyTrapsHelper.js
-// Copyright (C) 2016 Jordan Harband.  All rights reserved.
-// This code is governed by the BSD license found in the LICENSE file.
-/*---
-description: |
-    Used to assert the correctness of object behavior in the presence
-    and context of Proxy objects.
-defines: [allowProxyTraps]
----*/
-
-function allowProxyTraps(overrides) {
-  function throwTest262Error(msg) {
-    return function () { throw new Test262Error(msg); };
-  }
-  if (!overrides) { overrides = {}; }
-  return {
-    getPrototypeOf: overrides.getPrototypeOf || throwTest262Error('[[GetPrototypeOf]] trap called'),
-    setPrototypeOf: overrides.setPrototypeOf || throwTest262Error('[[SetPrototypeOf]] trap called'),
-    isExtensible: overrides.isExtensible || throwTest262Error('[[IsExtensible]] trap called'),
-    preventExtensions: overrides.preventExtensions || throwTest262Error('[[PreventExtensions]] trap called'),
-    getOwnPropertyDescriptor: overrides.getOwnPropertyDescriptor || throwTest262Error('[[GetOwnProperty]] trap called'),
-    has: overrides.has || throwTest262Error('[[HasProperty]] trap called'),
-    get: overrides.get || throwTest262Error('[[Get]] trap called'),
-    set: overrides.set || throwTest262Error('[[Set]] trap called'),
-    deleteProperty: overrides.deleteProperty || throwTest262Error('[[Delete]] trap called'),
-    defineProperty: overrides.defineProperty || throwTest262Error('[[DefineOwnProperty]] trap called'),
-    enumerate: throwTest262Error('[[Enumerate]] trap called: this trap has been removed'),
-    ownKeys: overrides.ownKeys || throwTest262Error('[[OwnPropertyKeys]] trap called'),
-    apply: overrides.apply || throwTest262Error('[[Call]] trap called'),
-    construct: overrides.construct || throwTest262Error('[[Construct]] trap called')
-  };
-}
-
-//hidden-constructors.js
-// Copyright (C) 2020 Rick Waldron. All rights reserved.
-// This code is governed by the BSD license found in the LICENSE file.
-
-/*---
-description: |
-  Provides uniform access to built-in constructors that are not exposed to the global object.
-defines:
-  - AsyncArrowFunction
-  - AsyncFunction
-  - AsyncGeneratorFunction
-  - GeneratorFunction
----*/
-
-var AsyncArrowFunction = Object.getPrototypeOf(async () => {}).constructor;
-var AsyncFunction = Object.getPrototypeOf(async function () {}).constructor;
-var AsyncGeneratorFunction = Object.getPrototypeOf(async function* () {}).constructor;
-var GeneratorFunction = Object.getPrototypeOf(function* () {}).constructor;
-
-//timer.js
-// Copyright (C) 2017 Ecma International.  All rights reserved.
-// This code is governed by the BSD license found in the LICENSE file.
-/*---
-description: |
-    Used in website/scripts/sth.js
-defines: [setTimeout]
----*/
-//setTimeout is not available, hence this script was loaded
-if (Promise === undefined && this.setTimeout === undefined) {
-  if(/\$DONE()/.test(code))
-    throw new Test262Error("Async test capability is not supported in your test environment");
-}
-
-if (Promise !== undefined && this.setTimeout === undefined) {
-  (function(that) {
-     that.setTimeout = function(callback, delay) {
-      var p = Promise.resolve();
-      var start = Date.now();
-      var end = start + delay;
-      function check(){
-        var timeLeft = end - Date.now();
-        if(timeLeft > 0)
-          p.then(check);
-        else
-          callback();
-      }
-      p.then(check);
-    }
-  })(this);
-}
-
-//decimalToHexString.js
-// Copyright (C) 2017 André Bargull. All rights reserved.
-// This code is governed by the BSD license found in the LICENSE file.
-/*---
-description: |
-    Collection of functions used to assert the correctness of various encoding operations.
-defines: [decimalToHexString, decimalToPercentHexString]
----*/
-
-function decimalToHexString(n) {
-  var hex = "0123456789ABCDEF";
-  n >>>= 0;
-  var s = "";
-  while (n) {
-    s = hex[n & 0xf] + s;
-    n >>>= 4;
-  }
-  while (s.length < 4) {
-    s = "0" + s;
-  }
-  return s;
-}
-
-function decimalToPercentHexString(n) {
-  var hex = "0123456789ABCDEF";
-  return "%" + hex[(n >> 4) & 0xf] + hex[n & 0xf];
-}
-
-//deepEqual.js
-// Copyright 2019 Ron Buckton. All rights reserved.
-// This code is governed by the BSD license found in the LICENSE file.
-/*---
-description: >
-  Compare two values structurally
-defines: [assert.deepEqual]
----*/
-
-assert.deepEqual = function(actual, expected, message) {
-  var format = assert.deepEqual.format;
-  assert(
-    assert.deepEqual._compare(actual, expected),
-    `Expected ${format(actual)} to be structurally equal to ${format(expected)}. ${(message || '')}`
-  );
-};
-
-assert.deepEqual.format = function(value, seen) {
-  switch (typeof value) {
-    case 'string':
-      return typeof JSON !== "undefined" ? JSON.stringify(value) : `"${value}"`;
-    case 'number':
-    case 'boolean':
-    case 'symbol':
-    case 'bigint':
-      return value.toString();
-    case 'undefined':
-      return 'undefined';
-    case 'function':
-      return `[Function${value.name ? `: ${value.name}` : ''}]`;
-    case 'object':
-      if (value === null) return 'null';
-      if (value instanceof Date) return `Date "${value.toISOString()}"`;
-      if (value instanceof RegExp) return value.toString();
-      if (!seen) {
-        seen = {
-          counter: 0,
-          map: new Map()
-        };
-      }
-
-      let usage = seen.map.get(value);
-      if (usage) {
-        usage.used = true;
-        return `[Ref: #${usage.id}]`;
-      }
-
-      usage = { id: ++seen.counter, used: false };
-      seen.map.set(value, usage);
-
-      if (typeof Set !== "undefined" && value instanceof Set) {
-        return `Set {${Array.from(value).map(value => assert.deepEqual.format(value, seen)).join(', ')}}${usage.used ? ` as #${usage.id}` : ''}`;
-      }
-      if (typeof Map !== "undefined" && value instanceof Map) {
-        return `Map {${Array.from(value).map(pair => `${assert.deepEqual.format(pair[0], seen)} => ${assert.deepEqual.format(pair[1], seen)}}`).join(', ')}}${usage.used ? ` as #${usage.id}` : ''}`;
-      }
-      if (Array.isArray ? Array.isArray(value) : value instanceof Array) {
-        return `[${value.map(value => assert.deepEqual.format(value, seen)).join(', ')}]${usage.used ? ` as #${usage.id}` : ''}`;
-      }
-      let tag = Symbol.toStringTag in value ? value[Symbol.toStringTag] : 'Object';
-      if (tag === 'Object' && Object.getPrototypeOf(value) === null) {
-        tag = '[Object: null prototype]';
-      }
-      return `${tag ? `${tag} ` : ''}{ ${Object.keys(value).map(key => `${key.toString()}: ${assert.deepEqual.format(value[key], seen)}`).join(', ')} }${usage.used ? ` as #${usage.id}` : ''}`;
-    default:
-      return typeof value;
-  }
-};
-
-assert.deepEqual._compare = (function () {
-  var EQUAL = 1;
-  var NOT_EQUAL = -1;
-  var UNKNOWN = 0;
-
-  function deepEqual(a, b) {
-    return compareEquality(a, b) === EQUAL;
-  }
-
-  function compareEquality(a, b, cache) {
-    return compareIf(a, b, isOptional, compareOptionality)
-      || compareIf(a, b, isPrimitiveEquatable, comparePrimitiveEquality)
-      || compareIf(a, b, isObjectEquatable, compareObjectEquality, cache)
-      || NOT_EQUAL;
-  }
-
-  function compareIf(a, b, test, compare, cache) {
-    return !test(a)
-      ? !test(b) ? UNKNOWN : NOT_EQUAL
-      : !test(b) ? NOT_EQUAL : cacheComparison(a, b, compare, cache);
-  }
-
-  function tryCompareStrictEquality(a, b) {
-    return a === b ? EQUAL : UNKNOWN;
-  }
-
-  function tryCompareTypeOfEquality(a, b) {
-    return typeof a !== typeof b ? NOT_EQUAL : UNKNOWN;
-  }
-
-  function tryCompareToStringTagEquality(a, b) {
-    var aTag = Symbol.toStringTag in a ? a[Symbol.toStringTag] : undefined;
-    var bTag = Symbol.toStringTag in b ? b[Symbol.toStringTag] : undefined;
-    return aTag !== bTag ? NOT_EQUAL : UNKNOWN;
-  }
-
-  function isOptional(value) {
-    return value === undefined
-      || value === null;
-  }
-
-  function compareOptionality(a, b) {
-    return tryCompareStrictEquality(a, b)
-      || NOT_EQUAL;
-  }
-
-  function isPrimitiveEquatable(value) {
-    switch (typeof value) {
-      case 'string':
-      case 'number':
-      case 'bigint':
-      case 'boolean':
-      case 'symbol':
-        return true;
-      default:
-        return isBoxed(value);
-    }
-  }
-
-  function comparePrimitiveEquality(a, b) {
-    if (isBoxed(a)) a = a.valueOf();
-    if (isBoxed(b)) b = b.valueOf();
-    return tryCompareStrictEquality(a, b)
-      || tryCompareTypeOfEquality(a, b)
-      || compareIf(a, b, isNaNEquatable, compareNaNEquality)
-      || NOT_EQUAL;
-  }
-
-  function isNaNEquatable(value) {
-    return typeof value === 'number';
-  }
-
-  function compareNaNEquality(a, b) {
-    return isNaN(a) && isNaN(b) ? EQUAL : NOT_EQUAL;
-  }
-
-  function isObjectEquatable(value) {
-    return typeof value === 'object';
-  }
-
-  function compareObjectEquality(a, b, cache) {
-    if (!cache) cache = new Map();
-    return getCache(cache, a, b)
-      || setCache(cache, a, b, EQUAL) // consider equal for now
-      || cacheComparison(a, b, tryCompareStrictEquality, cache)
-      || cacheComparison(a, b, tryCompareToStringTagEquality, cache)
-      || compareIf(a, b, isValueOfEquatable, compareValueOfEquality)
-      || compareIf(a, b, isToStringEquatable, compareToStringEquality)
-      || compareIf(a, b, isArrayLikeEquatable, compareArrayLikeEquality, cache)
-      || compareIf(a, b, isStructurallyEquatable, compareStructuralEquality, cache)
-      || compareIf(a, b, isIterableEquatable, compareIterableEquality, cache)
-      || cacheComparison(a, b, fail, cache);
-  }
-
-  function isBoxed(value) {
-    return value instanceof String
-      || value instanceof Number
-      || value instanceof Boolean
-      || typeof Symbol === 'function' && value instanceof Symbol
-      || typeof BigInt === 'function' && value instanceof BigInt;
-  }
-
-  function isValueOfEquatable(value) {
-    return value instanceof Date;
-  }
-
-  function compareValueOfEquality(a, b) {
-    return compareIf(a.valueOf(), b.valueOf(), isPrimitiveEquatable, comparePrimitiveEquality)
-      || NOT_EQUAL;
-  }
-
-  function isToStringEquatable(value) {
-    return value instanceof RegExp;
-  }
-
-  function compareToStringEquality(a, b) {
-    return compareIf(a.toString(), b.toString(), isPrimitiveEquatable, comparePrimitiveEquality)
-      || NOT_EQUAL;
-  }
-
-  function isArrayLikeEquatable(value) {
-    return (Array.isArray ? Array.isArray(value) : value instanceof Array)
-      || (typeof Uint8Array === 'function' && value instanceof Uint8Array)
-      || (typeof Uint8ClampedArray === 'function' && value instanceof Uint8ClampedArray)
-      || (typeof Uint16Array === 'function' && value instanceof Uint16Array)
-      || (typeof Uint32Array === 'function' && value instanceof Uint32Array)
-      || (typeof Int8Array === 'function' && value instanceof Int8Array)
-      || (typeof Int16Array === 'function' && value instanceof Int16Array)
-      || (typeof Int32Array === 'function' && value instanceof Int32Array)
-      || (typeof Float32Array === 'function' && value instanceof Float32Array)
-      || (typeof Float64Array === 'function' && value instanceof Float64Array)
-      || (typeof BigUint64Array === 'function' && value instanceof BigUint64Array)
-      || (typeof BigInt64Array === 'function' && value instanceof BigInt64Array);
-  }
-
-  function compareArrayLikeEquality(a, b, cache) {
-    if (a.length !== b.length) return NOT_EQUAL;
-    for (var i = 0; i < a.length; i++) {
-      if (compareEquality(a[i], b[i], cache) === NOT_EQUAL) {
-        return NOT_EQUAL;
-      }
-    }
-    return EQUAL;
-  }
-
-  function isStructurallyEquatable(value) {
-    return !(typeof Promise === 'function' && value instanceof Promise // only comparable by reference
-      || typeof WeakMap === 'function' && value instanceof WeakMap // only comparable by reference
-      || typeof WeakSet === 'function' && value instanceof WeakSet // only comparable by reference
-      || typeof Map === 'function' && value instanceof Map // comparable via @@iterator
-      || typeof Set === 'function' && value instanceof Set); // comparable via @@iterator
-  }
-
-  function compareStructuralEquality(a, b, cache) {
-    var aKeys = [];
-    for (var key in a) aKeys.push(key);
-
-    var bKeys = [];
-    for (var key in b) bKeys.push(key);
-
-    if (aKeys.length !== bKeys.length) {
-      return NOT_EQUAL;
-    }
-
-    aKeys.sort();
-    bKeys.sort();
-
-    for (var i = 0; i < aKeys.length; i++) {
-      var aKey = aKeys[i];
-      var bKey = bKeys[i];
-      if (compareEquality(aKey, bKey, cache) === NOT_EQUAL) {
-        return NOT_EQUAL;
-      }
-      if (compareEquality(a[aKey], b[bKey], cache) === NOT_EQUAL) {
-        return NOT_EQUAL;
-      }
-    }
-
-    return compareIf(a, b, isIterableEquatable, compareIterableEquality, cache)
-      || EQUAL;
-  }
-
-  function isIterableEquatable(value) {
-    return typeof Symbol === 'function'
-      && typeof value[Symbol.iterator] === 'function';
-  }
-
-  function compareIteratorEquality(a, b, cache) {
-    if (typeof Map === 'function' && a instanceof Map && b instanceof Map ||
-      typeof Set === 'function' && a instanceof Set && b instanceof Set) {
-      if (a.size !== b.size) return NOT_EQUAL; // exit early if we detect a difference in size
-    }
-
-    var ar, br;
-    while (true) {
-      ar = a.next();
-      br = b.next();
-      if (ar.done) {
-        if (br.done) return EQUAL;
-        if (b.return) b.return();
-        return NOT_EQUAL;
-      }
-      if (br.done) {
-        if (a.return) a.return();
-        return NOT_EQUAL;
-      }
-      if (compareEquality(ar.value, br.value, cache) === NOT_EQUAL) {
-        if (a.return) a.return();
-        if (b.return) b.return();
-        return NOT_EQUAL;
-      }
-    }
-  }
-
-  function compareIterableEquality(a, b, cache) {
-    return compareIteratorEquality(a[Symbol.iterator](), b[Symbol.iterator](), cache);
-  }
-
-  function cacheComparison(a, b, compare, cache) {
-    var result = compare(a, b, cache);
-    if (cache && (result === EQUAL || result === NOT_EQUAL)) {
-      setCache(cache, a, b, /** @type {EQUAL | NOT_EQUAL} */(result));
-    }
-    return result;
-  }
-
-  function fail() {
-    return NOT_EQUAL;
-  }
-
-  function setCache(cache, left, right, result) {
-    var otherCache;
-
-    otherCache = cache.get(left);
-    if (!otherCache) cache.set(left, otherCache = new Map());
-    otherCache.set(right, result);
-
-    otherCache = cache.get(right);
-    if (!otherCache) cache.set(right, otherCache = new Map());
-    otherCache.set(left, result);
-  }
-
-  function getCache(cache, left, right) {
-    var otherCache;
-    var result;
-
-    otherCache = cache.get(left);
-    result = otherCache && otherCache.get(right);
-    if (result) return result;
-
-    otherCache = cache.get(right);
-    result = otherCache && otherCache.get(left);
-    if (result) return result;
-
-    return UNKNOWN;
-  }
-
-  return deepEqual;
-})();
-
-//detachArrayBuffer.js
-// Copyright (C) 2016 the V8 project authors.  All rights reserved.
-// This code is governed by the BSD license found in the LICENSE file.
-/*---
-description: |
-    A function used in the process of asserting correctness of TypedArray objects.
-
-    $262.detachArrayBuffer is defined by a host.
-defines: [$DETACHBUFFER]
----*/
-
-function $DETACHBUFFER(buffer) {
-  if (!$262 || typeof $262.detachArrayBuffer !== "function") {
-    throw new Test262Error("No method available to detach an ArrayBuffer");
-  }
-  $262.detachArrayBuffer(buffer);
-}
-
-//temporalHelpers.js
-// Copyright (C) 2021 Igalia, S.L. All rights reserved.
-// This code is governed by the BSD license found in the LICENSE file.
-/*---
-description: |
-    This defines helper objects and functions for testing Temporal.
-defines: [TemporalHelpers]
-features: [Symbol.species, Symbol.iterator, Temporal]
----*/
-
-var TemporalHelpers = {
-  /*
-   * assertDuration(duration, years, ...,  nanoseconds[, description]):
-   *
-   * Shorthand for asserting that each field of a Temporal.Duration is equal to
-   * an expected value.
-   */
-  assertDuration(duration, years, months, weeks, days, hours, minutes, seconds, milliseconds, microseconds, nanoseconds, description = "") {
-    assert(duration instanceof Temporal.Duration, `${description} instanceof`);
-    assert.sameValue(duration.years, years, `${description} years result`);
-    assert.sameValue(duration.months, months, `${description} months result`);
-    assert.sameValue(duration.weeks, weeks, `${description} weeks result`);
-    assert.sameValue(duration.days, days, `${description} days result`);
-    assert.sameValue(duration.hours, hours, `${description} hours result`);
-    assert.sameValue(duration.minutes, minutes, `${description} minutes result`);
-    assert.sameValue(duration.seconds, seconds, `${description} seconds result`);
-    assert.sameValue(duration.milliseconds, milliseconds, `${description} milliseconds result`);
-    assert.sameValue(duration.microseconds, microseconds, `${description} microseconds result`);
-    assert.sameValue(duration.nanoseconds, nanoseconds, `${description} nanoseconds result`);
-  },
-
-  /*
-   * assertDurationsEqual(actual, expected[, description]):
-   *
-   * Shorthand for asserting that each field of a Temporal.Duration is equal to
-   * the corresponding field in another Temporal.Duration.
-   */
-  assertDurationsEqual(actual, expected, description = "") {
-    assert(expected instanceof Temporal.Duration, `${description} expected value should be a Temporal.Duration`);
-    TemporalHelpers.assertDuration(actual, expected.years, expected.months, expected.weeks, expected.days, expected.hours, expected.minutes, expected.seconds, expected.milliseconds, expected.microseconds, expected.nanoseconds, description);
-  },
-
-  /*
-   * assertInstantsEqual(actual, expected[, description]):
-   *
-   * Shorthand for asserting that two Temporal.Instants are of the correct type
-   * and equal according to their equals() methods.
-   */
-  assertInstantsEqual(actual, expected, description = "") {
-    assert(expected instanceof Temporal.Instant, `${description} expected value should be a Temporal.Instant`);
-    assert(actual instanceof Temporal.Instant, `${description} instanceof`);
-    assert(actual.equals(expected), `${description} equals method`);
-  },
-
-  /*
-   * assertPlainDate(date, year, ..., nanosecond[, description[, era, eraYear]]):
-   *
-   * Shorthand for asserting that each field of a Temporal.PlainDate is equal to
-   * an expected value. (Except the `calendar` property, since callers may want
-   * to assert either object equality with an object they put in there, or the
-   * result of date.calendar.toString().)
-   */
-  assertPlainDate(date, year, month, monthCode, day, description = "", era = undefined, eraYear = undefined) {
-    assert(date instanceof Temporal.PlainDate, `${description} instanceof`);
-    assert.sameValue(date.era, era, `${description} era result`);
-    assert.sameValue(date.eraYear, eraYear, `${description} eraYear result`);
-    assert.sameValue(date.year, year, `${description} year result`);
-    assert.sameValue(date.month, month, `${description} month result`);
-    assert.sameValue(date.monthCode, monthCode, `${description} monthCode result`);
-    assert.sameValue(date.day, day, `${description} day result`);
-  },
-
-  /*
-   * assertPlainDateTime(datetime, year, ..., nanosecond[, description[, era, eraYear]]):
-   *
-   * Shorthand for asserting that each field of a Temporal.PlainDateTime is
-   * equal to an expected value. (Except the `calendar` property, since callers
-   * may want to assert either object equality with an object they put in there,
-   * or the result of datetime.calendar.toString().)
-   */
-  assertPlainDateTime(datetime, year, month, monthCode, day, hour, minute, second, millisecond, microsecond, nanosecond, description = "", era = undefined, eraYear = undefined) {
-    assert(datetime instanceof Temporal.PlainDateTime, `${description} instanceof`);
-    assert.sameValue(datetime.era, era, `${description} era result`);
-    assert.sameValue(datetime.eraYear, eraYear, `${description} eraYear result`);
-    assert.sameValue(datetime.year, year, `${description} year result`);
-    assert.sameValue(datetime.month, month, `${description} month result`);
-    assert.sameValue(datetime.monthCode, monthCode, `${description} monthCode result`);
-    assert.sameValue(datetime.day, day, `${description} day result`);
-    assert.sameValue(datetime.hour, hour, `${description} hour result`);
-    assert.sameValue(datetime.minute, minute, `${description} minute result`);
-    assert.sameValue(datetime.second, second, `${description} second result`);
-    assert.sameValue(datetime.millisecond, millisecond, `${description} millisecond result`);
-    assert.sameValue(datetime.microsecond, microsecond, `${description} microsecond result`);
-    assert.sameValue(datetime.nanosecond, nanosecond, `${description} nanosecond result`);
-  },
-
-  /*
-   * assertPlainDateTimesEqual(actual, expected[, description]):
-   *
-   * Shorthand for asserting that two Temporal.PlainDateTimes are of the correct
-   * type, equal according to their equals() methods, and additionally that
-   * their calendars are the same value.
-   */
-  assertPlainDateTimesEqual(actual, expected, description = "") {
-    assert(expected instanceof Temporal.PlainDateTime, `${description} expected value should be a Temporal.PlainDateTime`);
-    assert(actual instanceof Temporal.PlainDateTime, `${description} instanceof`);
-    assert(actual.equals(expected), `${description} equals method`);
-    assert.sameValue(actual.calendar, expected.calendar, `${description} calendar same value`);
-  },
-
-  /*
-   * assertPlainMonthDay(monthDay, monthCode, day[, description [, referenceISOYear]]):
-   *
-   * Shorthand for asserting that each field of a Temporal.PlainMonthDay is
-   * equal to an expected value. (Except the `calendar` property, since callers
-   * may want to assert either object equality with an object they put in there,
-   * or the result of monthDay.calendar.toString().)
-   */
-  assertPlainMonthDay(monthDay, monthCode, day, description = "", referenceISOYear = 1972) {
-    assert(monthDay instanceof Temporal.PlainMonthDay, `${description} instanceof`);
-    assert.sameValue(monthDay.monthCode, monthCode, `${description} monthCode result`);
-    assert.sameValue(monthDay.day, day, `${description} day result`);
-    assert.sameValue(monthDay.getISOFields().isoYear, referenceISOYear, `${description} referenceISOYear result`);
-  },
-
-  /*
-   * assertPlainTime(time, hour, ..., nanosecond[, description]):
-   *
-   * Shorthand for asserting that each field of a Temporal.PlainTime is equal to
-   * an expected value.
-   */
-  assertPlainTime(time, hour, minute, second, millisecond, microsecond, nanosecond, description = "") {
-    assert(time instanceof Temporal.PlainTime, `${description} instanceof`);
-    assert.sameValue(time.hour, hour, `${description} hour result`);
-    assert.sameValue(time.minute, minute, `${description} minute result`);
-    assert.sameValue(time.second, second, `${description} second result`);
-    assert.sameValue(time.millisecond, millisecond, `${description} millisecond result`);
-    assert.sameValue(time.microsecond, microsecond, `${description} microsecond result`);
-    assert.sameValue(time.nanosecond, nanosecond, `${description} nanosecond result`);
-  },
-
-  /*
-   * assertPlainTimesEqual(actual, expected[, description]):
-   *
-   * Shorthand for asserting that two Temporal.PlainTimes are of the correct
-   * type and equal according to their equals() methods.
-   */
-  assertPlainTimesEqual(actual, expected, description = "") {
-    assert(expected instanceof Temporal.PlainTime, `${description} expected value should be a Temporal.PlainTime`);
-    assert(actual instanceof Temporal.PlainTime, `${description} instanceof`);
-    assert(actual.equals(expected), `${description} equals method`);
-  },
-
-  /*
-   * assertPlainYearMonth(yearMonth, year, month, monthCode[, description[, era, eraYear]]):
-   *
-   * Shorthand for asserting that each field of a Temporal.PlainYearMonth is
-   * equal to an expected value. (Except the `calendar` property, since callers
-   * may want to assert either object equality with an object they put in there,
-   * or the result of yearMonth.calendar.toString().)
-   */
-  assertPlainYearMonth(yearMonth, year, month, monthCode, description = "", era = undefined, eraYear = undefined) {
-    assert(yearMonth instanceof Temporal.PlainYearMonth, `${description} instanceof`);
-    assert.sameValue(yearMonth.era, era, `${description} era result`);
-    assert.sameValue(yearMonth.eraYear, eraYear, `${description} eraYear result`);
-    assert.sameValue(yearMonth.year, year, `${description} year result`);
-    assert.sameValue(yearMonth.month, month, `${description} month result`);
-    assert.sameValue(yearMonth.monthCode, monthCode, `${description} monthCode result`);
-  },
-
-  /*
-   * assertZonedDateTimesEqual(actual, expected[, description]):
-   *
-   * Shorthand for asserting that two Temporal.ZonedDateTimes are of the correct
-   * type, equal according to their equals() methods, and additionally that
-   * their time zones and calendars are the same value.
-   */
-  assertZonedDateTimesEqual(actual, expected, description = "") {
-    assert(expected instanceof Temporal.ZonedDateTime, `${description} expected value should be a Temporal.ZonedDateTime`);
-    assert(actual instanceof Temporal.ZonedDateTime, `${description} instanceof`);
-    assert(actual.equals(expected), `${description} equals method`);
-    assert.sameValue(actual.timeZone, expected.timeZone, `${description} time zone same value`);
-    assert.sameValue(actual.calendar, expected.calendar, `${description} calendar same value`);
-  },
-
-  /*
-   * assertUnreachable(description):
-   *
-   * Helper for asserting that code is not executed. This is useful for
-   * assertions that methods of user calendars and time zones are not called.
-   */
-  assertUnreachable(description) {
-    let message = "This code should not be executed";
-    if (description) {
-      message = `${message}: ${description}`;
-    }
-    throw new Test262Error(message);
-  },
-
-  /*
-   * checkCalendarDateUntilLargestUnitSingular(func, expectedLargestUnitCalls):
-   *
-   * When an options object with a largestUnit property is synthesized inside
-   * Temporal and passed to user code such as calendar.dateUntil(), the value of
-   * the largestUnit property should be in the singular form, even if the input
-   * was given in the plural form.
-   * (This doesn't apply when the options object is passed through verbatim.)
-   *
-   * func(calendar, largestUnit, index) is the operation under test. It's called
-   * with an instance of a calendar that keeps track of which largestUnit is
-   * passed to dateUntil(), each key of expectedLargestUnitCalls in turn, and
-   * the key's numerical index in case the function needs to generate test data
-   * based on the index. At the end, the actual values passed to dateUntil() are
-   * compared with the array values of expectedLargestUnitCalls.
-   */
-  checkCalendarDateUntilLargestUnitSingular(func, expectedLargestUnitCalls) {
-    const actual = [];
-
-    class DateUntilOptionsCalendar extends Temporal.Calendar {
-      constructor() {
-        super("iso8601");
-      }
-
-      dateUntil(earlier, later, options) {
-        actual.push(options.largestUnit);
-        return super.dateUntil(earlier, later, options);
-      }
-
-      toString() {
-        return "date-until-options";
-      }
-    }
-
-    const calendar = new DateUntilOptionsCalendar();
-    Object.entries(expectedLargestUnitCalls).forEach(([largestUnit, expected], index) => {
-      func(calendar, largestUnit, index);
-      assert.compareArray(actual, expected, `largestUnit passed to calendar.dateUntil() for largestUnit ${largestUnit}`);
-      actual.splice(0, actual.length); // empty it for the next check
-    });
-  },
-
-  /*
-   * checkFractionalSecondDigitsOptionWrongType(temporalObject):
-   *
-   * Checks the string-or-number type handling of the fractionalSecondDigits
-   * option to the various types' toString() methods. temporalObject is an
-   * instance of the Temporal type under test.
-   */
-  checkFractionalSecondDigitsOptionWrongType(temporalObject) {
-    // null is not a number, and converts to the string "null", which is an invalid string value
-    assert.throws(RangeError, () => temporalObject.toString({ fractionalSecondDigits: null }), "null");
-    // Booleans are not numbers, and convert to the strings "true" or "false", which are invalid
-    assert.throws(RangeError, () => temporalObject.toString({ fractionalSecondDigits: true }), "true");
-    assert.throws(RangeError, () => temporalObject.toString({ fractionalSecondDigits: false }), "false");
-    // Symbols are not numbers and cannot convert to strings
-    assert.throws(TypeError, () => temporalObject.toString({ fractionalSecondDigits: Symbol() }), "symbol");
-    // BigInts are not numbers and convert to strings which are invalid
-    assert.throws(RangeError, () => temporalObject.toString({ fractionalSecondDigits: 2n }), "bigint");
-
-    // Objects are not numbers and prefer their toString() methods when converting to a string
-    assert.throws(RangeError, () => temporalObject.toString({ fractionalSecondDigits: {} }), "plain object");
-
-    const toStringExpected = temporalObject.toString({ fractionalSecondDigits: 'auto' });
-    const expected = [
-      "get fractionalSecondDigits.toString",
-      "call fractionalSecondDigits.toString",
-    ];
-    const actual = [];
-    const observer = TemporalHelpers.toPrimitiveObserver(actual, "auto", "fractionalSecondDigits");
-    const result = temporalObject.toString({ fractionalSecondDigits: observer });
-    assert.sameValue(result, toStringExpected, "object with toString");
-    assert.compareArray(actual, expected, "order of operations");
-  },
-
-  /*
-   * checkPlainDateTimeConversionFastPath(func):
-   *
-   * ToTemporalDate and ToTemporalTime should both, if given a
-   * Temporal.PlainDateTime instance, convert to the desired type by reading the
-   * PlainDateTime's internal slots, rather than calling any getters.
-   *
-   * func(datetime, calendar) is the actual operation to test, that must
-   * internally call the abstract operation ToTemporalDate or ToTemporalTime.
-   * It is passed a Temporal.PlainDateTime instance, as well as the instance's
-   * calendar object (so that it doesn't have to call the calendar getter itself
-   * if it wants to make any assertions about the calendar.)
-   */
-  checkPlainDateTimeConversionFastPath(func) {
-    const actual = [];
-    const expected = [];
-
-    const calendar = new Temporal.Calendar("iso8601");
-    const datetime = new Temporal.PlainDateTime(2000, 5, 2, 12, 34, 56, 987, 654, 321, calendar);
-    const prototypeDescrs = Object.getOwnPropertyDescriptors(Temporal.PlainDateTime.prototype);
-    ["year", "month", "monthCode", "day", "hour", "minute", "second", "millisecond", "microsecond", "nanosecond"].forEach((property) => {
-      Object.defineProperty(datetime, property, {
-        get() {
-          actual.push(`get ${property}`);
-          const value = prototypeDescrs[property].get.call(this);
-          return {
-            toString() {
-              actual.push(`toString ${property}`);
-              return value.toString();
-            },
-            valueOf() {
-              actual.push(`valueOf ${property}`);
-              return value;
-            },
-          };
-        },
-      });
-    });
-    Object.defineProperty(datetime, "calendar", {
-      get() {
-        actual.push("get calendar");
-        return calendar;
-      },
-    });
-
-    func(datetime, calendar);
-    assert.compareArray(actual, expected, "property getters not called");
-  },
-
-  /*
-   * Check that an options bag that accepts units written in the singular form,
-   * also accepts the same units written in the plural form.
-   * func(unit) should call the method with the appropriate options bag
-   * containing unit as a value. This will be called twice for each element of
-   * validSingularUnits, once with singular and once with plural, and the
-   * results of each pair should be the same (whether a Temporal object or a
-   * primitive value.)
-   */
-  checkPluralUnitsAccepted(func, validSingularUnits) {
-    const plurals = {
-      year: 'years',
-      month: 'months',
-      week: 'weeks',
-      day: 'days',
-      hour: 'hours',
-      minute: 'minutes',
-      second: 'seconds',
-      millisecond: 'milliseconds',
-      microsecond: 'microseconds',
-      nanosecond: 'nanoseconds',
-    };
-
-    validSingularUnits.forEach((unit) => {
-      const singularValue = func(unit);
-      const pluralValue = func(plurals[unit]);
-      const desc = `Plural ${plurals[unit]} produces the same result as singular ${unit}`;
-      if (singularValue instanceof Temporal.Duration) {
-        TemporalHelpers.assertDurationsEqual(pluralValue, singularValue, desc);
-      } else if (singularValue instanceof Temporal.Instant) {
-        TemporalHelpers.assertInstantsEqual(pluralValue, singularValue, desc);
-      } else if (singularValue instanceof Temporal.PlainDateTime) {
-        TemporalHelpers.assertPlainDateTimesEqual(pluralValue, singularValue, desc);
-      } else if (singularValue instanceof Temporal.PlainTime) {
-        TemporalHelpers.assertPlainTimesEqual(pluralValue, singularValue, desc);
-      } else if (singularValue instanceof Temporal.ZonedDateTime) {
-        TemporalHelpers.assertZonedDateTimesEqual(pluralValue, singularValue, desc);
-      } else {
-        assert.sameValue(pluralValue, singularValue);
-      }
-    });
-  },
-
-  /*
-   * checkRoundingIncrementOptionWrongType(checkFunc, assertTrueResultFunc, assertObjectResultFunc):
-   *
-   * Checks the type handling of the roundingIncrement option.
-   * checkFunc(roundingIncrement) is a function which takes the value of
-   * roundingIncrement to test, and calls the method under test with it,
-   * returning the result. assertTrueResultFunc(result, description) should
-   * assert that result is the expected result with roundingIncrement: true, and
-   * assertObjectResultFunc(result, description) should assert that result is
-   * the expected result with roundingIncrement being an object with a valueOf()
-   * method.
-   */
-  checkRoundingIncrementOptionWrongType(checkFunc, assertTrueResultFunc, assertObjectResultFunc) {
-    // null converts to 0, which is out of range
-    assert.throws(RangeError, () => checkFunc(null), "null");
-    // Booleans convert to either 0 or 1, and 1 is allowed
-    const trueResult = checkFunc(true);
-    assertTrueResultFunc(trueResult, "true");
-    assert.throws(RangeError, () => checkFunc(false), "false");
-    // Symbols and BigInts cannot convert to numbers
-    assert.throws(TypeError, () => checkFunc(Symbol()), "symbol");
-    assert.throws(TypeError, () => checkFunc(2n), "bigint");
-
-    // Objects prefer their valueOf() methods when converting to a number
-    assert.throws(RangeError, () => checkFunc({}), "plain object");
-
-    const expected = [
-      "get roundingIncrement.valueOf",
-      "call roundingIncrement.valueOf",
-    ];
-    const actual = [];
-    const observer = TemporalHelpers.toPrimitiveObserver(actual, 2, "roundingIncrement");
-    const objectResult = checkFunc(observer);
-    assertObjectResultFunc(objectResult, "object with valueOf");
-    assert.compareArray(actual, expected, "order of operations");
-  },
-
-  /*
-   * checkStringOptionWrongType(propertyName, value, checkFunc, assertFunc):
-   *
-   * Checks the type handling of a string option, of which there are several in
-   * Temporal.
-   * propertyName is the name of the option, and value is the value that
-   * assertFunc should expect it to have.
-   * checkFunc(value) is a function which takes the value of the option to test,
-   * and calls the method under test with it, returning the result.
-   * assertFunc(result, description) should assert that result is the expected
-   * result with the option value being an object with a toString() method
-   * which returns the given value.
-   */
-  checkStringOptionWrongType(propertyName, value, checkFunc, assertFunc) {
-    // null converts to the string "null", which is an invalid string value
-    assert.throws(RangeError, () => checkFunc(null), "null");
-    // Booleans convert to the strings "true" or "false", which are invalid
-    assert.throws(RangeError, () => checkFunc(true), "true");
-    assert.throws(RangeError, () => checkFunc(false), "false");
-    // Symbols cannot convert to strings
-    assert.throws(TypeError, () => checkFunc(Symbol()), "symbol");
-    // Numbers convert to strings which are invalid
-    assert.throws(RangeError, () => checkFunc(2), "number");
-    // BigInts convert to strings which are invalid
-    assert.throws(RangeError, () => checkFunc(2n), "bigint");
-
-    // Objects prefer their toString() methods when converting to a string
-    assert.throws(RangeError, () => checkFunc({}), "plain object");
-
-    const expected = [
-      `get ${propertyName}.toString`,
-      `call ${propertyName}.toString`,
-    ];
-    const actual = [];
-    const observer = TemporalHelpers.toPrimitiveObserver(actual, value, propertyName);
-    const result = checkFunc(observer);
-    assertFunc(result, "object with toString");
-    assert.compareArray(actual, expected, "order of operations");
-  },
-
-  /*
-   * checkSubclassingIgnored(construct, constructArgs, method, methodArgs,
-   *   resultAssertions):
-   *
-   * Methods of Temporal classes that return a new instance of the same class,
-   * must not take the constructor of a subclass into account, nor the @@species
-   * property. This helper runs tests to ensure this.
-   *
-   * construct(...constructArgs) must yield a valid instance of the Temporal
-   * class. instance[method](...methodArgs) is the method call under test, which
-   * must also yield a valid instance of the same Temporal class, not a
-   * subclass. See below for the individual tests that this runs.
-   * resultAssertions() is a function that performs additional assertions on the
-   * instance returned by the method under test.
-   */
-  checkSubclassingIgnored(...args) {
-    this.checkSubclassConstructorNotObject(...args);
-    this.checkSubclassConstructorUndefined(...args);
-    this.checkSubclassConstructorThrows(...args);
-    this.checkSubclassConstructorNotCalled(...args);
-    this.checkSubclassSpeciesInvalidResult(...args);
-    this.checkSubclassSpeciesNotAConstructor(...args);
-    this.checkSubclassSpeciesNull(...args);
-    this.checkSubclassSpeciesUndefined(...args);
-    this.checkSubclassSpeciesThrows(...args);
-  },
-
-  /*
-   * Checks that replacing the 'constructor' property of the instance with
-   * various primitive values does not affect the returned new instance.
-   */
-  checkSubclassConstructorNotObject(construct, constructArgs, method, methodArgs, resultAssertions) {
-    function check(value, description) {
-      const instance = new construct(...constructArgs);
-      instance.constructor = value;
-      const result = instance[method](...methodArgs);
-      assert.sameValue(Object.getPrototypeOf(result), construct.prototype, description);
-      resultAssertions(result);
-    }
-
-    check(null, "null");
-    check(true, "true");
-    check("test", "string");
-    check(Symbol(), "Symbol");
-    check(7, "number");
-    check(7n, "bigint");
-  },
-
-  /*
-   * Checks that replacing the 'constructor' property of the subclass with
-   * undefined does not affect the returned new instance.
-   */
-  checkSubclassConstructorUndefined(construct, constructArgs, method, methodArgs, resultAssertions) {
-    let called = 0;
-
-    class MySubclass extends construct {
-      constructor() {
-        ++called;
-        super(...constructArgs);
-      }
-    }
-
-    const instance = new MySubclass();
-    assert.sameValue(called, 1);
-
-    MySubclass.prototype.constructor = undefined;
-
-    const result = instance[method](...methodArgs);
-    assert.sameValue(called, 1);
-    assert.sameValue(Object.getPrototypeOf(result), construct.prototype);
-    resultAssertions(result);
-  },
-
-  /*
-   * Checks that making the 'constructor' property of the instance throw when
-   * called does not affect the returned new instance.
-   */
-  checkSubclassConstructorThrows(construct, constructArgs, method, methodArgs, resultAssertions) {
-    function CustomError() {}
-    const instance = new construct(...constructArgs);
-    Object.defineProperty(instance, "constructor", {
-      get() {
-        throw new CustomError();
-      }
-    });
-    const result = instance[method](...methodArgs);
-    assert.sameValue(Object.getPrototypeOf(result), construct.prototype);
-    resultAssertions(result);
-  },
-
-  /*
-   * Checks that when subclassing, the subclass constructor is not called by
-   * the method under test.
-   */
-  checkSubclassConstructorNotCalled(construct, constructArgs, method, methodArgs, resultAssertions) {
-    let called = 0;
-
-    class MySubclass extends construct {
-      constructor() {
-        ++called;
-        super(...constructArgs);
-      }
-    }
-
-    const instance = new MySubclass();
-    assert.sameValue(called, 1);
-
-    const result = instance[method](...methodArgs);
-    assert.sameValue(called, 1);
-    assert.sameValue(Object.getPrototypeOf(result), construct.prototype);
-    resultAssertions(result);
-  },
-
-  /*
-   * Check that the constructor's @@species property is ignored when it's a
-   * constructor that returns a non-object value.
-   */
-  checkSubclassSpeciesInvalidResult(construct, constructArgs, method, methodArgs, resultAssertions) {
-    function check(value, description) {
-      const instance = new construct(...constructArgs);
-      instance.constructor = {
-        [Symbol.species]: function() {
-          return value;
-        },
-      };
-      const result = instance[method](...methodArgs);
-      assert.sameValue(Object.getPrototypeOf(result), construct.prototype, description);
-      resultAssertions(result);
-    }
-
-    check(undefined, "undefined");
-    check(null, "null");
-    check(true, "true");
-    check("test", "string");
-    check(Symbol(), "Symbol");
-    check(7, "number");
-    check(7n, "bigint");
-    check({}, "plain object");
-  },
-
-  /*
-   * Check that the constructor's @@species property is ignored when it's not a
-   * constructor.
-   */
-  checkSubclassSpeciesNotAConstructor(construct, constructArgs, method, methodArgs, resultAssertions) {
-    function check(value, description) {
-      const instance = new construct(...constructArgs);
-      instance.constructor = {
-        [Symbol.species]: value,
-      };
-      const result = instance[method](...methodArgs);
-      assert.sameValue(Object.getPrototypeOf(result), construct.prototype, description);
-      resultAssertions(result);
-    }
-
-    check(true, "true");
-    check("test", "string");
-    check(Symbol(), "Symbol");
-    check(7, "number");
-    check(7n, "bigint");
-    check({}, "plain object");
-  },
-
-  /*
-   * Check that the constructor's @@species property is ignored when it's null.
-   */
-  checkSubclassSpeciesNull(construct, constructArgs, method, methodArgs, resultAssertions) {
-    let called = 0;
-
-    class MySubclass extends construct {
-      constructor() {
-        ++called;
-        super(...constructArgs);
-      }
-    }
-
-    const instance = new MySubclass();
-    assert.sameValue(called, 1);
-
-    MySubclass.prototype.constructor = {
-      [Symbol.species]: null,
-    };
-
-    const result = instance[method](...methodArgs);
-    assert.sameValue(called, 1);
-    assert.sameValue(Object.getPrototypeOf(result), construct.prototype);
-    resultAssertions(result);
-  },
-
-  /*
-   * Check that the constructor's @@species property is ignored when it's
-   * undefined.
-   */
-  checkSubclassSpeciesUndefined(construct, constructArgs, method, methodArgs, resultAssertions) {
-    let called = 0;
-
-    class MySubclass extends construct {
-      constructor() {
-        ++called;
-        super(...constructArgs);
-      }
-    }
-
-    const instance = new MySubclass();
-    assert.sameValue(called, 1);
-
-    MySubclass.prototype.constructor = {
-      [Symbol.species]: undefined,
-    };
-
-    const result = instance[method](...methodArgs);
-    assert.sameValue(called, 1);
-    assert.sameValue(Object.getPrototypeOf(result), construct.prototype);
-    resultAssertions(result);
-  },
-
-  /*
-   * Check that the constructor's @@species property is ignored when it throws,
-   * i.e. it is not called at all.
-   */
-  checkSubclassSpeciesThrows(construct, constructArgs, method, methodArgs, resultAssertions) {
-    function CustomError() {}
-
-    const instance = new construct(...constructArgs);
-    instance.constructor = {
-      get [Symbol.species]() {
-        throw new CustomError();
-      },
-    };
-
-    const result = instance[method](...methodArgs);
-    assert.sameValue(Object.getPrototypeOf(result), construct.prototype);
-  },
-
-  /*
-   * checkSubclassingIgnoredStatic(construct, method, methodArgs, resultAssertions):
-   *
-   * Static methods of Temporal classes that return a new instance of the class,
-   * must not use the this-value as a constructor. This helper runs tests to
-   * ensure this.
-   *
-   * construct[method](...methodArgs) is the static method call under test, and
-   * must yield a valid instance of the Temporal class, not a subclass. See
-   * below for the individual tests that this runs.
-   * resultAssertions() is a function that performs additional assertions on the
-   * instance returned by the method under test.
-   */
-  checkSubclassingIgnoredStatic(...args) {
-    this.checkStaticInvalidReceiver(...args);
-    this.checkStaticReceiverNotCalled(...args);
-    this.checkThisValueNotCalled(...args);
-  },
-
-  /*
-   * Check that calling the static method with a receiver that's not callable,
-   * still calls the intrinsic constructor.
-   */
-  checkStaticInvalidReceiver(construct, method, methodArgs, resultAssertions) {
-    function check(value, description) {
-      const result = construct[method].apply(value, methodArgs);
-      assert.sameValue(Object.getPrototypeOf(result), construct.prototype);
-      resultAssertions(result);
-    }
-
-    check(undefined, "undefined");
-    check(null, "null");
-    check(true, "true");
-    check("test", "string");
-    check(Symbol(), "symbol");
-    check(7, "number");
-    check(7n, "bigint");
-    check({}, "Non-callable object");
-  },
-
-  /*
-   * Check that calling the static method with a receiver that returns a value
-   * that's not callable, still calls the intrinsic constructor.
-   */
-  checkStaticReceiverNotCalled(construct, method, methodArgs, resultAssertions) {
-    function check(value, description) {
-      const receiver = function () {
-        return value;
-      };
-      const result = construct[method].apply(receiver, methodArgs);
-      assert.sameValue(Object.getPrototypeOf(result), construct.prototype);
-      resultAssertions(result);
-    }
-
-    check(undefined, "undefined");
-    check(null, "null");
-    check(true, "true");
-    check("test", "string");
-    check(Symbol(), "symbol");
-    check(7, "number");
-    check(7n, "bigint");
-    check({}, "Non-callable object");
-  },
-
-  /*
-   * Check that the receiver isn't called.
-   */
-  checkThisValueNotCalled(construct, method, methodArgs, resultAssertions) {
-    let called = false;
-
-    class MySubclass extends construct {
-      constructor(...args) {
-        called = true;
-        super(...args);
-      }
-    }
-
-    const result = MySubclass[method](...methodArgs);
-    assert.sameValue(called, false);
-    assert.sameValue(Object.getPrototypeOf(result), construct.prototype);
-    resultAssertions(result);
-  },
-
-  /*
-   * Check that any iterable returned from a custom time zone's
-   * getPossibleInstantsFor() method is exhausted.
-   * The custom time zone object is passed in to func().
-   * expected is an array of strings representing the expected calls to the
-   * getPossibleInstantsFor() method. The PlainDateTimes that it is called with,
-   * are compared (using their toString() results) with the array.
-   */
-  checkTimeZonePossibleInstantsIterable(func, expected) {
-    // A custom time zone that returns an iterable instead of an array from its
-    // getPossibleInstantsFor() method, and for testing purposes skips
-    // 00:00-01:00 UTC on January 1, 2030, and repeats 00:00-01:00 UTC+1 on
-    // January 3, 2030. Otherwise identical to the UTC time zone.
-    class TimeZonePossibleInstantsIterable extends Temporal.TimeZone {
-      constructor() {
-        super("UTC");
-        this.getPossibleInstantsForCallCount = 0;
-        this.getPossibleInstantsForCalledWith = [];
-        this.getPossibleInstantsForReturns = [];
-        this.iteratorExhausted = [];
-      }
-
-      toString() {
-        return "Custom/Iterable";
-      }
-
-      getOffsetNanosecondsFor(instant) {
-        if (Temporal.Instant.compare(instant, "2030-01-01T00:00Z") >= 0 &&
-          Temporal.Instant.compare(instant, "2030-01-03T01:00Z") < 0) {
-          return 3600_000_000_000;
-        } else {
-          return 0;
-        }
-      }
-
-      getPossibleInstantsFor(dateTime) {
-        this.getPossibleInstantsForCallCount++;
-        this.getPossibleInstantsForCalledWith.push(dateTime);
-
-        // Fake DST transition
-        let retval = super.getPossibleInstantsFor(dateTime);
-        if (dateTime.toPlainDate().equals("2030-01-01") && dateTime.hour === 0) {
-          retval = [];
-        } else if (dateTime.toPlainDate().equals("2030-01-03") && dateTime.hour === 0) {
-          retval.push(retval[0].subtract({ hours: 1 }));
-        } else if (dateTime.year === 2030 && dateTime.month === 1 && dateTime.day >= 1 && dateTime.day <= 2) {
-          retval[0] = retval[0].subtract({ hours: 1 });
-        }
-
-        this.getPossibleInstantsForReturns.push(retval);
-        this.iteratorExhausted.push(false);
-        return {
-          callIndex: this.getPossibleInstantsForCallCount - 1,
-          timeZone: this,
-          *[Symbol.iterator]() {
-            yield* this.timeZone.getPossibleInstantsForReturns[this.callIndex];
-            this.timeZone.iteratorExhausted[this.callIndex] = true;
-          },
-        };
-      }
-    }
-
-    const timeZone = new TimeZonePossibleInstantsIterable();
-    func(timeZone);
-
-    assert.sameValue(timeZone.getPossibleInstantsForCallCount, expected.length, "getPossibleInstantsFor() method called correct number of times");
-
-    for (let index = 0; index < expected.length; index++) {
-      assert.sameValue(timeZone.getPossibleInstantsForCalledWith[index].toString(), expected[index], "getPossibleInstantsFor() called with expected PlainDateTime");
-      assert(timeZone.iteratorExhausted[index], "iterated through the whole iterable");
-    }
-  },
-
-  /*
-   * Check that any calendar-carrying Temporal object has its [[Calendar]]
-   * internal slot read by ToTemporalCalendar, and does not fetch the calendar
-   * by calling getters.
-   * The custom calendar object is passed in to func() so that it can do its
-   * own additional assertions involving the calendar if necessary. (Sometimes
-   * there is nothing to assert as the calendar isn't stored anywhere that can
-   * be asserted about.)
-   */
-  checkToTemporalCalendarFastPath(func) {
-    class CalendarFastPathCheck extends Temporal.Calendar {
-      constructor() {
-        super("iso8601");
-      }
-
-      toString() {
-        return "fast-path-check";
-      }
-    }
-    const calendar = new CalendarFastPathCheck();
-
-    const plainDate = new Temporal.PlainDate(2000, 5, 2, calendar);
-    const plainDateTime = new Temporal.PlainDateTime(2000, 5, 2, 12, 34, 56, 987, 654, 321, calendar);
-    const plainMonthDay = new Temporal.PlainMonthDay(5, 2, calendar);
-    const plainYearMonth = new Temporal.PlainYearMonth(2000, 5, calendar);
-    const zonedDateTime = new Temporal.ZonedDateTime(1_000_000_000_000_000_000n, "UTC", calendar);
-
-    [plainDate, plainDateTime, plainMonthDay, plainYearMonth, zonedDateTime].forEach((temporalObject) => {
-      const actual = [];
-      const expected = [];
-
-      Object.defineProperty(temporalObject, "calendar", {
-        get() {
-          actual.push("get calendar");
-          return calendar;
-        },
-      });
-
-      func(temporalObject, calendar);
-      assert.compareArray(actual, expected, "calendar getter not called");
-    });
-  },
-
-  checkToTemporalInstantFastPath(func) {
-    const actual = [];
-    const expected = [];
-
-    const datetime = new Temporal.ZonedDateTime(1_000_000_000_987_654_321n, "UTC");
-    Object.defineProperty(datetime, 'toString', {
-      get() {
-        actual.push("get toString");
-        return function (options) {
-          actual.push("call toString");
-          return Temporal.ZonedDateTime.prototype.toString.call(this, options);
-        };
-      },
-    });
-
-    func(datetime);
-    assert.compareArray(actual, expected, "toString not called");
-  },
-
-  checkToTemporalPlainDateTimeFastPath(func) {
-    const actual = [];
-    const expected = [];
-
-    const calendar = new Temporal.Calendar("iso8601");
-    const date = new Temporal.PlainDate(2000, 5, 2, calendar);
-    const prototypeDescrs = Object.getOwnPropertyDescriptors(Temporal.PlainDate.prototype);
-    ["year", "month", "monthCode", "day"].forEach((property) => {
-      Object.defineProperty(date, property, {
-        get() {
-          actual.push(`get ${property}`);
-          const value = prototypeDescrs[property].get.call(this);
-          return TemporalHelpers.toPrimitiveObserver(actual, value, property);
-        },
-      });
-    });
-    ["hour", "minute", "second", "millisecond", "microsecond", "nanosecond"].forEach((property) => {
-      Object.defineProperty(date, property, {
-        get() {
-          actual.push(`get ${property}`);
-          return undefined;
-        },
-      });
-    });
-    Object.defineProperty(date, "calendar", {
-      get() {
-        actual.push("get calendar");
-        return calendar;
-      },
-    });
-
-    func(date, calendar);
-    assert.compareArray(actual, expected, "property getters not called");
-  },
-
-  /*
-   * A custom calendar that asserts its dateAdd() method is called with the
-   * options parameter having the value undefined.
-   */
-  calendarDateAddUndefinedOptions() {
-    class CalendarDateAddUndefinedOptions extends Temporal.Calendar {
-      constructor() {
-        super("iso8601");
-        this.dateAddCallCount = 0;
-      }
-
-      toString() {
-        return "dateadd-undef-options";
-      }
-
-      dateAdd(date, duration, options) {
-        this.dateAddCallCount++;
-        assert.sameValue(options, undefined, "dateAdd shouldn't be called with options");
-        return super.dateAdd(date, duration, options);
-      }
-    }
-    return new CalendarDateAddUndefinedOptions();
-  },
-
-  /*
-   * A custom calendar that asserts its dateAdd() method is called with a
-   * PlainDate instance. Optionally, it also asserts that the PlainDate instance
-   * is the specific object `this.specificPlainDate`, if it is set by the
-   * calling code.
-   */
-  calendarDateAddPlainDateInstance() {
-    class CalendarDateAddPlainDateInstance extends Temporal.Calendar {
-      constructor() {
-        super("iso8601");
-        this.dateAddCallCount = 0;
-        this.specificPlainDate = undefined;
-      }
-
-      toString() {
-        return "dateadd-plain-date-instance";
-      }
-
-      dateAdd(date, duration, options) {
-        this.dateAddCallCount++;
-        assert(date instanceof Temporal.PlainDate, "dateAdd() should be called with a PlainDate instance");
-        if (this.dateAddCallCount === 1 && this.specificPlainDate) {
-          assert.sameValue(date, this.specificPlainDate, `dateAdd() should be called first with the specific PlainDate instance ${this.specificPlainDate}`);
-        }
-        return super.dateAdd(date, duration, options);
-      }
-    }
-    return new CalendarDateAddPlainDateInstance();
-  },
-
-  /*
-   * A custom calendar that returns @returnValue from its dateUntil() method,
-   * recording the call in @calls.
-   */
-  calendarDateUntilObservable(calls, returnValue) {
-    class CalendarDateUntilObservable extends Temporal.Calendar {
-      constructor() {
-        super("iso8601");
-      }
-
-      dateUntil() {
-        calls.push("call dateUntil");
-        return returnValue;
-      }
-    }
-
-    return new CalendarDateUntilObservable();
-  },
-
-  /*
-   * A custom calendar that returns an iterable instead of an array from its
-   * fields() method, otherwise identical to the ISO calendar.
-   */
-  calendarFieldsIterable() {
-    class CalendarFieldsIterable extends Temporal.Calendar {
-      constructor() {
-        super("iso8601");
-        this.fieldsCallCount = 0;
-        this.fieldsCalledWith = [];
-        this.iteratorExhausted = [];
-      }
-
-      toString() {
-        return "fields-iterable";
-      }
-
-      fields(fieldNames) {
-        this.fieldsCallCount++;
-        this.fieldsCalledWith.push(fieldNames.slice());
-        this.iteratorExhausted.push(false);
-        return {
-          callIndex: this.fieldsCallCount - 1,
-          calendar: this,
-          *[Symbol.iterator]() {
-            yield* this.calendar.fieldsCalledWith[this.callIndex];
-            this.calendar.iteratorExhausted[this.callIndex] = true;
-          },
-        };
-      }
-    }
-    return new CalendarFieldsIterable();
-  },
-
-  /*
-   * A custom calendar that modifies the fields object passed in to
-   * dateFromFields, sabotaging its time properties.
-   */
-  calendarMakeInfinityTime() {
-    class CalendarMakeInfinityTime extends Temporal.Calendar {
-      constructor() {
-        super("iso8601");
-      }
-
-      dateFromFields(fields, options) {
-        const retval = super.dateFromFields(fields, options);
-        fields.hour = Infinity;
-        fields.minute = Infinity;
-        fields.second = Infinity;
-        fields.millisecond = Infinity;
-        fields.microsecond = Infinity;
-        fields.nanosecond = Infinity;
-        return retval;
-      }
-    }
-    return new CalendarMakeInfinityTime();
-  },
-
-  /*
-   * A custom calendar that defines getters on the fields object passed into
-   * dateFromFields that throw, sabotaging its time properties.
-   */
-  calendarMakeInvalidGettersTime() {
-    class CalendarMakeInvalidGettersTime extends Temporal.Calendar {
-      constructor() {
-        super("iso8601");
-      }
-
-      dateFromFields(fields, options) {
-        const retval = super.dateFromFields(fields, options);
-        const throwingDescriptor = {
-          get() {
-            throw new Test262Error("reading a sabotaged time field");
-          },
-        };
-        Object.defineProperties(fields, {
-          hour: throwingDescriptor,
-          minute: throwingDescriptor,
-          second: throwingDescriptor,
-          millisecond: throwingDescriptor,
-          microsecond: throwingDescriptor,
-          nanosecond: throwingDescriptor,
-        });
-        return retval;
-      }
-    }
-    return new CalendarMakeInvalidGettersTime();
-  },
-
-  /*
-   * A custom calendar whose mergeFields() method returns a proxy object with
-   * all of its Get and HasProperty operations observable, as well as adding a
-   * "shouldNotBeCopied": true property.
-   */
-  calendarMergeFieldsGetters() {
-    class CalendarMergeFieldsGetters extends Temporal.Calendar {
-      constructor() {
-        super("iso8601");
-        this.mergeFieldsReturnOperations = [];
-      }
-
-      toString() {
-        return "merge-fields-getters";
-      }
-
-      dateFromFields(fields, options) {
-        assert.sameValue(fields.shouldNotBeCopied, undefined, "extra fields should not be copied");
-        return super.dateFromFields(fields, options);
-      }
-
-      yearMonthFromFields(fields, options) {
-        assert.sameValue(fields.shouldNotBeCopied, undefined, "extra fields should not be copied");
-        return super.yearMonthFromFields(fields, options);
-      }
-
-      monthDayFromFields(fields, options) {
-        assert.sameValue(fields.shouldNotBeCopied, undefined, "extra fields should not be copied");
-        return super.monthDayFromFields(fields, options);
-      }
-
-      mergeFields(fields, additionalFields) {
-        const retval = super.mergeFields(fields, additionalFields);
-        retval._calendar = this;
-        retval.shouldNotBeCopied = true;
-        return new Proxy(retval, {
-          get(target, key) {
-            target._calendar.mergeFieldsReturnOperations.push(`get ${key}`);
-            const result = target[key];
-            if (result === undefined) {
-              return undefined;
-            }
-            return TemporalHelpers.toPrimitiveObserver(target._calendar.mergeFieldsReturnOperations, result, key);
-          },
-          has(target, key) {
-            target._calendar.mergeFieldsReturnOperations.push(`has ${key}`);
-            return key in target;
-          },
-        });
-      }
-    }
-    return new CalendarMergeFieldsGetters();
-  },
-
-  /*
-   * A custom calendar whose mergeFields() method returns a primitive value,
-   * given by @primitive, and which records the number of calls made to its
-   * dateFromFields(), yearMonthFromFields(), and monthDayFromFields() methods.
-   */
-  calendarMergeFieldsReturnsPrimitive(primitive) {
-    class CalendarMergeFieldsPrimitive extends Temporal.Calendar {
-      constructor(mergeFieldsReturnValue) {
-        super("iso8601");
-        this._mergeFieldsReturnValue = mergeFieldsReturnValue;
-        this.dateFromFieldsCallCount = 0;
-        this.monthDayFromFieldsCallCount = 0;
-        this.yearMonthFromFieldsCallCount = 0;
-      }
-
-      toString() {
-        return "merge-fields-primitive";
-      }
-
-      dateFromFields(fields, options) {
-        this.dateFromFieldsCallCount++;
-        return super.dateFromFields(fields, options);
-      }
-
-      yearMonthFromFields(fields, options) {
-        this.yearMonthFromFieldsCallCount++;
-        return super.yearMonthFromFields(fields, options);
-      }
-
-      monthDayFromFields(fields, options) {
-        this.monthDayFromFieldsCallCount++;
-        return super.monthDayFromFields(fields, options);
-      }
-
-      mergeFields() {
-        return this._mergeFieldsReturnValue;
-      }
-    }
-    return new CalendarMergeFieldsPrimitive(primitive);
-  },
-
-  /*
-   * observeProperty(calls, object, propertyName, value):
-   *
-   * Defines an own property @object.@propertyName with value @value, that
-   * will log any calls to its accessors to the array @calls.
-   */
-  observeProperty(calls, object, propertyName, value) {
-    let displayName = propertyName;
-    if (typeof propertyName === 'symbol') {
-      if (Symbol.keyFor(propertyName) !== undefined) {
-        displayName = `[Symbol.for('${Symbol.keyFor(propertyName)}')]`;
-      } else if (propertyName.description.startsWith('Symbol.')) {
-        displayName = `[${propertyName.description}]`;
-      } else {
-        displayName = `[Symbol('${propertyName.description}')]`
-      }
-    }
-    Object.defineProperty(object, propertyName, {
-      get() {
-        calls.push(`get ${displayName}`);
-        return value;
-      },
-      set(v) {
-        calls.push(`set ${displayName}`);
-      }
-    });
-  },
-
-  /*
-   * A custom calendar that does not allow any of its methods to be called, for
-   * the purpose of asserting that a particular operation does not call into
-   * user code.
-   */
-  calendarThrowEverything() {
-    class CalendarThrowEverything extends Temporal.Calendar {
-      constructor() {
-        super("iso8601");
-      }
-      toString() {
-        TemporalHelpers.assertUnreachable("toString should not be called");
-      }
-      dateFromFields() {
-        TemporalHelpers.assertUnreachable("dateFromFields should not be called");
-      }
-      yearMonthFromFields() {
-        TemporalHelpers.assertUnreachable("yearMonthFromFields should not be called");
-      }
-      monthDayFromFields() {
-        TemporalHelpers.assertUnreachable("monthDayFromFields should not be called");
-      }
-      dateAdd() {
-        TemporalHelpers.assertUnreachable("dateAdd should not be called");
-      }
-      dateUntil() {
-        TemporalHelpers.assertUnreachable("dateUntil should not be called");
-      }
-      era() {
-        TemporalHelpers.assertUnreachable("era should not be called");
-      }
-      eraYear() {
-        TemporalHelpers.assertUnreachable("eraYear should not be called");
-      }
-      year() {
-        TemporalHelpers.assertUnreachable("year should not be called");
-      }
-      month() {
-        TemporalHelpers.assertUnreachable("month should not be called");
-      }
-      monthCode() {
-        TemporalHelpers.assertUnreachable("monthCode should not be called");
-      }
-      day() {
-        TemporalHelpers.assertUnreachable("day should not be called");
-      }
-      fields() {
-        TemporalHelpers.assertUnreachable("fields should not be called");
-      }
-      mergeFields() {
-        TemporalHelpers.assertUnreachable("mergeFields should not be called");
-      }
-    }
-
-    return new CalendarThrowEverything();
-  },
-
-  /*
-   * oneShiftTimeZone(shiftInstant, shiftNanoseconds):
-   *
-   * In the case of a spring-forward time zone offset transition (skipped time),
-   * and disambiguation === 'earlier', BuiltinTimeZoneGetInstantFor subtracts a
-   * negative number of nanoseconds from a PlainDateTime, which should balance
-   * with the microseconds field.
-   *
-   * This returns an instance of a custom time zone class which skips a length
-   * of time equal to shiftNanoseconds (a number), at the Temporal.Instant
-   * shiftInstant. Before shiftInstant, it's identical to UTC, and after
-   * shiftInstant it's a constant-offset time zone.
-   *
-   * It provides a getPossibleInstantsForCalledWith member which is an array
-   * with the result of calling toString() on any PlainDateTimes passed to
-   * getPossibleInstantsFor().
-   */
-  oneShiftTimeZone(shiftInstant, shiftNanoseconds) {
-    class OneShiftTimeZone extends Temporal.TimeZone {
-      constructor(shiftInstant, shiftNanoseconds) {
-        super("+00:00");
-        this._shiftInstant = shiftInstant;
-        this._epoch1 = shiftInstant.epochNanoseconds;
-        this._epoch2 = this._epoch1 + BigInt(shiftNanoseconds);
-        this._shiftNanoseconds = shiftNanoseconds;
-        this._shift = new Temporal.Duration(0, 0, 0, 0, 0, 0, 0, 0, 0, this._shiftNanoseconds);
-        this.getPossibleInstantsForCalledWith = [];
-      }
-
-      _isBeforeShift(instant) {
-        return instant.epochNanoseconds < this._epoch1;
-      }
-
-      getOffsetNanosecondsFor(instant) {
-        return this._isBeforeShift(instant) ? 0 : this._shiftNanoseconds;
-      }
-
-      getPossibleInstantsFor(plainDateTime) {
-        this.getPossibleInstantsForCalledWith.push(plainDateTime.toString());
-        const [instant] = super.getPossibleInstantsFor(plainDateTime);
-        if (this._shiftNanoseconds > 0) {
-          if (this._isBeforeShift(instant)) return [instant];
-          if (instant.epochNanoseconds < this._epoch2) return [];
-          return [instant.add(this._shift)];
-        }
-        if (instant.epochNanoseconds < this._epoch2) return [instant];
-        const shifted = instant.add(this._shift);
-        if (this._isBeforeShift(instant)) return [instant, shifted];
-        return [shifted];
-      }
-
-      getNextTransition(instant) {
-        return this._isBeforeShift(instant) ? this._shiftInstant : null;
-      }
-
-      getPreviousTransition(instant) {
-        return this._isBeforeShift(instant) ? null : this._shiftInstant;
-      }
-
-      toString() {
-        return "Custom/One_Shift";
-      }
-    }
-    return new OneShiftTimeZone(shiftInstant, shiftNanoseconds);
-  },
-
-  /*
-   * specificOffsetTimeZone():
-   *
-   * This returns an instance of a custom time zone class, which returns a
-   * specific custom value from its getOffsetNanosecondsFrom() method. This is
-   * for the purpose of testing the validation of what this method returns.
-   *
-   * It also returns an empty array from getPossibleInstantsFor(), so as to
-   * trigger calls to getOffsetNanosecondsFor() when used from the
-   * BuiltinTimeZoneGetInstantFor operation.
-   */
-  specificOffsetTimeZone(offsetValue) {
-    class SpecificOffsetTimeZone extends Temporal.TimeZone {
-      constructor(offsetValue) {
-        super("UTC");
-        this._offsetValue = offsetValue;
-      }
-
-      getOffsetNanosecondsFor() {
-        return this._offsetValue;
-      }
-
-      getPossibleInstantsFor() {
-        return [];
-      }
-    }
-    return new SpecificOffsetTimeZone(offsetValue);
-  },
-
-  /*
-   * springForwardFallBackTimeZone():
-   *
-   * This returns an instance of a custom time zone class that implements one
-   * single spring-forward/fall-back transition, for the purpose of testing the
-   * disambiguation option, without depending on system time zone data.
-   *
-   * The spring-forward occurs at epoch second 954669600 (2000-04-02T02:00
-   * local) and goes from offset -08:00 to -07:00.
-   *
-   * The fall-back occurs at epoch second 972810000 (2000-10-29T02:00 local) and
-   * goes from offset -07:00 to -08:00.
-   */
-  springForwardFallBackTimeZone() {
-    const { compare } = Temporal.PlainDateTime;
-    const springForwardLocal = new Temporal.PlainDateTime(2000, 4, 2, 2);
-    const springForwardEpoch = 954669600_000_000_000n;
-    const fallBackLocal = new Temporal.PlainDateTime(2000, 10, 29, 1);
-    const fallBackEpoch = 972810000_000_000_000n;
-    const winterOffset = new Temporal.TimeZone('-08:00');
-    const summerOffset = new Temporal.TimeZone('-07:00');
-
-    class SpringForwardFallBackTimeZone extends Temporal.TimeZone {
-      constructor() {
-        super("-08:00");
-      }
-
-      getOffsetNanosecondsFor(instant) {
-        if (instant.epochNanoseconds < springForwardEpoch ||
-          instant.epochNanoseconds >= fallBackEpoch) {
-          return winterOffset.getOffsetNanosecondsFor(instant);
-        }
-        return summerOffset.getOffsetNanosecondsFor(instant);
-      }
-
-      getPossibleInstantsFor(datetime) {
-        if (compare(datetime, springForwardLocal) >= 0 && compare(datetime, springForwardLocal.add({ hours: 1 })) < 0) {
-          return [];
-        }
-        if (compare(datetime, fallBackLocal) >= 0 && compare(datetime, fallBackLocal.add({ hours: 1 })) < 0) {
-          return [summerOffset.getInstantFor(datetime), winterOffset.getInstantFor(datetime)];
-        }
-        if (compare(datetime, springForwardLocal) < 0 || compare(datetime, fallBackLocal) >= 0) {
-          return [winterOffset.getInstantFor(datetime)];
-        }
-        return [summerOffset.getInstantFor(datetime)];
-      }
-
-      getPreviousTransition(instant) {
-        if (instant.epochNanoseconds > fallBackEpoch) return new Temporal.Instant(fallBackEpoch);
-        if (instant.epochNanoseconds > springForwardEpoch) return new Temporal.Instant(springForwardEpoch);
-        return null;
-      }
-
-      getNextTransition(instant) {
-        if (instant.epochNanoseconds < springForwardEpoch) return new Temporal.Instant(springForwardEpoch);
-        if (instant.epochNanoseconds < fallBackEpoch) return new Temporal.Instant(fallBackEpoch);
-        return null;
-      }
-
-      toString() {
-        return "Custom/Spring_Fall";
-      }
-    }
-    return new SpringForwardFallBackTimeZone();
-  },
-
-  /*
-   * Returns an object that will append logs of any Gets or Calls of its valueOf
-   * or toString properties to the array calls. Both valueOf and toString will
-   * return the actual primitiveValue. propertyName is used in the log.
-   */
-  toPrimitiveObserver(calls, primitiveValue, propertyName) {
-    return {
-      get valueOf() {
-        calls.push(`get ${propertyName}.valueOf`);
-        return function () {
-          calls.push(`call ${propertyName}.valueOf`);
-          return primitiveValue;
-        };
-      },
-      get toString() {
-        calls.push(`get ${propertyName}.toString`);
-        return function () {
-          calls.push(`call ${propertyName}.toString`);
-          if (primitiveValue === undefined) return undefined;
-          return primitiveValue.toString();
-        };
-      },
-    };
-  },
-};
-
-//byteConversionValues.js
-// Copyright (C) 2016 the V8 project authors. All rights reserved.
-// This code is governed by the BSD license found in the LICENSE file.
-/*---
-description: |
-    Provide a list for original and expected values for different byte
-    conversions.
-    This helper is mostly used on tests for TypedArray and DataView, and each
-    array from the expected values must match the original values array on every
-    index containing its original value.
-defines: [byteConversionValues]
----*/
-var byteConversionValues = {
-  values: [
-    127,         // 2 ** 7 - 1
-    128,         // 2 ** 7
-    32767,       // 2 ** 15 - 1
-    32768,       // 2 ** 15
-    2147483647,  // 2 ** 31 - 1
-    2147483648,  // 2 ** 31
-    255,         // 2 ** 8 - 1
-    256,         // 2 ** 8
-    65535,       // 2 ** 16 - 1
-    65536,       // 2 ** 16
-    4294967295,  // 2 ** 32 - 1
-    4294967296,  // 2 ** 32
-    9007199254740991, // 2 ** 53 - 1
-    9007199254740992, // 2 ** 53
-    1.1,
-    0.1,
-    0.5,
-    0.50000001,
-    0.6,
-    0.7,
-    undefined,
-    -1,
-    -0,
-    -0.1,
-    -1.1,
-    NaN,
-    -127,        // - ( 2 ** 7 - 1 )
-    -128,        // - ( 2 ** 7 )
-    -32767,      // - ( 2 ** 15 - 1 )
-    -32768,      // - ( 2 ** 15 )
-    -2147483647, // - ( 2 ** 31 - 1 )
-    -2147483648, // - ( 2 ** 31 )
-    -255,        // - ( 2 ** 8 - 1 )
-    -256,        // - ( 2 ** 8 )
-    -65535,      // - ( 2 ** 16 - 1 )
-    -65536,      // - ( 2 ** 16 )
-    -4294967295, // - ( 2 ** 32 - 1 )
-    -4294967296, // - ( 2 ** 32 )
-    Infinity,
-    -Infinity,
-    0
-  ],
-
-  expected: {
-    Int8: [
-      127,  // 127
-      -128, // 128
-      -1,   // 32767
-      0,    // 32768
-      -1,   // 2147483647
-      0,    // 2147483648
-      -1,   // 255
-      0,    // 256
-      -1,   // 65535
-      0,    // 65536
-      -1,   // 4294967295
-      0,    // 4294967296
-      -1,   // 9007199254740991
-      0,    // 9007199254740992
-      1,    // 1.1
-      0,    // 0.1
-      0,    // 0.5
-      0,    // 0.50000001,
-      0,    // 0.6
-      0,    // 0.7
-      0,    // undefined
-      -1,   // -1
-      0,    // -0
-      0,    // -0.1
-      -1,   // -1.1
-      0,    // NaN
-      -127, // -127
-      -128, // -128
-      1,    // -32767
-      0,    // -32768
-      1,    // -2147483647
-      0,    // -2147483648
-      1,    // -255
-      0,    // -256
-      1,    // -65535
-      0,    // -65536
-      1,    // -4294967295
-      0,    // -4294967296
-      0,    // Infinity
-      0,    // -Infinity
-      0
-    ],
-    Uint8: [
-      127, // 127
-      128, // 128
-      255, // 32767
-      0,   // 32768
-      255, // 2147483647
-      0,   // 2147483648
-      255, // 255
-      0,   // 256
-      255, // 65535
-      0,   // 65536
-      255, // 4294967295
-      0,   // 4294967296
-      255, // 9007199254740991
-      0,   // 9007199254740992
-      1,   // 1.1
-      0,   // 0.1
-      0,   // 0.5
-      0,   // 0.50000001,
-      0,   // 0.6
-      0,   // 0.7
-      0,   // undefined
-      255, // -1
-      0,   // -0
-      0,   // -0.1
-      255, // -1.1
-      0,   // NaN
-      129, // -127
-      128, // -128
-      1,   // -32767
-      0,   // -32768
-      1,   // -2147483647
-      0,   // -2147483648
-      1,   // -255
-      0,   // -256
-      1,   // -65535
-      0,   // -65536
-      1,   // -4294967295
-      0,   // -4294967296
-      0,   // Infinity
-      0,   // -Infinity
-      0
-    ],
-    Uint8Clamped: [
-      127, // 127
-      128, // 128
-      255, // 32767
-      255, // 32768
-      255, // 2147483647
-      255, // 2147483648
-      255, // 255
-      255, // 256
-      255, // 65535
-      255, // 65536
-      255, // 4294967295
-      255, // 4294967296
-      255, // 9007199254740991
-      255, // 9007199254740992
-      1,   // 1.1,
-      0,   // 0.1
-      0,   // 0.5
-      1,   // 0.50000001,
-      1,   // 0.6
-      1,   // 0.7
-      0,   // undefined
-      0,   // -1
-      0,   // -0
-      0,   // -0.1
-      0,   // -1.1
-      0,   // NaN
-      0,   // -127
-      0,   // -128
-      0,   // -32767
-      0,   // -32768
-      0,   // -2147483647
-      0,   // -2147483648
-      0,   // -255
-      0,   // -256
-      0,   // -65535
-      0,   // -65536
-      0,   // -4294967295
-      0,   // -4294967296
-      255, // Infinity
-      0,   // -Infinity
-      0
-    ],
-    Int16: [
-      127,    // 127
-      128,    // 128
-      32767,  // 32767
-      -32768, // 32768
-      -1,     // 2147483647
-      0,      // 2147483648
-      255,    // 255
-      256,    // 256
-      -1,     // 65535
-      0,      // 65536
-      -1,     // 4294967295
-      0,      // 4294967296
-      -1,     // 9007199254740991
-      0,      // 9007199254740992
-      1,      // 1.1
-      0,      // 0.1
-      0,      // 0.5
-      0,      // 0.50000001,
-      0,      // 0.6
-      0,      // 0.7
-      0,      // undefined
-      -1,     // -1
-      0,      // -0
-      0,      // -0.1
-      -1,     // -1.1
-      0,      // NaN
-      -127,   // -127
-      -128,   // -128
-      -32767, // -32767
-      -32768, // -32768
-      1,      // -2147483647
-      0,      // -2147483648
-      -255,   // -255
-      -256,   // -256
-      1,      // -65535
-      0,      // -65536
-      1,      // -4294967295
-      0,      // -4294967296
-      0,      // Infinity
-      0,      // -Infinity
-      0
-    ],
-    Uint16: [
-      127,   // 127
-      128,   // 128
-      32767, // 32767
-      32768, // 32768
-      65535, // 2147483647
-      0,     // 2147483648
-      255,   // 255
-      256,   // 256
-      65535, // 65535
-      0,     // 65536
-      65535, // 4294967295
-      0,     // 4294967296
-      65535, // 9007199254740991
-      0,     // 9007199254740992
-      1,     // 1.1
-      0,     // 0.1
-      0,     // 0.5
-      0,     // 0.50000001,
-      0,     // 0.6
-      0,     // 0.7
-      0,     // undefined
-      65535, // -1
-      0,     // -0
-      0,     // -0.1
-      65535, // -1.1
-      0,     // NaN
-      65409, // -127
-      65408, // -128
-      32769, // -32767
-      32768, // -32768
-      1,     // -2147483647
-      0,     // -2147483648
-      65281, // -255
-      65280, // -256
-      1,     // -65535
-      0,     // -65536
-      1,     // -4294967295
-      0,     // -4294967296
-      0,     // Infinity
-      0,     // -Infinity
-      0
-    ],
-    Int32: [
-      127,         // 127
-      128,         // 128
-      32767,       // 32767
-      32768,       // 32768
-      2147483647,  // 2147483647
-      -2147483648, // 2147483648
-      255,         // 255
-      256,         // 256
-      65535,       // 65535
-      65536,       // 65536
-      -1,          // 4294967295
-      0,           // 4294967296
-      -1,          // 9007199254740991
-      0,           // 9007199254740992
-      1,           // 1.1
-      0,           // 0.1
-      0,           // 0.5
-      0,           // 0.50000001,
-      0,           // 0.6
-      0,           // 0.7
-      0,           // undefined
-      -1,          // -1
-      0,           // -0
-      0,           // -0.1
-      -1,          // -1.1
-      0,           // NaN
-      -127,        // -127
-      -128,        // -128
-      -32767,      // -32767
-      -32768,      // -32768
-      -2147483647, // -2147483647
-      -2147483648, // -2147483648
-      -255,        // -255
-      -256,        // -256
-      -65535,      // -65535
-      -65536,      // -65536
-      1,           // -4294967295
-      0,           // -4294967296
-      0,           // Infinity
-      0,           // -Infinity
-      0
-    ],
-    Uint32: [
-      127,        // 127
-      128,        // 128
-      32767,      // 32767
-      32768,      // 32768
-      2147483647, // 2147483647
-      2147483648, // 2147483648
-      255,        // 255
-      256,        // 256
-      65535,      // 65535
-      65536,      // 65536
-      4294967295, // 4294967295
-      0,          // 4294967296
-      4294967295, // 9007199254740991
-      0,          // 9007199254740992
-      1,          // 1.1
-      0,          // 0.1
-      0,          // 0.5
-      0,          // 0.50000001,
-      0,          // 0.6
-      0,          // 0.7
-      0,          // undefined
-      4294967295, // -1
-      0,          // -0
-      0,          // -0.1
-      4294967295, // -1.1
-      0,          // NaN
-      4294967169, // -127
-      4294967168, // -128
-      4294934529, // -32767
-      4294934528, // -32768
-      2147483649, // -2147483647
-      2147483648, // -2147483648
-      4294967041, // -255
-      4294967040, // -256
-      4294901761, // -65535
-      4294901760, // -65536
-      1,          // -4294967295
-      0,          // -4294967296
-      0,          // Infinity
-      0,          // -Infinity
-      0
-    ],
-    Float32: [
-      127,                  // 127
-      128,                  // 128
-      32767,                // 32767
-      32768,                // 32768
-      2147483648,           // 2147483647
-      2147483648,           // 2147483648
-      255,                  // 255
-      256,                  // 256
-      65535,                // 65535
-      65536,                // 65536
-      4294967296,           // 4294967295
-      4294967296,           // 4294967296
-      9007199254740992,     // 9007199254740991
-      9007199254740992,     // 9007199254740992
-      1.100000023841858,    // 1.1
-      0.10000000149011612,  // 0.1
-      0.5,                  // 0.5
-      0.5,                  // 0.50000001,
-      0.6000000238418579,   // 0.6
-      0.699999988079071,    // 0.7
-      NaN,                  // undefined
-      -1,                   // -1
-      -0,                   // -0
-      -0.10000000149011612, // -0.1
-      -1.100000023841858,   // -1.1
-      NaN,                  // NaN
-      -127,                 // -127
-      -128,                 // -128
-      -32767,               // -32767
-      -32768,               // -32768
-      -2147483648,          // -2147483647
-      -2147483648,          // -2147483648
-      -255,                 // -255
-      -256,                 // -256
-      -65535,               // -65535
-      -65536,               // -65536
-      -4294967296,          // -4294967295
-      -4294967296,          // -4294967296
-      Infinity,             // Infinity
-      -Infinity,            // -Infinity
-      0
-    ],
-    Float64: [
-      127,         // 127
-      128,         // 128
-      32767,       // 32767
-      32768,       // 32768
-      2147483647,  // 2147483647
-      2147483648,  // 2147483648
-      255,         // 255
-      256,         // 256
-      65535,       // 65535
-      65536,       // 65536
-      4294967295,  // 4294967295
-      4294967296,  // 4294967296
-      9007199254740991, // 9007199254740991
-      9007199254740992, // 9007199254740992
-      1.1,         // 1.1
-      0.1,         // 0.1
-      0.5,         // 0.5
-      0.50000001,  // 0.50000001,
-      0.6,         // 0.6
-      0.7,         // 0.7
-      NaN,         // undefined
-      -1,          // -1
-      -0,          // -0
-      -0.1,        // -0.1
-      -1.1,        // -1.1
-      NaN,         // NaN
-      -127,        // -127
-      -128,        // -128
-      -32767,      // -32767
-      -32768,      // -32768
-      -2147483647, // -2147483647
-      -2147483648, // -2147483648
-      -255,        // -255
-      -256,        // -256
-      -65535,      // -65535
-      -65536,      // -65536
-      -4294967295, // -4294967295
-      -4294967296, // -4294967296
-      Infinity,    // Infinity
-      -Infinity,   // -Infinity
-      0
-    ]
-  }
-};
-
-//nans.js
-// Copyright (C) 2016 the V8 project authors.  All rights reserved.
-// This code is governed by the BSD license found in the LICENSE file.
-/*---
-description: |
-    A collection of NaN values produced from expressions that have been observed
-    to create distinct bit representations on various platforms. These provide a
-    weak basis for assertions regarding the consistent canonicalization of NaN
-    values in Array buffers.
-defines: [NaNs]
----*/
-
-var NaNs = [
-  NaN,
-  Number.NaN,
-  NaN * 0,
-  0/0,
-  Infinity/Infinity,
-  -(0/0),
-  Math.pow(-1, 0.5),
-  -Math.pow(-1, 0.5),
-  Number("Not-a-Number"),
-];
-
-//testBigIntTypedArray.js
-// Copyright (C) 2015 André Bargull. All rights reserved.
-// This code is governed by the BSD license found in the LICENSE file.
-/*---
-description: |
-    Collection of functions used to assert the correctness of BigInt TypedArray objects.
-defines:
-  - TypedArray
-  - testWithBigIntTypedArrayConstructors
----*/
-
-/**
- * The %TypedArray% intrinsic constructor function.
- */
-var TypedArray = Object.getPrototypeOf(Int8Array);
-
-/**
- * Calls the provided function for every typed array constructor.
- *
- * @param {typedArrayConstructorCallback} f - the function to call for each typed array constructor.
- * @param {Array} selected - An optional Array with filtered typed arrays
- */
-function testWithBigIntTypedArrayConstructors(f, selected) {
-  /**
-   * Array containing every BigInt typed array constructor.
-   */
-  var constructors = selected || [
-    BigInt64Array,
-    BigUint64Array
-  ];
-
-  for (var i = 0; i < constructors.length; ++i) {
-    var constructor = constructors[i];
-    try {
-      f(constructor);
-    } catch (e) {
-      e.message += " (Testing with " + constructor.name + ".)";
-      throw e;
-    }
-  }
-}
-
-//sta.js
-// Copyright (c) 2012 Ecma International.  All rights reserved.
-// This code is governed by the BSD license found in the LICENSE file.
-/*---
-description: |
-    Provides both:
-
-    - An error class to avoid false positives when testing for thrown exceptions
-    - A function to explicitly throw an exception using the Test262Error class
-defines: [Test262Error, $DONOTEVALUATE]
----*/
-
-
-function Test262Error(message) {
-  this.message = message || "";
-}
-
-Test262Error.prototype.toString = function () {
-  return "Test262Error: " + this.message;
-};
-
-Test262Error.thrower = (message) => {
-  throw new Test262Error(message);
-};
-
-function $DONOTEVALUATE() {
-  throw "Test262: This statement should not be evaluated.";
-}
-
-//fnGlobalObject.js
-// Copyright (C) 2017 Ecma International.  All rights reserved.
-// This code is governed by the BSD license found in the LICENSE file.
-/*---
-description: |
-    Produce a reliable global object
-defines: [fnGlobalObject]
----*/
-
-var __globalObject = Function("return this;")();
-function fnGlobalObject() {
-  return __globalObject;
-}
-
-//compareArray.js
-// Copyright (C) 2017 Ecma International.  All rights reserved.
-// This code is governed by the BSD license found in the LICENSE file.
-/*---
-description: |
-    Compare the contents of two arrays
-defines: [compareArray]
----*/
-
-function compareArray(a, b) {
-  if (b.length !== a.length) {
-    return false;
-  }
-
-  for (var i = 0; i < a.length; i++) {
-    if (!compareArray.isSameValue(b[i], a[i])) {
-      return false;
-    }
-  }
-  return true;
-}
-
-compareArray.isSameValue = function(a, b) {
-  if (a === 0 && b === 0) return 1 / a === 1 / b;
-  if (a !== a && b !== b) return true;
-
-  return a === b;
-};
-
-compareArray.format = function(arrayLike) {
-  return `[${[].map.call(arrayLike, String).join(', ')}]`;
-};
-
-assert.compareArray = function(actual, expected, message) {
-  message  = message === undefined ? '' : message;
-
-  if (typeof message === 'symbol') {
-    message = message.toString();
-  }
-
-  assert(actual != null, `First argument shouldn't be nullish. ${message}`);
-  assert(expected != null, `Second argument shouldn't be nullish. ${message}`);
-  var format = compareArray.format;
-  var result = compareArray(actual, expected);
-
-  // The following prevents actual and expected from being iterated and evaluated
-  // more than once unless absolutely necessary.
-  if (!result) {
-    assert(false, `Expected ${format(actual)} and ${format(expected)} to have the same contents. ${message}`);
-  }
-};
-
-//doneprintHandle.js
-// Copyright (C) 2017 Ecma International.  All rights reserved.
-// This code is governed by the BSD license found in the LICENSE file.
-/*---
-description: |
-defines: [$DONE]
----*/
-
-function __consolePrintHandle__(msg) {
-  print(msg);
-}
-
-function $DONE(error) {
-  if (error) {
-    if(typeof error === 'object' && error !== null && 'name' in error) {
-      __consolePrintHandle__('Test262:AsyncTestFailure:' + error.name + ': ' + error.message);
-    } else {
-      __consolePrintHandle__('Test262:AsyncTestFailure:Test262Error: ' + error);
-    }
-  } else {
-    __consolePrintHandle__('Test262:AsyncTestComplete');
-  }
-}
-
 //regExpUtils.js
 // Copyright (C) 2017 Mathias Bynens.  All rights reserved.
 // This code is governed by the BSD license found in the LICENSE file.
@@ -4082,6 +1106,39 @@ function matchValidator(expectedEntries, expectedIndex, expectedInput) {
   }
 }
 
+//proxyTrapsHelper.js
+// Copyright (C) 2016 Jordan Harband.  All rights reserved.
+// This code is governed by the BSD license found in the LICENSE file.
+/*---
+description: |
+    Used to assert the correctness of object behavior in the presence
+    and context of Proxy objects.
+defines: [allowProxyTraps]
+---*/
+
+function allowProxyTraps(overrides) {
+  function throwTest262Error(msg) {
+    return function () { throw new Test262Error(msg); };
+  }
+  if (!overrides) { overrides = {}; }
+  return {
+    getPrototypeOf: overrides.getPrototypeOf || throwTest262Error('[[GetPrototypeOf]] trap called'),
+    setPrototypeOf: overrides.setPrototypeOf || throwTest262Error('[[SetPrototypeOf]] trap called'),
+    isExtensible: overrides.isExtensible || throwTest262Error('[[IsExtensible]] trap called'),
+    preventExtensions: overrides.preventExtensions || throwTest262Error('[[PreventExtensions]] trap called'),
+    getOwnPropertyDescriptor: overrides.getOwnPropertyDescriptor || throwTest262Error('[[GetOwnProperty]] trap called'),
+    has: overrides.has || throwTest262Error('[[HasProperty]] trap called'),
+    get: overrides.get || throwTest262Error('[[Get]] trap called'),
+    set: overrides.set || throwTest262Error('[[Set]] trap called'),
+    deleteProperty: overrides.deleteProperty || throwTest262Error('[[Delete]] trap called'),
+    defineProperty: overrides.defineProperty || throwTest262Error('[[DefineOwnProperty]] trap called'),
+    enumerate: throwTest262Error('[[Enumerate]] trap called: this trap has been removed'),
+    ownKeys: overrides.ownKeys || throwTest262Error('[[OwnPropertyKeys]] trap called'),
+    apply: overrides.apply || throwTest262Error('[[Call]] trap called'),
+    construct: overrides.construct || throwTest262Error('[[Construct]] trap called')
+  };
+}
+
 //assertRelativeDateMs.js
 // Copyright (C) 2015 the V8 project authors. All rights reserved.
 // This code is governed by the BSD license found in the LICENSE file.
@@ -4108,6 +1165,310 @@ function assertRelativeDateMs(date, expectedMs) {
     );
   }
 }
+
+//detachArrayBuffer.js
+// Copyright (C) 2016 the V8 project authors.  All rights reserved.
+// This code is governed by the BSD license found in the LICENSE file.
+/*---
+description: |
+    A function used in the process of asserting correctness of TypedArray objects.
+
+    $262.detachArrayBuffer is defined by a host.
+defines: [$DETACHBUFFER]
+---*/
+
+function $DETACHBUFFER(buffer) {
+  if (!$262 || typeof $262.detachArrayBuffer !== "function") {
+    throw new Test262Error("No method available to detach an ArrayBuffer");
+  }
+  $262.detachArrayBuffer(buffer);
+}
+
+//timer.js
+// Copyright (C) 2017 Ecma International.  All rights reserved.
+// This code is governed by the BSD license found in the LICENSE file.
+/*---
+description: |
+    Used in website/scripts/sth.js
+defines: [setTimeout]
+---*/
+//setTimeout is not available, hence this script was loaded
+if (Promise === undefined && this.setTimeout === undefined) {
+  if(/\$DONE()/.test(code))
+    throw new Test262Error("Async test capability is not supported in your test environment");
+}
+
+if (Promise !== undefined && this.setTimeout === undefined) {
+  (function(that) {
+     that.setTimeout = function(callback, delay) {
+      var p = Promise.resolve();
+      var start = Date.now();
+      var end = start + delay;
+      function check(){
+        var timeLeft = end - Date.now();
+        if(timeLeft > 0)
+          p.then(check);
+        else
+          callback();
+      }
+      p.then(check);
+    }
+  })(this);
+}
+
+//fnGlobalObject.js
+// Copyright (C) 2017 Ecma International.  All rights reserved.
+// This code is governed by the BSD license found in the LICENSE file.
+/*---
+description: |
+    Produce a reliable global object
+defines: [fnGlobalObject]
+---*/
+
+var __globalObject = Function("return this;")();
+function fnGlobalObject() {
+  return __globalObject;
+}
+
+//tcoHelper.js
+// Copyright (C) 2016 the V8 project authors. All rights reserved.
+// This code is governed by the BSD license found in the LICENSE file.
+/*---
+description: |
+    This defines the number of consecutive recursive function calls that must be
+    made in order to prove that stack frames are properly destroyed according to
+    ES2015 tail call optimization semantics.
+defines: [$MAX_ITERATIONS]
+---*/
+
+
+
+
+var $MAX_ITERATIONS = 100000;
+
+//doneprintHandle.js
+// Copyright (C) 2017 Ecma International.  All rights reserved.
+// This code is governed by the BSD license found in the LICENSE file.
+/*---
+description: |
+defines: [$DONE]
+---*/
+
+function __consolePrintHandle__(msg) {
+  print(msg);
+}
+
+function $DONE(error) {
+  if (error) {
+    if(typeof error === 'object' && error !== null && 'name' in error) {
+      __consolePrintHandle__('Test262:AsyncTestFailure:' + error.name + ': ' + error.message);
+    } else {
+      __consolePrintHandle__('Test262:AsyncTestFailure:Test262Error: ' + error);
+    }
+  } else {
+    __consolePrintHandle__('Test262:AsyncTestComplete');
+  }
+}
+
+//nans.js
+// Copyright (C) 2016 the V8 project authors.  All rights reserved.
+// This code is governed by the BSD license found in the LICENSE file.
+/*---
+description: |
+    A collection of NaN values produced from expressions that have been observed
+    to create distinct bit representations on various platforms. These provide a
+    weak basis for assertions regarding the consistent canonicalization of NaN
+    values in Array buffers.
+defines: [NaNs]
+---*/
+
+var NaNs = [
+  NaN,
+  Number.NaN,
+  NaN * 0,
+  0/0,
+  Infinity/Infinity,
+  -(0/0),
+  Math.pow(-1, 0.5),
+  -Math.pow(-1, 0.5),
+  Number("Not-a-Number"),
+];
+
+//testTypedArray.js
+// Copyright (C) 2015 André Bargull. All rights reserved.
+// This code is governed by the BSD license found in the LICENSE file.
+/*---
+description: |
+    Collection of functions used to assert the correctness of TypedArray objects.
+defines:
+  - typedArrayConstructors
+  - floatArrayConstructors
+  - intArrayConstructors
+  - TypedArray
+  - testWithTypedArrayConstructors
+  - testWithAtomicsFriendlyTypedArrayConstructors
+  - testWithNonAtomicsFriendlyTypedArrayConstructors
+  - testTypedArrayConversions
+---*/
+
+/**
+ * Array containing every typed array constructor.
+ */
+var typedArrayConstructors = [
+  Float64Array,
+  Float32Array,
+  Int32Array,
+  Int16Array,
+  Int8Array,
+  Uint32Array,
+  Uint16Array,
+  Uint8Array,
+  Uint8ClampedArray
+];
+
+var floatArrayConstructors = typedArrayConstructors.slice(0, 2);
+var intArrayConstructors = typedArrayConstructors.slice(2, 7);
+
+/**
+ * The %TypedArray% intrinsic constructor function.
+ */
+var TypedArray = Object.getPrototypeOf(Int8Array);
+
+/**
+ * Callback for testing a typed array constructor.
+ *
+ * @callback typedArrayConstructorCallback
+ * @param {Function} Constructor the constructor object to test with.
+ */
+
+/**
+ * Calls the provided function for every typed array constructor.
+ *
+ * @param {typedArrayConstructorCallback} f - the function to call for each typed array constructor.
+ * @param {Array} selected - An optional Array with filtered typed arrays
+ */
+function testWithTypedArrayConstructors(f, selected) {
+  var constructors = selected || typedArrayConstructors;
+  for (var i = 0; i < constructors.length; ++i) {
+    var constructor = constructors[i];
+    try {
+      f(constructor);
+    } catch (e) {
+      e.message += " (Testing with " + constructor.name + ".)";
+      throw e;
+    }
+  }
+}
+
+/**
+ * Calls the provided function for every non-"Atomics Friendly" typed array constructor.
+ *
+ * @param {typedArrayConstructorCallback} f - the function to call for each typed array constructor.
+ * @param {Array} selected - An optional Array with filtered typed arrays
+ */
+function testWithNonAtomicsFriendlyTypedArrayConstructors(f) {
+  testWithTypedArrayConstructors(f, [
+    Float64Array,
+    Float32Array,
+    Uint8ClampedArray
+  ]);
+}
+
+/**
+ * Calls the provided function for every "Atomics Friendly" typed array constructor.
+ *
+ * @param {typedArrayConstructorCallback} f - the function to call for each typed array constructor.
+ * @param {Array} selected - An optional Array with filtered typed arrays
+ */
+function testWithAtomicsFriendlyTypedArrayConstructors(f) {
+  testWithTypedArrayConstructors(f, [
+    Int32Array,
+    Int16Array,
+    Int8Array,
+    Uint32Array,
+    Uint16Array,
+    Uint8Array,
+  ]);
+}
+
+/**
+ * Helper for conversion operations on TypedArrays, the expected values
+ * properties are indexed in order to match the respective value for each
+ * TypedArray constructor
+ * @param  {Function} fn - the function to call for each constructor and value.
+ *                         will be called with the constructor, value, expected
+ *                         value, and a initial value that can be used to avoid
+ *                         a false positive with an equivalent expected value.
+ */
+function testTypedArrayConversions(byteConversionValues, fn) {
+  var values = byteConversionValues.values;
+  var expected = byteConversionValues.expected;
+
+  testWithTypedArrayConstructors(function(TA) {
+    var name = TA.name.slice(0, -5);
+
+    return values.forEach(function(value, index) {
+      var exp = expected[name][index];
+      var initial = 0;
+      if (exp === 0) {
+        initial = 1;
+      }
+      fn(TA, value, exp, initial);
+    });
+  });
+}
+
+//compareArray.js
+// Copyright (C) 2017 Ecma International.  All rights reserved.
+// This code is governed by the BSD license found in the LICENSE file.
+/*---
+description: |
+    Compare the contents of two arrays
+defines: [compareArray]
+---*/
+
+function compareArray(a, b) {
+  if (b.length !== a.length) {
+    return false;
+  }
+
+  for (var i = 0; i < a.length; i++) {
+    if (!compareArray.isSameValue(b[i], a[i])) {
+      return false;
+    }
+  }
+  return true;
+}
+
+compareArray.isSameValue = function(a, b) {
+  if (a === 0 && b === 0) return 1 / a === 1 / b;
+  if (a !== a && b !== b) return true;
+
+  return a === b;
+};
+
+compareArray.format = function(arrayLike) {
+  return `[${[].map.call(arrayLike, String).join(', ')}]`;
+};
+
+assert.compareArray = function(actual, expected, message) {
+  message  = message === undefined ? '' : message;
+
+  if (typeof message === 'symbol') {
+    message = message.toString();
+  }
+
+  assert(actual != null, `First argument shouldn't be nullish. ${message}`);
+  assert(expected != null, `Second argument shouldn't be nullish. ${message}`);
+  var format = compareArray.format;
+  var result = compareArray(actual, expected);
+
+  // The following prevents actual and expected from being iterated and evaluated
+  // more than once unless absolutely necessary.
+  if (!result) {
+    assert(false, `Expected ${format(actual)} and ${format(expected)} to have the same contents. ${message}`);
+  }
+};
 
 //typeCoercion.js
 // Copyright (C) 2017 Josh Wolfe. All rights reserved.
@@ -4562,40 +1923,618 @@ function testNotCoercibleToBigInt(test) {
   testStringValue("1n");
 }
 
-//testTypedArray.js
+//sta.js
+// Copyright (c) 2012 Ecma International.  All rights reserved.
+// This code is governed by the BSD license found in the LICENSE file.
+/*---
+description: |
+    Provides both:
+
+    - An error class to avoid false positives when testing for thrown exceptions
+    - A function to explicitly throw an exception using the Test262Error class
+defines: [Test262Error, $DONOTEVALUATE]
+---*/
+
+
+function Test262Error(message) {
+  this.message = message || "";
+}
+
+Test262Error.prototype.toString = function () {
+  return "Test262Error: " + this.message;
+};
+
+Test262Error.thrower = (message) => {
+  throw new Test262Error(message);
+};
+
+function $DONOTEVALUATE() {
+  throw "Test262: This statement should not be evaluated.";
+}
+
+//testAtomics.js
+// Copyright (C) 2017 Mozilla Corporation. All rights reserved.
+// This code is governed by the BSD license found in the LICENSE file.
+/*---
+description: |
+    Collection of functions used to assert the correctness of SharedArrayBuffer objects.
+defines:
+  - testWithAtomicsOutOfBoundsIndices
+  - testWithAtomicsInBoundsIndices
+  - testWithAtomicsNonViewValues
+---*/
+
+
+/**
+ * Calls the provided function for a each bad index that should throw a
+ * RangeError when passed to an Atomics method on a SAB-backed view where
+ * index 125 is out of range.
+ *
+ * @param f - the function to call for each bad index.
+ */
+function testWithAtomicsOutOfBoundsIndices(f) {
+  var bad_indices = [
+    function(view) { return -1; },
+    function(view) { return view.length; },
+    function(view) { return view.length * 2; },
+    function(view) { return Number.POSITIVE_INFINITY; },
+    function(view) { return Number.NEGATIVE_INFINITY; },
+    function(view) { return { valueOf: function() { return 125; } }; },
+    function(view) { return { toString: function() { return '125'; }, valueOf: false }; }, // non-callable valueOf triggers invocation of toString
+  ];
+
+  for (var i = 0; i < bad_indices.length; ++i) {
+    var IdxGen = bad_indices[i];
+    try {
+      f(IdxGen);
+    } catch (e) {
+      e.message += ' (Testing with index gen ' + IdxGen + '.)';
+      throw e;
+    }
+  }
+}
+
+/**
+ * Calls the provided function for each good index that should not throw when
+ * passed to an Atomics method on a SAB-backed view.
+ *
+ * The view must have length greater than zero.
+ *
+ * @param f - the function to call for each good index.
+ */
+function testWithAtomicsInBoundsIndices(f) {
+  // Most of these are eventually coerced to +0 by ToIndex.
+  var good_indices = [
+    function(view) { return 0/-1; },
+    function(view) { return '-0'; },
+    function(view) { return undefined; },
+    function(view) { return NaN; },
+    function(view) { return 0.5; },
+    function(view) { return '0.5'; },
+    function(view) { return -0.9; },
+    function(view) { return { password: 'qumquat' }; },
+    function(view) { return view.length - 1; },
+    function(view) { return { valueOf: function() { return 0; } }; },
+    function(view) { return { toString: function() { return '0'; }, valueOf: false }; }, // non-callable valueOf triggers invocation of toString
+  ];
+
+  for (var i = 0; i < good_indices.length; ++i) {
+    var IdxGen = good_indices[i];
+    try {
+      f(IdxGen);
+    } catch (e) {
+      e.message += ' (Testing with index gen ' + IdxGen + '.)';
+      throw e;
+    }
+  }
+}
+
+/**
+ * Calls the provided function for each value that should throw a TypeError
+ * when passed to an Atomics method as a view.
+ *
+ * @param f - the function to call for each non-view value.
+ */
+
+function testWithAtomicsNonViewValues(f) {
+  var values = [
+    null,
+    undefined,
+    true,
+    false,
+    new Boolean(true),
+    10,
+    3.14,
+    new Number(4),
+    'Hi there',
+    new Date,
+    /a*utomaton/g,
+    { password: 'qumquat' },
+    new DataView(new ArrayBuffer(10)),
+    new ArrayBuffer(128),
+    new SharedArrayBuffer(128),
+    new Error('Ouch'),
+    [1,1,2,3,5,8],
+    function(x) { return -x; },
+    Symbol('halleluja'),
+    // TODO: Proxy?
+    Object,
+    Int32Array,
+    Date,
+    Math,
+    Atomics
+  ];
+
+  for (var i = 0; i < values.length; ++i) {
+    var nonView = values[i];
+    try {
+      f(nonView);
+    } catch (e) {
+      e.message += ' (Testing with non-view value ' + nonView + '.)';
+      throw e;
+    }
+  }
+}
+
+
+//byteConversionValues.js
+// Copyright (C) 2016 the V8 project authors. All rights reserved.
+// This code is governed by the BSD license found in the LICENSE file.
+/*---
+description: |
+    Provide a list for original and expected values for different byte
+    conversions.
+    This helper is mostly used on tests for TypedArray and DataView, and each
+    array from the expected values must match the original values array on every
+    index containing its original value.
+defines: [byteConversionValues]
+---*/
+var byteConversionValues = {
+  values: [
+    127,         // 2 ** 7 - 1
+    128,         // 2 ** 7
+    32767,       // 2 ** 15 - 1
+    32768,       // 2 ** 15
+    2147483647,  // 2 ** 31 - 1
+    2147483648,  // 2 ** 31
+    255,         // 2 ** 8 - 1
+    256,         // 2 ** 8
+    65535,       // 2 ** 16 - 1
+    65536,       // 2 ** 16
+    4294967295,  // 2 ** 32 - 1
+    4294967296,  // 2 ** 32
+    9007199254740991, // 2 ** 53 - 1
+    9007199254740992, // 2 ** 53
+    1.1,
+    0.1,
+    0.5,
+    0.50000001,
+    0.6,
+    0.7,
+    undefined,
+    -1,
+    -0,
+    -0.1,
+    -1.1,
+    NaN,
+    -127,        // - ( 2 ** 7 - 1 )
+    -128,        // - ( 2 ** 7 )
+    -32767,      // - ( 2 ** 15 - 1 )
+    -32768,      // - ( 2 ** 15 )
+    -2147483647, // - ( 2 ** 31 - 1 )
+    -2147483648, // - ( 2 ** 31 )
+    -255,        // - ( 2 ** 8 - 1 )
+    -256,        // - ( 2 ** 8 )
+    -65535,      // - ( 2 ** 16 - 1 )
+    -65536,      // - ( 2 ** 16 )
+    -4294967295, // - ( 2 ** 32 - 1 )
+    -4294967296, // - ( 2 ** 32 )
+    Infinity,
+    -Infinity,
+    0
+  ],
+
+  expected: {
+    Int8: [
+      127,  // 127
+      -128, // 128
+      -1,   // 32767
+      0,    // 32768
+      -1,   // 2147483647
+      0,    // 2147483648
+      -1,   // 255
+      0,    // 256
+      -1,   // 65535
+      0,    // 65536
+      -1,   // 4294967295
+      0,    // 4294967296
+      -1,   // 9007199254740991
+      0,    // 9007199254740992
+      1,    // 1.1
+      0,    // 0.1
+      0,    // 0.5
+      0,    // 0.50000001,
+      0,    // 0.6
+      0,    // 0.7
+      0,    // undefined
+      -1,   // -1
+      0,    // -0
+      0,    // -0.1
+      -1,   // -1.1
+      0,    // NaN
+      -127, // -127
+      -128, // -128
+      1,    // -32767
+      0,    // -32768
+      1,    // -2147483647
+      0,    // -2147483648
+      1,    // -255
+      0,    // -256
+      1,    // -65535
+      0,    // -65536
+      1,    // -4294967295
+      0,    // -4294967296
+      0,    // Infinity
+      0,    // -Infinity
+      0
+    ],
+    Uint8: [
+      127, // 127
+      128, // 128
+      255, // 32767
+      0,   // 32768
+      255, // 2147483647
+      0,   // 2147483648
+      255, // 255
+      0,   // 256
+      255, // 65535
+      0,   // 65536
+      255, // 4294967295
+      0,   // 4294967296
+      255, // 9007199254740991
+      0,   // 9007199254740992
+      1,   // 1.1
+      0,   // 0.1
+      0,   // 0.5
+      0,   // 0.50000001,
+      0,   // 0.6
+      0,   // 0.7
+      0,   // undefined
+      255, // -1
+      0,   // -0
+      0,   // -0.1
+      255, // -1.1
+      0,   // NaN
+      129, // -127
+      128, // -128
+      1,   // -32767
+      0,   // -32768
+      1,   // -2147483647
+      0,   // -2147483648
+      1,   // -255
+      0,   // -256
+      1,   // -65535
+      0,   // -65536
+      1,   // -4294967295
+      0,   // -4294967296
+      0,   // Infinity
+      0,   // -Infinity
+      0
+    ],
+    Uint8Clamped: [
+      127, // 127
+      128, // 128
+      255, // 32767
+      255, // 32768
+      255, // 2147483647
+      255, // 2147483648
+      255, // 255
+      255, // 256
+      255, // 65535
+      255, // 65536
+      255, // 4294967295
+      255, // 4294967296
+      255, // 9007199254740991
+      255, // 9007199254740992
+      1,   // 1.1,
+      0,   // 0.1
+      0,   // 0.5
+      1,   // 0.50000001,
+      1,   // 0.6
+      1,   // 0.7
+      0,   // undefined
+      0,   // -1
+      0,   // -0
+      0,   // -0.1
+      0,   // -1.1
+      0,   // NaN
+      0,   // -127
+      0,   // -128
+      0,   // -32767
+      0,   // -32768
+      0,   // -2147483647
+      0,   // -2147483648
+      0,   // -255
+      0,   // -256
+      0,   // -65535
+      0,   // -65536
+      0,   // -4294967295
+      0,   // -4294967296
+      255, // Infinity
+      0,   // -Infinity
+      0
+    ],
+    Int16: [
+      127,    // 127
+      128,    // 128
+      32767,  // 32767
+      -32768, // 32768
+      -1,     // 2147483647
+      0,      // 2147483648
+      255,    // 255
+      256,    // 256
+      -1,     // 65535
+      0,      // 65536
+      -1,     // 4294967295
+      0,      // 4294967296
+      -1,     // 9007199254740991
+      0,      // 9007199254740992
+      1,      // 1.1
+      0,      // 0.1
+      0,      // 0.5
+      0,      // 0.50000001,
+      0,      // 0.6
+      0,      // 0.7
+      0,      // undefined
+      -1,     // -1
+      0,      // -0
+      0,      // -0.1
+      -1,     // -1.1
+      0,      // NaN
+      -127,   // -127
+      -128,   // -128
+      -32767, // -32767
+      -32768, // -32768
+      1,      // -2147483647
+      0,      // -2147483648
+      -255,   // -255
+      -256,   // -256
+      1,      // -65535
+      0,      // -65536
+      1,      // -4294967295
+      0,      // -4294967296
+      0,      // Infinity
+      0,      // -Infinity
+      0
+    ],
+    Uint16: [
+      127,   // 127
+      128,   // 128
+      32767, // 32767
+      32768, // 32768
+      65535, // 2147483647
+      0,     // 2147483648
+      255,   // 255
+      256,   // 256
+      65535, // 65535
+      0,     // 65536
+      65535, // 4294967295
+      0,     // 4294967296
+      65535, // 9007199254740991
+      0,     // 9007199254740992
+      1,     // 1.1
+      0,     // 0.1
+      0,     // 0.5
+      0,     // 0.50000001,
+      0,     // 0.6
+      0,     // 0.7
+      0,     // undefined
+      65535, // -1
+      0,     // -0
+      0,     // -0.1
+      65535, // -1.1
+      0,     // NaN
+      65409, // -127
+      65408, // -128
+      32769, // -32767
+      32768, // -32768
+      1,     // -2147483647
+      0,     // -2147483648
+      65281, // -255
+      65280, // -256
+      1,     // -65535
+      0,     // -65536
+      1,     // -4294967295
+      0,     // -4294967296
+      0,     // Infinity
+      0,     // -Infinity
+      0
+    ],
+    Int32: [
+      127,         // 127
+      128,         // 128
+      32767,       // 32767
+      32768,       // 32768
+      2147483647,  // 2147483647
+      -2147483648, // 2147483648
+      255,         // 255
+      256,         // 256
+      65535,       // 65535
+      65536,       // 65536
+      -1,          // 4294967295
+      0,           // 4294967296
+      -1,          // 9007199254740991
+      0,           // 9007199254740992
+      1,           // 1.1
+      0,           // 0.1
+      0,           // 0.5
+      0,           // 0.50000001,
+      0,           // 0.6
+      0,           // 0.7
+      0,           // undefined
+      -1,          // -1
+      0,           // -0
+      0,           // -0.1
+      -1,          // -1.1
+      0,           // NaN
+      -127,        // -127
+      -128,        // -128
+      -32767,      // -32767
+      -32768,      // -32768
+      -2147483647, // -2147483647
+      -2147483648, // -2147483648
+      -255,        // -255
+      -256,        // -256
+      -65535,      // -65535
+      -65536,      // -65536
+      1,           // -4294967295
+      0,           // -4294967296
+      0,           // Infinity
+      0,           // -Infinity
+      0
+    ],
+    Uint32: [
+      127,        // 127
+      128,        // 128
+      32767,      // 32767
+      32768,      // 32768
+      2147483647, // 2147483647
+      2147483648, // 2147483648
+      255,        // 255
+      256,        // 256
+      65535,      // 65535
+      65536,      // 65536
+      4294967295, // 4294967295
+      0,          // 4294967296
+      4294967295, // 9007199254740991
+      0,          // 9007199254740992
+      1,          // 1.1
+      0,          // 0.1
+      0,          // 0.5
+      0,          // 0.50000001,
+      0,          // 0.6
+      0,          // 0.7
+      0,          // undefined
+      4294967295, // -1
+      0,          // -0
+      0,          // -0.1
+      4294967295, // -1.1
+      0,          // NaN
+      4294967169, // -127
+      4294967168, // -128
+      4294934529, // -32767
+      4294934528, // -32768
+      2147483649, // -2147483647
+      2147483648, // -2147483648
+      4294967041, // -255
+      4294967040, // -256
+      4294901761, // -65535
+      4294901760, // -65536
+      1,          // -4294967295
+      0,          // -4294967296
+      0,          // Infinity
+      0,          // -Infinity
+      0
+    ],
+    Float32: [
+      127,                  // 127
+      128,                  // 128
+      32767,                // 32767
+      32768,                // 32768
+      2147483648,           // 2147483647
+      2147483648,           // 2147483648
+      255,                  // 255
+      256,                  // 256
+      65535,                // 65535
+      65536,                // 65536
+      4294967296,           // 4294967295
+      4294967296,           // 4294967296
+      9007199254740992,     // 9007199254740991
+      9007199254740992,     // 9007199254740992
+      1.100000023841858,    // 1.1
+      0.10000000149011612,  // 0.1
+      0.5,                  // 0.5
+      0.5,                  // 0.50000001,
+      0.6000000238418579,   // 0.6
+      0.699999988079071,    // 0.7
+      NaN,                  // undefined
+      -1,                   // -1
+      -0,                   // -0
+      -0.10000000149011612, // -0.1
+      -1.100000023841858,   // -1.1
+      NaN,                  // NaN
+      -127,                 // -127
+      -128,                 // -128
+      -32767,               // -32767
+      -32768,               // -32768
+      -2147483648,          // -2147483647
+      -2147483648,          // -2147483648
+      -255,                 // -255
+      -256,                 // -256
+      -65535,               // -65535
+      -65536,               // -65536
+      -4294967296,          // -4294967295
+      -4294967296,          // -4294967296
+      Infinity,             // Infinity
+      -Infinity,            // -Infinity
+      0
+    ],
+    Float64: [
+      127,         // 127
+      128,         // 128
+      32767,       // 32767
+      32768,       // 32768
+      2147483647,  // 2147483647
+      2147483648,  // 2147483648
+      255,         // 255
+      256,         // 256
+      65535,       // 65535
+      65536,       // 65536
+      4294967295,  // 4294967295
+      4294967296,  // 4294967296
+      9007199254740991, // 9007199254740991
+      9007199254740992, // 9007199254740992
+      1.1,         // 1.1
+      0.1,         // 0.1
+      0.5,         // 0.5
+      0.50000001,  // 0.50000001,
+      0.6,         // 0.6
+      0.7,         // 0.7
+      NaN,         // undefined
+      -1,          // -1
+      -0,          // -0
+      -0.1,        // -0.1
+      -1.1,        // -1.1
+      NaN,         // NaN
+      -127,        // -127
+      -128,        // -128
+      -32767,      // -32767
+      -32768,      // -32768
+      -2147483647, // -2147483647
+      -2147483648, // -2147483648
+      -255,        // -255
+      -256,        // -256
+      -65535,      // -65535
+      -65536,      // -65536
+      -4294967295, // -4294967295
+      -4294967296, // -4294967296
+      Infinity,    // Infinity
+      -Infinity,   // -Infinity
+      0
+    ]
+  }
+};
+
+//testBigIntTypedArray.js
 // Copyright (C) 2015 André Bargull. All rights reserved.
 // This code is governed by the BSD license found in the LICENSE file.
 /*---
 description: |
-    Collection of functions used to assert the correctness of TypedArray objects.
+    Collection of functions used to assert the correctness of BigInt TypedArray objects.
 defines:
-  - typedArrayConstructors
-  - floatArrayConstructors
-  - intArrayConstructors
   - TypedArray
-  - testWithTypedArrayConstructors
-  - testWithAtomicsFriendlyTypedArrayConstructors
-  - testWithNonAtomicsFriendlyTypedArrayConstructors
-  - testTypedArrayConversions
+  - testWithBigIntTypedArrayConstructors
 ---*/
-
-/**
- * Array containing every typed array constructor.
- */
-var typedArrayConstructors = [
-  Float64Array,
-  Float32Array,
-  Int32Array,
-  Int16Array,
-  Int8Array,
-  Uint32Array,
-  Uint16Array,
-  Uint8Array,
-  Uint8ClampedArray
-];
-
-var floatArrayConstructors = typedArrayConstructors.slice(0, 2);
-var intArrayConstructors = typedArrayConstructors.slice(2, 7);
 
 /**
  * The %TypedArray% intrinsic constructor function.
@@ -4603,20 +2542,20 @@ var intArrayConstructors = typedArrayConstructors.slice(2, 7);
 var TypedArray = Object.getPrototypeOf(Int8Array);
 
 /**
- * Callback for testing a typed array constructor.
- *
- * @callback typedArrayConstructorCallback
- * @param {Function} Constructor the constructor object to test with.
- */
-
-/**
  * Calls the provided function for every typed array constructor.
  *
  * @param {typedArrayConstructorCallback} f - the function to call for each typed array constructor.
  * @param {Array} selected - An optional Array with filtered typed arrays
  */
-function testWithTypedArrayConstructors(f, selected) {
-  var constructors = selected || typedArrayConstructors;
+function testWithBigIntTypedArrayConstructors(f, selected) {
+  /**
+   * Array containing every BigInt typed array constructor.
+   */
+  var constructors = selected || [
+    BigInt64Array,
+    BigUint64Array
+  ];
+
   for (var i = 0; i < constructors.length; ++i) {
     var constructor = constructors[i];
     try {
@@ -4628,110 +2567,24 @@ function testWithTypedArrayConstructors(f, selected) {
   }
 }
 
-/**
- * Calls the provided function for every non-"Atomics Friendly" typed array constructor.
- *
- * @param {typedArrayConstructorCallback} f - the function to call for each typed array constructor.
- * @param {Array} selected - An optional Array with filtered typed arrays
- */
-function testWithNonAtomicsFriendlyTypedArrayConstructors(f) {
-  testWithTypedArrayConstructors(f, [
-    Float64Array,
-    Float32Array,
-    Uint8ClampedArray
-  ]);
-}
-
-/**
- * Calls the provided function for every "Atomics Friendly" typed array constructor.
- *
- * @param {typedArrayConstructorCallback} f - the function to call for each typed array constructor.
- * @param {Array} selected - An optional Array with filtered typed arrays
- */
-function testWithAtomicsFriendlyTypedArrayConstructors(f) {
-  testWithTypedArrayConstructors(f, [
-    Int32Array,
-    Int16Array,
-    Int8Array,
-    Uint32Array,
-    Uint16Array,
-    Uint8Array,
-  ]);
-}
-
-/**
- * Helper for conversion operations on TypedArrays, the expected values
- * properties are indexed in order to match the respective value for each
- * TypedArray constructor
- * @param  {Function} fn - the function to call for each constructor and value.
- *                         will be called with the constructor, value, expected
- *                         value, and a initial value that can be used to avoid
- *                         a false positive with an equivalent expected value.
- */
-function testTypedArrayConversions(byteConversionValues, fn) {
-  var values = byteConversionValues.values;
-  var expected = byteConversionValues.expected;
-
-  testWithTypedArrayConstructors(function(TA) {
-    var name = TA.name.slice(0, -5);
-
-    return values.forEach(function(value, index) {
-      var exp = expected[name][index];
-      var initial = 0;
-      if (exp === 0) {
-        initial = 1;
-      }
-      fn(TA, value, exp, initial);
-    });
-  });
-}
-
-//dateConstants.js
-// Copyright (C) 2009 the Sputnik authors.  All rights reserved.
+//isConstructor.js
+// Copyright (C) 2017 André Bargull. All rights reserved.
 // This code is governed by the BSD license found in the LICENSE file.
+
 /*---
 description: |
-    Collection of date-centric values
-defines:
-  - date_1899_end
-  - date_1900_start
-  - date_1969_end
-  - date_1970_start
-  - date_1999_end
-  - date_2000_start
-  - date_2099_end
-  - date_2100_start
-  - start_of_time
-  - end_of_time
+    Test if a given function is a constructor function.
+defines: [isConstructor]
 ---*/
 
-var date_1899_end = -2208988800001;
-var date_1900_start = -2208988800000;
-var date_1969_end = -1;
-var date_1970_start = 0;
-var date_1999_end = 946684799999;
-var date_2000_start = 946684800000;
-var date_2099_end = 4102444799999;
-var date_2100_start = 4102444800000;
-
-var start_of_time = -8.64e15;
-var end_of_time = 8.64e15;
-
-//tcoHelper.js
-// Copyright (C) 2016 the V8 project authors. All rights reserved.
-// This code is governed by the BSD license found in the LICENSE file.
-/*---
-description: |
-    This defines the number of consecutive recursive function calls that must be
-    made in order to prove that stack frames are properly destroyed according to
-    ES2015 tail call optimization semantics.
-defines: [$MAX_ITERATIONS]
----*/
-
-
-
-
-var $MAX_ITERATIONS = 100000;
+function isConstructor(f) {
+    try {
+        Reflect.construct(function(){}, [], f);
+    } catch (e) {
+        return false;
+    }
+    return true;
+}
 
 //testIntl.js
 // Copyright (C) 2011 2012 Norbert Lindenberg. All rights reserved.
@@ -7231,127 +5084,2274 @@ function isCanonicalizedStructurallyValidTimeZoneName(timeZone) {
   return zoneNamePattern.test(timeZone);
 }
 
-//testAtomics.js
-// Copyright (C) 2017 Mozilla Corporation. All rights reserved.
+//compareIterator.js
+// Copyright (C) 2018 Peter Wong.  All rights reserved.
+// This code is governed by the BSD license found in the LICENSE file.
+/*---
+description: Compare the values of an iterator with an array of expected values
+defines: [assert.compareIterator]
+---*/
+
+// Example:
+//
+//    function* numbers() {
+//      yield 1;
+//      yield 2;
+//      yield 3;
+//    }
+//
+//    compareIterator(numbers(), [
+//      v => assert.sameValue(v, 1),
+//      v => assert.sameValue(v, 2),
+//      v => assert.sameValue(v, 3),
+//    ]);
+//
+assert.compareIterator = function(iter, validators, message) {
+  message = message || '';
+
+  var i, result;
+  for (i = 0; i < validators.length; i++) {
+    result = iter.next();
+    assert(!result.done, 'Expected ' + i + ' values(s). Instead iterator only produced ' + (i - 1) + ' value(s). ' + message);
+    validators[i](result.value);
+  }
+
+  result = iter.next();
+  assert(result.done, 'Expected only ' + i + ' values(s). Instead iterator produced more. ' + message);
+  assert.sameValue(result.value, undefined, 'Expected value of `undefined` when iterator completes. ' + message);
+}
+
+//promiseHelper.js
+// Copyright (C) 2017 Ecma International.  All rights reserved.
 // This code is governed by the BSD license found in the LICENSE file.
 /*---
 description: |
-    Collection of functions used to assert the correctness of SharedArrayBuffer objects.
-defines:
-  - testWithAtomicsOutOfBoundsIndices
-  - testWithAtomicsInBoundsIndices
-  - testWithAtomicsNonViewValues
+    Check that an array contains a numeric sequence starting at 1
+    and incrementing by 1 for each entry in the array. Used by
+    Promise tests to assert the order of execution in deep Promise
+    resolution pipelines.
+defines: [checkSequence, checkSettledPromises]
 ---*/
 
-
-/**
- * Calls the provided function for a each bad index that should throw a
- * RangeError when passed to an Atomics method on a SAB-backed view where
- * index 125 is out of range.
- *
- * @param f - the function to call for each bad index.
- */
-function testWithAtomicsOutOfBoundsIndices(f) {
-  var bad_indices = [
-    function(view) { return -1; },
-    function(view) { return view.length; },
-    function(view) { return view.length * 2; },
-    function(view) { return Number.POSITIVE_INFINITY; },
-    function(view) { return Number.NEGATIVE_INFINITY; },
-    function(view) { return { valueOf: function() { return 125; } }; },
-    function(view) { return { toString: function() { return '125'; }, valueOf: false }; }, // non-callable valueOf triggers invocation of toString
-  ];
-
-  for (var i = 0; i < bad_indices.length; ++i) {
-    var IdxGen = bad_indices[i];
-    try {
-      f(IdxGen);
-    } catch (e) {
-      e.message += ' (Testing with index gen ' + IdxGen + '.)';
-      throw e;
+function checkSequence(arr, message) {
+  arr.forEach(function(e, i) {
+    if (e !== (i+1)) {
+      throw new Test262Error((message ? message : "Steps in unexpected sequence:") +
+             " '" + arr.join(',') + "'");
     }
-  }
+  });
+
+  return true;
 }
 
-/**
- * Calls the provided function for each good index that should not throw when
- * passed to an Atomics method on a SAB-backed view.
- *
- * The view must have length greater than zero.
- *
- * @param f - the function to call for each good index.
- */
-function testWithAtomicsInBoundsIndices(f) {
-  // Most of these are eventually coerced to +0 by ToIndex.
-  var good_indices = [
-    function(view) { return 0/-1; },
-    function(view) { return '-0'; },
-    function(view) { return undefined; },
-    function(view) { return NaN; },
-    function(view) { return 0.5; },
-    function(view) { return '0.5'; },
-    function(view) { return -0.9; },
-    function(view) { return { password: 'qumquat' }; },
-    function(view) { return view.length - 1; },
-    function(view) { return { valueOf: function() { return 0; } }; },
-    function(view) { return { toString: function() { return '0'; }, valueOf: false }; }, // non-callable valueOf triggers invocation of toString
-  ];
+function checkSettledPromises(settleds, expected, message) {
+  const prefix = message ? `${message}: ` : '';
 
-  for (var i = 0; i < good_indices.length; ++i) {
-    var IdxGen = good_indices[i];
-    try {
-      f(IdxGen);
-    } catch (e) {
-      e.message += ' (Testing with index gen ' + IdxGen + '.)';
-      throw e;
+  assert.sameValue(Array.isArray(settleds), true, `${prefix}Settled values is an array`);
+
+  assert.sameValue(
+    settleds.length,
+    expected.length,
+    `${prefix}The settled values has a different length than expected`
+  );
+
+  settleds.forEach((settled, i) => {
+    assert.sameValue(
+      Object.prototype.hasOwnProperty.call(settled, 'status'),
+      true,
+      `${prefix}The settled value has a property status`
+    );
+
+    assert.sameValue(settled.status, expected[i].status, `${prefix}status for item ${i}`);
+
+    if (settled.status === 'fulfilled') {
+      assert.sameValue(
+        Object.prototype.hasOwnProperty.call(settled, 'value'),
+        true,
+        `${prefix}The fulfilled promise has a property named value`
+      );
+
+      assert.sameValue(
+        Object.prototype.hasOwnProperty.call(settled, 'reason'),
+        false,
+        `${prefix}The fulfilled promise has no property named reason`
+      );
+
+      assert.sameValue(settled.value, expected[i].value, `${prefix}value for item ${i}`);
+    } else {
+      assert.sameValue(settled.status, 'rejected', `${prefix}Valid statuses are only fulfilled or rejected`);
+
+      assert.sameValue(
+        Object.prototype.hasOwnProperty.call(settled, 'value'),
+        false,
+        `${prefix}The fulfilled promise has no property named value`
+      );
+
+      assert.sameValue(
+        Object.prototype.hasOwnProperty.call(settled, 'reason'),
+        true,
+        `${prefix}The fulfilled promise has a property named reason`
+      );
+
+      assert.sameValue(settled.reason, expected[i].reason, `${prefix}Reason value for item ${i}`);
     }
-  }
+  });
 }
 
-/**
- * Calls the provided function for each value that should throw a TypeError
- * when passed to an Atomics method as a view.
- *
- * @param f - the function to call for each non-view value.
- */
+//wellKnownIntrinsicObjects.js
+// Copyright (C) 2018 the V8 project authors. All rights reserved.
+// This code is governed by the BSD license found in the LICENSE file.
+/*---
+description: |
+    An Array of all representable Well-Known Intrinsic Objects
+defines: [WellKnownIntrinsicObjects]
+---*/
 
-function testWithAtomicsNonViewValues(f) {
-  var values = [
-    null,
-    undefined,
-    true,
-    false,
-    new Boolean(true),
-    10,
-    3.14,
-    new Number(4),
-    'Hi there',
-    new Date,
-    /a*utomaton/g,
-    { password: 'qumquat' },
-    new DataView(new ArrayBuffer(10)),
-    new ArrayBuffer(128),
-    new SharedArrayBuffer(128),
-    new Error('Ouch'),
-    [1,1,2,3,5,8],
-    function(x) { return -x; },
-    Symbol('halleluja'),
-    // TODO: Proxy?
-    Object,
-    Int32Array,
-    Date,
-    Math,
-    Atomics
-  ];
+const WellKnownIntrinsicObjects = [
+  {
+    name: '%AggregateError%',
+    source: 'AggregateError',
+  },
+  {
+    name: '%Array%',
+    source: 'Array',
+  },
+  {
+    name: '%ArrayBuffer%',
+    source: 'ArrayBuffer',
+  },
+  {
+    name: '%ArrayIteratorPrototype%',
+    source: 'Object.getPrototypeOf([][Symbol.iterator]())',
+  },
+  {
+    name: '%AsyncFromSyncIteratorPrototype%',
+    source: 'undefined',
+  },
+  {
+    name: '%AsyncFunction%',
+    source: '(async function() {}).constructor',
+  },
+  {
+    name: '%AsyncGeneratorFunction%',
+    source: 'Object.getPrototypeOf(async function * () {})',
+  },
+  {
+    name: '%AsyncIteratorPrototype%',
+    source: '((async function * () {})())[Symbol.asyncIterator]()',
+  },
+  {
+    name: '%Atomics%',
+    source: 'Atomics',
+  },
+  {
+    name: '%BigInt%',
+    source: 'BigInt',
+  },
+  {
+    name: '%BigInt64Array%',
+    source: 'BigInt64Array',
+  },
+  {
+    name: '%BigUint64Array%',
+    source: 'BigUint64Array',
+  },
+  {
+    name: '%Boolean%',
+    source: 'Boolean',
+  },
+  {
+    name: '%DataView%',
+    source: 'DataView',
+  },
+  {
+    name: '%Date%',
+    source: 'Date',
+  },
+  {
+    name: '%decodeURI%',
+    source: 'decodeURI',
+  },
+  {
+    name: '%decodeURIComponent%',
+    source: 'decodeURIComponent',
+  },
+  {
+    name: '%encodeURI%',
+    source: 'encodeURI',
+  },
+  {
+    name: '%encodeURIComponent%',
+    source: 'encodeURIComponent',
+  },
+  {
+    name: '%Error%',
+    source: 'Error',
+  },
+  {
+    name: '%eval%',
+    source: 'eval',
+  },
+  {
+    name: '%EvalError%',
+    source: 'EvalError',
+  },
+  {
+    name: '%FinalizationRegistry%',
+    source: 'FinalizationRegistry',
+  },
+  {
+    name: '%Float32Array%',
+    source: 'Float32Array',
+  },
+  {
+    name: '%Float64Array%',
+    source: 'Float64Array',
+  },
+  {
+    name: '%ForInIteratorPrototype%',
+    source: '',
+  },
+  {
+    name: '%Function%',
+    source: 'Function',
+  },
+  {
+    name: '%GeneratorFunction%',
+    source: 'Object.getPrototypeOf(function * () {})',
+  },
+  {
+    name: '%Int8Array%',
+    source: 'Int8Array',
+  },
+  {
+    name: '%Int16Array%',
+    source: 'Int16Array',
+  },
+  {
+    name: '%Int32Array%',
+    source: 'Int32Array',
+  },
+  {
+    name: '%isFinite%',
+    source: 'isFinite',
+  },
+  {
+    name: '%isNaN%',
+    source: 'isNaN',
+  },
+  {
+    name: '%IteratorPrototype%',
+    source: 'Object.getPrototypeOf(Object.getPrototypeOf([][Symbol.iterator]()))',
+  },
+  {
+    name: '%JSON%',
+    source: 'JSON',
+  },
+  {
+    name: '%Map%',
+    source: 'Map',
+  },
+  {
+    name: '%MapIteratorPrototype%',
+    source: 'Object.getPrototypeOf(new Map()[Symbol.iterator]())',
+  },
+  {
+    name: '%Math%',
+    source: 'Math',
+  },
+  {
+    name: '%Number%',
+    source: 'Number',
+  },
+  {
+    name: '%Object%',
+    source: 'Object',
+  },
+  {
+    name: '%parseFloat%',
+    source: 'parseFloat',
+  },
+  {
+    name: '%parseInt%',
+    source: 'parseInt',
+  },
+  {
+    name: '%Promise%',
+    source: 'Promise',
+  },
+  {
+    name: '%Proxy%',
+    source: 'Proxy',
+  },
+  {
+    name: '%RangeError%',
+    source: 'RangeError',
+  },
+  {
+    name: '%ReferenceError%',
+    source: 'ReferenceError',
+  },
+  {
+    name: '%Reflect%',
+    source: 'Reflect',
+  },
+  {
+    name: '%RegExp%',
+    source: 'RegExp',
+  },
+  {
+    name: '%RegExpStringIteratorPrototype%',
+    source: 'RegExp.prototype[Symbol.matchAll]("")',
+  },
+  {
+    name: '%Set%',
+    source: 'Set',
+  },
+  {
+    name: '%SetIteratorPrototype%',
+    source: 'Object.getPrototypeOf(new Set()[Symbol.iterator]())',
+  },
+  {
+    name: '%SharedArrayBuffer%',
+    source: 'SharedArrayBuffer',
+  },
+  {
+    name: '%String%',
+    source: 'String',
+  },
+  {
+    name: '%StringIteratorPrototype%',
+    source: 'Object.getPrototypeOf(new String()[Symbol.iterator]())',
+  },
+  {
+    name: '%Symbol%',
+    source: 'Symbol',
+  },
+  {
+    name: '%SyntaxError%',
+    source: 'SyntaxError',
+  },
+  {
+    name: '%ThrowTypeError%',
+    source: '(function() { "use strict"; return Object.getOwnPropertyDescriptor(arguments, "callee").get })()',
+  },
+  {
+    name: '%TypedArray%',
+    source: 'Object.getPrototypeOf(Uint8Array)',
+  },
+  {
+    name: '%TypeError%',
+    source: 'TypeError',
+  },
+  {
+    name: '%Uint8Array%',
+    source: 'Uint8Array',
+  },
+  {
+    name: '%Uint8ClampedArray%',
+    source: 'Uint8ClampedArray',
+  },
+  {
+    name: '%Uint16Array%',
+    source: 'Uint16Array',
+  },
+  {
+    name: '%Uint32Array%',
+    source: 'Uint32Array',
+  },
+  {
+    name: '%URIError%',
+    source: 'URIError',
+  },
+  {
+    name: '%WeakMap%',
+    source: 'WeakMap',
+  },
+  {
+    name: '%WeakRef%',
+    source: 'WeakRef',
+  },
+  {
+    name: '%WeakSet%',
+    source: 'WeakSet',
+  },
+];
 
-  for (var i = 0; i < values.length; ++i) {
-    var nonView = values[i];
-    try {
-      f(nonView);
-    } catch (e) {
-      e.message += ' (Testing with non-view value ' + nonView + '.)';
-      throw e;
-    }
+WellKnownIntrinsicObjects.forEach((wkio) => {
+  var actual;
+
+  try {
+    actual = new Function("return " + wkio.source)();
+  } catch (exception) {
+    // Nothing to do here.
   }
+
+  wkio.value = actual;
+});
+
+//async-gc.js
+// Copyright (C) 2019  Ecma International.  All rights reserved.
+// This code is governed by the BSD license found in the LICENSE file.
+/*---
+description: >
+    Collection of functions used to capture references cleanup from garbage collectors
+features: [FinalizationRegistry.prototype.cleanupSome, FinalizationRegistry, Symbol, async-functions]
+flags: [non-deterministic]
+defines: [asyncGC, asyncGCDeref, resolveAsyncGC]
+---*/
+
+function asyncGC(...targets) {
+  var finalizationRegistry = new FinalizationRegistry(() => {});
+  var length = targets.length;
+
+  for (let target of targets) {
+    finalizationRegistry.register(target, 'target');
+    target = null;
+  }
+
+  targets = null;
+
+  return Promise.resolve('tick').then(() => asyncGCDeref()).then(() => {
+    var names = [];
+
+    // consume iterator to capture names
+    finalizationRegistry.cleanupSome(name => { names.push(name); });
+
+    if (!names || names.length != length) {
+      throw asyncGC.notCollected;
+    }
+  });
 }
 
+asyncGC.notCollected = Symbol('Object was not collected');
+
+async function asyncGCDeref() {
+  var trigger;
+
+  // TODO: Remove this when $262.clearKeptObject becomes documented and required
+  if ($262.clearKeptObjects) {
+    trigger = $262.clearKeptObjects();
+  }
+
+  await $262.gc();
+
+  return Promise.resolve(trigger);
+}
+
+function resolveAsyncGC(err) {
+  if (err === asyncGC.notCollected) {
+    // Do not fail as GC can't provide necessary resources.
+    $DONE();
+  }
+
+  $DONE(err);
+}
+
+//temporalHelpers.js
+// Copyright (C) 2021 Igalia, S.L. All rights reserved.
+// This code is governed by the BSD license found in the LICENSE file.
+/*---
+description: |
+    This defines helper objects and functions for testing Temporal.
+defines: [TemporalHelpers]
+features: [Symbol.species, Symbol.iterator, Temporal]
+---*/
+
+var TemporalHelpers = {
+  /*
+   * assertDuration(duration, years, ...,  nanoseconds[, description]):
+   *
+   * Shorthand for asserting that each field of a Temporal.Duration is equal to
+   * an expected value.
+   */
+  assertDuration(duration, years, months, weeks, days, hours, minutes, seconds, milliseconds, microseconds, nanoseconds, description = "") {
+    assert(duration instanceof Temporal.Duration, `${description} instanceof`);
+    assert.sameValue(duration.years, years, `${description} years result`);
+    assert.sameValue(duration.months, months, `${description} months result`);
+    assert.sameValue(duration.weeks, weeks, `${description} weeks result`);
+    assert.sameValue(duration.days, days, `${description} days result`);
+    assert.sameValue(duration.hours, hours, `${description} hours result`);
+    assert.sameValue(duration.minutes, minutes, `${description} minutes result`);
+    assert.sameValue(duration.seconds, seconds, `${description} seconds result`);
+    assert.sameValue(duration.milliseconds, milliseconds, `${description} milliseconds result`);
+    assert.sameValue(duration.microseconds, microseconds, `${description} microseconds result`);
+    assert.sameValue(duration.nanoseconds, nanoseconds, `${description} nanoseconds result`);
+  },
+
+  /*
+   * assertDurationsEqual(actual, expected[, description]):
+   *
+   * Shorthand for asserting that each field of a Temporal.Duration is equal to
+   * the corresponding field in another Temporal.Duration.
+   */
+  assertDurationsEqual(actual, expected, description = "") {
+    assert(expected instanceof Temporal.Duration, `${description} expected value should be a Temporal.Duration`);
+    TemporalHelpers.assertDuration(actual, expected.years, expected.months, expected.weeks, expected.days, expected.hours, expected.minutes, expected.seconds, expected.milliseconds, expected.microseconds, expected.nanoseconds, description);
+  },
+
+  /*
+   * assertInstantsEqual(actual, expected[, description]):
+   *
+   * Shorthand for asserting that two Temporal.Instants are of the correct type
+   * and equal according to their equals() methods.
+   */
+  assertInstantsEqual(actual, expected, description = "") {
+    assert(expected instanceof Temporal.Instant, `${description} expected value should be a Temporal.Instant`);
+    assert(actual instanceof Temporal.Instant, `${description} instanceof`);
+    assert(actual.equals(expected), `${description} equals method`);
+  },
+
+  /*
+   * assertPlainDate(date, year, ..., nanosecond[, description[, era, eraYear]]):
+   *
+   * Shorthand for asserting that each field of a Temporal.PlainDate is equal to
+   * an expected value. (Except the `calendar` property, since callers may want
+   * to assert either object equality with an object they put in there, or the
+   * result of date.calendar.toString().)
+   */
+  assertPlainDate(date, year, month, monthCode, day, description = "", era = undefined, eraYear = undefined) {
+    assert(date instanceof Temporal.PlainDate, `${description} instanceof`);
+    assert.sameValue(date.era, era, `${description} era result`);
+    assert.sameValue(date.eraYear, eraYear, `${description} eraYear result`);
+    assert.sameValue(date.year, year, `${description} year result`);
+    assert.sameValue(date.month, month, `${description} month result`);
+    assert.sameValue(date.monthCode, monthCode, `${description} monthCode result`);
+    assert.sameValue(date.day, day, `${description} day result`);
+  },
+
+  /*
+   * assertPlainDateTime(datetime, year, ..., nanosecond[, description[, era, eraYear]]):
+   *
+   * Shorthand for asserting that each field of a Temporal.PlainDateTime is
+   * equal to an expected value. (Except the `calendar` property, since callers
+   * may want to assert either object equality with an object they put in there,
+   * or the result of datetime.calendar.toString().)
+   */
+  assertPlainDateTime(datetime, year, month, monthCode, day, hour, minute, second, millisecond, microsecond, nanosecond, description = "", era = undefined, eraYear = undefined) {
+    assert(datetime instanceof Temporal.PlainDateTime, `${description} instanceof`);
+    assert.sameValue(datetime.era, era, `${description} era result`);
+    assert.sameValue(datetime.eraYear, eraYear, `${description} eraYear result`);
+    assert.sameValue(datetime.year, year, `${description} year result`);
+    assert.sameValue(datetime.month, month, `${description} month result`);
+    assert.sameValue(datetime.monthCode, monthCode, `${description} monthCode result`);
+    assert.sameValue(datetime.day, day, `${description} day result`);
+    assert.sameValue(datetime.hour, hour, `${description} hour result`);
+    assert.sameValue(datetime.minute, minute, `${description} minute result`);
+    assert.sameValue(datetime.second, second, `${description} second result`);
+    assert.sameValue(datetime.millisecond, millisecond, `${description} millisecond result`);
+    assert.sameValue(datetime.microsecond, microsecond, `${description} microsecond result`);
+    assert.sameValue(datetime.nanosecond, nanosecond, `${description} nanosecond result`);
+  },
+
+  /*
+   * assertPlainDateTimesEqual(actual, expected[, description]):
+   *
+   * Shorthand for asserting that two Temporal.PlainDateTimes are of the correct
+   * type, equal according to their equals() methods, and additionally that
+   * their calendars are the same value.
+   */
+  assertPlainDateTimesEqual(actual, expected, description = "") {
+    assert(expected instanceof Temporal.PlainDateTime, `${description} expected value should be a Temporal.PlainDateTime`);
+    assert(actual instanceof Temporal.PlainDateTime, `${description} instanceof`);
+    assert(actual.equals(expected), `${description} equals method`);
+    assert.sameValue(actual.calendar, expected.calendar, `${description} calendar same value`);
+  },
+
+  /*
+   * assertPlainMonthDay(monthDay, monthCode, day[, description [, referenceISOYear]]):
+   *
+   * Shorthand for asserting that each field of a Temporal.PlainMonthDay is
+   * equal to an expected value. (Except the `calendar` property, since callers
+   * may want to assert either object equality with an object they put in there,
+   * or the result of monthDay.calendar.toString().)
+   */
+  assertPlainMonthDay(monthDay, monthCode, day, description = "", referenceISOYear = 1972) {
+    assert(monthDay instanceof Temporal.PlainMonthDay, `${description} instanceof`);
+    assert.sameValue(monthDay.monthCode, monthCode, `${description} monthCode result`);
+    assert.sameValue(monthDay.day, day, `${description} day result`);
+    assert.sameValue(monthDay.getISOFields().isoYear, referenceISOYear, `${description} referenceISOYear result`);
+  },
+
+  /*
+   * assertPlainTime(time, hour, ..., nanosecond[, description]):
+   *
+   * Shorthand for asserting that each field of a Temporal.PlainTime is equal to
+   * an expected value.
+   */
+  assertPlainTime(time, hour, minute, second, millisecond, microsecond, nanosecond, description = "") {
+    assert(time instanceof Temporal.PlainTime, `${description} instanceof`);
+    assert.sameValue(time.hour, hour, `${description} hour result`);
+    assert.sameValue(time.minute, minute, `${description} minute result`);
+    assert.sameValue(time.second, second, `${description} second result`);
+    assert.sameValue(time.millisecond, millisecond, `${description} millisecond result`);
+    assert.sameValue(time.microsecond, microsecond, `${description} microsecond result`);
+    assert.sameValue(time.nanosecond, nanosecond, `${description} nanosecond result`);
+  },
+
+  /*
+   * assertPlainTimesEqual(actual, expected[, description]):
+   *
+   * Shorthand for asserting that two Temporal.PlainTimes are of the correct
+   * type and equal according to their equals() methods.
+   */
+  assertPlainTimesEqual(actual, expected, description = "") {
+    assert(expected instanceof Temporal.PlainTime, `${description} expected value should be a Temporal.PlainTime`);
+    assert(actual instanceof Temporal.PlainTime, `${description} instanceof`);
+    assert(actual.equals(expected), `${description} equals method`);
+  },
+
+  /*
+   * assertPlainYearMonth(yearMonth, year, month, monthCode[, description[, era, eraYear]]):
+   *
+   * Shorthand for asserting that each field of a Temporal.PlainYearMonth is
+   * equal to an expected value. (Except the `calendar` property, since callers
+   * may want to assert either object equality with an object they put in there,
+   * or the result of yearMonth.calendar.toString().)
+   */
+  assertPlainYearMonth(yearMonth, year, month, monthCode, description = "", era = undefined, eraYear = undefined) {
+    assert(yearMonth instanceof Temporal.PlainYearMonth, `${description} instanceof`);
+    assert.sameValue(yearMonth.era, era, `${description} era result`);
+    assert.sameValue(yearMonth.eraYear, eraYear, `${description} eraYear result`);
+    assert.sameValue(yearMonth.year, year, `${description} year result`);
+    assert.sameValue(yearMonth.month, month, `${description} month result`);
+    assert.sameValue(yearMonth.monthCode, monthCode, `${description} monthCode result`);
+  },
+
+  /*
+   * assertZonedDateTimesEqual(actual, expected[, description]):
+   *
+   * Shorthand for asserting that two Temporal.ZonedDateTimes are of the correct
+   * type, equal according to their equals() methods, and additionally that
+   * their time zones and calendars are the same value.
+   */
+  assertZonedDateTimesEqual(actual, expected, description = "") {
+    assert(expected instanceof Temporal.ZonedDateTime, `${description} expected value should be a Temporal.ZonedDateTime`);
+    assert(actual instanceof Temporal.ZonedDateTime, `${description} instanceof`);
+    assert(actual.equals(expected), `${description} equals method`);
+    assert.sameValue(actual.timeZone, expected.timeZone, `${description} time zone same value`);
+    assert.sameValue(actual.calendar, expected.calendar, `${description} calendar same value`);
+  },
+
+  /*
+   * assertUnreachable(description):
+   *
+   * Helper for asserting that code is not executed. This is useful for
+   * assertions that methods of user calendars and time zones are not called.
+   */
+  assertUnreachable(description) {
+    let message = "This code should not be executed";
+    if (description) {
+      message = `${message}: ${description}`;
+    }
+    throw new Test262Error(message);
+  },
+
+  /*
+   * checkCalendarDateUntilLargestUnitSingular(func, expectedLargestUnitCalls):
+   *
+   * When an options object with a largestUnit property is synthesized inside
+   * Temporal and passed to user code such as calendar.dateUntil(), the value of
+   * the largestUnit property should be in the singular form, even if the input
+   * was given in the plural form.
+   * (This doesn't apply when the options object is passed through verbatim.)
+   *
+   * func(calendar, largestUnit, index) is the operation under test. It's called
+   * with an instance of a calendar that keeps track of which largestUnit is
+   * passed to dateUntil(), each key of expectedLargestUnitCalls in turn, and
+   * the key's numerical index in case the function needs to generate test data
+   * based on the index. At the end, the actual values passed to dateUntil() are
+   * compared with the array values of expectedLargestUnitCalls.
+   */
+  checkCalendarDateUntilLargestUnitSingular(func, expectedLargestUnitCalls) {
+    const actual = [];
+
+    class DateUntilOptionsCalendar extends Temporal.Calendar {
+      constructor() {
+        super("iso8601");
+      }
+
+      dateUntil(earlier, later, options) {
+        actual.push(options.largestUnit);
+        return super.dateUntil(earlier, later, options);
+      }
+
+      toString() {
+        return "date-until-options";
+      }
+    }
+
+    const calendar = new DateUntilOptionsCalendar();
+    Object.entries(expectedLargestUnitCalls).forEach(([largestUnit, expected], index) => {
+      func(calendar, largestUnit, index);
+      assert.compareArray(actual, expected, `largestUnit passed to calendar.dateUntil() for largestUnit ${largestUnit}`);
+      actual.splice(0, actual.length); // empty it for the next check
+    });
+  },
+
+  /*
+   * checkFractionalSecondDigitsOptionWrongType(temporalObject):
+   *
+   * Checks the string-or-number type handling of the fractionalSecondDigits
+   * option to the various types' toString() methods. temporalObject is an
+   * instance of the Temporal type under test.
+   */
+  checkFractionalSecondDigitsOptionWrongType(temporalObject) {
+    // null is not a number, and converts to the string "null", which is an invalid string value
+    assert.throws(RangeError, () => temporalObject.toString({ fractionalSecondDigits: null }), "null");
+    // Booleans are not numbers, and convert to the strings "true" or "false", which are invalid
+    assert.throws(RangeError, () => temporalObject.toString({ fractionalSecondDigits: true }), "true");
+    assert.throws(RangeError, () => temporalObject.toString({ fractionalSecondDigits: false }), "false");
+    // Symbols are not numbers and cannot convert to strings
+    assert.throws(TypeError, () => temporalObject.toString({ fractionalSecondDigits: Symbol() }), "symbol");
+    // BigInts are not numbers and convert to strings which are invalid
+    assert.throws(RangeError, () => temporalObject.toString({ fractionalSecondDigits: 2n }), "bigint");
+
+    // Objects are not numbers and prefer their toString() methods when converting to a string
+    assert.throws(RangeError, () => temporalObject.toString({ fractionalSecondDigits: {} }), "plain object");
+
+    const toStringExpected = temporalObject.toString({ fractionalSecondDigits: 'auto' });
+    const expected = [
+      "get fractionalSecondDigits.toString",
+      "call fractionalSecondDigits.toString",
+    ];
+    const actual = [];
+    const observer = TemporalHelpers.toPrimitiveObserver(actual, "auto", "fractionalSecondDigits");
+    const result = temporalObject.toString({ fractionalSecondDigits: observer });
+    assert.sameValue(result, toStringExpected, "object with toString");
+    assert.compareArray(actual, expected, "order of operations");
+  },
+
+  /*
+   * checkPlainDateTimeConversionFastPath(func):
+   *
+   * ToTemporalDate and ToTemporalTime should both, if given a
+   * Temporal.PlainDateTime instance, convert to the desired type by reading the
+   * PlainDateTime's internal slots, rather than calling any getters.
+   *
+   * func(datetime, calendar) is the actual operation to test, that must
+   * internally call the abstract operation ToTemporalDate or ToTemporalTime.
+   * It is passed a Temporal.PlainDateTime instance, as well as the instance's
+   * calendar object (so that it doesn't have to call the calendar getter itself
+   * if it wants to make any assertions about the calendar.)
+   */
+  checkPlainDateTimeConversionFastPath(func) {
+    const actual = [];
+    const expected = [];
+
+    const calendar = new Temporal.Calendar("iso8601");
+    const datetime = new Temporal.PlainDateTime(2000, 5, 2, 12, 34, 56, 987, 654, 321, calendar);
+    const prototypeDescrs = Object.getOwnPropertyDescriptors(Temporal.PlainDateTime.prototype);
+    ["year", "month", "monthCode", "day", "hour", "minute", "second", "millisecond", "microsecond", "nanosecond"].forEach((property) => {
+      Object.defineProperty(datetime, property, {
+        get() {
+          actual.push(`get ${property}`);
+          const value = prototypeDescrs[property].get.call(this);
+          return {
+            toString() {
+              actual.push(`toString ${property}`);
+              return value.toString();
+            },
+            valueOf() {
+              actual.push(`valueOf ${property}`);
+              return value;
+            },
+          };
+        },
+      });
+    });
+    Object.defineProperty(datetime, "calendar", {
+      get() {
+        actual.push("get calendar");
+        return calendar;
+      },
+    });
+
+    func(datetime, calendar);
+    assert.compareArray(actual, expected, "property getters not called");
+  },
+
+  /*
+   * Check that an options bag that accepts units written in the singular form,
+   * also accepts the same units written in the plural form.
+   * func(unit) should call the method with the appropriate options bag
+   * containing unit as a value. This will be called twice for each element of
+   * validSingularUnits, once with singular and once with plural, and the
+   * results of each pair should be the same (whether a Temporal object or a
+   * primitive value.)
+   */
+  checkPluralUnitsAccepted(func, validSingularUnits) {
+    const plurals = {
+      year: 'years',
+      month: 'months',
+      week: 'weeks',
+      day: 'days',
+      hour: 'hours',
+      minute: 'minutes',
+      second: 'seconds',
+      millisecond: 'milliseconds',
+      microsecond: 'microseconds',
+      nanosecond: 'nanoseconds',
+    };
+
+    validSingularUnits.forEach((unit) => {
+      const singularValue = func(unit);
+      const pluralValue = func(plurals[unit]);
+      const desc = `Plural ${plurals[unit]} produces the same result as singular ${unit}`;
+      if (singularValue instanceof Temporal.Duration) {
+        TemporalHelpers.assertDurationsEqual(pluralValue, singularValue, desc);
+      } else if (singularValue instanceof Temporal.Instant) {
+        TemporalHelpers.assertInstantsEqual(pluralValue, singularValue, desc);
+      } else if (singularValue instanceof Temporal.PlainDateTime) {
+        TemporalHelpers.assertPlainDateTimesEqual(pluralValue, singularValue, desc);
+      } else if (singularValue instanceof Temporal.PlainTime) {
+        TemporalHelpers.assertPlainTimesEqual(pluralValue, singularValue, desc);
+      } else if (singularValue instanceof Temporal.ZonedDateTime) {
+        TemporalHelpers.assertZonedDateTimesEqual(pluralValue, singularValue, desc);
+      } else {
+        assert.sameValue(pluralValue, singularValue);
+      }
+    });
+  },
+
+  /*
+   * checkRoundingIncrementOptionWrongType(checkFunc, assertTrueResultFunc, assertObjectResultFunc):
+   *
+   * Checks the type handling of the roundingIncrement option.
+   * checkFunc(roundingIncrement) is a function which takes the value of
+   * roundingIncrement to test, and calls the method under test with it,
+   * returning the result. assertTrueResultFunc(result, description) should
+   * assert that result is the expected result with roundingIncrement: true, and
+   * assertObjectResultFunc(result, description) should assert that result is
+   * the expected result with roundingIncrement being an object with a valueOf()
+   * method.
+   */
+  checkRoundingIncrementOptionWrongType(checkFunc, assertTrueResultFunc, assertObjectResultFunc) {
+    // null converts to 0, which is out of range
+    assert.throws(RangeError, () => checkFunc(null), "null");
+    // Booleans convert to either 0 or 1, and 1 is allowed
+    const trueResult = checkFunc(true);
+    assertTrueResultFunc(trueResult, "true");
+    assert.throws(RangeError, () => checkFunc(false), "false");
+    // Symbols and BigInts cannot convert to numbers
+    assert.throws(TypeError, () => checkFunc(Symbol()), "symbol");
+    assert.throws(TypeError, () => checkFunc(2n), "bigint");
+
+    // Objects prefer their valueOf() methods when converting to a number
+    assert.throws(RangeError, () => checkFunc({}), "plain object");
+
+    const expected = [
+      "get roundingIncrement.valueOf",
+      "call roundingIncrement.valueOf",
+    ];
+    const actual = [];
+    const observer = TemporalHelpers.toPrimitiveObserver(actual, 2, "roundingIncrement");
+    const objectResult = checkFunc(observer);
+    assertObjectResultFunc(objectResult, "object with valueOf");
+    assert.compareArray(actual, expected, "order of operations");
+  },
+
+  /*
+   * checkStringOptionWrongType(propertyName, value, checkFunc, assertFunc):
+   *
+   * Checks the type handling of a string option, of which there are several in
+   * Temporal.
+   * propertyName is the name of the option, and value is the value that
+   * assertFunc should expect it to have.
+   * checkFunc(value) is a function which takes the value of the option to test,
+   * and calls the method under test with it, returning the result.
+   * assertFunc(result, description) should assert that result is the expected
+   * result with the option value being an object with a toString() method
+   * which returns the given value.
+   */
+  checkStringOptionWrongType(propertyName, value, checkFunc, assertFunc) {
+    // null converts to the string "null", which is an invalid string value
+    assert.throws(RangeError, () => checkFunc(null), "null");
+    // Booleans convert to the strings "true" or "false", which are invalid
+    assert.throws(RangeError, () => checkFunc(true), "true");
+    assert.throws(RangeError, () => checkFunc(false), "false");
+    // Symbols cannot convert to strings
+    assert.throws(TypeError, () => checkFunc(Symbol()), "symbol");
+    // Numbers convert to strings which are invalid
+    assert.throws(RangeError, () => checkFunc(2), "number");
+    // BigInts convert to strings which are invalid
+    assert.throws(RangeError, () => checkFunc(2n), "bigint");
+
+    // Objects prefer their toString() methods when converting to a string
+    assert.throws(RangeError, () => checkFunc({}), "plain object");
+
+    const expected = [
+      `get ${propertyName}.toString`,
+      `call ${propertyName}.toString`,
+    ];
+    const actual = [];
+    const observer = TemporalHelpers.toPrimitiveObserver(actual, value, propertyName);
+    const result = checkFunc(observer);
+    assertFunc(result, "object with toString");
+    assert.compareArray(actual, expected, "order of operations");
+  },
+
+  /*
+   * checkSubclassingIgnored(construct, constructArgs, method, methodArgs,
+   *   resultAssertions):
+   *
+   * Methods of Temporal classes that return a new instance of the same class,
+   * must not take the constructor of a subclass into account, nor the @@species
+   * property. This helper runs tests to ensure this.
+   *
+   * construct(...constructArgs) must yield a valid instance of the Temporal
+   * class. instance[method](...methodArgs) is the method call under test, which
+   * must also yield a valid instance of the same Temporal class, not a
+   * subclass. See below for the individual tests that this runs.
+   * resultAssertions() is a function that performs additional assertions on the
+   * instance returned by the method under test.
+   */
+  checkSubclassingIgnored(...args) {
+    this.checkSubclassConstructorNotObject(...args);
+    this.checkSubclassConstructorUndefined(...args);
+    this.checkSubclassConstructorThrows(...args);
+    this.checkSubclassConstructorNotCalled(...args);
+    this.checkSubclassSpeciesInvalidResult(...args);
+    this.checkSubclassSpeciesNotAConstructor(...args);
+    this.checkSubclassSpeciesNull(...args);
+    this.checkSubclassSpeciesUndefined(...args);
+    this.checkSubclassSpeciesThrows(...args);
+  },
+
+  /*
+   * Checks that replacing the 'constructor' property of the instance with
+   * various primitive values does not affect the returned new instance.
+   */
+  checkSubclassConstructorNotObject(construct, constructArgs, method, methodArgs, resultAssertions) {
+    function check(value, description) {
+      const instance = new construct(...constructArgs);
+      instance.constructor = value;
+      const result = instance[method](...methodArgs);
+      assert.sameValue(Object.getPrototypeOf(result), construct.prototype, description);
+      resultAssertions(result);
+    }
+
+    check(null, "null");
+    check(true, "true");
+    check("test", "string");
+    check(Symbol(), "Symbol");
+    check(7, "number");
+    check(7n, "bigint");
+  },
+
+  /*
+   * Checks that replacing the 'constructor' property of the subclass with
+   * undefined does not affect the returned new instance.
+   */
+  checkSubclassConstructorUndefined(construct, constructArgs, method, methodArgs, resultAssertions) {
+    let called = 0;
+
+    class MySubclass extends construct {
+      constructor() {
+        ++called;
+        super(...constructArgs);
+      }
+    }
+
+    const instance = new MySubclass();
+    assert.sameValue(called, 1);
+
+    MySubclass.prototype.constructor = undefined;
+
+    const result = instance[method](...methodArgs);
+    assert.sameValue(called, 1);
+    assert.sameValue(Object.getPrototypeOf(result), construct.prototype);
+    resultAssertions(result);
+  },
+
+  /*
+   * Checks that making the 'constructor' property of the instance throw when
+   * called does not affect the returned new instance.
+   */
+  checkSubclassConstructorThrows(construct, constructArgs, method, methodArgs, resultAssertions) {
+    function CustomError() {}
+    const instance = new construct(...constructArgs);
+    Object.defineProperty(instance, "constructor", {
+      get() {
+        throw new CustomError();
+      }
+    });
+    const result = instance[method](...methodArgs);
+    assert.sameValue(Object.getPrototypeOf(result), construct.prototype);
+    resultAssertions(result);
+  },
+
+  /*
+   * Checks that when subclassing, the subclass constructor is not called by
+   * the method under test.
+   */
+  checkSubclassConstructorNotCalled(construct, constructArgs, method, methodArgs, resultAssertions) {
+    let called = 0;
+
+    class MySubclass extends construct {
+      constructor() {
+        ++called;
+        super(...constructArgs);
+      }
+    }
+
+    const instance = new MySubclass();
+    assert.sameValue(called, 1);
+
+    const result = instance[method](...methodArgs);
+    assert.sameValue(called, 1);
+    assert.sameValue(Object.getPrototypeOf(result), construct.prototype);
+    resultAssertions(result);
+  },
+
+  /*
+   * Check that the constructor's @@species property is ignored when it's a
+   * constructor that returns a non-object value.
+   */
+  checkSubclassSpeciesInvalidResult(construct, constructArgs, method, methodArgs, resultAssertions) {
+    function check(value, description) {
+      const instance = new construct(...constructArgs);
+      instance.constructor = {
+        [Symbol.species]: function() {
+          return value;
+        },
+      };
+      const result = instance[method](...methodArgs);
+      assert.sameValue(Object.getPrototypeOf(result), construct.prototype, description);
+      resultAssertions(result);
+    }
+
+    check(undefined, "undefined");
+    check(null, "null");
+    check(true, "true");
+    check("test", "string");
+    check(Symbol(), "Symbol");
+    check(7, "number");
+    check(7n, "bigint");
+    check({}, "plain object");
+  },
+
+  /*
+   * Check that the constructor's @@species property is ignored when it's not a
+   * constructor.
+   */
+  checkSubclassSpeciesNotAConstructor(construct, constructArgs, method, methodArgs, resultAssertions) {
+    function check(value, description) {
+      const instance = new construct(...constructArgs);
+      instance.constructor = {
+        [Symbol.species]: value,
+      };
+      const result = instance[method](...methodArgs);
+      assert.sameValue(Object.getPrototypeOf(result), construct.prototype, description);
+      resultAssertions(result);
+    }
+
+    check(true, "true");
+    check("test", "string");
+    check(Symbol(), "Symbol");
+    check(7, "number");
+    check(7n, "bigint");
+    check({}, "plain object");
+  },
+
+  /*
+   * Check that the constructor's @@species property is ignored when it's null.
+   */
+  checkSubclassSpeciesNull(construct, constructArgs, method, methodArgs, resultAssertions) {
+    let called = 0;
+
+    class MySubclass extends construct {
+      constructor() {
+        ++called;
+        super(...constructArgs);
+      }
+    }
+
+    const instance = new MySubclass();
+    assert.sameValue(called, 1);
+
+    MySubclass.prototype.constructor = {
+      [Symbol.species]: null,
+    };
+
+    const result = instance[method](...methodArgs);
+    assert.sameValue(called, 1);
+    assert.sameValue(Object.getPrototypeOf(result), construct.prototype);
+    resultAssertions(result);
+  },
+
+  /*
+   * Check that the constructor's @@species property is ignored when it's
+   * undefined.
+   */
+  checkSubclassSpeciesUndefined(construct, constructArgs, method, methodArgs, resultAssertions) {
+    let called = 0;
+
+    class MySubclass extends construct {
+      constructor() {
+        ++called;
+        super(...constructArgs);
+      }
+    }
+
+    const instance = new MySubclass();
+    assert.sameValue(called, 1);
+
+    MySubclass.prototype.constructor = {
+      [Symbol.species]: undefined,
+    };
+
+    const result = instance[method](...methodArgs);
+    assert.sameValue(called, 1);
+    assert.sameValue(Object.getPrototypeOf(result), construct.prototype);
+    resultAssertions(result);
+  },
+
+  /*
+   * Check that the constructor's @@species property is ignored when it throws,
+   * i.e. it is not called at all.
+   */
+  checkSubclassSpeciesThrows(construct, constructArgs, method, methodArgs, resultAssertions) {
+    function CustomError() {}
+
+    const instance = new construct(...constructArgs);
+    instance.constructor = {
+      get [Symbol.species]() {
+        throw new CustomError();
+      },
+    };
+
+    const result = instance[method](...methodArgs);
+    assert.sameValue(Object.getPrototypeOf(result), construct.prototype);
+  },
+
+  /*
+   * checkSubclassingIgnoredStatic(construct, method, methodArgs, resultAssertions):
+   *
+   * Static methods of Temporal classes that return a new instance of the class,
+   * must not use the this-value as a constructor. This helper runs tests to
+   * ensure this.
+   *
+   * construct[method](...methodArgs) is the static method call under test, and
+   * must yield a valid instance of the Temporal class, not a subclass. See
+   * below for the individual tests that this runs.
+   * resultAssertions() is a function that performs additional assertions on the
+   * instance returned by the method under test.
+   */
+  checkSubclassingIgnoredStatic(...args) {
+    this.checkStaticInvalidReceiver(...args);
+    this.checkStaticReceiverNotCalled(...args);
+    this.checkThisValueNotCalled(...args);
+  },
+
+  /*
+   * Check that calling the static method with a receiver that's not callable,
+   * still calls the intrinsic constructor.
+   */
+  checkStaticInvalidReceiver(construct, method, methodArgs, resultAssertions) {
+    function check(value, description) {
+      const result = construct[method].apply(value, methodArgs);
+      assert.sameValue(Object.getPrototypeOf(result), construct.prototype);
+      resultAssertions(result);
+    }
+
+    check(undefined, "undefined");
+    check(null, "null");
+    check(true, "true");
+    check("test", "string");
+    check(Symbol(), "symbol");
+    check(7, "number");
+    check(7n, "bigint");
+    check({}, "Non-callable object");
+  },
+
+  /*
+   * Check that calling the static method with a receiver that returns a value
+   * that's not callable, still calls the intrinsic constructor.
+   */
+  checkStaticReceiverNotCalled(construct, method, methodArgs, resultAssertions) {
+    function check(value, description) {
+      const receiver = function () {
+        return value;
+      };
+      const result = construct[method].apply(receiver, methodArgs);
+      assert.sameValue(Object.getPrototypeOf(result), construct.prototype);
+      resultAssertions(result);
+    }
+
+    check(undefined, "undefined");
+    check(null, "null");
+    check(true, "true");
+    check("test", "string");
+    check(Symbol(), "symbol");
+    check(7, "number");
+    check(7n, "bigint");
+    check({}, "Non-callable object");
+  },
+
+  /*
+   * Check that the receiver isn't called.
+   */
+  checkThisValueNotCalled(construct, method, methodArgs, resultAssertions) {
+    let called = false;
+
+    class MySubclass extends construct {
+      constructor(...args) {
+        called = true;
+        super(...args);
+      }
+    }
+
+    const result = MySubclass[method](...methodArgs);
+    assert.sameValue(called, false);
+    assert.sameValue(Object.getPrototypeOf(result), construct.prototype);
+    resultAssertions(result);
+  },
+
+  /*
+   * Check that any iterable returned from a custom time zone's
+   * getPossibleInstantsFor() method is exhausted.
+   * The custom time zone object is passed in to func().
+   * expected is an array of strings representing the expected calls to the
+   * getPossibleInstantsFor() method. The PlainDateTimes that it is called with,
+   * are compared (using their toString() results) with the array.
+   */
+  checkTimeZonePossibleInstantsIterable(func, expected) {
+    // A custom time zone that returns an iterable instead of an array from its
+    // getPossibleInstantsFor() method, and for testing purposes skips
+    // 00:00-01:00 UTC on January 1, 2030, and repeats 00:00-01:00 UTC+1 on
+    // January 3, 2030. Otherwise identical to the UTC time zone.
+    class TimeZonePossibleInstantsIterable extends Temporal.TimeZone {
+      constructor() {
+        super("UTC");
+        this.getPossibleInstantsForCallCount = 0;
+        this.getPossibleInstantsForCalledWith = [];
+        this.getPossibleInstantsForReturns = [];
+        this.iteratorExhausted = [];
+      }
+
+      toString() {
+        return "Custom/Iterable";
+      }
+
+      getOffsetNanosecondsFor(instant) {
+        if (Temporal.Instant.compare(instant, "2030-01-01T00:00Z") >= 0 &&
+          Temporal.Instant.compare(instant, "2030-01-03T01:00Z") < 0) {
+          return 3600_000_000_000;
+        } else {
+          return 0;
+        }
+      }
+
+      getPossibleInstantsFor(dateTime) {
+        this.getPossibleInstantsForCallCount++;
+        this.getPossibleInstantsForCalledWith.push(dateTime);
+
+        // Fake DST transition
+        let retval = super.getPossibleInstantsFor(dateTime);
+        if (dateTime.toPlainDate().equals("2030-01-01") && dateTime.hour === 0) {
+          retval = [];
+        } else if (dateTime.toPlainDate().equals("2030-01-03") && dateTime.hour === 0) {
+          retval.push(retval[0].subtract({ hours: 1 }));
+        } else if (dateTime.year === 2030 && dateTime.month === 1 && dateTime.day >= 1 && dateTime.day <= 2) {
+          retval[0] = retval[0].subtract({ hours: 1 });
+        }
+
+        this.getPossibleInstantsForReturns.push(retval);
+        this.iteratorExhausted.push(false);
+        return {
+          callIndex: this.getPossibleInstantsForCallCount - 1,
+          timeZone: this,
+          *[Symbol.iterator]() {
+            yield* this.timeZone.getPossibleInstantsForReturns[this.callIndex];
+            this.timeZone.iteratorExhausted[this.callIndex] = true;
+          },
+        };
+      }
+    }
+
+    const timeZone = new TimeZonePossibleInstantsIterable();
+    func(timeZone);
+
+    assert.sameValue(timeZone.getPossibleInstantsForCallCount, expected.length, "getPossibleInstantsFor() method called correct number of times");
+
+    for (let index = 0; index < expected.length; index++) {
+      assert.sameValue(timeZone.getPossibleInstantsForCalledWith[index].toString(), expected[index], "getPossibleInstantsFor() called with expected PlainDateTime");
+      assert(timeZone.iteratorExhausted[index], "iterated through the whole iterable");
+    }
+  },
+
+  /*
+   * Check that any calendar-carrying Temporal object has its [[Calendar]]
+   * internal slot read by ToTemporalCalendar, and does not fetch the calendar
+   * by calling getters.
+   * The custom calendar object is passed in to func() so that it can do its
+   * own additional assertions involving the calendar if necessary. (Sometimes
+   * there is nothing to assert as the calendar isn't stored anywhere that can
+   * be asserted about.)
+   */
+  checkToTemporalCalendarFastPath(func) {
+    class CalendarFastPathCheck extends Temporal.Calendar {
+      constructor() {
+        super("iso8601");
+      }
+
+      toString() {
+        return "fast-path-check";
+      }
+    }
+    const calendar = new CalendarFastPathCheck();
+
+    const plainDate = new Temporal.PlainDate(2000, 5, 2, calendar);
+    const plainDateTime = new Temporal.PlainDateTime(2000, 5, 2, 12, 34, 56, 987, 654, 321, calendar);
+    const plainMonthDay = new Temporal.PlainMonthDay(5, 2, calendar);
+    const plainYearMonth = new Temporal.PlainYearMonth(2000, 5, calendar);
+    const zonedDateTime = new Temporal.ZonedDateTime(1_000_000_000_000_000_000n, "UTC", calendar);
+
+    [plainDate, plainDateTime, plainMonthDay, plainYearMonth, zonedDateTime].forEach((temporalObject) => {
+      const actual = [];
+      const expected = [];
+
+      Object.defineProperty(temporalObject, "calendar", {
+        get() {
+          actual.push("get calendar");
+          return calendar;
+        },
+      });
+
+      func(temporalObject, calendar);
+      assert.compareArray(actual, expected, "calendar getter not called");
+    });
+  },
+
+  checkToTemporalInstantFastPath(func) {
+    const actual = [];
+    const expected = [];
+
+    const datetime = new Temporal.ZonedDateTime(1_000_000_000_987_654_321n, "UTC");
+    Object.defineProperty(datetime, 'toString', {
+      get() {
+        actual.push("get toString");
+        return function (options) {
+          actual.push("call toString");
+          return Temporal.ZonedDateTime.prototype.toString.call(this, options);
+        };
+      },
+    });
+
+    func(datetime);
+    assert.compareArray(actual, expected, "toString not called");
+  },
+
+  checkToTemporalPlainDateTimeFastPath(func) {
+    const actual = [];
+    const expected = [];
+
+    const calendar = new Temporal.Calendar("iso8601");
+    const date = new Temporal.PlainDate(2000, 5, 2, calendar);
+    const prototypeDescrs = Object.getOwnPropertyDescriptors(Temporal.PlainDate.prototype);
+    ["year", "month", "monthCode", "day"].forEach((property) => {
+      Object.defineProperty(date, property, {
+        get() {
+          actual.push(`get ${property}`);
+          const value = prototypeDescrs[property].get.call(this);
+          return TemporalHelpers.toPrimitiveObserver(actual, value, property);
+        },
+      });
+    });
+    ["hour", "minute", "second", "millisecond", "microsecond", "nanosecond"].forEach((property) => {
+      Object.defineProperty(date, property, {
+        get() {
+          actual.push(`get ${property}`);
+          return undefined;
+        },
+      });
+    });
+    Object.defineProperty(date, "calendar", {
+      get() {
+        actual.push("get calendar");
+        return calendar;
+      },
+    });
+
+    func(date, calendar);
+    assert.compareArray(actual, expected, "property getters not called");
+  },
+
+  /*
+   * A custom calendar that asserts its dateAdd() method is called with the
+   * options parameter having the value undefined.
+   */
+  calendarDateAddUndefinedOptions() {
+    class CalendarDateAddUndefinedOptions extends Temporal.Calendar {
+      constructor() {
+        super("iso8601");
+        this.dateAddCallCount = 0;
+      }
+
+      toString() {
+        return "dateadd-undef-options";
+      }
+
+      dateAdd(date, duration, options) {
+        this.dateAddCallCount++;
+        assert.sameValue(options, undefined, "dateAdd shouldn't be called with options");
+        return super.dateAdd(date, duration, options);
+      }
+    }
+    return new CalendarDateAddUndefinedOptions();
+  },
+
+  /*
+   * A custom calendar that asserts its dateAdd() method is called with a
+   * PlainDate instance. Optionally, it also asserts that the PlainDate instance
+   * is the specific object `this.specificPlainDate`, if it is set by the
+   * calling code.
+   */
+  calendarDateAddPlainDateInstance() {
+    class CalendarDateAddPlainDateInstance extends Temporal.Calendar {
+      constructor() {
+        super("iso8601");
+        this.dateAddCallCount = 0;
+        this.specificPlainDate = undefined;
+      }
+
+      toString() {
+        return "dateadd-plain-date-instance";
+      }
+
+      dateAdd(date, duration, options) {
+        this.dateAddCallCount++;
+        assert(date instanceof Temporal.PlainDate, "dateAdd() should be called with a PlainDate instance");
+        if (this.dateAddCallCount === 1 && this.specificPlainDate) {
+          assert.sameValue(date, this.specificPlainDate, `dateAdd() should be called first with the specific PlainDate instance ${this.specificPlainDate}`);
+        }
+        return super.dateAdd(date, duration, options);
+      }
+    }
+    return new CalendarDateAddPlainDateInstance();
+  },
+
+  /*
+   * A custom calendar that returns @returnValue from its dateUntil() method,
+   * recording the call in @calls.
+   */
+  calendarDateUntilObservable(calls, returnValue) {
+    class CalendarDateUntilObservable extends Temporal.Calendar {
+      constructor() {
+        super("iso8601");
+      }
+
+      dateUntil() {
+        calls.push("call dateUntil");
+        return returnValue;
+      }
+    }
+
+    return new CalendarDateUntilObservable();
+  },
+
+  /*
+   * A custom calendar that returns an iterable instead of an array from its
+   * fields() method, otherwise identical to the ISO calendar.
+   */
+  calendarFieldsIterable() {
+    class CalendarFieldsIterable extends Temporal.Calendar {
+      constructor() {
+        super("iso8601");
+        this.fieldsCallCount = 0;
+        this.fieldsCalledWith = [];
+        this.iteratorExhausted = [];
+      }
+
+      toString() {
+        return "fields-iterable";
+      }
+
+      fields(fieldNames) {
+        this.fieldsCallCount++;
+        this.fieldsCalledWith.push(fieldNames.slice());
+        this.iteratorExhausted.push(false);
+        return {
+          callIndex: this.fieldsCallCount - 1,
+          calendar: this,
+          *[Symbol.iterator]() {
+            yield* this.calendar.fieldsCalledWith[this.callIndex];
+            this.calendar.iteratorExhausted[this.callIndex] = true;
+          },
+        };
+      }
+    }
+    return new CalendarFieldsIterable();
+  },
+
+  /*
+   * A custom calendar that modifies the fields object passed in to
+   * dateFromFields, sabotaging its time properties.
+   */
+  calendarMakeInfinityTime() {
+    class CalendarMakeInfinityTime extends Temporal.Calendar {
+      constructor() {
+        super("iso8601");
+      }
+
+      dateFromFields(fields, options) {
+        const retval = super.dateFromFields(fields, options);
+        fields.hour = Infinity;
+        fields.minute = Infinity;
+        fields.second = Infinity;
+        fields.millisecond = Infinity;
+        fields.microsecond = Infinity;
+        fields.nanosecond = Infinity;
+        return retval;
+      }
+    }
+    return new CalendarMakeInfinityTime();
+  },
+
+  /*
+   * A custom calendar that defines getters on the fields object passed into
+   * dateFromFields that throw, sabotaging its time properties.
+   */
+  calendarMakeInvalidGettersTime() {
+    class CalendarMakeInvalidGettersTime extends Temporal.Calendar {
+      constructor() {
+        super("iso8601");
+      }
+
+      dateFromFields(fields, options) {
+        const retval = super.dateFromFields(fields, options);
+        const throwingDescriptor = {
+          get() {
+            throw new Test262Error("reading a sabotaged time field");
+          },
+        };
+        Object.defineProperties(fields, {
+          hour: throwingDescriptor,
+          minute: throwingDescriptor,
+          second: throwingDescriptor,
+          millisecond: throwingDescriptor,
+          microsecond: throwingDescriptor,
+          nanosecond: throwingDescriptor,
+        });
+        return retval;
+      }
+    }
+    return new CalendarMakeInvalidGettersTime();
+  },
+
+  /*
+   * A custom calendar whose mergeFields() method returns a proxy object with
+   * all of its Get and HasProperty operations observable, as well as adding a
+   * "shouldNotBeCopied": true property.
+   */
+  calendarMergeFieldsGetters() {
+    class CalendarMergeFieldsGetters extends Temporal.Calendar {
+      constructor() {
+        super("iso8601");
+        this.mergeFieldsReturnOperations = [];
+      }
+
+      toString() {
+        return "merge-fields-getters";
+      }
+
+      dateFromFields(fields, options) {
+        assert.sameValue(fields.shouldNotBeCopied, undefined, "extra fields should not be copied");
+        return super.dateFromFields(fields, options);
+      }
+
+      yearMonthFromFields(fields, options) {
+        assert.sameValue(fields.shouldNotBeCopied, undefined, "extra fields should not be copied");
+        return super.yearMonthFromFields(fields, options);
+      }
+
+      monthDayFromFields(fields, options) {
+        assert.sameValue(fields.shouldNotBeCopied, undefined, "extra fields should not be copied");
+        return super.monthDayFromFields(fields, options);
+      }
+
+      mergeFields(fields, additionalFields) {
+        const retval = super.mergeFields(fields, additionalFields);
+        retval._calendar = this;
+        retval.shouldNotBeCopied = true;
+        return new Proxy(retval, {
+          get(target, key) {
+            target._calendar.mergeFieldsReturnOperations.push(`get ${key}`);
+            const result = target[key];
+            if (result === undefined) {
+              return undefined;
+            }
+            return TemporalHelpers.toPrimitiveObserver(target._calendar.mergeFieldsReturnOperations, result, key);
+          },
+          has(target, key) {
+            target._calendar.mergeFieldsReturnOperations.push(`has ${key}`);
+            return key in target;
+          },
+        });
+      }
+    }
+    return new CalendarMergeFieldsGetters();
+  },
+
+  /*
+   * A custom calendar whose mergeFields() method returns a primitive value,
+   * given by @primitive, and which records the number of calls made to its
+   * dateFromFields(), yearMonthFromFields(), and monthDayFromFields() methods.
+   */
+  calendarMergeFieldsReturnsPrimitive(primitive) {
+    class CalendarMergeFieldsPrimitive extends Temporal.Calendar {
+      constructor(mergeFieldsReturnValue) {
+        super("iso8601");
+        this._mergeFieldsReturnValue = mergeFieldsReturnValue;
+        this.dateFromFieldsCallCount = 0;
+        this.monthDayFromFieldsCallCount = 0;
+        this.yearMonthFromFieldsCallCount = 0;
+      }
+
+      toString() {
+        return "merge-fields-primitive";
+      }
+
+      dateFromFields(fields, options) {
+        this.dateFromFieldsCallCount++;
+        return super.dateFromFields(fields, options);
+      }
+
+      yearMonthFromFields(fields, options) {
+        this.yearMonthFromFieldsCallCount++;
+        return super.yearMonthFromFields(fields, options);
+      }
+
+      monthDayFromFields(fields, options) {
+        this.monthDayFromFieldsCallCount++;
+        return super.monthDayFromFields(fields, options);
+      }
+
+      mergeFields() {
+        return this._mergeFieldsReturnValue;
+      }
+    }
+    return new CalendarMergeFieldsPrimitive(primitive);
+  },
+
+  /*
+   * observeProperty(calls, object, propertyName, value):
+   *
+   * Defines an own property @object.@propertyName with value @value, that
+   * will log any calls to its accessors to the array @calls.
+   */
+  observeProperty(calls, object, propertyName, value) {
+    let displayName = propertyName;
+    if (typeof propertyName === 'symbol') {
+      if (Symbol.keyFor(propertyName) !== undefined) {
+        displayName = `[Symbol.for('${Symbol.keyFor(propertyName)}')]`;
+      } else if (propertyName.description.startsWith('Symbol.')) {
+        displayName = `[${propertyName.description}]`;
+      } else {
+        displayName = `[Symbol('${propertyName.description}')]`
+      }
+    }
+    Object.defineProperty(object, propertyName, {
+      get() {
+        calls.push(`get ${displayName}`);
+        return value;
+      },
+      set(v) {
+        calls.push(`set ${displayName}`);
+      }
+    });
+  },
+
+  /*
+   * A custom calendar that does not allow any of its methods to be called, for
+   * the purpose of asserting that a particular operation does not call into
+   * user code.
+   */
+  calendarThrowEverything() {
+    class CalendarThrowEverything extends Temporal.Calendar {
+      constructor() {
+        super("iso8601");
+      }
+      toString() {
+        TemporalHelpers.assertUnreachable("toString should not be called");
+      }
+      dateFromFields() {
+        TemporalHelpers.assertUnreachable("dateFromFields should not be called");
+      }
+      yearMonthFromFields() {
+        TemporalHelpers.assertUnreachable("yearMonthFromFields should not be called");
+      }
+      monthDayFromFields() {
+        TemporalHelpers.assertUnreachable("monthDayFromFields should not be called");
+      }
+      dateAdd() {
+        TemporalHelpers.assertUnreachable("dateAdd should not be called");
+      }
+      dateUntil() {
+        TemporalHelpers.assertUnreachable("dateUntil should not be called");
+      }
+      era() {
+        TemporalHelpers.assertUnreachable("era should not be called");
+      }
+      eraYear() {
+        TemporalHelpers.assertUnreachable("eraYear should not be called");
+      }
+      year() {
+        TemporalHelpers.assertUnreachable("year should not be called");
+      }
+      month() {
+        TemporalHelpers.assertUnreachable("month should not be called");
+      }
+      monthCode() {
+        TemporalHelpers.assertUnreachable("monthCode should not be called");
+      }
+      day() {
+        TemporalHelpers.assertUnreachable("day should not be called");
+      }
+      fields() {
+        TemporalHelpers.assertUnreachable("fields should not be called");
+      }
+      mergeFields() {
+        TemporalHelpers.assertUnreachable("mergeFields should not be called");
+      }
+    }
+
+    return new CalendarThrowEverything();
+  },
+
+  /*
+   * oneShiftTimeZone(shiftInstant, shiftNanoseconds):
+   *
+   * In the case of a spring-forward time zone offset transition (skipped time),
+   * and disambiguation === 'earlier', BuiltinTimeZoneGetInstantFor subtracts a
+   * negative number of nanoseconds from a PlainDateTime, which should balance
+   * with the microseconds field.
+   *
+   * This returns an instance of a custom time zone class which skips a length
+   * of time equal to shiftNanoseconds (a number), at the Temporal.Instant
+   * shiftInstant. Before shiftInstant, it's identical to UTC, and after
+   * shiftInstant it's a constant-offset time zone.
+   *
+   * It provides a getPossibleInstantsForCalledWith member which is an array
+   * with the result of calling toString() on any PlainDateTimes passed to
+   * getPossibleInstantsFor().
+   */
+  oneShiftTimeZone(shiftInstant, shiftNanoseconds) {
+    class OneShiftTimeZone extends Temporal.TimeZone {
+      constructor(shiftInstant, shiftNanoseconds) {
+        super("+00:00");
+        this._shiftInstant = shiftInstant;
+        this._epoch1 = shiftInstant.epochNanoseconds;
+        this._epoch2 = this._epoch1 + BigInt(shiftNanoseconds);
+        this._shiftNanoseconds = shiftNanoseconds;
+        this._shift = new Temporal.Duration(0, 0, 0, 0, 0, 0, 0, 0, 0, this._shiftNanoseconds);
+        this.getPossibleInstantsForCalledWith = [];
+      }
+
+      _isBeforeShift(instant) {
+        return instant.epochNanoseconds < this._epoch1;
+      }
+
+      getOffsetNanosecondsFor(instant) {
+        return this._isBeforeShift(instant) ? 0 : this._shiftNanoseconds;
+      }
+
+      getPossibleInstantsFor(plainDateTime) {
+        this.getPossibleInstantsForCalledWith.push(plainDateTime.toString());
+        const [instant] = super.getPossibleInstantsFor(plainDateTime);
+        if (this._shiftNanoseconds > 0) {
+          if (this._isBeforeShift(instant)) return [instant];
+          if (instant.epochNanoseconds < this._epoch2) return [];
+          return [instant.add(this._shift)];
+        }
+        if (instant.epochNanoseconds < this._epoch2) return [instant];
+        const shifted = instant.add(this._shift);
+        if (this._isBeforeShift(instant)) return [instant, shifted];
+        return [shifted];
+      }
+
+      getNextTransition(instant) {
+        return this._isBeforeShift(instant) ? this._shiftInstant : null;
+      }
+
+      getPreviousTransition(instant) {
+        return this._isBeforeShift(instant) ? null : this._shiftInstant;
+      }
+
+      toString() {
+        return "Custom/One_Shift";
+      }
+    }
+    return new OneShiftTimeZone(shiftInstant, shiftNanoseconds);
+  },
+
+  /*
+   * specificOffsetTimeZone():
+   *
+   * This returns an instance of a custom time zone class, which returns a
+   * specific custom value from its getOffsetNanosecondsFrom() method. This is
+   * for the purpose of testing the validation of what this method returns.
+   *
+   * It also returns an empty array from getPossibleInstantsFor(), so as to
+   * trigger calls to getOffsetNanosecondsFor() when used from the
+   * BuiltinTimeZoneGetInstantFor operation.
+   */
+  specificOffsetTimeZone(offsetValue) {
+    class SpecificOffsetTimeZone extends Temporal.TimeZone {
+      constructor(offsetValue) {
+        super("UTC");
+        this._offsetValue = offsetValue;
+      }
+
+      getOffsetNanosecondsFor() {
+        return this._offsetValue;
+      }
+
+      getPossibleInstantsFor() {
+        return [];
+      }
+    }
+    return new SpecificOffsetTimeZone(offsetValue);
+  },
+
+  /*
+   * springForwardFallBackTimeZone():
+   *
+   * This returns an instance of a custom time zone class that implements one
+   * single spring-forward/fall-back transition, for the purpose of testing the
+   * disambiguation option, without depending on system time zone data.
+   *
+   * The spring-forward occurs at epoch second 954669600 (2000-04-02T02:00
+   * local) and goes from offset -08:00 to -07:00.
+   *
+   * The fall-back occurs at epoch second 972810000 (2000-10-29T02:00 local) and
+   * goes from offset -07:00 to -08:00.
+   */
+  springForwardFallBackTimeZone() {
+    const { compare } = Temporal.PlainDateTime;
+    const springForwardLocal = new Temporal.PlainDateTime(2000, 4, 2, 2);
+    const springForwardEpoch = 954669600_000_000_000n;
+    const fallBackLocal = new Temporal.PlainDateTime(2000, 10, 29, 1);
+    const fallBackEpoch = 972810000_000_000_000n;
+    const winterOffset = new Temporal.TimeZone('-08:00');
+    const summerOffset = new Temporal.TimeZone('-07:00');
+
+    class SpringForwardFallBackTimeZone extends Temporal.TimeZone {
+      constructor() {
+        super("-08:00");
+      }
+
+      getOffsetNanosecondsFor(instant) {
+        if (instant.epochNanoseconds < springForwardEpoch ||
+          instant.epochNanoseconds >= fallBackEpoch) {
+          return winterOffset.getOffsetNanosecondsFor(instant);
+        }
+        return summerOffset.getOffsetNanosecondsFor(instant);
+      }
+
+      getPossibleInstantsFor(datetime) {
+        if (compare(datetime, springForwardLocal) >= 0 && compare(datetime, springForwardLocal.add({ hours: 1 })) < 0) {
+          return [];
+        }
+        if (compare(datetime, fallBackLocal) >= 0 && compare(datetime, fallBackLocal.add({ hours: 1 })) < 0) {
+          return [summerOffset.getInstantFor(datetime), winterOffset.getInstantFor(datetime)];
+        }
+        if (compare(datetime, springForwardLocal) < 0 || compare(datetime, fallBackLocal) >= 0) {
+          return [winterOffset.getInstantFor(datetime)];
+        }
+        return [summerOffset.getInstantFor(datetime)];
+      }
+
+      getPreviousTransition(instant) {
+        if (instant.epochNanoseconds > fallBackEpoch) return new Temporal.Instant(fallBackEpoch);
+        if (instant.epochNanoseconds > springForwardEpoch) return new Temporal.Instant(springForwardEpoch);
+        return null;
+      }
+
+      getNextTransition(instant) {
+        if (instant.epochNanoseconds < springForwardEpoch) return new Temporal.Instant(springForwardEpoch);
+        if (instant.epochNanoseconds < fallBackEpoch) return new Temporal.Instant(fallBackEpoch);
+        return null;
+      }
+
+      toString() {
+        return "Custom/Spring_Fall";
+      }
+    }
+    return new SpringForwardFallBackTimeZone();
+  },
+
+  /*
+   * Returns an object that will append logs of any Gets or Calls of its valueOf
+   * or toString properties to the array calls. Both valueOf and toString will
+   * return the actual primitiveValue. propertyName is used in the log.
+   */
+  toPrimitiveObserver(calls, primitiveValue, propertyName) {
+    return {
+      get valueOf() {
+        calls.push(`get ${propertyName}.valueOf`);
+        return function () {
+          calls.push(`call ${propertyName}.valueOf`);
+          return primitiveValue;
+        };
+      },
+      get toString() {
+        calls.push(`get ${propertyName}.toString`);
+        return function () {
+          calls.push(`call ${propertyName}.toString`);
+          if (primitiveValue === undefined) return undefined;
+          return primitiveValue.toString();
+        };
+      },
+    };
+  },
+};
+
+//deepEqual.js
+// Copyright 2019 Ron Buckton. All rights reserved.
+// This code is governed by the BSD license found in the LICENSE file.
+/*---
+description: >
+  Compare two values structurally
+defines: [assert.deepEqual]
+---*/
+
+assert.deepEqual = function(actual, expected, message) {
+  var format = assert.deepEqual.format;
+  assert(
+    assert.deepEqual._compare(actual, expected),
+    `Expected ${format(actual)} to be structurally equal to ${format(expected)}. ${(message || '')}`
+  );
+};
+
+assert.deepEqual.format = function(value, seen) {
+  switch (typeof value) {
+    case 'string':
+      return typeof JSON !== "undefined" ? JSON.stringify(value) : `"${value}"`;
+    case 'number':
+    case 'boolean':
+    case 'symbol':
+    case 'bigint':
+      return value.toString();
+    case 'undefined':
+      return 'undefined';
+    case 'function':
+      return `[Function${value.name ? `: ${value.name}` : ''}]`;
+    case 'object':
+      if (value === null) return 'null';
+      if (value instanceof Date) return `Date "${value.toISOString()}"`;
+      if (value instanceof RegExp) return value.toString();
+      if (!seen) {
+        seen = {
+          counter: 0,
+          map: new Map()
+        };
+      }
+
+      let usage = seen.map.get(value);
+      if (usage) {
+        usage.used = true;
+        return `[Ref: #${usage.id}]`;
+      }
+
+      usage = { id: ++seen.counter, used: false };
+      seen.map.set(value, usage);
+
+      if (typeof Set !== "undefined" && value instanceof Set) {
+        return `Set {${Array.from(value).map(value => assert.deepEqual.format(value, seen)).join(', ')}}${usage.used ? ` as #${usage.id}` : ''}`;
+      }
+      if (typeof Map !== "undefined" && value instanceof Map) {
+        return `Map {${Array.from(value).map(pair => `${assert.deepEqual.format(pair[0], seen)} => ${assert.deepEqual.format(pair[1], seen)}}`).join(', ')}}${usage.used ? ` as #${usage.id}` : ''}`;
+      }
+      if (Array.isArray ? Array.isArray(value) : value instanceof Array) {
+        return `[${value.map(value => assert.deepEqual.format(value, seen)).join(', ')}]${usage.used ? ` as #${usage.id}` : ''}`;
+      }
+      let tag = Symbol.toStringTag in value ? value[Symbol.toStringTag] : 'Object';
+      if (tag === 'Object' && Object.getPrototypeOf(value) === null) {
+        tag = '[Object: null prototype]';
+      }
+      return `${tag ? `${tag} ` : ''}{ ${Object.keys(value).map(key => `${key.toString()}: ${assert.deepEqual.format(value[key], seen)}`).join(', ')} }${usage.used ? ` as #${usage.id}` : ''}`;
+    default:
+      return typeof value;
+  }
+};
+
+assert.deepEqual._compare = (function () {
+  var EQUAL = 1;
+  var NOT_EQUAL = -1;
+  var UNKNOWN = 0;
+
+  function deepEqual(a, b) {
+    return compareEquality(a, b) === EQUAL;
+  }
+
+  function compareEquality(a, b, cache) {
+    return compareIf(a, b, isOptional, compareOptionality)
+      || compareIf(a, b, isPrimitiveEquatable, comparePrimitiveEquality)
+      || compareIf(a, b, isObjectEquatable, compareObjectEquality, cache)
+      || NOT_EQUAL;
+  }
+
+  function compareIf(a, b, test, compare, cache) {
+    return !test(a)
+      ? !test(b) ? UNKNOWN : NOT_EQUAL
+      : !test(b) ? NOT_EQUAL : cacheComparison(a, b, compare, cache);
+  }
+
+  function tryCompareStrictEquality(a, b) {
+    return a === b ? EQUAL : UNKNOWN;
+  }
+
+  function tryCompareTypeOfEquality(a, b) {
+    return typeof a !== typeof b ? NOT_EQUAL : UNKNOWN;
+  }
+
+  function tryCompareToStringTagEquality(a, b) {
+    var aTag = Symbol.toStringTag in a ? a[Symbol.toStringTag] : undefined;
+    var bTag = Symbol.toStringTag in b ? b[Symbol.toStringTag] : undefined;
+    return aTag !== bTag ? NOT_EQUAL : UNKNOWN;
+  }
+
+  function isOptional(value) {
+    return value === undefined
+      || value === null;
+  }
+
+  function compareOptionality(a, b) {
+    return tryCompareStrictEquality(a, b)
+      || NOT_EQUAL;
+  }
+
+  function isPrimitiveEquatable(value) {
+    switch (typeof value) {
+      case 'string':
+      case 'number':
+      case 'bigint':
+      case 'boolean':
+      case 'symbol':
+        return true;
+      default:
+        return isBoxed(value);
+    }
+  }
+
+  function comparePrimitiveEquality(a, b) {
+    if (isBoxed(a)) a = a.valueOf();
+    if (isBoxed(b)) b = b.valueOf();
+    return tryCompareStrictEquality(a, b)
+      || tryCompareTypeOfEquality(a, b)
+      || compareIf(a, b, isNaNEquatable, compareNaNEquality)
+      || NOT_EQUAL;
+  }
+
+  function isNaNEquatable(value) {
+    return typeof value === 'number';
+  }
+
+  function compareNaNEquality(a, b) {
+    return isNaN(a) && isNaN(b) ? EQUAL : NOT_EQUAL;
+  }
+
+  function isObjectEquatable(value) {
+    return typeof value === 'object';
+  }
+
+  function compareObjectEquality(a, b, cache) {
+    if (!cache) cache = new Map();
+    return getCache(cache, a, b)
+      || setCache(cache, a, b, EQUAL) // consider equal for now
+      || cacheComparison(a, b, tryCompareStrictEquality, cache)
+      || cacheComparison(a, b, tryCompareToStringTagEquality, cache)
+      || compareIf(a, b, isValueOfEquatable, compareValueOfEquality)
+      || compareIf(a, b, isToStringEquatable, compareToStringEquality)
+      || compareIf(a, b, isArrayLikeEquatable, compareArrayLikeEquality, cache)
+      || compareIf(a, b, isStructurallyEquatable, compareStructuralEquality, cache)
+      || compareIf(a, b, isIterableEquatable, compareIterableEquality, cache)
+      || cacheComparison(a, b, fail, cache);
+  }
+
+  function isBoxed(value) {
+    return value instanceof String
+      || value instanceof Number
+      || value instanceof Boolean
+      || typeof Symbol === 'function' && value instanceof Symbol
+      || typeof BigInt === 'function' && value instanceof BigInt;
+  }
+
+  function isValueOfEquatable(value) {
+    return value instanceof Date;
+  }
+
+  function compareValueOfEquality(a, b) {
+    return compareIf(a.valueOf(), b.valueOf(), isPrimitiveEquatable, comparePrimitiveEquality)
+      || NOT_EQUAL;
+  }
+
+  function isToStringEquatable(value) {
+    return value instanceof RegExp;
+  }
+
+  function compareToStringEquality(a, b) {
+    return compareIf(a.toString(), b.toString(), isPrimitiveEquatable, comparePrimitiveEquality)
+      || NOT_EQUAL;
+  }
+
+  function isArrayLikeEquatable(value) {
+    return (Array.isArray ? Array.isArray(value) : value instanceof Array)
+      || (typeof Uint8Array === 'function' && value instanceof Uint8Array)
+      || (typeof Uint8ClampedArray === 'function' && value instanceof Uint8ClampedArray)
+      || (typeof Uint16Array === 'function' && value instanceof Uint16Array)
+      || (typeof Uint32Array === 'function' && value instanceof Uint32Array)
+      || (typeof Int8Array === 'function' && value instanceof Int8Array)
+      || (typeof Int16Array === 'function' && value instanceof Int16Array)
+      || (typeof Int32Array === 'function' && value instanceof Int32Array)
+      || (typeof Float32Array === 'function' && value instanceof Float32Array)
+      || (typeof Float64Array === 'function' && value instanceof Float64Array)
+      || (typeof BigUint64Array === 'function' && value instanceof BigUint64Array)
+      || (typeof BigInt64Array === 'function' && value instanceof BigInt64Array);
+  }
+
+  function compareArrayLikeEquality(a, b, cache) {
+    if (a.length !== b.length) return NOT_EQUAL;
+    for (var i = 0; i < a.length; i++) {
+      if (compareEquality(a[i], b[i], cache) === NOT_EQUAL) {
+        return NOT_EQUAL;
+      }
+    }
+    return EQUAL;
+  }
+
+  function isStructurallyEquatable(value) {
+    return !(typeof Promise === 'function' && value instanceof Promise // only comparable by reference
+      || typeof WeakMap === 'function' && value instanceof WeakMap // only comparable by reference
+      || typeof WeakSet === 'function' && value instanceof WeakSet // only comparable by reference
+      || typeof Map === 'function' && value instanceof Map // comparable via @@iterator
+      || typeof Set === 'function' && value instanceof Set); // comparable via @@iterator
+  }
+
+  function compareStructuralEquality(a, b, cache) {
+    var aKeys = [];
+    for (var key in a) aKeys.push(key);
+
+    var bKeys = [];
+    for (var key in b) bKeys.push(key);
+
+    if (aKeys.length !== bKeys.length) {
+      return NOT_EQUAL;
+    }
+
+    aKeys.sort();
+    bKeys.sort();
+
+    for (var i = 0; i < aKeys.length; i++) {
+      var aKey = aKeys[i];
+      var bKey = bKeys[i];
+      if (compareEquality(aKey, bKey, cache) === NOT_EQUAL) {
+        return NOT_EQUAL;
+      }
+      if (compareEquality(a[aKey], b[bKey], cache) === NOT_EQUAL) {
+        return NOT_EQUAL;
+      }
+    }
+
+    return compareIf(a, b, isIterableEquatable, compareIterableEquality, cache)
+      || EQUAL;
+  }
+
+  function isIterableEquatable(value) {
+    return typeof Symbol === 'function'
+      && typeof value[Symbol.iterator] === 'function';
+  }
+
+  function compareIteratorEquality(a, b, cache) {
+    if (typeof Map === 'function' && a instanceof Map && b instanceof Map ||
+      typeof Set === 'function' && a instanceof Set && b instanceof Set) {
+      if (a.size !== b.size) return NOT_EQUAL; // exit early if we detect a difference in size
+    }
+
+    var ar, br;
+    while (true) {
+      ar = a.next();
+      br = b.next();
+      if (ar.done) {
+        if (br.done) return EQUAL;
+        if (b.return) b.return();
+        return NOT_EQUAL;
+      }
+      if (br.done) {
+        if (a.return) a.return();
+        return NOT_EQUAL;
+      }
+      if (compareEquality(ar.value, br.value, cache) === NOT_EQUAL) {
+        if (a.return) a.return();
+        if (b.return) b.return();
+        return NOT_EQUAL;
+      }
+    }
+  }
+
+  function compareIterableEquality(a, b, cache) {
+    return compareIteratorEquality(a[Symbol.iterator](), b[Symbol.iterator](), cache);
+  }
+
+  function cacheComparison(a, b, compare, cache) {
+    var result = compare(a, b, cache);
+    if (cache && (result === EQUAL || result === NOT_EQUAL)) {
+      setCache(cache, a, b, /** @type {EQUAL | NOT_EQUAL} */(result));
+    }
+    return result;
+  }
+
+  function fail() {
+    return NOT_EQUAL;
+  }
+
+  function setCache(cache, left, right, result) {
+    var otherCache;
+
+    otherCache = cache.get(left);
+    if (!otherCache) cache.set(left, otherCache = new Map());
+    otherCache.set(right, result);
+
+    otherCache = cache.get(right);
+    if (!otherCache) cache.set(right, otherCache = new Map());
+    otherCache.set(left, result);
+  }
+
+  function getCache(cache, left, right) {
+    var otherCache;
+    var result;
+
+    otherCache = cache.get(left);
+    result = otherCache && otherCache.get(right);
+    if (result) return result;
+
+    otherCache = cache.get(right);
+    result = otherCache && otherCache.get(left);
+    if (result) return result;
+
+    return UNKNOWN;
+  }
+
+  return deepEqual;
+})();
+
+//hidden-constructors.js
+// Copyright (C) 2020 Rick Waldron. All rights reserved.
+// This code is governed by the BSD license found in the LICENSE file.
+
+/*---
+description: |
+  Provides uniform access to built-in constructors that are not exposed to the global object.
+defines:
+  - AsyncArrowFunction
+  - AsyncFunction
+  - AsyncGeneratorFunction
+  - GeneratorFunction
+---*/
+
+var AsyncArrowFunction = Object.getPrototypeOf(async () => {}).constructor;
+var AsyncFunction = Object.getPrototypeOf(async function () {}).constructor;
+var AsyncGeneratorFunction = Object.getPrototypeOf(async function* () {}).constructor;
+var GeneratorFunction = Object.getPrototypeOf(function* () {}).constructor;
