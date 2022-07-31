@@ -32,7 +32,6 @@ function GetMetadata(path){
     var metadata = {
         path: path.slice(10)
     };
-  console.log(metadata);
 
     program = program_text.split("\n");
     //metadata["eval"] = searchEval(program_text, path);
