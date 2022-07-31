@@ -13,7 +13,7 @@ with open('test262_report.json', 'r') as f:
                  reportJson)))
 print('Not Supported == ', len(notSupReport))
 
-with open('../thesis/metadata_version.json', 'r') as f:
+with open('metadata_miguel.json', 'r') as f:
     notSupMiguel = list(map(lambda x: x['path'][15:], filter(lambda x: x.get('version'), json.load(f))))
 
 print('Not Supported Miguel == ', len(notSupMiguel))
