@@ -1,6 +1,6 @@
 # Installation
 
-To run this project it is necessary to have nodejs, npm, python3 and pip installed. 
+To run this project it is necessary to have nodejs, npm, python3 and pip installed.
 To have access to the test262 it is necessary to run the following two commands inside the folder **test262**:
 
 `git submodule init`
@@ -20,9 +20,9 @@ The first step in the search for metadata will be to collect all the metadata al
 The results are saved in the json file with the name **"metadata_test262.json"**
 
 # Harness
-  
+
 In order to execute the dynamic analysis it is necessary to use a harness. For the older versions a simpler harness can be used. This harness is saved as **"harness.js"**, however for newer versions a more complex harness is needed and is saved as **"harness_finalissimo.js"** which was built using the following command:
-  
+
 `python3 make_harness.py`
 
 # Version Search
@@ -52,7 +52,7 @@ or
 
 `sudo python3 dynamicAnalysis.py -e spidermonkey`
 
-the results are saved within the directory dynamic_result_ + the engine name, so **"/dynamic_result_node"** and **"/dynamic_result_spidermonkey"** for nodejs and spidermonkey respectively. Similary to the tainted analysis the results will be saved in JSON files for each version and an overall JSON file that possesses every version. 
+the results are saved within the directory dynamic_result_ + the engine name, so **"/dynamic_result_node"** and **"/dynamic_result_spidermonkey"** for nodejs and spidermonkey respectively. Similary to the tainted analysis the results will be saved in JSON files for each version and an overall JSON file that possesses every version.
 
 ## Mixed Analysis
 
@@ -96,13 +96,13 @@ The results are written in a JSON file named **"metadata_built-in.json"**, this 
 The dynamic approach for searching built-ins utilizes a file that redefines all built-in functions in order to once called adds to an array the name of the function and then runs normally. After we have that file we just add to it the harness and the actual test, and run it. However in the tests that return error we cannot retrieve the array with the built-ins and functions called.
 
 In order to create the wrappers of the functions we analysed the html of the ecmascript which is saved in the directory "html" and we take every function of the built-ins, executing the command:
-  
-`python3 html_parse.py` 
-  
+
+`python3 html_parse.py`
+
 This command will create a list with all the functions saved in the directory "functions", finally we can prodeuce the wrappers for the functions with the command:
-  
+
 `node produce_re-function.js`
-  
+
 This command will create the file **"func.js"** that contains every function wrapped.
 
 To run the dynamic analysis to search for the built-ins in the tests the command used is:
@@ -120,60 +120,3 @@ To run this file the following  command is used:
 `node search_metadata.js`
 
 The results for this file are going to be saved in a JSON file **"metadata_version.json"**, that will have an object with a field for each test and its value is an object with the full computed metadata.
-
-# Metadata Application
-
-The application to filter the test by the metadata starts by loading the mongo database with the latest results of the "metadata_version.json", after it runs the terminal will show a menu for the user to interact and filter by the offer options. This application starts with the command bellow:
-
-`python3 app.py`
-
-The results of the show tests option are saved in the directory "Selected_tests" with a name associated to the query used.
-
-# Results Application
-
-The application to analyse the results of the tests will need an agument with the path to the file with the results to be analysed. After that it will upload the file to a mongo database in order to filter the results and print in the console the menu for the user to interact. The main menu offers a range of options to filter the results.
-
-`python3 app_metadata.py <filepath>`
-
-After selecting for the application to show the results a directory is created with the name "Queries-<filepath>" that will have all the queries executed for that results. The files for the queries are have a name associated with the desired query.
-
-# Characterization of the metadata
-
-## Characterization of Lines, Asserts and Errors
-
-To obtain the data of the characterization of the number of lines, asserts and errors in the tests it will be utilize mongodb queries. Starting by dividing the built-ins by the groups they belong to and query for each group adding to an array the number of lines, asserts and errors of each test. After obtaining this array it will be saved in a JSON file with the name **"characterization_lines_asserts_erros.json"** in the "characterization" directory. The following command is used to execute this characterization:
-  
-`python3 characterization_line_asserts_errors.py`
-
-## Characterization of the Versions
-
-In order to obtain the characterization of the versions of the tests by groups again utilizing the mongodb capabilities. By loading the already created database with the computed metadata we can acquire the versions for all tests in a specific group and save it in an array. To run this file the next command is needed:
-  
-`python3 characterization_version.py`
-  
-The results will be saved in a JSON file with the field as the name of the group and an array associated that contains the version of the tests in that group, with the name **"characterization_version.json"** in the "characterization" directory.
-
-## Characterization of the Built-ins
-
-The characterization of the built-ins will also use the mongodb already estabilished in order to catch every built-in in the tests of each group. building an object that has as the fields the number of the groups of built-ins and associated to it an object with each built-in and the number of times it appears. To run this analyses the following command is ran:
-  
-`python3 characterization_built-ins.py`
-
-The results are saved in the directory "characterization" with the name **"characterization_built-in"**
-
-# Other  
-
-## Parse ECMARef results
-  
-The results of the ECMARef needed to be parsed in order to evaluate our work, mainly removing the tests that expect a negative result that our analysis doesn't work. In order to do so the next code is ran:
-  
-`python3 parse_ECMAREF_results.py`
-  
-And the results are saved in the file **"es5_tests.json"**.
-  
-## Parsing the results log
-  
-To use the results of the tests of an implementation the results need to be in json format, to put the results in a json the following command is executed:
-  
-`node results_parse.js <filepath>`
-  

@@ -8,10 +8,9 @@ import sys
 
 def runSubProcess(command: list) -> tuple:
     process = subprocess.Popen(command,  bufsize=2048, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    output = process.stdout.read().decode("latin1")
-    error = process.stderr.read().decode("latin1")
+    output, error = process.communicate()
     process.wait()
-    return (output, error)
+    return (output.decode("latin1"), error.decode("latin1"))
 
 def changeNodeVersion(version:str) -> None:
     _, error = runSubProcess(["n", version])

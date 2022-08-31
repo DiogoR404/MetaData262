@@ -254,7 +254,7 @@ $DONOTEVALUATE = () => {};
 // found in the LICENSE file.
 
 function $DETACHBUFFER(buffer) {
-  %ArrayBufferDetach(buffer);
+  ArrayBufferDetach(buffer);
 }
 
 $262.detachArrayBuffer = $DETACHBUFFER;

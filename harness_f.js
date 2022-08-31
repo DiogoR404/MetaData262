@@ -110,8 +110,8 @@ function RealmOperators(realm) {
   return $262;
 }
 
-// var $262 = RealmOperators(Realm.current());
-var $262 = {};
+var $262 = RealmOperators(Realm.current());
+// var $262 = {};
 
 // harness-agent.js
 // Copyright 2017 the V8 project authors. All rights reserved.

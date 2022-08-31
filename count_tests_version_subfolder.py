@@ -1,49 +1,77 @@
+########################################################################################
+#   script to get the number of test files per version for each sub file
+#########################################################################################
+
 import csv
+import json
 
 header = []
 rows = []
 versions = []
-subFolders = []
-with open('aggregation_result.csv') as file:
-    reader = csv.reader(file)
+subFolders = [[],[]]
 
-    header = next(reader)
+with open('metadata_version.json', 'r') as file:
+    metadata = json.load(file)
 
-    for row in reader:
-            rows.append(row)
-            if row[0] != '' and int(row[0]) not in versions:
-                versions += [int(row[0])]
-            if row[1] not in subFolders:
-                subFolders += [row[1]]
+# metadata = list(filter(lambda x: None != x.get("flags") and "async" in x['flags'], metadata))
+
+folderDestribuition = [{},{}]
+
+for test in metadata:
+    # Position in 'subFolders'
+    folderPosition = -1
+    if test['pathSplit'][1] == 'built-ins':
+        folderPosition = 0
+    elif test['pathSplit'][1] == 'language':
+        folderPosition = 1
+    else:
+        print('Folder not expected')
+        exit(1)
+
+    version = test.get('version')
+    if version and version not in versions:
+        versions.append(version)
+    subfolder = test['pathSplit'][2]
+    if subfolder not in subFolders[folderPosition]:
+        subFolders[folderPosition].append(subfolder)
+
+    key = (subfolder, version)
+    folderDestribuition[folderPosition][key] = folderDestribuition[folderPosition].get(key, 0) + 1
+
 
 versions.sort()
-versions = list(map(lambda x : str(x), versions)) + ['']
+versions += [None]
 subFolders.sort()
-finalDict = {}
-for folder in subFolders:
-    finalDict[folder] =  [0] * (len(versions))
 
-versionPosition = {}
-for i in range(len(versions)):
-    versionPosition[versions[i]] = i
+header = [['subfolder'] + versions[:-1] + ['None']]
+separateCSV = [header[:], header[:]]
+for i in range(len(subFolders)):
+    for folder in subFolders[i]:
+        temp = list(map(
+            lambda x: folderDestribuition[i].get((folder, x), 0),
+            versions[:]))
+        separateCSV[i].append([folder] + temp)
 
-for row in rows:
-    finalDict [row[1]] [versionPosition[row[0]]] = int(row[2])
 
-separateCSV = [['subfolder'] + versions]
-for folder in subFolders:
-    separateCSV += [[folder]+finalDict[folder]]
-
-with open('aggregation_formatted.csv', 'w') as file:
+with open('aggregation_formatted_builtIns.csv', 'w') as file:
     writer = csv.writer(file)
-    writer.writerows(separateCSV)
+    writer.writerows(separateCSV[0])
+
+with open('aggregation_formatted_language.csv', 'w') as file:
+    writer = csv.writer(file)
+    writer.writerows(separateCSV[1])
 
 cumulativeCSV = separateCSV[:]
 
-for i in range(1,len(cumulativeCSV)):   
-    for j in range(2,len(cumulativeCSV[i])):
-        cumulativeCSV[i][j] += cumulativeCSV[i][j-1]
+for folder in range(len(cumulativeCSV)):
+    for i in range(1,len(cumulativeCSV[folder])):
+        for j in range(2,len(cumulativeCSV[folder][i]) - 1):
+            cumulativeCSV[folder][i][j] += cumulativeCSV[folder][i][j-1]
 
-with open('aggregation_formatted_cumulative.csv', 'w') as file:
+with open('aggregation_formatted_cumulative_builtIns.csv', 'w') as file:
     writer = csv.writer(file)
-    writer.writerows(separateCSV)
+    writer.writerows(separateCSV[0])
+
+with open('aggregation_formatted_cumulative_language.csv', 'w') as file:
+    writer = csv.writer(file)
+    writer.writerows(separateCSV[1])

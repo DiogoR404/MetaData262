@@ -20,7 +20,7 @@ function isLowerVersion(version1, version2){
     else return false
 }
 
-var results_dynamic = JSON.parse(readFileContent("./dynamic_results_node/dynamic_analysis.json"));
+var results_dynamic = JSON.parse(readFileContent("./new_dynamic/result.json"));
 var results_spidermonkey = JSON.parse(readFileContent("./dynamic_results_spidermonkey/dynamic_analysis.json"));
 let data1 = JSON.stringify(results_dynamic);
 
@@ -38,12 +38,12 @@ function mixedAnalysisNode(){
         if (v ==="notSupported"){
             for (test in results_dynamic[v]){
                 var fileToAnalyse = results_dynamic[v][test]["path"];
-                if (results.hasOwnProperty(v)){           
+                if (results.hasOwnProperty(v)){
                     results[v].push(fileToAnalyse);
                 }else{
                     results[v] = [fileToAnalyse];
-                }  
-            }      
+                }
+            }
             continue
         }
         for (test in results_dynamic[v]){
@@ -91,11 +91,11 @@ function mixedAnalysisNode(){
                 } catch(e){
                     //fault in esprima
                     //var version = "notSupported";
-                }  
+                }
             }
 
             //adds the test to the correspondent version
-            if (results.hasOwnProperty(version)){           
+            if (results.hasOwnProperty(version)){
                 results[version].push(fileToAnalyse);
             }else{
                 results[version] = [fileToAnalyse];
@@ -114,12 +114,12 @@ function mixedAnalysisSM(){
         if (v ==="notSupported"){
             for (test in results_spidermonkey[v]){
                 var fileToAnalyse = results_spidermonkey[v][test]["path"];
-                if (results.hasOwnProperty(v)){           
+                if (results.hasOwnProperty(v)){
                     results[v].push(fileToAnalyse);
                 }else{
                     results[v] = [fileToAnalyse];
-                }   
-            }     
+                }
+            }
             continue
         }
         for (test in results_spidermonkey[v]){
@@ -167,11 +167,11 @@ function mixedAnalysisSM(){
                 } catch(e){
                     //fault in esprima
                     //var version = "notSupported";
-                }  
+                }
             }
 
             //adds the test to the correspondent version
-            if (results.hasOwnProperty(version)){           
+            if (results.hasOwnProperty(version)){
                 results[version].push(fileToAnalyse);
             }else{
                 results[version] = [fileToAnalyse];
@@ -180,7 +180,7 @@ function mixedAnalysisSM(){
     }
     let data3 = JSON.stringify(results);
     fs.writeFileSync('./dynamic_results/mixed_analysis_sm.json', data3);
-    
+
 }
 
 if (process.argv.length === 2){
