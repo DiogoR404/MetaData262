@@ -139,7 +139,6 @@ def getTestMetaData() -> tuple:
 
 def main():
     listVersions = (5, 6, 8, 9, 10, 11, 12)
-    listVersions = (8,)
     engineVersions = {
             "node": {5: "0.10.48", 6:"6.17.1", 8:"8.17.0", 9:"10.9.0", 10:"12.11.0", 11: "14.5.0", 12: "18.7.0"},
             "spiderMonkey": {5:"js24", 6:"js38",8:"js52", 9: "js60",10: "js68", 11: "js78"},

@@ -1,4 +1,4 @@
-//node taintedAnalysis.js 
+//node taintedAnalysis.js
 var p = require('esprima').parse;
 const fs = require('fs');
 var map = require('./map.js')
@@ -28,7 +28,7 @@ function parseBuiltIn(table_func, version, builtInObject){
     if (builtInObject.hasOwnProperty("functions")){
         for (var i = 0; i < builtInObject.functions.length; i++){
             var func = builtInObject.functions[i]
-            
+
             if (func==="hasOwnProperty")
              continue
             if (!table_func.hasOwnProperty(func)){
@@ -38,8 +38,8 @@ function parseBuiltIn(table_func, version, builtInObject){
                 if (isLowerVersion(version, table_func[func])){
                     table_func[func] = version
                 }
-            }  
-        }        
+            }
+        }
     }
 }
 
@@ -57,7 +57,7 @@ function parseGlobalVars(table_vars, versionObject, version){
             if (isLowerVersion(version, table_vars[gV])){
                 table_vars[gV] = version
             }
-        } 
+        }
     }
 }
 
@@ -75,7 +75,7 @@ function parseSyntax(table_syntax, versionObject, version){
             if (isLowerVersion(version, table_syntax[s])){
                 table_syntax[s] = version
             }
-        } 
+        }
     }
 }
 
@@ -93,7 +93,7 @@ function parseOperators(table_operators, versionObject, version){
             if (isLowerVersion(version, table_operators[s])){
                 table_operators[s] = version
             }
-        } 
+        }
     }
 }
 
@@ -108,7 +108,7 @@ function parseOther(table_functions, versionObject, version){
             if (isLowerVersion(version, table_functions[s])){
                 table_functions[s] = version
             }
-        } 
+        }
     }
 }
 
@@ -141,7 +141,7 @@ function parseJSON(){
     //loads esVersion file
     var program_text = readFileContent("esVersions.json")
     var metadata = JSON.parse(program_text)
-    
+
     //initialize tables
     var table_func = {}
     var table_vars = {}
@@ -161,7 +161,7 @@ function parseJSON(){
 
 //runs through the stmt to find some function, variable, syntax or operator that's exclusively from a version
 function analysis(stmt, table_func, table_vars, table_syntax, table_operators, table_global, init_version){
-    
+
     //functions from assert
     var local_functions = ["throws", "sameValue", "notSameValue"];
 
@@ -190,14 +190,14 @@ function analysis(stmt, table_func, table_vars, table_syntax, table_operators, t
                 if (stmt.hasOwnProperty("kind")){
                     //const and let are only introduced in version es6
                     if (stmt.kind ==="const" || stmt.kind === "let"){
-                    
+
                         if (isLowerVersion(progVersion, "es6")){
                             progVersion = "es6";
-                        }    
-                    }     
+                        }
+                    }
                 }
                 return stmt
-            } 
+            }
             case "ArrowFunctionExpression":
             case "FunctionExpression":{
                 //generator only introduced in es6
@@ -222,7 +222,7 @@ function analysis(stmt, table_func, table_vars, table_syntax, table_operators, t
                             progVersion = table_vars[stmt.name];
                         }
                     }
-                    
+
                 }
                 return stmt
             }
@@ -235,27 +235,27 @@ function analysis(stmt, table_func, table_vars, table_syntax, table_operators, t
                     } catch(e){
                         //fault in esprima
                         //progVersion = "notSupported";
-                    }  
+                    }
                 }
 
                 //checks the function version
                 if(stmt.hasOwnProperty("callee") && stmt.callee.hasOwnProperty("type") && stmt.callee.type === "MemberExpression"){
-                    
+
                     if (!local_functions.includes(stmt.callee.property.name) && table_func.hasOwnProperty(stmt.callee.property.name)) {
                         if (isLowerVersion(progVersion, table_func[stmt.callee.property.name])){
                             progVersion = table_func[stmt.callee.property.name];
                         }
                     }
-                                     
+
                 }
                 if(stmt.hasOwnProperty("callee") && stmt.callee.hasOwnProperty("type") && stmt.callee.type === "Identifier"){
-                    
+
                     if (!local_functions.includes(stmt.callee.name) && table_global.hasOwnProperty(stmt.callee.name)) {
                         if (isLowerVersion(progVersion, table_global[stmt.callee.name])){
                             progVersion = table_global[stmt.callee.name];
                         }
                     }
-                                     
+
                 }
                 return stmt;
             }
@@ -266,7 +266,7 @@ function analysis(stmt, table_func, table_vars, table_syntax, table_operators, t
                         if (isLowerVersion(progVersion, table_global[stmt.property.name])){
                             progVersion = table_global[stmt.property.name];
                         }
-                    }             
+                    }
                 }
                 return stmt;
 
@@ -274,11 +274,11 @@ function analysis(stmt, table_func, table_vars, table_syntax, table_operators, t
             case "Literal":{
                 //checks if the value of a literal is a function or variable associatd to a version
                 if (stmt.hasOwnProperty("value")) {
-                    
+
                     if (table_vars.hasOwnProperty(stmt.value) && isLowerVersion(progVersion, table_vars[stmt.value])){
                         progVersion = table_vars[stmt.value];
                     }
-                }     
+                }
 
                 return stmt
             }
@@ -303,7 +303,7 @@ function analysis(stmt, table_func, table_vars, table_syntax, table_operators, t
         }
     }
 
-    var progVersion = init_version    
+    var progVersion = init_version
     map(mapper, stmt);
     return progVersion
 }
@@ -325,9 +325,9 @@ var table_global=table[4]
 //exclusevily from an upper version associates the test to that version
 for (var i=0; i < metadata.length; i++){
     version = "es5"
-    
+
     //loads the test
-    var fileToAnalyse = metadata[i].path;
+    var fileToAnalyse = 'test262/' + metadata[i].path;
     var program_text = readFileContent(fileToAnalyse);
 
     if (metadata[i].hasOwnProperty("negative")){
@@ -336,9 +336,9 @@ for (var i=0; i < metadata.length; i++){
                 continue
             }
         }
-            
+
     }
-            
+
 
     //checks if test belongs to intl
     if (metadata[i].path.includes("intl")){
@@ -364,21 +364,21 @@ for (var i=0; i < metadata.length; i++){
         try{
             var program = p(program_text);
             var version = analysis(program, table_func, table_vars, table_syntax, table_operators, table_global, version);
-            
+
         } catch(e){
             //fault in esprima
             var version = "notSupported";
-        }  
+        }
     }
 
     //adds the test to the correspondent version
-    if (results.hasOwnProperty(version)){           
+    if (results.hasOwnProperty(version)){
         results[version].push(metadata[i]);
     }else{
         results[version] = [metadata[i]];
     }
 
-    
+
 
 }
 for (var v in results)
