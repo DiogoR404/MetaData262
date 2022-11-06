@@ -170,5 +170,14 @@
     },
     {
       "path": "test/built-ins/Atomics/waitAsync/undefined-for-timeout.js"
+    },
+    {
+      "path": "test/built-ins/Array/prototype/splice/throws-if-integer-limit-exceeded.js"
+    },
+    {
+      "path": "test/built-ins/Array/prototype/unshift/throws-if-integer-limit-exceeded.js"
+    },
+    {
+      "path": "test/language/statements/const/syntax/const-invalid-assignment-next-expression-for.js"
     }
 ]

@@ -1,242 +1,167 @@
-#################################################################################################################################################
-# Dynamic Analysis
-#   receives one argument - tests to be analysed
-#   cascates through every version, changing the node version running every unassign test
-#       if the test runs correctly it's assign to that version
-#       else it's rerun in a newer version
-#################################################################################################################################################
-
-import subprocess
 import json
-import sys
+import subprocess
+import multiprocessing
+from itertools import repeat
 import os
-import argparse
+import tqdm
+import sys
 
-parser = argparse.ArgumentParser()
-parser.add_argument("-e", "--engine", help="engine denomination")
+def runSubProcess(command: list) -> tuple:
+    process = subprocess.Popen(command,  bufsize=4096, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    output = ''
+    try:
+        output, error = process.communicate(timeout=6)
+        output = output.decode("latin1")
+        output += error.decode("latin1")
+    except subprocess.TimeoutExpired:
+        process.kill()
+    return process.returncode == 0, output
 
-print(parser.parse_args().engine )
-if ((parser.parse_args().engine == "") | (parser.parse_args().engine =="node")):
-    engine = "node"
-    nodes_versions = {"es5": "0.10.48", "es6":"6.17.1", "es8":"8.17.0", "es9":"10.9.0", "es10":"12.11.0", "es11": "14.5.0"}
+def runTest(engine: str, test: dict, harness: dict, version: int, builtInFunctions: str) -> tuple:
+    def getHarness() -> str:
+        return harness['module' if hasFlag('module') else 'default'][version]
+    def hasFlag(flag: str) -> bool:
+        return testFlags != None and flag in testFlags
 
-elif (parser.parse_args().engine == "spidermonkey"):
-    engine = parser.parse_args().engine
-    nodes_versions = {"es5":"js24", "es6":"js38","es8":"js52",
-    "es9": "js60","es10": "js68", "es11": "js78"}
+    # create test file with every thing needed to run
+    codeToExecute = ''
+    testFlags = test.get('flags')
+    if hasFlag('onlyStrict'):
+        codeToExecute += '"use strict";\n'
+    if builtInFunctions: # if is running the builtIn dynamic approach
+        codeToExecute += builtInFunctions
+    if not hasFlag('raw'):
+        codeToExecute += getHarness()
+    if 'includes' in test:
+        for file in test['includes']:
+            with open('test262/harness/'+file, 'r') as f:
+                codeToExecute += f.read()
+    if builtInFunctions != '':
+        codeToExecute += 'log42 = [];\n'
+    with open(test['path'], 'r') as f:
+        codeToExecute += f.read()
+    if builtInFunctions:
+        codeToExecute += '\nconst t= JSON.parse(JSON.stringify(log42));\nconsole.log(t);'
+    with open(test['path'], "w") as f:
+        f.write(codeToExecute)
+    command = [engine]
+    if hasFlag('module'):
+        command += ['--module']
+    command += [test['path']]
+    # run test
+    hasNoError, output = runSubProcess(command)
 
-#loads file with tests
-f = open('metadata_test262.json',)
-out = json.load(f)
+    # check if the result is correct
+    if hasFlag('async'):
+        return (output.strip() == 'Test262:AsyncTestComplete', output)
+    elif hasNoError and 'negative' not in test:
+        return (True, output)
+    elif hasFlag('module') and version < 11 and version > 6 \
+            and 2 == len(output.split('\n')) and '' == output.split('\n')[1]:
+        return (True, output)
+    elif 'negative' in test and test['negative']['type'] in output:
+        # does not need to check that phase coincides
+        return (True, output)
+    return (False, output)
 
-Lines = out
-L=Lines[:]
+def dynamicComputation(harness: dict, testMetaData: list, engine: str, version: int, builtInFunctions='') -> dict:
+    os.system('rm -rf test/')
+    os.system('cp -r test262/test test')
+    result = {'correct': {}, 'error': {}}
+    with multiprocessing.Pool() as p:
+        inputs = zip(repeat(engine), testMetaData, repeat(harness), repeat(version), repeat(builtInFunctions))
+        r = p.starmap(runTest, tqdm.tqdm(inputs, total=len(testMetaData)))
 
-#initializes results and node versions associated with ecmascript standar
-results={"es5":[], "es6":[], "es7":[], "es8":[], "es9":[], "es10":[], "es11":[]}
+    for i in range(len(testMetaData)):
+        keyName = 'correct' if r[i][0] else 'error'
+        result[keyName][testMetaData[i]['path']] = r[i][1]
 
-for version in nodes_versions.keys():
+    os.system('rm -rf test/')
+    return result
 
-    #changes node version through command $sudo n [version] and waits for it to end
-    if (engine == "node"):
-        process = subprocess.Popen(["sudo", "n", nodes_versions[version]],  bufsize=2048, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        process.wait()
-    elif (engine == "spidermonkey"):
-        v = nodes_versions[version]
+def loadHarness(data) -> dict:
+    harness = {}
+    for harnessType in data:
+        harness[harnessType] = {}
+        for key, value in data[harnessType].items():
+            with open('harness/' + value, 'r') as f:
+                harness[harnessType][int(key)] = f.read()
+    return harness
+
+def getTestMetaData() -> tuple:
+    if len(sys.argv) > 2 and sys.argv[2] == '-t':
+        pathMetadata = 'test.json'
     else:
-        break
+        pathMetadata = 'metadata_test262.json'
+    with open(pathMetadata, 'r') as f:
+        testMetaData = json.load(f)
+    if len(sys.argv) > 3:
+        testMetaData = testMetaData[int(sys.argv[3]):]
+    ignore = []
+    toTest = []
 
-    prints = open("./dynamic_results_"+engine+"/"+version+".json", "w")
-
-    for line in Lines:
-
-        if version =="es9" or version =="es10" or version=="es11":
-            h = open("harness_finalissimo.js", "r")
+    # separate tests (usual, module and SystaxError)
+    for test in testMetaData:
+        if 'negative' in test and test['negative']['type'] == 'SyntaxError' \
+                or 'flags' in test and 'non-deterministic' in test['flags']:
+            ignore += [test]
         else:
-            h = open("harness.js", "r")
+            toTest += [test]
+    return toTest, ignore
 
-        #if the test already has a version
-        #if ("version" in line.keys()):
+def versionDynamicComputation(listVersions: list[int], harness: dict, listEngines: dict) -> None:
+    results = {}
+    testMetaData, results["notSupportedIgnored"] = getTestMetaData()
+    for version in listVersions:
+        print('Computing', version)
+        output = dynamicComputation(harness, testMetaData, listEngines["v8"][str(version)], version)
+        results[version] = list(output['correct'].keys())
+        listFailed = list(output['error'].keys())
+        testMetaData = list(filter(lambda x: x['path'] in listFailed, testMetaData))
 
-            #if the version is the current one adds to results
-            #if ("es" + str(line["version"]) == version):
-                #results[version].append(line)
-                #L.remove(line)
+    results["notSupported"] = testMetaData + results["notSupportedIgnored"]
+    with open("new_dynamic/stats.json", "w") as f:
+        stats = list(map(lambda x : {x: len(results[x])}, results))
+        json.dump(stats, f, indent=4)
+    with open("new_dynamic/result.json", "w") as f:
+        del results["notSupportedIgnored"]
+        versionsToDelete = list(filter(lambda key: isinstance(key, int), results.keys()))
+        for key in versionsToDelete:
+            results['es' + str(key)] = results[key]
+            del results[key]
+        json.dump(results, f)
 
-            #continue
+def builtInDynamicComputation(listVersions: list[int], harness: dict, listEngines: dict) -> None:
+    with open('func.js', 'r') as f:
+        builtInFunctions = f.read()
+    version = listVersions[-1]
 
-        #if the test contains "flags"    
+    resultsBuiltIns = {'negative': {}, 'correct': {}, 'error': {}}
+    testMetaData, resultsBuiltIns["negative"] = getTestMetaData()
+    print('Computing', version)
+    output = dynamicComputation(harness, testMetaData, listEngines["v8"][str(version)], version, builtInFunctions)
+    resultsBuiltIns['correct'] |= output['correct']
+    resultsBuiltIns['error'] |= output ['error']
 
-        if ("negative" in line.keys()):
-            if ((line["negative"]["type"]=="SyntaxError") | (line["negative"]["phase"]=="SyntaxError")):
-                L.remove(line)
-                continue
-            
-    
-        if ("flags" in line.keys()):
+    print('Number of errors:', len(resultsBuiltIns['error']))
+    with open('dynamic_built-in_results.json', 'w') as f:
+        f.write(json.dumps(resultsBuiltIns))
 
-            #if the test is only run in strict mode
-            if ("onlyStrict" not in line["flags"]):
-                test = open(line["path"], "r")
-                if ("includes" in line.keys()):
-                    harness = open("harness2.js", "w")
-                    harness.write(h.read())
+def main():
+    if len(sys.argv) < 1 or sys.argv[1] not in ['version', 'builtIn']:
+        print('Error: expected "version" or "builtIn" analisys')
+        exit(1)
 
+    analisysType = sys.argv[1]
 
-                    for file in line["includes"]:
-                        try:
-                            filename="./test262/harness/"+file
-                            f = open(filename, "r")
-                            harness.write(f.read())
-                            f.close()
-                        except:
-                            print("include empty - " + str(line["includes"]) + " - " + line["path"])
+    with open('dynamicAnalisis.json', 'r') as f:
+        data = json.load(f)
 
-                    harness.close()
-                    harness = open("harness2.js", "r")
-                else:
-                    harness = h
+    if analisysType == 'version':
+        versionDynamicComputation(data['versions'], loadHarness(data['harness']), data['engines'])
 
-                #writes in a temporary file the test preceeded by the harness
-                f = open("tmp.js", "w")
-                f.write(harness.read())
-                f.write(test.read())
-                f.close()
+    elif analisysType == 'builtIn':
+        builtInDynamicComputation(data['versions'], loadHarness(data['harness']), data['engines'])
 
-                #runs the test with a timeout
-                process = subprocess.Popen(["timeout", "-s", "SIGXCPU", "10", "node", "tmp.js"],  bufsize=2048, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-                output = process.stdout.read().decode("latin1") 
-                error = process.stderr.read().decode("latin1") 
-                process.wait()
-
-                if (engine == "node"):
-                    #runs the test with a timeout
-                    process = subprocess.Popen(["timeout", "-s", "SIGXCPU", "10", "node", "tmp.js"],  bufsize=2048, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-                    output = process.stdout.read().decode("latin1") 
-                    error = process.stderr.read().decode("latin1") 
-                    process.wait()
-                elif (engine == "spidermonkey"):
-                    process = subprocess.Popen(["timeout", "-s", "SIGXCPU", "10", v, "tmp.js"],  bufsize=2048, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-                    output = process.stdout.read().decode("latin1") 
-                    error = process.stderr.read().decode("latin1") 
-                    process.wait()
-                else:
-                    break
-
-            else:    
-
-                test = open(line["path"], "r")
-                
-                if ("includes" in line.keys()):
-                    harness = open("harness2.js", "w")
-                    harness.write(h.read())
-
-                    for file in line["includes"]:
-                        try:
-                            filename="./test262/harness/"+file
-                            f = open(filename, "r")
-                            harness.write(f.read())
-                            f.close()
-                        except:
-                            print("include empty - " + str(line["includes"]) + " - " + line["path"])
-
-                    harness.close()
-
-                    harness = open("harness2.js", "r")
-                else:
-                    harness = h
-
-                #writes in a temporary file the test preceeded by the harness
-                f = open("tmp.js", "w")
-                f.write('"use strict";\n')
-                f.write(harness.read())
-                f.write(test.read())
-                f.close()
-
-                if (engine == "node"):
-                    #runs the test with a timeout
-                    process = subprocess.Popen(["timeout", "-s", "SIGXCPU", "10", "node", "tmp.js"],  bufsize=2048, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-                    output = process.stdout.read().decode("latin1") 
-                    error = process.stderr.read().decode("latin1") 
-                    process.wait()
-                elif (engine == "spidermonkey"):
-                    process = subprocess.Popen(["timeout", "-s", "SIGXCPU", "10", v, "tmp.js"],  bufsize=2048, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-                    output = process.stdout.read().decode("latin1") 
-                    error = process.stderr.read().decode("latin1") 
-                    process.wait()
-                else:
-                    break
-
-        else:
-
-            test = open(line["path"], "r")
-            
-            if ("includes" in line.keys()):
-                harness = open("harness2.js", "w")
-                harness.write(h.read())
-
-                for file in line["includes"]:
-                    try:
-                        filename="./test262/harness/"+file
-                        f = open(filename, "r")
-                        harness.write(f.read())
-                        f.close()
-                    except:
-                        print("include empty - " + str(line["includes"]) + " - " + line["path"])
-
-                harness.close()
-                harness = open("harness2.js", "r")
-
-            else:
-                harness = h
-
-            #writes in a temporary file the test preceeded by the harness
-            f = open("tmp.js", "w")
-            f.write(harness.read())
-            f.write(test.read())
-            f.close()
-
-            if (engine == "node"):
-                #runs the test with a timeout
-                process = subprocess.Popen(["timeout", "-s", "SIGXCPU", "10", "node", "tmp.js"],  bufsize=2048, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-                output = process.stdout.read().decode("latin1") 
-                error = process.stderr.read().decode("latin1") 
-                process.wait()
-            elif (engine == "spidermonkey"):
-                process = subprocess.Popen(["timeout", "-s", "SIGXCPU", "10", v, "tmp.js"],  bufsize=2048, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-                output = process.stdout.read().decode("latin1") 
-                error = process.stderr.read().decode("latin1") 
-                process.wait()
-            else:
-                break
-
-        #if the test is supposed to return an error
-        if ("negative" in line.keys()):
-            #if the error is the supposed one
-            if (line["negative"]["type"] in error):
-                results[version].append(line)
-                L.remove(line)
-            elif (line["negative"]["type"] in error):
-                results[version].append(line)
-                L.remove(line)
-
-        else:
-            #if the test runs correctly
-            if (error == ""):
-                
-                results[version].append(line)
-                L.remove(line)
-
-
-    Lines=L[:]
-
-    #writes in a file with the name of the version the tests associated to it
-    prints.write(json.dumps(results[version]))
-    
-#os.remove("tmp.js")     
-
-results["notSupported"] = Lines
-
-#writes the final results
-final_results = open("./dynamic_results_"+engine+"/dynamic_analysis.json", "w")
-final_results.write(json.dumps(results))
+if __name__ == '__main__':
+    main()
