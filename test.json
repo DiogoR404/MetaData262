@@ -39,9 +39,6 @@
         "lines": 5
     },
     {
-        "_id": {
-            "$oid": "62d3067d507070c90312d58c"
-        },
         "path": "test/built-ins/AsyncFromSyncIteratorPrototype/next/absent-value-not-passed.js",
         "esid": " sec-%asyncfromsynciteratorprototype%.next",
         "description": " >`next` method does not pass absent `value`.\n",
@@ -74,9 +71,6 @@
         ]
     },
     {
-        "_id": {
-            "$oid": "62d3067e507070c9031310fc"
-        },
         "path": "test/language/eval-code/direct/export.js",
         "description": " The `export` declaration may not appear within eval code",
         "esid": " sec-scripts",
@@ -107,9 +101,6 @@
         "lines": 3
     },
     {
-        "_id": {
-            "$oid": "62d3067e507070c90312f409"
-        },
         "path": "test/built-ins/Proxy/preventExtensions/trap-is-undefined-target-is-proxy.js",
         "esid": " sec-proxy-object-internal-methods-and-internal-slots-preventextensions",
         "description": " >If \"preventExtensions\" trap is null or undefined, [[PreventExtensions]] call\nis properly forwarded to [[ProxyTarget]] (which is also a Proxy object).\n",
@@ -130,9 +121,6 @@
         "lines": 6
     },
     {
-        "_id": {
-            "$oid": "62d3067e507070c903131bd7"
-        },
         "path": "test/language/expressions/class/cpn-class-expr-accessors-computed-property-name-from-await-expression.js",
         "description": " Computed property name from condition expression (ComputedPropertyName in ClassExpression)",
         "esid": " prod-ComputedPropertyName",
@@ -182,8 +170,5 @@
     },
     {
       "path": "test/built-ins/Atomics/waitAsync/undefined-for-timeout.js"
-    },
-    {
-      "path": "test/built-ins/AsyncFromSyncIteratorPrototype/next/absent-value-not-passed.js"
     }
 ]

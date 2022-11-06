@@ -6,6 +6,7 @@ import os
 import tqdm
 import sys
 
+
 def runSubProcess(command: list) -> tuple:
     process = subprocess.Popen(command,  bufsize=4096, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     output = error = ''
@@ -128,7 +129,7 @@ def partitionTests(testMetaData: dict) -> tuple:
 
 def getTestMetaData() -> tuple:
     if len(sys.argv) > 1 and sys.argv[1] == '-t':
-        pathMetadata = 'test.json'
+        pathMetadata = 'test.json' # smaller sample with some tests that had errors during development
     else:
         pathMetadata = 'metadata_test262.json'
     with open(pathMetadata, 'r') as f:
@@ -138,11 +139,11 @@ def getTestMetaData() -> tuple:
     return partitionTests(testMetaData)
 
 def main():
-    listVersions = (5, 6, 8, 9, 10, 11, 12)
+    listVersions = (5,6,8,9,10,11,12)
     engineVersions = {
             "node": {5: "0.10.48", 6:"6.17.1", 8:"8.17.0", 9:"10.9.0", 10:"12.11.0", 11: "14.5.0", 12: "18.7.0"},
             "spiderMonkey": {5:"js24", 6:"js38",8:"js52", 9: "js60",10: "js68", 11: "js78"},
-            "v8": {5: "/usr/local/n/versions/node/0.10.48/bin/node", 6:  "/usr/local/n/versions/node/6.17.1/bin/node", 8: "/home/diogo/engines/v8/v8/out8/x64.release/d8", 9: "/home/diogo/engines/v8/v8/out9/x64.release/d8", 10: "/home/diogo/engines/v8/v8/out10/x64.release/d8", 11: "/home/diogo/engines/v8/v8/out11/x64.release/d8", 12: "/home/diogo/engines/v8/v8/out13/x64.release/d8"}
+            "v8": {5: "/usr/local/n/versions/node/0.10.48/bin/node", 6:  "/usr/local/n/versions/node/6.17.1/bin/node", 8: "/home/diogo/v8/out8/x64.release/d8", 9: "/home/diogo/v8/out9/x64.release/d8", 10: "/home/diogo/v8/out10/x64.release/d8", 11: "/home/diogo/v8/out11/x64.release/d8", 12: "/home/diogo/v8/out13/x64.release/d8"}
             }
     harness = loadHarness()
     results = {}
@@ -150,8 +151,6 @@ def main():
         results[v] = []
     testMetaData, moduleMetaData, results["notSupportedIgnored"] = getTestMetaData()
 
-    with open('package.json', 'r') as f:
-        package = json.load(f)
     for version in listVersions:
         print('Computing', version)
         os.system('rm -rf test/')
@@ -160,16 +159,10 @@ def main():
         results[version], testMetaData = dynamicComputation(harness[version], testMetaData, engine, version)
 
         # moduleMetaData needs different package.json
-        with open('package.json', 'w') as f:
-            package['type'] = 'module'
-            json.dump(package, f)
         h = harness.get(str(version))
         h = h if h else harness[version]
         r, moduleMetaData = dynamicComputation(h, moduleMetaData, engine, version)
         results[version] += r
-        with open('package.json', 'w') as f:
-            del package['type']
-            json.dump(package, f)
 
     # os.system('rm -rf test/')
 
