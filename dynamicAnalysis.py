@@ -154,7 +154,7 @@ def main():
 
     analisysType = sys.argv[1]
 
-    with open('dynamicAnalisis.json', 'r') as f:
+    with open('dynamicAnalysis.json', 'r') as f:
         data = json.load(f)
 
     if analisysType == 'version':
