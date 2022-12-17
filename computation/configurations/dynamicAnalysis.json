@@ -1,0 +1,59 @@
+{
+    "versions": [
+        5,
+        6,
+        8,
+        9,
+        10,
+        11,
+        12
+    ],
+    "harness": {
+        "default": {
+            "5": "harness_es5.js",
+            "6": "harness_es6_v1.js",
+            "8": "harness8.js",
+            "9": "harness9.js",
+            "10": "harness_f.js",
+            "11": "harness_f.js",
+            "12": "harness_f.js"
+        },
+        "module": {
+            "5": "harness_es5.js",
+            "6": "harness_es6_v1.js",
+            "8": "harness8_module.js",
+            "9": "harness9_module.js",
+            "10": "harness_f_module.js",
+            "11": "harness_f_module.js",
+            "12": "harness_f_module.js"
+        }
+    },
+    "engines": {
+        "node": {
+            "5": "0.10.48",
+            "6": "6.17.1",
+            "8": "8.17.0",
+            "9": "10.9.0",
+            "10": "12.11.0",
+            "11": "14.5.0",
+            "12": "18.7.0"
+        },
+        "spiderMonkey": {
+            "5": "js24",
+            "6": "js38",
+            "8": "js52",
+            "9": "js60",
+            "10": "js68",
+            "11": "js78"
+        },
+        "v8": {
+            "5": "/usr/local/n/versions/node/0.10.48/bin/node",
+            "6": "/usr/local/n/versions/node/6.17.1/bin/node",
+            "8": "/home/diogo/v8/out8/x64.release/d8",
+            "9": "/home/diogo/v8/out9/x64.release/d8",
+            "10": "/home/diogo/v8/out10/x64.release/d8",
+            "11": "/home/diogo/v8/out11/x64.release/d8",
+            "12": "/home/diogo/v8/out13/x64.release/d8"
+        }
+    }
+}
