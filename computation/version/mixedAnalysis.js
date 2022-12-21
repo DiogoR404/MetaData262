@@ -1,5 +1,5 @@
 const fs = require('fs');
-const ta = require("./taintedAnalysis");
+const ta = require("./static");
 var p = require('esprima').parse;
 
 //function to read a file
@@ -20,8 +20,8 @@ function isLowerVersion(version1, version2){
     else return false
 }
 
-var results_dynamic = JSON.parse(readFileContent("./new_dynamic/result.json"));
-var results_spidermonkey = JSON.parse(readFileContent("./dynamic_results_spidermonkey/dynamic_analysis.json"));
+var results_dynamic = JSON.parse(readFileContent("./results/dynamic/result.json"));
+// var results_spidermonkey = JSON.parse(readFileContent("./dynamic_results_spidermonkey/dynamic_analysis.json"));
 let data1 = JSON.stringify(results_dynamic);
 
 //initializes all tables
@@ -31,13 +31,14 @@ var table_vars = table[1]
 var table_syntax = table[2]
 var table_operators = table[3]
 var table_global=table[4]
+var pathTest262 = "../test262/"
 
 function mixedAnalysisNode(){
     var results = {}
     for (v in results_dynamic){
         if (v ==="notSupported"){
             for (test in results_dynamic[v]){
-                var fileToAnalyse = results_dynamic[v][test]["path"];
+                var fileToAnalyse = pathTest262 + results_dynamic[v][test];
                 if (results.hasOwnProperty(v)){
                     results[v].push(fileToAnalyse);
                 }else{
@@ -50,7 +51,7 @@ function mixedAnalysisNode(){
             var version = v;
 
             //loads the test
-            var fileToAnalyse = results_dynamic[v][test]["path"];
+            var fileToAnalyse = pathTest262 + results_dynamic[v][test];
             var program_text = readFileContent(fileToAnalyse);
 
             //checks if test belongs to intl
@@ -104,7 +105,7 @@ function mixedAnalysisNode(){
         }
     }
     let data2 = JSON.stringify(results);
-    fs.writeFileSync('./dynamic_results/mixed_analysis.json', data2);
+    fs.writeFileSync('./results/mixed_analysis.json', data2);
 }
 
 function mixedAnalysisSM(){
@@ -113,7 +114,7 @@ function mixedAnalysisSM(){
     for (v in results_spidermonkey){
         if (v ==="notSupported"){
             for (test in results_spidermonkey[v]){
-                var fileToAnalyse = results_spidermonkey[v][test]["path"];
+                var fileToAnalyse = results_spidermonkey[v][test];
                 if (results.hasOwnProperty(v)){
                     results[v].push(fileToAnalyse);
                 }else{
@@ -179,7 +180,7 @@ function mixedAnalysisSM(){
         }
     }
     let data3 = JSON.stringify(results);
-    fs.writeFileSync('./dynamic_results/mixed_analysis_sm.json', data3);
+    fs.writeFileSync('./dynamic/mixed_analysis_sm.json', data3);
 
 }
 
