@@ -3,9 +3,7 @@
 //  recursively analyses every file in the directory and files in the directory
 //    for each file it takes the metadata associated to it - written in commentary in the beginning of the file
 
-var p = require('esprima').parse;
 const fs = require('fs');
-var map = require('./map.js')
 
 //reads file
 function readFileContent(file) {
@@ -30,7 +28,7 @@ function GetMetadata(path){
     var program_text = readFileContent(path);
 
     var metadata = {
-        path: path.slice(10)
+        path: path.slice(11)
     };
 
     program = program_text.split("\n");
@@ -115,7 +113,7 @@ function recursive(path, json) {
     return json;
 }
 
-var new_prog_str = recursive("./test262/test", []);
+var new_prog_str = recursive("../test262/test", []);
 
-fs.writeFile("metadata_test262.json", JSON.stringify(new_prog_str), function(){});
+fs.writeFile("results/metadata_test262.json", JSON.stringify(new_prog_str), function(){});
 console.log('Number of tests: '+ new_prog_str.length);

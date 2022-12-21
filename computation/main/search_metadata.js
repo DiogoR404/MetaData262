@@ -33,7 +33,6 @@ function memberParse(stmt) {
         }
 
     }
-    //console.log(array.reverse().join("."))
     return array.reverse().join(".")
 }
 

@@ -1,5 +1,5 @@
 # storage
 
 # content
-- setup of the computation
+- setup DATABASE WITH THE COMPUTATION RESULT
 - example queries to the computation result
