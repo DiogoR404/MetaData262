@@ -40,7 +40,7 @@ function GetMetadata(path) {
         lineArray = program[line].split(":");
         switch (lineArray[0].replace(/ /g, "")) {
             case "description":
-            case "info":{
+            case "info": {
                 metadata[lineArray[0].replace(/ /g, "")] = multiple_lines(lineArray[1]);
                 break;
             }
@@ -111,11 +111,16 @@ function recursive(path, json) {
     return json;
 }
 
-function main() {
+function computeOfficialMetadata() {
     const result = recursive("../test262/test", []);
 
     fs.writeFile(__dirname + "/results/metadata_test262.json", JSON.stringify(result), function () { });
     console.log('Number of tests: ' + result.length);
+    return result;
 }
 
-main()
+if (require.main === module) {
+    computeOfficialMetadata();
+} else {
+    module.exports = computeOfficialMetadata;
+}
