@@ -1,7 +1,9 @@
+import os
+
 arr = ["5", "6", "8", "9","10","11"]
 for i in arr:
-    f = open('./../../resources/standards/html'+i,"r")
-    lines = f.readlines()
+    with open('../../resources/standards/html'+i,"r") as f:
+        lines = f.readlines()
     s=''
     x=0
     if (i =="9")|(i=="10")|(i=="11"):
@@ -18,7 +20,6 @@ for i in arr:
             if x>=m:
                 if ('(' in l.split('</span>')[1]) & ("<span" not in l.split('</span>')[1]):
                     s=s+l.split('</span>')[1].split('</h1>')[0].replace("</i>","").replace("<i>","")
-    f.close()
-    w = open("results/functions/functions_"+i+".txt", "w")
-    w.write(s)
-    w.close()
+    currentDirectory = os.path.dirname(os.path.abspath(__file__))
+    with open(currentDirectory + "/results/functions/functions_"+i+".txt", "w") as f:
+        f.write(s)

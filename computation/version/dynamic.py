@@ -1,33 +1,34 @@
 import json
+import os
 import sys
 sys.path.append("../utils/")
 from dynamicRunTest262 import getTestMetaData, dynamicComputation
 
 
 def main():
-    with open('../configurations/dynamicAnalysis.json', 'r') as f:
+    currentDirectory = os.path.dirname(os.path.abspath(__file__))
+    with open(currentDirectory + '/../configurations/dynamicAnalysis.json', 'r') as f:
         configuration = json.load(f)
 
+    resultsPerVersion = {}
     results = {}
-    testMetaData, results["notSupportedIgnored"] = getTestMetaData()
+    testMetaData, resultsPerVersion["notSupportedIgnored"] = getTestMetaData()
 
     for version in configuration['versions']:
         print('Computing', version)
         output = dynamicComputation(configuration, "v8", version, testMetaData)
-        results[version] = list(output['correct'].keys())
+        resultsPerVersion[version] = list(output['correct'].keys())
         listFailed = list(output['error'].keys())
         testMetaData = list(filter(lambda x: x['path'] in listFailed, testMetaData))
-    results["notSupported"] = testMetaData + results["notSupportedIgnored"]
+    resultsPerVersion["notSupported"] = list(map(lambda x: x['path'], testMetaData + resultsPerVersion["notSupportedIgnored"]))
 
-    with open("results/dynamic/stats.json", "w") as f:
-        stats = list(map(lambda x : {x: len(results[x])}, results))
+    stats = list(map(lambda x : {x: len(resultsPerVersion[x])}, resultsPerVersion))
+    with open(currentDirectory + "/results/dynamic/stats.json", "w") as f:
         json.dump(stats, f, indent=4)
         
-    with open("results/dynamic/result.json", "w") as f:
-        versionsToDelete = list(filter(lambda key: isinstance(key, int), results.keys()))
-        for key in versionsToDelete:
-            results['es' + str(key)] = results[key]
-            del results[key]
+    resultsPerVersion.pop('notSupportedIgnored')
+    results = {test : version for version in resultsPerVersion for test in resultsPerVersion[version]}
+    with open(currentDirectory + "/results/dynamic/result.json", "w") as f:
         json.dump(results, f)
 
 

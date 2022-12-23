@@ -146,7 +146,7 @@ function main(){
     }
     
     //writes the result in a file
-    fs.writeFile("./results/static.json", JSON.stringify(results), function () { });
+    fs.writeFile(__dirname + "/results/static.json", JSON.stringify(results), function () { });
 }
 
 main()

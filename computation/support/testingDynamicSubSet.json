@@ -179,5 +179,36 @@
     },
     {
       "path": "test/language/statements/const/syntax/const-invalid-assignment-next-expression-for.js"
-    }
+    },
+    {
+        "path": "test/built-ins/RegExp/property-escapes/binary-property-with-value-ASCII_-_F-negated.js",
+        "author": " Mathias Bynens",
+        "description": " >Binary properties with an explicit value must throw in Unicode property\nescapes (even if the value is valid).\n",
+        "esid": " sec-static-semantics-unicodematchproperty-p",
+        "negative": {
+          "phase": "parse",
+          "type": "SyntaxError"
+        },
+        "features": [
+          "regexp-unicode-property-escapes"
+        ],
+        "pathSplit": [
+          "test",
+          "built-ins",
+          "RegExp",
+          "property-escapes",
+          "binary-property-with-value-ASCII_-_F-negated.js"
+        ],
+        "syntactic_construct": [
+          "Identifier",
+          "CallExpression",
+          "ExpressionStatement",
+          "Literal",
+          "Program"
+        ],
+        "asserts": 0,
+        "error": 0,
+        "esprima": "supported",
+        "lines": 2
+      }
 ]
