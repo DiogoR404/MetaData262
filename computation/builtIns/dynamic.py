@@ -1,13 +1,15 @@
 import json
+import os
 import sys
 sys.path.append("../utils")
 from dynamicRunTest262 import getTestMetaData, dynamicComputation
 
 def main():
-    with open('../configurations/dynamicAnalysis.json', 'r') as f:
+    currentDirectory = os.path.dirname(os.path.abspath(__file__))
+    with open(currentDirectory + '/../configurations/dynamicAnalysis.json', 'r') as f:
         configuration = json.load(f)
 
-    with open('results/builtInsWrappers.js', 'r') as f:
+    with open(currentDirectory + '/results/builtInsWrappers.js', 'r') as f:
         builtInWrappers = f.read()
     version = configuration['versions'][-1]
 
@@ -27,8 +29,9 @@ def main():
             if builtIn == '': continue
             outputResult[wrapperOutput[0]] = outputResult.get(wrapperOutput[0], [])+ ['.'.join(wrapperOutput[1:])]
         resultsBuiltIns['correct'][test] = outputResult
+
     print('Number of errors:', len(resultsBuiltIns['error']))
-    with open('results/dynamic.json', 'w') as f:
+    with open(currentDirectory + '/results/dynamic.json', 'w') as f:
         f.write(json.dumps(resultsBuiltIns))
 
 if __name__ == '__main__':

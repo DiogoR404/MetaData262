@@ -1,12 +1,8 @@
 const fs = require('fs');
 
-function readFileContent(file) {
-    return fs.readFileSync(file, 'utf8');
-}
-
 function main() {
-    let staticResult = JSON.parse(readFileContent('./results/static.json'));
-    let dynamicResult = JSON.parse(readFileContent('./results/dynamic.json'))['correct'];
+    let staticResult = JSON.parse(fs.readFileSync(__dirname + '/results/static.json'));
+    let dynamicResult = JSON.parse(fs.readFileSync(__dirname + '/results/dynamic.json'))['correct'];
     let result = {};
     for (const test in staticResult) {
         result[test] = {};
@@ -21,7 +17,7 @@ function main() {
             }
         }
     }
-    fs.writeFile("./results/result.json", JSON.stringify(result), () => { });
+    fs.writeFile(__dirname + "/results/result.json", JSON.stringify(result), () => { });
 }
 
 main()

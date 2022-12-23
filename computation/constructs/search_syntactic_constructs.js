@@ -47,7 +47,7 @@ function main() {
     }
 
     //writes the result in a file
-    fs.writeFile("results/metadata_syntactic.json", JSON.stringify(results), function () { });
+    fs.writeFile(__dirname + "/results/result.json", JSON.stringify(results), function () { });
 }
 
 main()
