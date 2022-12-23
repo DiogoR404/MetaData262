@@ -1,12 +1,12 @@
 import json
 import os
 import sys
-sys.path.append("../utils/")
+currentDirectory = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(currentDirectory + "/../utils/")
 from dynamicRunTest262 import getTestMetaData, dynamicComputation
 
 
 def main():
-    currentDirectory = os.path.dirname(os.path.abspath(__file__))
     with open(currentDirectory + '/../configurations/dynamicAnalysis.json', 'r') as f:
         configuration = json.load(f)
 

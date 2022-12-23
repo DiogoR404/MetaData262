@@ -19,8 +19,8 @@ function getHigherVersion(version1, version2) {
     return v1 > v2 ? version1 : version2;
 }
 
-async function computeVersion(metadata, testing) {
-    const resultsStatic = computeStaticVersion(metadata);
+async function computeVersion(pathToTest262, metadata, testing) {
+    const resultsStatic = computeStaticVersion(pathToTest262, metadata);
     let args = [__dirname + '/dynamic.py'];
     if (testing) args.push('-t')
     await runProcess('python3', args);
@@ -36,7 +36,7 @@ async function computeVersion(metadata, testing) {
 }
 if (require.main === module) {
     const metadata = JSON.parse(readFileContent(__dirname + "/../official/results/metadata_test262.json"));
-    computeVersion(metadata, false);
+    computeVersion(__dirname + "/../../resources/test262/", metadata, true);
 } else {
     module.exports = computeVersion;
 }

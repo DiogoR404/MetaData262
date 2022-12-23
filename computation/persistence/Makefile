@@ -7,6 +7,6 @@ dependencies:
 	mv node_modules/ package-lock.json package.json ..
 
 submodule:
-	cd ../test262/
+	cd ../../resources/test262/
 	git submodule init
 	git submodule update

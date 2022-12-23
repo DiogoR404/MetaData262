@@ -123,16 +123,16 @@ function analysis(stmt, fileToAnalyse, results, es11Info) {
     return results
 }
 
-function staticBuiltInsComputation(metadata_global) {
+function staticBuiltInsComputation(pathToTest262, metadata_global) {
     //loads all metadata_global file
     let results = {};
-    let es11Info = JSON.parse(readFile("../utils/esVersions.json"))['es11'];
+    let es11Info = JSON.parse(readFile(__dirname + "/../utils/esVersions.json"))['es11'];
     //cycles all selected tests initializing at version es5, and if the test contains a function, variable, syntax or operator
     //exclusevily from an upper version associates the test to that version
     for (let i = 0; i < metadata_global.length; i++) {
         //loads the test
         let fileToAnalyse = metadata_global[i].path;
-        let program_text = readFile("../test262/" + fileToAnalyse);
+        let program_text = readFile(pathToTest262 + fileToAnalyse);
         results[fileToAnalyse] = {}
         //use of esprima to analyse the test
         try {
@@ -150,8 +150,8 @@ function staticBuiltInsComputation(metadata_global) {
 }
 
 if (require.main === module) {
-    let metadata_global = JSON.parse(readFile("../official/results/metadata_test262.json"));
-    staticBuiltInsComputation(metadata_global);
+    let metadata_global = JSON.parse(readFile(__dirname + "/../official/results/metadata_test262.json"));
+    staticBuiltInsComputation(__dirname + '/../../resources/test262/', metadata_global);
 } else {
     module.exports = staticBuiltInsComputation;
 }

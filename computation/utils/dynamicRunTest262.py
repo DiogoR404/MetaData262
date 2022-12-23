@@ -17,6 +17,14 @@ def runSubProcess(command: list) -> tuple:
         process.kill()
     return process.returncode == 0, output
 
+def getPathTest262() -> str:
+    currentDirectory = os.path.dirname(os.path.abspath(__file__))
+    with open(currentDirectory + '/../main/conf.json') as f:
+        conf = json.load(f)
+    if 'pathToTest262' in conf:
+        return conf['pathToTest262']
+    return currentDirectory + '/../../resources/test262/'
+
 def runTest(engine: str, test: dict, harness: dict, version: int, builtInWrappers: str) -> tuple:
     def getHarness() -> str:
         return harness['module' if hasFlag('module') else 'default'][version]
@@ -34,7 +42,7 @@ def runTest(engine: str, test: dict, harness: dict, version: int, builtInWrapper
         codeToExecute += getHarness()
     if 'includes' in test:
         for file in test['includes']:
-            with open('../test262/harness/' + file, 'r') as f:
+            with open(getPathTest262() + 'harness/' + file, 'r') as f:
                 codeToExecute += f.read()
     if builtInWrappers != '':
         codeToExecute += 'log42 = [];\n'
@@ -68,7 +76,7 @@ def dynamicComputation(configuration: dict, engine: str, version: int, testMetaD
     harness = loadHarness(configuration['harness'])
     enginePath = configuration['engines'][engine][str(version)]
     os.system('rm -rf test/')
-    os.system('cp -r ../test262/test test')
+    os.system('cp -r ' + getPathTest262() + 'test test')
     result = {'correct': {}, 'error': {}}
     inputs = zip(repeat(enginePath), testMetaData, repeat(harness), repeat(version), repeat(builtInWrappers))
     with multiprocessing.Pool() as p:
@@ -80,19 +88,21 @@ def dynamicComputation(configuration: dict, engine: str, version: int, testMetaD
     return result
 
 def loadHarness(data) -> dict:
+    currentDirectory = os.path.dirname(os.path.abspath(__file__))
     harness = {}
     for harnessType in data:
         harness[harnessType] = {}
         for key, value in data[harnessType].items():
-            with open('../../resources/harness/' + value, 'r') as f:
+            with open(currentDirectory + '/../../resources/harness/' + value, 'r') as f:
                 harness[harnessType][int(key)] = f.read()
     return harness
 
 def getTestMetaData() -> tuple:
+    currentDirectory = os.path.dirname(os.path.abspath(__file__))
     if len(sys.argv) > 1 and sys.argv[1] == '-t':
-        pathMetadata = '../support/testingDynamicSubSet.json'
+        pathMetadata = currentDirectory + '/../support/testingDynamicSubSet.json'
     else:
-        pathMetadata = '../official/results/metadata_test262.json'
+        pathMetadata = currentDirectory + '/../official/results/metadata_test262.json'
     with open(pathMetadata, 'r') as f:
         testMetaData = json.load(f)
     if len(sys.argv) > 2:

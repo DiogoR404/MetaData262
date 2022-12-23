@@ -130,7 +130,7 @@ function parseVersion(table_func, table_vars, table_syntax, table_operators, tab
 //for each version calls parseVersion
 function parseJSON() {
     //loads esVersion file
-    const program_text = readFileContent("../utils/esVersions.json")
+    const program_text = readFileContent(__dirname + "/../utils/esVersions.json")
     const metadata = JSON.parse(program_text)
 
     //initialize tables
@@ -298,9 +298,9 @@ function analysis(stmt, table_func, table_vars, table_syntax, table_operators, t
     return progVersion
 }
 
-function computeStaticVersion (metadata) {
+function computeStaticVersion (pathToTest262, metadata) {
     //loads all metadata file
-    const configuration = JSON.parse(readFileContent('../configurations/dynamicAnalysis.json'));
+    const configuration = JSON.parse(readFileContent(__dirname + '/../configurations/dynamicAnalysis.json'));
     let resultsPerVersion = {'notSupported':[], 'property-escapes':[], 'es7':[]};
     configuration['versions'].forEach(elm => {
         resultsPerVersion['es'+elm] = [];
@@ -321,7 +321,7 @@ function computeStaticVersion (metadata) {
         let version = "es5";
 
         //loads the test
-        let fileToAnalyse = '../test262/' + metadata[i].path;
+        let fileToAnalyse = pathToTest262 + metadata[i].path;
         let program_text = readFileContent(fileToAnalyse);
 
         if (metadata[i].hasOwnProperty("negative")) {
@@ -376,7 +376,7 @@ function computeStaticVersion (metadata) {
 
 if (require.main === module) {
     let metadata = JSON.parse(readFileContent("../official/results/metadata_test262.json"));
-    computeStaticVersion(metadata);
+    computeStaticVersion(__dirname + '/../../resources/test262/', metadata);
 } else {
     module.exports = computeStaticVersion;
 }

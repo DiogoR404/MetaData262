@@ -1,8 +1,9 @@
 import os
 
+currentDirectory = os.path.dirname(os.path.abspath(__file__))
 arr = ["5", "6", "8", "9","10","11"]
 for i in arr:
-    with open('../../resources/standards/html'+i,"r") as f:
+    with open(currentDirectory + '/../../resources/standards/html'+i,"r") as f:
         lines = f.readlines()
     s=''
     x=0
@@ -20,6 +21,5 @@ for i in arr:
             if x>=m:
                 if ('(' in l.split('</span>')[1]) & ("<span" not in l.split('</span>')[1]):
                     s=s+l.split('</span>')[1].split('</h1>')[0].replace("</i>","").replace("<i>","")
-    currentDirectory = os.path.dirname(os.path.abspath(__file__))
     with open(currentDirectory + "/results/functions/functions_"+i+".txt", "w") as f:
         f.write(s)

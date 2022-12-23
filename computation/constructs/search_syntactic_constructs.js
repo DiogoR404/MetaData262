@@ -26,14 +26,14 @@ function analysis(stmt, fileToAnalyse, results) {
     map(mapper, stmt);
 }
 
-function computeConstructs(metadata) {
+function computeConstructs(pathToTest262, metadata) {
     //loads all metadata file
     let results = {};
 
     for (let i = 0; i < metadata.length; i++) {
         //reads the test
         let fileToAnalyse = metadata[i].path;
-        let program_text = readFileContent("../test262/" + fileToAnalyse);
+        let program_text = readFileContent(pathToTest262 + fileToAnalyse);
 
         //use of esprima to analyse the test
         try {
@@ -50,8 +50,8 @@ function computeConstructs(metadata) {
 }
 
 if (require.main === module) {
-    let metadata = JSON.parse(readFileContent("../official/results/metadata_test262.json"));
-    computeConstructs(metadata);
+    let metadata = JSON.parse(readFileContent(__dirname + "/../official/results/metadata_test262.json"));
+    computeConstructs(__dirname + '/../../resources/test262/', metadata);
 } else {
     module.exports = computeConstructs;
 }

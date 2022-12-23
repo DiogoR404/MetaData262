@@ -1,12 +1,10 @@
 const fs = require('fs');
 const esprima = require('esprima');
 const map = require('../utils/map');
-const runProcess = require('../utils/runProcess');
 const computeOfficialMetadata = require('../official/search_metadata_from_test262');
 const computeVersion = require('../version/version');
 const computeConstructs = require('../constructs/search_syntactic_constructs');
 const computeBuiltIns = require('../builtIns/builtIns');
-const { exit } = require('process');
 
 function getLines(file) {
     var program = file.split("\n");
@@ -44,10 +42,10 @@ function analysisProgram(stmt) {
     return [assert, error];
 }
 
-function addFinalMetadata(test) {
+function addFinalMetadata(pathToTest262, test) {
     //loads the test
     const fileToAnalyse = test.path;
-    const program_text = fs.readFileSync('../test262/' + fileToAnalyse, 'utf-8');
+    const program_text = fs.readFileSync(pathToTest262 + fileToAnalyse, 'utf-8');
     test['pathSplit'] = fileToAnalyse.replace('test/', '').split('/');
 
     try {
@@ -65,21 +63,24 @@ function addFinalMetadata(test) {
 
 
 async function main() {
-    let metadata = computeOfficialMetadata();
+    const conf = JSON.parse(fs.readFileSync(__dirname + '/conf.json'));
+    const pathToTest262 = conf.hasOwnProperty('pathToTest262') ? conf.pathToTest262 : __dirname + "/../../resources/test262/";
+
+    let metadata = computeOfficialMetadata(pathToTest262);
     let testing = false;
     if (process.argv[2] === '-t') {
-        // testing
+        // testing => run with a subset of test262
         testing = true;
-        const testingPaths = JSON.parse(fs.readFileSync('../support/testingDynamicSubSet.json')).map((test) => {
+        const testingPaths = JSON.parse(fs.readFileSync(__dirname + '/../support/testingDynamicSubSet.json')).map((test) => {
             return test.path;
         });
         metadata = metadata.filter((test) => { return testingPaths.includes(test.path) });
     }
     console.log(`Number of test = ${metadata.length}`);
 
-    const versions = await computeVersion(metadata, testing);
-    const constructs = computeConstructs(metadata);
-    const builtIns = await computeBuiltIns(metadata, testing);
+    const versions = await computeVersion(pathToTest262, metadata, testing);
+    const constructs = computeConstructs(pathToTest262, metadata);
+    const builtIns = await computeBuiltIns(pathToTest262, metadata, testing);
 
     for (let i in metadata) {
         let test = metadata[i];
@@ -93,9 +94,9 @@ async function main() {
         const testConstructs = constructs[test.path];
         if (testConstructs) test['syntactic_constructors'] = testConstructs;
 
-        addFinalMetadata(test);
+        addFinalMetadata(pathToTest262, test);
     }
-    fs.writeFile("results/metadata_version.json", JSON.stringify(metadata), function () { });
+    fs.writeFile(__dirname + "/results/metadata_version.json", JSON.stringify(metadata), function () { });
 }
 
 main()

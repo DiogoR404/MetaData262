@@ -8,10 +8,9 @@ const fs = require('fs');
 //reads file
 function readFileContent(file) {
     return fs.readFileSync(file, 'utf8');
-
 }
 
-function GetMetadata(path) {
+function GetMetadata(pathToTest262, path) {
 
     function multiple_lines(intial_string) {
         let i = 1;
@@ -25,10 +24,10 @@ function GetMetadata(path) {
         return string;
     }
 
-    let program_text = readFileContent(path);
+    let program_text = readFileContent(pathToTest262 + path);
 
     let metadata = {
-        path: path.slice(11) // removing the inicial caracters of the path to start with test/
+        path: path // removing the inicial caracters of the path to start with test/
     };
 
     program = program_text.split("\n");
@@ -87,22 +86,21 @@ function GetMetadata(path) {
 }
 
 
-function recursive(path, json) {
-    const st = fs.lstatSync(path);
-
-    if (st.isDirectory()) {
-        const files = fs.readdirSync(path);
+function recursive(pathToTest262, path, json) {
+    const testingPath = pathToTest262 + path;
+    if (fs.lstatSync(testingPath).isDirectory()) {
+        const files = fs.readdirSync(testingPath);
         for (file in files) {
-            const stat = fs.lstatSync(path + "/" + files[file]);
+            const stat = fs.lstatSync(testingPath + "/" + files[file]);
 
             if (stat.isDirectory()) {
                 if (files[file] !== "harness" && files[file] !== "annexB" && files[file] !== "intl402") {
-                    recursive(path + "/" + files[file], json);
+                    recursive(pathToTest262, path + "/" + files[file], json);
                 }
             } else if (-1 === files[file].indexOf('_FIXTURE')) {
-                let metadata_final = GetMetadata(path + "/" + files[file]);
+                let metadata_final = GetMetadata(pathToTest262, path + "/" + files[file]);
                 if (metadata_final === null) {
-                    console.log(path + "/" + files[file]);
+                    console.log(testingPath + "/" + files[file]);
                 }
                 json.push(metadata_final);
             }
@@ -111,8 +109,8 @@ function recursive(path, json) {
     return json;
 }
 
-function computeOfficialMetadata() {
-    const result = recursive("../test262/test", []);
+function computeOfficialMetadata(pathToTest262) {
+    const result = recursive(pathToTest262, 'test', []);
 
     fs.writeFile(__dirname + "/results/metadata_test262.json", JSON.stringify(result), function () { });
     console.log('Number of tests: ' + result.length);
@@ -120,7 +118,7 @@ function computeOfficialMetadata() {
 }
 
 if (require.main === module) {
-    computeOfficialMetadata();
+    computeOfficialMetadata(__dirname + '/../../resources/test262/');
 } else {
     module.exports = computeOfficialMetadata;
 }
