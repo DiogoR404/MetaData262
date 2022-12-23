@@ -25,7 +25,7 @@ def getPathTest262() -> str:
         return conf['pathToTest262']
     return currentDirectory + '/../../resources/test262/'
 
-def runTest(engine: str, test: dict, harness: dict, version: int, builtInWrappers: str) -> tuple:
+def runTest(engine: str, test: dict, harness: dict, version: int, builtInWrappers: str, currentDirectory: str) -> tuple:
     def getHarness() -> str:
         return harness['module' if hasFlag('module') else 'default'][version]
     def hasFlag(flag: str) -> bool:
@@ -46,16 +46,17 @@ def runTest(engine: str, test: dict, harness: dict, version: int, builtInWrapper
                 codeToExecute += f.read()
     if builtInWrappers != '':
         codeToExecute += 'log42 = [];\n'
-    with open(test['path'], 'r') as f:
+    testPath = currentDirectory + '/' + test['path']
+    with open(testPath, 'r') as f:
         codeToExecute += f.read()
     if builtInWrappers:
         codeToExecute += '\nconst t= JSON.parse(JSON.stringify(log42));\nconsole.log(t);'
-    with open(test['path'], "w") as f:
+    with open(testPath, "w") as f:
         f.write(codeToExecute)
     command = [engine]
     if hasFlag('module'):
         command += ['--module']
-    command += [test['path']]
+    command += [testPath]
     # run test
     hasNoError, output = runSubProcess(command)
 
@@ -75,16 +76,17 @@ def runTest(engine: str, test: dict, harness: dict, version: int, builtInWrapper
 def dynamicComputation(configuration: dict, engine: str, version: int, testMetaData: list, builtInWrappers='') -> dict:
     harness = loadHarness(configuration['harness'])
     enginePath = configuration['engines'][engine][str(version)]
-    os.system('rm -rf test/')
-    os.system('cp -r ' + getPathTest262() + 'test test')
+    currentDirectory = os.path.dirname(os.path.abspath(__file__))
+    os.system(f'rm -rf {currentDirectory}/test/')
+    os.system(f'cp -r {getPathTest262()}test {currentDirectory}/test')
     result = {'correct': {}, 'error': {}}
-    inputs = zip(repeat(enginePath), testMetaData, repeat(harness), repeat(version), repeat(builtInWrappers))
+    inputs = zip(repeat(enginePath), testMetaData, repeat(harness), repeat(version), repeat(builtInWrappers), repeat(currentDirectory))
     with multiprocessing.Pool() as p:
         r = p.starmap(runTest, tqdm.tqdm(inputs, total=len(testMetaData)))
     for i in range(len(testMetaData)):
         keyName = 'correct' if r[i][0] else 'error'
         result[keyName][testMetaData[i]['path']] = r[i][1]
-    os.system('rm -rf test/')
+    os.system(f'rm -rf {currentDirectory}/test/')
     return result
 
 def loadHarness(data) -> dict:
