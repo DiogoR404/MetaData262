@@ -298,10 +298,9 @@ function analysis(stmt, table_func, table_vars, table_syntax, table_operators, t
     return progVersion
 }
 
-function main () {
+function computeStaticVersion (metadata) {
     //loads all metadata file
     const configuration = JSON.parse(readFileContent('../configurations/dynamicAnalysis.json'));
-    let metadata = JSON.parse(readFileContent("../official/results/metadata_test262.json"));
     let resultsPerVersion = {'notSupported':[], 'property-escapes':[], 'es7':[]};
     configuration['versions'].forEach(elm => {
         resultsPerVersion['es'+elm] = [];
@@ -372,8 +371,12 @@ function main () {
         fs.writeFile(__dirname + "/results/static/" + version + ".json", JSON.stringify(resultsPerVersion[version]), function () { });
     }
     fs.writeFile(__dirname + "/results/static/result.json", JSON.stringify(result), function () { });
+    return result;
 }
 
-main();
-
-module.exports = { analysis, parseBuiltIn, parseJSON };
+if (require.main === module) {
+    let metadata = JSON.parse(readFileContent("../official/results/metadata_test262.json"));
+    computeStaticVersion(metadata);
+} else {
+    module.exports = computeStaticVersion;
+}

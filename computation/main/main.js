@@ -1,31 +1,35 @@
-const { spawn } = require('child_process');
-const { exit } = require('process');
 const fs = require('fs');
 const esprima = require('esprima');
-const map = require('../utils/map')
+const map = require('../utils/map');
+const runProcess = require('../utils/runProcess');
+const computeOfficialMetadata = require('../official/search_metadata_from_test262');
+const computeVersion = require('../version/version');
+const computeConstructs = require('../constructs/search_syntactic_constructs');
+const computeBuiltIns = require('../builtIns/builtIns');
+const { exit } = require('process');
 
 function getLines(file) {
-    var program = file.split("\n")
-    var count = 0
-    var in_commentary = false
+    var program = file.split("\n");
+    var count = 0;
+    var in_commentary = false;
     for (var line = 0; line < program.length - 1; line++) {
         if (program[line].slice(0, 5) === "/*---") {
-            in_commentary = true
+            in_commentary = true;
         }
         else if (program[line].slice(0, 5) === "---*/") {
-            in_commentary = false
+            in_commentary = false;
         }
         else if (!in_commentary && program[line].slice(0, 2) !== "//" && program[line] !== "") {
-            count++
+            count++;
         }
     }
-    return count
+    return count;
 }
 
 function analysisProgram(stmt) {
     function mapper(stmt) {
         if (stmt === undefined) {
-            return stmt
+            return stmt;
         }
 
         if (stmt.type === "Identifier") {
@@ -59,52 +63,39 @@ function addFinalMetadata(test) {
     test["lines"] = getLines(program_text);
 }
 
-async function runProcess(app, input) {
-    console.log(`running: ${[app, ...input]}`)
-    const process = spawn(app, input);
-
-    process.stdout.on('data', (data) => console.log(`${data}`))
-    process.stderr.on('data', (data) => console.log(`stderr: ${data}`))
-
-    const exitCode = await new Promise((code, _) => process.on('close', (code)))
-    if (exitCode) { exit(1); }
-}
 
 async function main() {
-    await runProcess('node', ['../official/search_metadata_from_test262.js'])
+    let metadata = computeOfficialMetadata();
+    let testing = false;
+    if (process.argv[2] === '-t') {
+        // testing
+        testing = true;
+        const testingPaths = JSON.parse(fs.readFileSync('../support/testingDynamicSubSet.json')).map((test) => {
+            return test.path;
+        });
+        metadata = metadata.filter((test) => { return testingPaths.includes(test.path) });
+    }
+    console.log(`Number of test = ${metadata.length}`);
 
-    await runProcess('node', ['../version/static.js'])
-    await runProcess('python3', ['../version/dynamic.py'])
-    await runProcess('node', ['../version/mixedAnalysis.js'])
-
-    await runProcess('node', ['../constructs/search_syntactic_constructs.js'])
-
-    await runProcess('node', ['../builtIns/static.js'])
-    await runProcess('python3', ['../builtIns/collectBuiltInSignatures.py'])
-    await runProcess('node', ['../builtIns/generateBuiltInWrappers.js'])
-    await runProcess('python3', ['../builtIns/dynamic.py'])
-    await runProcess('node', ['../builtIns/builtIns.js'])
-
-    const metadata = JSON.parse(fs.readFileSync('../official/results/metadata_test262.json'))
-    const versions = JSON.parse(fs.readFileSync('../version/results/mixedAnalysis.json'))
-    const builtIns = JSON.parse(fs.readFileSync('../builtIns/results/result.json'))
-    const constructs = JSON.parse(fs.readFileSync('../constructs/results/result.json'))
+    const versions = await computeVersion(metadata, testing);
+    const constructs = computeConstructs(metadata);
+    const builtIns = await computeBuiltIns(metadata, testing);
 
     for (let i in metadata) {
         let test = metadata[i];
 
         const testVersion = parseInt(versions[test.path]);
-        if(testVersion) test['version'] = testVersion;
+        if (testVersion) test['version'] = testVersion;
 
         const testBuiltIns = builtIns[test.path];
-        if(Object.keys(testBuiltIns).length !== 0) test['built-ins'] = testBuiltIns;
+        if (Object.keys(testBuiltIns).length !== 0) test['built-ins'] = testBuiltIns;
 
         const testConstructs = constructs[test.path];
-        if(testConstructs) test['syntactic_constructors'] = testConstructs;
+        if (testConstructs) test['syntactic_constructors'] = testConstructs;
 
         addFinalMetadata(test);
     }
-    fs.writeFile("metadata_version.json", JSON.stringify(metadata), function () { });
+    fs.writeFile("results/metadata_version.json", JSON.stringify(metadata), function () { });
 }
 
 main()

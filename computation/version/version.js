@@ -1,5 +1,6 @@
 const fs = require('fs');
-const p = require('esprima').parse;
+const runProcess = require('../utils/runProcess');
+const computeStaticVersion = require('./static')
 
 //function to read a file
 function readFileContent(file) {
@@ -18,18 +19,24 @@ function getHigherVersion(version1, version2) {
     return v1 > v2 ? version1 : version2;
 }
 
-function main() {
+async function computeVersion(metadata, testing) {
+    const resultsStatic = computeStaticVersion(metadata);
+    let args = [__dirname + '/dynamic.py'];
+    if (testing) args.push('-t')
+    await runProcess('python3', args);
     const resultsDynamic = JSON.parse(readFileContent(__dirname + "/results/dynamic/result.json"));
-    const resultsStatic = JSON.parse(readFileContent(__dirname + "/results/static/result.json"));
-    const metadata = JSON.parse(readFileContent(__dirname + "/../official/results/metadata_test262.json"));
-    const results = {};
 
+    const results = {};
     for (let test in metadata) {
-        const path = metadata[test].path; 
+        const path = metadata[test].path;
         results[path] = getHigherVersion(resultsDynamic[path], resultsStatic[path].slice(2));
     }
-
     fs.writeFileSync(__dirname + '/results/mixedAnalysis.json', JSON.stringify(results));
+    return results;
 }
-
-main()
+if (require.main === module) {
+    const metadata = JSON.parse(readFileContent(__dirname + "/../official/results/metadata_test262.json"));
+    computeVersion(metadata, false);
+} else {
+    module.exports = computeVersion;
+}

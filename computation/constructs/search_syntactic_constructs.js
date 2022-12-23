@@ -26,9 +26,8 @@ function analysis(stmt, fileToAnalyse, results) {
     map(mapper, stmt);
 }
 
-function main() {
+function computeConstructs(metadata) {
     //loads all metadata file
-    let metadata = JSON.parse(readFileContent("../official/results/metadata_test262.json"));
     let results = {};
 
     for (let i = 0; i < metadata.length; i++) {
@@ -39,7 +38,6 @@ function main() {
         //use of esprima to analyse the test
         try {
             analysis(p(program_text), fileToAnalyse, results);
-
         } catch (e) {
             //error in esprima
         }
@@ -48,6 +46,12 @@ function main() {
 
     //writes the result in a file
     fs.writeFile(__dirname + "/results/result.json", JSON.stringify(results), function () { });
+    return results;
 }
 
-main()
+if (require.main === module) {
+    let metadata = JSON.parse(readFileContent("../official/results/metadata_test262.json"));
+    computeConstructs(metadata);
+} else {
+    module.exports = computeConstructs;
+}

@@ -1,8 +1,17 @@
 const fs = require('fs');
+const computeStaticBuiltIns = require('./static');
+const generateBuiltInWrappers = require('./generateBuiltInWrappers');
+const runProcess = require('../utils/runProcess');
 
-function main() {
-    let staticResult = JSON.parse(fs.readFileSync(__dirname + '/results/static.json'));
-    let dynamicResult = JSON.parse(fs.readFileSync(__dirname + '/results/dynamic.json'))['correct'];
+async function computeBuiltIns(metadata, testing) {
+    const staticResult = computeStaticBuiltIns(metadata);
+    await runProcess('python3', [__dirname + '/collectBuiltInSignatures.py']);
+    generateBuiltInWrappers();
+    let args = [__dirname + '/dynamic.py'];
+    if (testing) args.push('-t');
+    await runProcess('python3', args);
+    const dynamicResult = JSON.parse(fs.readFileSync(__dirname + '/results/dynamic.json'))['correct'];
+
     let result = {};
     for (const test in staticResult) {
         result[test] = {};
@@ -18,6 +27,12 @@ function main() {
         }
     }
     fs.writeFile(__dirname + "/results/result.json", JSON.stringify(result), () => { });
+    return result;
 }
 
-main()
+if (require.main === module) {
+    let metadata = JSON.parse(fs.readFileSync("../official/results/metadata_test262.json"), 'utf-8');
+    computeBuiltIns(metadata, false);
+} else {
+    module.exports = computeBuiltIns;
+}
