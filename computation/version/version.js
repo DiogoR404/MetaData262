@@ -52,7 +52,8 @@ async function computeVersion(pathToTest262, metadata, testing) {
     const stats = {};
     for (let test in metadata) {
         const path = metadata[test].path;
-        let version = getHigherVersion(resultsDynamic[path], resultsStatic[path].slice(2));
+        let version = getHigherVersion(metadata[test].version, resultsStatic[path].slice(2));
+        version = getHigherVersion(resultsDynamic[path], version);
         version = minimumVersion(metadata[test], version);
         results[path] = version;
 
@@ -69,7 +70,7 @@ async function computeVersion(pathToTest262, metadata, testing) {
 }
 if (require.main === module) {
     const metadata = JSON.parse(readFileContent(__dirname + "/../official/results/metadata_test262.json"));
-    computeVersion(__dirname + "/../../resources/test262/", metadata, true);
+    computeVersion(__dirname + "/../../resources/test262/", metadata, false);
 } else {
     module.exports = computeVersion;
 }
