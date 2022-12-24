@@ -1,39 +1,26 @@
-var p = require('esprima').parse
-var g = require('escodegen').generate
-
-
-function readFileContent(file) {
-    const fs = require('fs')
-    return fs.readFileSync(file, 'utf8')
-
-}
-
-function map(mapper, stmt){
-    function t1(stmt){
+function map(mapper, stmt) {
+    function t1(stmt) {
         return map(mapper, stmt)
     }
 
     if (!stmt) return stmt
 
-    //console.log(stmt)
-
-    switch(stmt.type){
+    switch (stmt.type) {
         case "Program": {
-            
             var new_stmt = {
-                body:stmt.body.map(t1),
-                type:"Program"
+                body: stmt.body.map(t1),
+                type: "Program"
             }
             return mapper(new_stmt)
         }
-        case "ArrayPattern" : {
+        case "ArrayPattern": {
             var new_stmt = {
                 type: stmt.type,
                 elements: stmt.elements.map(t1)
             }
             return mapper(new_stmt)
         }
-        case "RestElement" : {
+        case "RestElement": {
             var new_stmt = {
                 type: stmt.type,
                 argument: t1(stmt.argument)
@@ -48,28 +35,28 @@ function map(mapper, stmt){
             }
             return mapper(new_stmt)
         }
-        case "ObjectPattern" : {
+        case "ObjectPattern": {
             var new_stmt = {
                 type: stmt.type,
                 properties: stmt.properties.map(t1)
             }
             return mapper(new_stmt)
         }
-        case "ArrayExpression" : {
+        case "ArrayExpression": {
             var new_stmt = {
                 type: stmt.type,
                 elements: stmt.elements.map(t1)
             }
             return mapper(new_stmt)
         }
-        case "ObjectExpression" : {
+        case "ObjectExpression": {
             var new_stmt = {
                 type: stmt.type,
                 properties: stmt.properties.map(t1)
             }
             return mapper(new_stmt)
         }
-        case "Property" : {
+        case "Property": {
             var new_stmt = {
                 type: stmt.type,
                 key: t1(stmt.key),
@@ -82,7 +69,7 @@ function map(mapper, stmt){
             return mapper(new_stmt)
         }
         case "FunctionExpression":
-        case "FunctionDeclaration" : {
+        case "FunctionDeclaration": {
             var new_stmt = {
                 type: stmt.type,
                 id: t1(stmt.id),
@@ -117,12 +104,12 @@ function map(mapper, stmt){
         }
         case "ClassBody": {
             var new_stmt = {
-                type: stmt.type,                
+                type: stmt.type,
                 body: stmt.body.map(t1)
             }
             return mapper(new_stmt)
         }
-        case "MethodDefinition" : {
+        case "MethodDefinition": {
             var new_stmt = {
                 type: stmt.type,
                 key: t1(stmt.key),
@@ -133,7 +120,7 @@ function map(mapper, stmt){
             }
             return mapper(new_stmt)
         }
-        case "TaggedTemplateExpression" : {
+        case "TaggedTemplateExpression": {
             var new_stmt = {
                 type: stmt.type,
                 readonlytag: t1(stmt.readonlytag),
@@ -141,7 +128,7 @@ function map(mapper, stmt){
             }
             return mapper(new_stmt)
         }
-        case "TemplateElement" : {
+        case "TemplateElement": {
             var new_stmt = {
                 type: stmt.type,
                 value: t1(stmt.value),
@@ -149,7 +136,7 @@ function map(mapper, stmt){
             }
             return mapper(new_stmt)
         }
-        case "TemplateLiteral" : {
+        case "TemplateLiteral": {
             var new_stmt = {
                 type: stmt.type,
                 quasis: stmt.quasis.map(t1),
@@ -157,7 +144,7 @@ function map(mapper, stmt){
             }
             return mapper(new_stmt)
         }
-        case "MemberExpression" : {
+        case "MemberExpression": {
             var new_stmt = {
                 type: stmt.type,
                 computed: stmt.computed,
@@ -166,7 +153,7 @@ function map(mapper, stmt){
             }
             return mapper(new_stmt)
         }
-        case "MetaProperty" : {
+        case "MetaProperty": {
             var new_stmt = {
                 type: stmt.type,
                 meta: t1(stmt.meta),
@@ -174,8 +161,8 @@ function map(mapper, stmt){
             }
             return mapper(new_stmt)
         }
-        case "CallExpression" : 
-        case "NewExpression" : {
+        case "CallExpression":
+        case "NewExpression": {
             var new_stmt = {
                 type: stmt.type,
                 callee: t1(stmt.callee),
@@ -183,7 +170,7 @@ function map(mapper, stmt){
             }
             return mapper(new_stmt)
         }
-        case "SpreadElement" : 
+        case "SpreadElement":
         case "AwaitExpression": {
             var new_stmt = {
                 type: stmt.type,
@@ -236,14 +223,14 @@ function map(mapper, stmt){
             }
             return mapper(new_stmt)
         }
-        case "BlockStatement":  {
+        case "BlockStatement": {
             var new_stmt = {
                 type: stmt.type,
                 body: stmt.body.map(t1)
             }
             return mapper(new_stmt)
         }
-        case "BreakStatement" :
+        case "BreakStatement":
         case "ContinueStatement": {
             var new_stmt = {
                 type: stmt.type,
@@ -312,7 +299,7 @@ function map(mapper, stmt){
                 alternate: t1(stmt.alternate)
             }
             return mapper(new_stmt)
-        }        
+        }
         case "LabeledStatement": {
             var new_stmt = {
                 type: stmt.type,
@@ -321,15 +308,15 @@ function map(mapper, stmt){
             }
             return mapper(new_stmt)
         }
-        case "ReturnStatement" :
-        case "ThrowStatement" : {
+        case "ReturnStatement":
+        case "ThrowStatement": {
             var new_stmt = {
                 type: stmt.type,
                 argument: t1(stmt.argument)
             }
             return mapper(new_stmt)
         }
-        case "SwitchStatement":{
+        case "SwitchStatement": {
             var new_stmt = {
                 type: stmt.type,
                 discriminant: t1(stmt.discriminant),
@@ -337,7 +324,7 @@ function map(mapper, stmt){
             }
             return mapper(new_stmt)
         }
-        case "SwitchCase":{
+        case "SwitchCase": {
             var new_stmt = {
                 type: stmt.type,
                 test: t1(stmt.test),
@@ -345,7 +332,7 @@ function map(mapper, stmt){
             }
             return mapper(new_stmt)
         }
-        case "TryStatement":{
+        case "TryStatement": {
             var new_stmt = {
                 type: stmt.type,
                 block: t1(stmt.block),
@@ -354,7 +341,7 @@ function map(mapper, stmt){
             }
             return mapper(new_stmt)
         }
-        case "CatchClause" : {
+        case "CatchClause": {
             var new_stmt = {
                 type: stmt.type,
                 params: t1(stmt.params),
@@ -370,7 +357,7 @@ function map(mapper, stmt){
             }
             return mapper(new_stmt)
         }
-        case "VariableDeclarator" : {
+        case "VariableDeclarator": {
             var new_stmt = {
                 type: stmt.type,
                 id: t1(stmt.id),
@@ -386,7 +373,7 @@ function map(mapper, stmt){
             }
             return mapper(new_stmt)
         }
-        case "WithStatement":{
+        case "WithStatement": {
             var new_stmt = {
                 type: stmt.type,
                 object: t1(stmt.object),
@@ -394,200 +381,11 @@ function map(mapper, stmt){
             }
             return mapper(new_stmt)
         }
-        case "Identifier" : 
-        case "Literal" :
+        case "Identifier":
+        case "Literal":
             return mapper(stmt)
-        
+
     }
 }
 
-function replace3with4(stmt){
-    function mapper(stmt){
-        switch(stmt.type) {
-            case "Literal":{
-                if (stmt.value === 3){
-                    var new_stmt = {
-                        type: stmt.type,
-                        value: 4,
-                        raw: "4",
-                        regex: stmt.regex
-                    }
-                    return new_stmt
-                } 
-                else return stmt
-            }
-            default: return stmt
-        }
-    }
-
-    return map(mapper, stmt)
-}
-
-function replaceVarXwithY(stmt){
-    function mapper2(stmt){
-        if (stmt.type === "FunctionDeclaration"){
-            stmt.id.is_func_dec = true;
-        }
-        return stmt
-            
-    }
-
-    function mapper(stmt){
-        switch(stmt.type) {
-            case "Identifier": {
-                if (stmt.name === "x" && !stmt.is_func_dec){
-                    var new_id = {
-                        type: stmt.type,
-                        name: "y"
-                    }
-                    return new_id
-                }
-                else return stmt
-            }
-            default: return stmt
-        }
-    }
-    var new_stmt = map(mapper2, stmt)
-    return map(mapper, new_stmt)
-}
-
-function replaceFuncXwithY(stmt){
-    function mapper(stmt){
-        switch(stmt.type) {
-            case "FunctionDeclaration":{
-                if (stmt.id.name === 'x'){
-                    var new_id = {
-                        type: stmt.id.type,
-                        name: 'y'
-                    }
-                    var new_stmt = {
-                        type: stmt.type,
-                        id: new_id,
-                        params: stmt.params,
-                        body: stmt.body,
-                        generator: stmt.generator,
-                        async: stmt.async,
-                        expression: stmt.expression
-                        
-                    }
-                    return new_stmt
-                } 
-                else return stmt
-            }
-            case "CallExpression" : {
-                if (stmt.callee.name === 'x'){
-                    var new_callee = {
-                        type: stmt.callee.type,
-                        name: 'y'
-                    }
-                    var new_stmt = {
-                        type: stmt.type,
-                        callee: new_callee,
-                        arguments: stmt.arguments                        
-                        
-                    }
-                    return new_stmt
-                } 
-                else return stmt
-            }
-            default: return stmt
-        }
-    }
-
-    return map(mapper, stmt)
-}
-
-function replaceVarObject(stmt, object){
-    function mapper2(stmt){
-        if (stmt.type === "FunctionDeclaration"){
-            stmt.id.is_func_dec = true;
-        }
-        return stmt   
-    }
-
-    function mapper(stmt){
-        keys = Object.keys(object)
-        switch(stmt.type) {
-            case "Identifier": {
-                for(var i = 0; i < keys.length; i++){
-                    if (stmt.name === keys[i] && !stmt.is_func_dec){
-                        var new_id = {
-                            type: stmt.type,
-                            name: object[keys[i]]
-                        }
-                        return new_id
-                    }
-                    else return stmt
-                }
-            }
-            default: return stmt
-        }
-    }
-    var new_stmt = map(mapper2, stmt)
-    return map(mapper, new_stmt)
-}
-
-function switchDivider(stmt){
-    function mapper(stmt){
-        switch(stmt.type){
-            case "SwitchStatement":{
-                var casesA= [], casesB=[], def
-                for (var i=0; i < stmt.cases.length; i++) {
-                    if (!def && stmt.cases[i].test !==null){
-                        casesA.push(stmt.cases[i])
-                    }
-                    else if (stmt.cases[i].test === null){
-                        def=stmt.cases[i]
-                    }
-                    else{
-                        casesB.push(stmt.cases[i])
-                    }
-                }
-                var new_stmt = {
-                    type: stmt.type,
-                    discriminant: stmt.discriminant,
-                    cases_A: casesA,
-                    default: def,
-                    cases_B: casesB
-                }
-                return new_stmt 
-            }
-            default: return stmt
-
-        }
-    }
-
-
-    return map(mapper, stmt)
-}
-
-/*
-var fileToAnalyse = process.argv[2];
-
-var program_text = readFileContent(fileToAnalyse)
-
-var program = p(program_text);
-
-const option = {
-    format : {
-        quotes : 'single',
-        indent : {
-            style : '\t'
-        }
-    }
-}; 
-
-var obj = {
-    x: 'y',
-    i:'n'
-}
-
-//var new_program = replace3with4(program)
-//var new_program = replaceVarXwithY(program)
-//var new_program = replaceFuncXwithY(program)
-//var new_program = replaceVarObject(program, obj)
-var new_program = switchDivider(program)
-
-console.log(g(new_program, option))
-*/
 module.exports = map
