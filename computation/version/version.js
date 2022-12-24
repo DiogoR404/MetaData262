@@ -1,4 +1,5 @@
 const fs = require('fs');
+const { hasUncaughtExceptionCaptureCallback } = require('process');
 const runProcess = require('../utils/runProcess');
 const computeStaticVersion = require('./static')
 
@@ -7,7 +8,6 @@ function readFileContent(file) {
     return fs.readFileSync(file, 'utf8');
 }
 
-//checks if version1 is lower than version2
 function getHigherVersion(version1, version2) {
     v1 = parseInt(version1);
     v2 = parseInt(version2);
@@ -19,6 +19,28 @@ function getHigherVersion(version1, version2) {
     return v1 > v2 ? version1 : version2;
 }
 
+function minimumVersion(test, version) {
+    function pathHasElements(arrayElements) {
+        return arrayElements.some(elm => {
+            return test.path.includes(elm) ? true : false;
+        });
+    }
+
+    if (!parseInt(version)) return version;
+
+    if (pathHasElements(["named-groups"])){
+        return getHigherVersion(version, 9)
+
+    } if (pathHasElements(['Array/prototype/includes', 'async'])) {
+        return getHigherVersion(version, 8);
+
+    } if (pathHasElements(['module-code', 'arrow', 'generator', 'dstr'])){
+        return getHigherVersion(version, 6)
+    }
+
+    return version;
+}
+
 async function computeVersion(pathToTest262, metadata, testing) {
     const resultsStatic = computeStaticVersion(pathToTest262, metadata);
     let args = [__dirname + '/dynamic.py'];
@@ -27,11 +49,22 @@ async function computeVersion(pathToTest262, metadata, testing) {
     const resultsDynamic = JSON.parse(readFileContent(__dirname + "/results/dynamic/result.json"));
 
     const results = {};
+    const stats = {};
     for (let test in metadata) {
         const path = metadata[test].path;
-        results[path] = getHigherVersion(resultsDynamic[path], resultsStatic[path].slice(2));
+        let version = getHigherVersion(resultsDynamic[path], resultsStatic[path].slice(2));
+        version = minimumVersion(metadata[test], version);
+        results[path] = version;
+
+        // for checking results
+        if (!stats.hasOwnProperty(version)) stats[version] = 0;
+        stats[version] += 1;
     }
-    fs.writeFileSync(__dirname + '/results/mixedAnalysis.json', JSON.stringify(results));
+
+    fs.writeFileSync(__dirname + '/results/stats.json', JSON.stringify(stats))
+    console.log(stats);
+
+    fs.writeFileSync(__dirname + '/results/result.json', JSON.stringify(results));
     return results;
 }
 if (require.main === module) {

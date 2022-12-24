@@ -76,7 +76,7 @@ async function main() {
         });
         metadata = metadata.filter((test) => { return testingPaths.includes(test.path) });
     }
-    console.log(`Number of test = ${metadata.length}`);
+    console.log(`Will test ${metadata.length} tests`);
 
     const versions = await computeVersion(pathToTest262, metadata, testing);
     const constructs = computeConstructs(pathToTest262, metadata);
