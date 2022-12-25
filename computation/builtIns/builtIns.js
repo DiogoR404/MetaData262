@@ -3,10 +3,11 @@ const computeStaticBuiltIns = require('./static');
 const generateBuiltInWrappers = require('./generateBuiltInWrappers');
 const runProcess = require(__dirname + '/../utils/runProcess');
 
-async function computeBuiltIns(pathToTest262, metadata, testing) {
+async function computeBuiltIns(pathToTest262, metadata, testing, conf) {
     const staticResult = computeStaticBuiltIns(pathToTest262, metadata);
-    await runProcess('python3', [__dirname + '/collectBuiltInSignatures.py']);
-    generateBuiltInWrappers();
+
+    generateBuiltInWrappers(conf.versions);
+
     let args = [__dirname + '/dynamic.py'];
     if (testing) args.push('-t');
     await runProcess('python3', args);
@@ -31,8 +32,9 @@ async function computeBuiltIns(pathToTest262, metadata, testing) {
 }
 
 if (require.main === module) {
+    const conf = JSON.parse(fs.readFileSync(__dirname + "/../configurations/dynamicAnalysis.json"));
     let metadata = JSON.parse(fs.readFileSync(__dirname + "/../official/results/metadata_test262.json"), 'utf-8');
-    computeBuiltIns(__dirname + '/../../resources/test262/', metadata, true);
+    computeBuiltIns(__dirname + '/../../resources/test262/', metadata, false, conf);
 } else {
     module.exports = computeBuiltIns;
 }

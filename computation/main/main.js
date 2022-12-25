@@ -80,7 +80,7 @@ async function main() {
 
     const versions = await computeVersion(pathToTest262, metadata, testing);
     const constructs = computeConstructs(pathToTest262, metadata);
-    const builtIns = await computeBuiltIns(pathToTest262, metadata, testing);
+    const builtIns = await computeBuiltIns(pathToTest262, metadata, testing, conf);
 
     for (let i in metadata) {
         let test = metadata[i];
