@@ -22,121 +22,107 @@ function memberParse(stmt) {
     return array.reverse().join(".")
 }
 //runs through the stmt to find some function, variable, syntax or operator that's exclusively from a version
-function analysis(stmt, fileToAnalyse, results, es11Info) {
-    let es11GlobalVars = es11Info["globalVars"];
+function analysis(stmt, test, esInfo) {
     function mapper(stmt) {
         if (stmt === undefined) {
             return stmt
         }
         //analyse of the syntax by type
         switch (stmt.type) {
-            case "Identifier":
-                {
-                    if (es11GlobalVars.includes(stmt.name)) {
-                        let obj = stmt.name
-                        if (!results.hasOwnProperty(fileToAnalyse)) {
-                            results[fileToAnalyse] = {};
-                            results[fileToAnalyse][obj] = [];
-                        } else if (!results[fileToAnalyse].hasOwnProperty(obj)) {
-                            results[fileToAnalyse][obj] = [];
-                        }
+            case "Identifier": {
+                if (esGlobalVars.includes(stmt.name)) {
+                    if (!test.hasOwnProperty(stmt.name)) {
+                        test[stmt.name] = [];
                     }
-                    return stmt;
                 }
+                return stmt;
+            }
             case "ArrayPattern":
-            case "ArrayExpression":
-                {
-                    if (!results.hasOwnProperty(fileToAnalyse)) {
-                        results[fileToAnalyse] = { "Array": [] };
-                    } else if (!results[fileToAnalyse].hasOwnProperty("Array")) {
-                        results[fileToAnalyse]["Array"] = [];
-                    }
-
-                    return stmt;
+            case "ArrayExpression": {
+                if (!test.hasOwnProperty("Array")) {
+                    test["Array"] = [];
                 }
+
+                return stmt;
+            }
             case "ObjectPattern":
-            case "ObjectExpression":
-                {
-                    if (!results.hasOwnProperty(fileToAnalyse)) {
-                        results[fileToAnalyse] = { "Object": [] };
-                    } else if (!results[fileToAnalyse].hasOwnProperty("Object")) {
-                        results[fileToAnalyse]["Object"] = [];
-                    }
+            case "ObjectExpression": {
+                if (!test.hasOwnProperty("Object")) {
+                    test["Object"] = [];
+                }
 
+                return stmt;
+            }
+            case "CallExpression": {
+                if (stmt.callee.type === "MemberExpression") {
+                    if (esInfo["builtIns"]["FunctionObject"]["functions"].includes(stmt.callee.property.name)) {
+                        if (test.hasOwnProperty("Function")) {
+                            test["Function"].push('property.' + stmt.callee.property.name)
+                        } else {
+                            test["Function"] = ['property.' + stmt.callee.property.name]
+                        }
+                    }
+                }
+                return stmt;
+            }
+            case "MemberExpression": {
+                let obj = memberParse(stmt)
+                let obj1 = obj.split(".")[0]
+                let obj_last = obj.split(".")[obj.split(".").length - 1]
+                let obj_function = obj.split(".").slice(1).join(".")
+                if (esGlobalVars.includes(obj1)) {
+                    if (!test[obj1].includes(obj_function)) {
+                        if (esInfo["builtIns"][(obj1 + "Object")]["functions"].includes(obj_last) ||
+                            esInfo["builtIns"][(obj1 + "Object")]["fields"].includes(obj_last)) {
+                            test[obj1].push(obj_function);
+                        }
+                        return stmt
+                    }
+                }
+
+                const hasObj = test.hasOwnProperty("Object");
+
+                if (hasObj && test["Object"].includes(obj_function)) {
                     return stmt;
                 }
-            case "CallExpression":
-                {
-                    if (stmt.callee.type === "MemberExpression") {
-                        if (es11Info["builtIns"]["FunctionObject"]["functions"].includes(stmt.callee.property.name)) {
-                            if (results[fileToAnalyse].hasOwnProperty("Function")) {
-                                results[fileToAnalyse]["Function"].push(stmt.callee.property.name)
-                            } else {
-                                results[fileToAnalyse]["Function"] = [stmt.callee.property.name]
-                            }
-                        }
-                    }
-                    return stmt;
+
+                if (esInfo["builtIns"][("ObjectObject")]["functions"].includes(obj_last) ||
+                    esInfo["builtIns"][("ObjectObject")]["fields"].includes(obj_last)) {
+                        if (!hasObj) test["Object"] = [];
+                        test["Object"].push(obj_function);
                 }
-            case "MemberExpression":
-                {
-                    let obj = memberParse(stmt)
-                    let obj1 = obj.split(".")[0]
-                    let obj_last = obj.split(".")[obj.split(".").length - 1]
-                    let obj_function = obj.split(".").slice(1).join(".")
-                    if (es11GlobalVars.includes(obj1)) {
-                        if (!results[fileToAnalyse][obj1].includes(obj_function)) {
-                            if (es11Info["builtIns"][(obj1 + "Object")]["functions"].includes(obj_last)) {
-                                results[fileToAnalyse][obj1].push(obj_function);
-                            } else if (es11Info["builtIns"][(obj1 + "Object")]["fields"].includes(obj_last)) {
-                                results[fileToAnalyse][obj1].push(obj_function);
-                            }
-                            return stmt
-                        }
+                return stmt
+            }
 
-                    }
-
-                    if (!results[fileToAnalyse].hasOwnProperty("Object")) {
-                        if (es11Info["builtIns"][("ObjectObject")]["functions"].includes(obj_last)) {
-                            results[fileToAnalyse]["Object"] = [obj_function]
-                        } else if (es11Info["builtIns"][("ObjectObject")]["fields"].includes(obj_last)) {
-                            results[fileToAnalyse]["Object"] = [obj_function]
-                        }
-                    }
-                    else {
-                        if (!results[fileToAnalyse]["Object"].includes(obj_function)) {
-
-                            if (es11Info["builtIns"][("ObjectObject")]["functions"].includes(obj_last)) {
-                                results[fileToAnalyse]["Object"].push(obj_function);
-                            } else if (es11Info["builtIns"][("ObjectObject")]["fields"].includes(obj_last)) {
-                                results[fileToAnalyse]["Object"].push(obj_function);
-                            }
-                        }
-                    }
-                    return stmt
-                }
             default: return stmt;
         }
     }
 
+    const esGlobalVars = esInfo["globalVars"];
     map(mapper, stmt);
-    return results
+    Object.keys(test).forEach(builtIn => {
+        test[builtIn] = test[builtIn].filter(elm => {
+            return 'prototype' !== elm;
+        })
+    });
+    return results;
 }
 
-function staticBuiltInsComputation(pathToTest262, metadata_global) {
+function staticBuiltInsComputation(pathToTest262, metadata, lastVersion) {
     //loads all metadata_global file
     let results = {};
-    let es11Info = JSON.parse(readFile(__dirname + "/../utils/esVersions.json"))['es11'];
+    let esInfo = JSON.parse(readFile(__dirname + "/../utils/esVersions.json"))['es' + lastVersion];
     //cycles all selected tests initializing at version es5, and if the test contains a function, variable, syntax or operator
     //exclusevily from an upper version associates the test to that version
-    for (let i = 0; i < metadata_global.length; i++) {
+    for (let i = 0; i < metadata.length; i++) {
         //loads the test
-        let fileToAnalyse = metadata_global[i].path;
-        let program_text = readFile(pathToTest262 + fileToAnalyse);
+        const fileToAnalyse = metadata[i].path;
+        const program_text = readFile(pathToTest262 + fileToAnalyse);
         results[fileToAnalyse] = {}
         //use of esprima to analyse the test
         try {
-            results = analysis(p(program_text), fileToAnalyse, results, es11Info);
+            results[fileToAnalyse] = {};
+            analysis(p(program_text), results[fileToAnalyse], esInfo);
 
         } catch (e) {
             //fault in esprima
@@ -150,8 +136,9 @@ function staticBuiltInsComputation(pathToTest262, metadata_global) {
 }
 
 if (require.main === module) {
-    let metadata_global = JSON.parse(readFile(__dirname + "/../official/results/metadata_test262.json"));
-    staticBuiltInsComputation(__dirname + '/../../resources/test262/', metadata_global);
+    const metadata = JSON.parse(readFile(__dirname + "/../official/results/metadata_test262.json"));
+    const versions = JSON.parse(readFile(__dirname + "/../configurations/dynamicAnalysis.json")).versions;
+    staticBuiltInsComputation(__dirname + '/../../resources/test262/', metadata, versions.pop());
 } else {
     module.exports = staticBuiltInsComputation;
 }
