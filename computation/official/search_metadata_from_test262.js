@@ -5,10 +5,6 @@
 
 const fs = require('fs');
 
-//reads file
-function readFileContent(file) {
-    return fs.readFileSync(file, 'utf8');
-}
 
 function GetMetadata(pathToTest262, path) {
 
@@ -24,17 +20,14 @@ function GetMetadata(pathToTest262, path) {
         return string;
     }
 
-    let program_text = readFileContent(pathToTest262 + path);
+    let program_text = fs.readFileSync(pathToTest262 + path, 'utf-8');
 
-    let metadata = {
-        path: path // removing the inicial caracters of the path to start with test/
-    };
+    let metadata = { path: path };
 
     program = program_text.split("\n");
-    //metadata["eval"] = searchEval(program_text, path);
 
-    //saltar o copyright
-    let line = 2
+    
+    let line = 2 //saltar o copyright
     for (; line < program.length - 1; line++) {
         lineArray = program[line].split(":");
         switch (lineArray[0].replace(/ /g, "")) {
@@ -68,12 +61,12 @@ function GetMetadata(pathToTest262, path) {
                 break;
             }
             case "es5id": {
-                metadata["version"] = 5;
+                metadata["versionFrontmatter"] = 5;
                 metadata["esid"] = lineArray[1];
                 break;
             }
             case "es6id": {
-                metadata["version"] = 6;
+                metadata["versionFrontmatter"] = 6;
                 metadata["esid"] = lineArray[1];
                 break;
             }

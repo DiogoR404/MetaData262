@@ -78,9 +78,17 @@ async function main() {
     }
     console.log(`Will test ${metadata.length} tests`);
 
-    const versions = await computeVersion(pathToTest262, metadata, testing);
-    const constructs = computeConstructs(pathToTest262, metadata);
-    const builtIns = await computeBuiltIns(pathToTest262, metadata, testing, conf);
+    let versions, constructs, builtIns;
+    if (process.argv[2] === '-nc') {
+        versions = JSON.parse(fs.readFileSync(__dirname + '/../version/results/result.json'));
+        constructs = JSON.parse(fs.readFileSync(__dirname + '/../constructs/results/result.json'));
+        builtIns = JSON.parse(fs.readFileSync(__dirname + '/../builtIns/results/result.json'));
+    } else {
+        versions = await computeVersion(pathToTest262, metadata, testing);
+        constructs = computeConstructs(pathToTest262, metadata);
+        builtIns = await computeBuiltIns(pathToTest262, metadata, testing, conf);
+    }
+
 
     for (let i in metadata) {
         let test = metadata[i];
