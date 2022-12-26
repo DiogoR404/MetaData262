@@ -45,7 +45,7 @@ async function computeVersion(pathToTest262, metadata, testing) {
     const resultsStatic = computeStaticVersion(pathToTest262, metadata);
     let args = [__dirname + '/dynamic.py'];
     if (testing) args.push('-t')
-    // await runProcess('python3', args);
+    await runProcess('python3', args);
     const resultsDynamic = JSON.parse(readFileContent(__dirname + "/results/dynamic/result.json"));
 
     const results = {};

@@ -32,7 +32,7 @@ function analysisProgram(stmt) {
 
         if (stmt.type === "Identifier") {
             if (stmt.name === "assert") assert++;
-            else if (stmt.name === "$ERROR") error++;
+            else if (stmt.name === "Test262Error") error++;
         }
         return stmt;
     }
@@ -52,10 +52,12 @@ function addFinalMetadata(pathToTest262, test) {
         [test["asserts"], test["error"]] = analysisProgram(esprima.parse(program_text));
         test["isSupportedEsprima"] = true;
 
-    } catch (e) {
-        //fault in esprima
-        test["asserts"] = (program_text.match(/assert/g) || []).length;
-        test["error"] = (program_text.match(/ERROR/g) || []).length;
+    } catch (e) {//fault in esprima
+        //ignore frontmatter
+        const code = program_text.slice(program_text.indexOf('---*/'));
+
+        test["asserts"] = (code.match(/assert\.|assert\(/g) || []).length;
+        test["error"] = (code.match(/Test262Error/g) || []).length;
         test["isSupportedEsprima"] = false;
     }
     test["lines"] = getLines(program_text);
