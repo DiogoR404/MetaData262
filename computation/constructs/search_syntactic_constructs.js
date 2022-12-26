@@ -12,17 +12,14 @@ function readFileContent(file) {
 //runs through the stmt to find some function, variable, syntax or operator that's exclusively from a version
 function analysis(stmt, fileToAnalyse, results) {
     function mapper(stmt) {
-        if (stmt === undefined) {
-            return;
-        }
-        if (!results.hasOwnProperty(fileToAnalyse)) {
-            results[fileToAnalyse] = [stmt.type];
+        if (stmt === undefined) return;
 
-        } else if (!results[fileToAnalyse].includes(stmt.type)) {
+        if (!results[fileToAnalyse].includes(stmt.type)) {
             results[fileToAnalyse].push(stmt.type);
         }
     }
 
+    results[fileToAnalyse] = [];
     map(mapper, stmt);
 }
 
@@ -38,6 +35,7 @@ function computeConstructs(pathToTest262, metadata) {
         //use of esprima to analyse the test
         try {
             analysis(p(program_text), fileToAnalyse, results);
+            results[fileToAnalyse].pop(); // remove the Program Construct
         } catch (e) {
             //error in esprima
         }
