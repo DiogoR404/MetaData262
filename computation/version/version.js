@@ -80,7 +80,8 @@ async function computeVersion(pathToTest262, metadata, testing) {
 }
 if (require.main === module) {
     const metadata = JSON.parse(readFileContent(__dirname + "/../official/results/metadata_test262.json"));
-    computeVersion(__dirname + "/../../resources/test262/", metadata, false);
+    const testing = process.argv[2] === '-t';
+    computeVersion(__dirname + "/../../resources/test262/", metadata, testing);
 } else {
     module.exports = computeVersion;
 }

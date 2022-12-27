@@ -34,7 +34,8 @@ async function computeBuiltIns(pathToTest262, metadata, testing, conf) {
 if (require.main === module) {
     const conf = JSON.parse(fs.readFileSync(__dirname + "/../configurations/dynamicAnalysis.json"));
     let metadata = JSON.parse(fs.readFileSync(__dirname + "/../official/results/metadata_test262.json"), 'utf-8');
-    computeBuiltIns(__dirname + '/../../resources/test262/', metadata, false, conf);
+    const testing = process.argv[2] === '-t';
+    computeBuiltIns(__dirname + '/../../resources/test262/', metadata, testing, conf);
 } else {
     module.exports = computeBuiltIns;
 }

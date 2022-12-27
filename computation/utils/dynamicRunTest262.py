@@ -50,7 +50,7 @@ def runTest(engine: str, test: dict, harness: dict, version: int, builtInWrapper
     with open(testPath, 'r') as f:
         codeToExecute += f.read()
     if builtInWrappers:
-        codeToExecute += '\nconst t= JSON.parse(JSON.stringify(log42));\nconsole.log(t);'
+        codeToExecute += '\nconst t= JSON.parse(JSON.stringify(log42));\nconsole.log("`###`"+t+"`###`");'
     with open(testPath, "w") as f:
         f.write(codeToExecute)
     command = [engine]
@@ -60,18 +60,27 @@ def runTest(engine: str, test: dict, harness: dict, version: int, builtInWrapper
     # run test
     hasNoError, output = runSubProcess(command)
 
+    builtInOutput = ''
+    if builtInWrappers:
+        output = output.split('`###`')
+        if len(output) > 1:
+            builtInOutput = output[1]
+            output = output[0] + output[2][1:]
+        else: output = output[0]
+
+    ret = [output, builtInOutput]
     # check if the result is correct
     if hasFlag('async'):
-        return (output.strip() == 'Test262:AsyncTestComplete', output)
+        return [output.strip() == 'Test262:AsyncTestComplete'] + ret
     elif hasNoError and 'negative' not in test:
-        return (True, output)
+        return [True] + ret
     elif hasFlag('module') and version < 11 and version > 6 \
             and 2 == len(output.split('\n')) and '' == output.split('\n')[1]:
-        return (True, output)
+        return [True] + ret
     elif 'negative' in test and test['negative']['type'] in output:
         # does not need to check that phase coincides
-        return (True, output)
-    return (False, output)
+        return [True] + ret
+    return [False] + ret
 
 def dynamicComputation(configuration: dict, engine: str, version: int, testMetaData: list, builtInWrappers='') -> dict:
     harness = loadHarness(configuration['harness'])
@@ -85,7 +94,7 @@ def dynamicComputation(configuration: dict, engine: str, version: int, testMetaD
         r = p.starmap(runTest, tqdm.tqdm(inputs, total=len(testMetaData)))
     for i in range(len(testMetaData)):
         keyName = 'correct' if r[i][0] else 'error'
-        result[keyName][testMetaData[i]['path']] = r[i][1]
+        result[keyName][testMetaData[i]['path']] = r[i][1:]
     os.system(f'rm -rf {currentDirectory}/test/')
     return result
 

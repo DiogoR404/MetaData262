@@ -22,7 +22,7 @@ def main():
 
     # prepare results
     for test, result in resultsBuiltIns['correct'].items():
-        wrapperTextTest = list(map(lambda x: x.split('.'), result.replace('Test262:AsyncTestComplete', '').strip().split(',')))
+        wrapperTextTest = list(map(lambda x: x.split('.'), result[1].split(',')))
         outputResult = {}
         for wrapperOutput in wrapperTextTest:
             builtIn = wrapperOutput[0]
