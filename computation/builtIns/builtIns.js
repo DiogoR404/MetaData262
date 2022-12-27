@@ -4,7 +4,7 @@ const generateBuiltInWrappers = require('./generateBuiltInWrappers');
 const runProcess = require(__dirname + '/../utils/runProcess');
 
 async function computeBuiltIns(pathToTest262, metadata, testing, conf) {
-    const staticResult = computeStaticBuiltIns(pathToTest262, metadata);
+    const staticResult = computeStaticBuiltIns(pathToTest262, metadata, conf.versions.at(-1));
 
     generateBuiltInWrappers(conf.versions);
 
@@ -24,6 +24,13 @@ async function computeBuiltIns(pathToTest262, metadata, testing, conf) {
                     ...dynamicResult[test].hasOwnProperty(builtIn) ? dynamicResult[test][builtIn]: [],
                     ...staticResult[test][builtIn]
                 ])];
+            }
+        }
+    }
+    for (const test in dynamicResult) {
+        for (const builtIn in dynamicResult[test]) {
+            if (!result[test].hasOwnProperty(builtIn)) {
+                result[test][builtIn] = dynamicResult[test][builtIn];
             }
         }
     }
