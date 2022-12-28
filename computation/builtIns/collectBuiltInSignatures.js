@@ -12,7 +12,7 @@ function collectBuiltInSignatures(versions) {
 
         signatures = signatures.
             slice(signatures.indexOf(begining)).
-            map(elm => { return elm.split('</span>')[1]; }).
+            map(elm => { return elm.split('</span>')[1].trim(); }).
             filter(elm => {
                 return elm.includes('(') && !elm.includes('<span');
             });
