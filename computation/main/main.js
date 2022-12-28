@@ -66,6 +66,7 @@ function addFinalMetadata(pathToTest262, test) {
 
 async function main() {
     const conf = JSON.parse(fs.readFileSync(__dirname + '/conf.json'));
+    const computationConfig = JSON.parse(fs.readFileSync(__dirname + '/../configurations/dynamicAnalysis.json'));
     const pathToTest262 = conf.hasOwnProperty('pathToTest262') ? conf.pathToTest262 : __dirname + "/../../resources/test262/";
 
     let metadata = computeOfficialMetadata(pathToTest262);
@@ -88,7 +89,7 @@ async function main() {
     } else {
         versions = await computeVersion(pathToTest262, metadata, testing);
         constructs = computeConstructs(pathToTest262, metadata);
-        builtIns = await computeBuiltIns(pathToTest262, metadata, testing, conf);
+        builtIns = await computeBuiltIns(pathToTest262, metadata, testing, computationConfig);
     }
 
 
