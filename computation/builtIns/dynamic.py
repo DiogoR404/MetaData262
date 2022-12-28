@@ -31,7 +31,12 @@ def main():
         resultsBuiltIns['correct'][test] = outputResult
 
     print('Number of errors:', len(resultsBuiltIns['error']))
-    with open(currentDirectory + '/results/dynamic.json', 'w') as f:
+    outputPath = currentDirectory + '/results/'
+    if len(sys.argv) > 1 and sys.argv[1] == '-t':
+        outputPath += 'dynamic_test.json'
+    else:
+        outputPath += 'dynamic.json'
+    with open(outputPath, 'w') as f:
         f.write(json.dumps(resultsBuiltIns))
 
 if __name__ == '__main__':

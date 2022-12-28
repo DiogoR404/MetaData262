@@ -28,7 +28,13 @@ def main():
         
     resultsPerVersion.pop('notSupportedIgnored')
     results = {test : version for version in resultsPerVersion for test in resultsPerVersion[version]}
-    with open(currentDirectory + "/results/dynamic/result.json", "w") as f:
+
+    outputPath = currentDirectory + '/results/dynamic/'
+    if len(sys.argv) > 1 and sys.argv[2] == '-t':
+        outputPath += 'result_test.json'
+    else:
+        outputPath += 'result.json'
+    with open(outputPath, 'w') as f:
         json.dump(results, f)
 
 
