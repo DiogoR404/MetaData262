@@ -50,7 +50,7 @@ def runTest(engine: str, test: dict, harness: dict, version: int, builtInWrapper
     with open(testPath, 'r') as f:
         codeToExecute += f.read()
     if builtInWrappers:
-        codeToExecute += '\nconst t= JSON.parse(JSON.stringify(log42));\nconsole.log("`###`"+t+"`###`");'
+        codeToExecute += '\nconsole.log("`###`"+JSON__.stringify(log42)+"`###`");'
     with open(testPath, "w") as f:
         f.write(codeToExecute)
     command = [engine]
@@ -95,7 +95,7 @@ def dynamicComputation(configuration: dict, engine: str, version: int, testMetaD
     for i in range(len(testMetaData)):
         keyName = 'correct' if r[i][0] else 'error'
         result[keyName][testMetaData[i]['path']] = r[i][1:]
-    os.system(f'rm -rf {currentDirectory}/test/')
+    # os.system(f'rm -rf {currentDirectory}/test/')
     return result
 
 def loadHarness(data) -> dict:

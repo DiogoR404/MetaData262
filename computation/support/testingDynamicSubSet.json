@@ -212,5 +212,9 @@
         "lines": 2
       }, {
         "path": "test/built-ins/Date/S15.9.3.1_A5_T1.js"
+      }, {
+        "path": "test/built-ins/String/prototype/slice/S15.5.4.13_A6.js"
+      },{
+        "path": "test/language/eval-code/indirect/non-definable-function-with-function.js"
       }
 ]

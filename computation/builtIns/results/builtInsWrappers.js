@@ -1,4 +1,5 @@
 let log42 = [];
+const JSON__ = JSON;
 function copyArgs(from, to){
 	for (var i = 0; i<from.length; i++) {
 		to[i] = from[i];

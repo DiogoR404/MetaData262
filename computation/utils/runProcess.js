@@ -2,7 +2,7 @@ const { spawn } = require('child_process');
 const { exit } = require('process');
 
 async function runProcess(app, input) {
-    console.log(`running: ${[app, ...input]}`)
+    console.log(`running:\n${app} ${input.join(' ')}`)
     const process = spawn(app, input);
 
     process.stdout.on('data', (data) => console.log(`${data}`))
