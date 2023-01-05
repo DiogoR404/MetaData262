@@ -4,15 +4,15 @@ const collectBuiltInSignatures = require('./collectBuiltInSignatures');
 function generateBuiltInWrappers(versions) {
     function write_to_file(func) {
         let str_parsed = func.replace(/\<var\>/g, "").replace(/\<\/var\>/g, "").replace(/\%|\[|\]/g, "");
-        let strToBeReplaced = '\n$1.$2.$3__= $1.$2.$3;\n$1.$2.$3 = function ';
+        let strToBeReplaced = '\nlogObjects["$1.$2.$3"] = $1.$2.$3;\n$1.$2.$3 = function ';
         if (str_parsed.endsWith('delete') || str_parsed.endsWith('catch') || str_parsed.endsWith('finally')){
-            strToBeReplaced += '$3';
+            strToBeReplaced += '$3 ';
         }
         strToBeReplaced += '(){\n'+
 				'\tlog42.indexOf__(\"$1\.$2\.$3\") === -1 ? log42.push__(\"$1\.$2\.$3\") : null;\n'+
 				'\tvar args = []\n'+
 				'\targs = copyArgs(arguments, args);\n'+
-				'\treturn $1.$2\.$3__.apply__(this, args)\n'+
+				'\treturn logObjects["$1.$2.$3"].apply(this, args)\n'+
 			'}\n'+
 			'$1.$2.$3.prototype = $1.$2.$3__.prototype;\n';
         let str = str_parsed.replace(regex, strToBeReplaced);
@@ -30,7 +30,8 @@ function generateBuiltInWrappers(versions) {
 				"\t\tto[i] = from[i];\n"+
 			"\t}\n"+
 			"\treturn to\n"+
-		"}\n");
+		"}\n"+
+    		"var logObjects = {};\n");
 
     const typedArray = ["Int8Array", "Uint8Array", "Uint8ClampedArray", "Int16Array", "Uint16Array", "Int32Array", "Uint32Array", "BigInt64Array", "BigUint64Array", "Float32Array", "Float64Array"];
     for (let line in lines) {
