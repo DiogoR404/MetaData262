@@ -30,7 +30,7 @@ def main():
     results = {test : version for version in resultsPerVersion for test in resultsPerVersion[version]}
 
     outputPath = currentDirectory + '/results/dynamic/'
-    if len(sys.argv) > 1 and sys.argv[2] == '-t':
+    if len(sys.argv) > 1 and sys.argv[1] == '-t':
         outputPath += 'result_test.json'
     else:
         outputPath += 'result.json'

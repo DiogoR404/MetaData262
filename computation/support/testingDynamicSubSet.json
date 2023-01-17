@@ -216,5 +216,15 @@
         "path": "test/built-ins/String/prototype/slice/S15.5.4.13_A6.js"
       },{
         "path": "test/language/eval-code/indirect/non-definable-function-with-function.js"
+      },{
+        "path": "test/built-ins/Array/prototype/lastIndexOf/15.4.4.15-8-b-i-13.js"
+      },{
+        "path": "test/built-ins/WeakMap/prototype/set/length.js"
+      },{
+        "path": "test/language/expressions/delete/11.4.1-4.a-10.js"
+      },{
+        "path": "test/language/comments/hashbang/line-terminator-carriage-return.js"
+      },{
+        "path": "test/built-ins/ArrayBuffer/prototype/slice/nonconstructor.js"
       }
 ]
