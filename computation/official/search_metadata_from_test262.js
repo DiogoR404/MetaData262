@@ -4,6 +4,7 @@
 //    for each file it takes the metadata associated to it - written in commentary in the beginning of the file
 
 const fs = require('fs');
+const addDates = require('./addHistory');
 
 
 function GetMetadata(pathToTest262, path) {
@@ -83,7 +84,7 @@ function recursive(pathToTest262, path, json) {
     const testingPath = pathToTest262 + path;
     if (fs.lstatSync(testingPath).isDirectory()) {
         const files = fs.readdirSync(testingPath);
-        for (file in files) {
+        for (let file in files) {
             const stat = fs.lstatSync(testingPath + "/" + files[file]);
 
             if (stat.isDirectory()) {
@@ -104,6 +105,7 @@ function recursive(pathToTest262, path, json) {
 
 function computeOfficialMetadata(pathToTest262) {
     const result = recursive(pathToTest262, 'test', []);
+    addDates(result);
 
     fs.writeFile(__dirname + "/results/metadata_test262.json", JSON.stringify(result), function () { });
     console.log('Number of tests: ' + result.length);
