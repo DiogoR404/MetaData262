@@ -10,7 +10,7 @@ def runSubProcess(command: list) -> tuple:
     process = subprocess.Popen(command,  bufsize=4096, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     output = ''
     try:
-        output, error = process.communicate(timeout=60)
+        output, error = process.communicate(timeout=6)
         output = output.decode("latin1")
         output += error.decode("latin1")
     except subprocess.TimeoutExpired:
@@ -41,7 +41,7 @@ def runTest(engine: str, test: dict, harness: dict, version: int, builtInWrapper
     testCode = testCode[beginCopyrightIndex:]
 
     testFlags = test.get('flags')
-    if not hasFlag('noStrict'):
+    if not hasFlag('noStrict') and not hasFlag('raw') and not hasFlag('module'):
         codeToExecute += '"use strict";\n'
     if not hasFlag('raw'):
         codeToExecute += getHarness()
@@ -71,7 +71,9 @@ def runTest(engine: str, test: dict, harness: dict, version: int, builtInWrapper
         if len(output) > 1:
             builtInOutput = output[1]
             output = output[0] + output[2][1:]
-        else: output = output[0]
+        else:
+            builtInOutput = '{}'
+            output = output[0]
 
     ret = [output, builtInOutput]
     # check if the result is correct
