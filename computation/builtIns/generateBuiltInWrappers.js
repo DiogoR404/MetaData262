@@ -1,32 +1,45 @@
 const fs = require('fs');
 const collectBuiltInSignatures = require('./collectBuiltInSignatures');
 
+const getStringToReplaceTypedArray = '\nwrappedFunctions[\"$1\.$2\.$3\"] = Int8Array.$2.$3;\n'+
+	'generalTypedArrayPrototype.$3 = { $3 () {\n' +
+		'\tlog42[\"$1\.$2\.$3\"] = true;\n' +
+		'\tlet args = copyArgs(arguments);\n' +
+		'\treturn wrappedFunctions[\"$1\.$2\.$3\"].apply__(this, args);\n' +
+	'}}.$3\n' +
+	'generalTypedArrayPrototype.$3.prototype !== undefined ? Int8Array.$2.$3.prototype = wrappedFunctions[\"$1\.$2\.$3\"].prototype : null;\n' +
+	'Object.defineProperty(generalTypedArrayPrototype.$3, "length", {value: wrappedFunctions[\"$1\.$2\.$3\"].length});\n';
+
+const getStringToReplaceFunction = '\n$1.$2.$3__= $1.$2.$3;\n' +
+	'$1.$2.$3 = { $3 () {\n' +
+		'\tlog42[\"$1\.$2\.$3\"] = true;' +
+		'\tlet args = copyArgs(arguments);\n' +
+		'\treturn $1.$2.$3__.apply__(this, args);\n' +
+	'}}.$3\n' +
+	'$1.$2.$3.prototype !== undefined ? $1.$2.$3.prototype = $1.$2.$3__.prototype: null;\n' +
+	'Object.defineProperty($1.$2.$3, "length", {value: $1.$2.$3__.length});\n';
+
+const getStringToReplace = '\nwrappedFunctions[\"$1\.$2\.$3\"] = $1.$2.$3;\n'+
+	'$1.$2.$3 = { $3 () {\n' +
+		'\tlog42[\"$1\.$2\.$3\"] = true;\n' +
+		'\tlet args = copyArgs(arguments);\n' +
+		'\treturn wrappedFunctions[\"$1\.$2\.$3\"].apply__(this, args);\n' +
+	'}}.$3\n' +
+	'$1.$2.$3.prototype !== undefined ? $1.$2.$3.prototype = wrappedFunctions[\"$1\.$2\.$3\"].prototype : null;\n' +
+	'Object.defineProperty($1.$2.$3, "length", {value: wrappedFunctions[\"$1\.$2\.$3\"].length});\n';
+
 function generateBuiltInWrappers(versions) {
     function write_to_file(func) {
         let str_parsed = func.replace(/\<var\>/g, "").replace(/\<\/var\>/g, "").replace(/\%|\[|\]/g, "");
-		let strToBeReplaced;
-		if (str_parsed.includes('Function.prototype')){
-			strToBeReplaced = '\n$1.$2.$3__= $1.$2.$3;\n' +
-				'$1.$2.$3 = { $3 () {\n' +
-					'\tlog42[\"$1\.$2\.$3\"] = true;' +
-					'\tlet args = copyArgs(arguments);\n' +
-					'\treturn $1.$2.$3__.apply__(this, args);\n' +
-				'}}.$3\n' +
-				'$1.$2.$3.prototype !== undefined ? $1.$2.$3.prototype = $1.$2.$3__.prototype: null;\n' +
-				'Object.defineProperty($1.$2.$3, "length", {value: $1.$2.$3__.length});\n';
+		let strToReplace;
+		if (str_parsed.includes("TypedArray")) {
+			strToReplace = getStringToReplaceTypedArray;
+		} else if (str_parsed.includes('Function.prototype')){
+			strToReplace = getStringToReplaceFunction;
 		} else {
-			strToBeReplaced = '\nwrappedFunctions[\"$1\.$2\.$3\"] = $1.$2.$3;\n'+
-				'$1.$2.$3 = { $3 () {\n' +
-					'\tlog42[\"$1\.$2\.$3\"] = true;\n' +
-					'\tlet args = copyArgs(arguments);\n' +
-					'\treturn wrappedFunctions[\"$1\.$2\.$3\"].apply__(this, args);\n' +
-				'}}.$3\n' +
-				'$1.$2.$3.prototype !== undefined ? $1.$2.$3.prototype = wrappedFunctions[\"$1\.$2\.$3\"].prototype : null;\n' +
-				'Object.defineProperty($1.$2.$3, "length", {value: wrappedFunctions[\"$1\.$2\.$3\"].length});\n';
+			strToReplace = getStringToReplace;
 		}
-        let str = str_parsed.replace(regex, strToBeReplaced);
-
-        stream.write(str);
+        stream.write(str_parsed.replace(regex, strToReplace));
     }
 
     const lines = collectBuiltInSignatures(versions);
@@ -43,19 +56,12 @@ function generateBuiltInWrappers(versions) {
 			"\t}\n"+
 			"\tto.length = from.length;\n"+
 			"\treturn to\n"+
-		"}\n");
+		"}\n"+
+		"const generalTypedArrayPrototype = Object.getPrototypeOf(Int8Array.prototype)");
 
-    const typedArray = ["Int8Array", "Uint8Array", "Uint8ClampedArray", "Int16Array", "Uint16Array", "Int32Array", "Uint32Array", "BigInt64Array", "BigUint64Array", "Float32Array", "Float64Array"];
     for (let line in lines) {
         if (lines[line].includes('.prototype.') && !lines[line].includes("Generator")) {
-            if (lines[line].includes("TypedArray")) {
-                for (ta in typedArray) {
-                    write_to_file(lines[line].replace("TypedArray", typedArray[ta]));
-                }
-            }
-            else {
-                write_to_file(lines[line])
-            }
+			write_to_file(lines[line])
         }
     }
 }
