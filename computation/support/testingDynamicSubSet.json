@@ -226,5 +226,17 @@
         "path": "test/language/comments/hashbang/line-terminator-carriage-return.js"
       },{
         "path": "test/built-ins/ArrayBuffer/prototype/slice/nonconstructor.js"
-      }
+      },{
+        "path": "test/language/line-terminators/comment-multi-lf.js",
+        "info": " Multi line comment can contain LINE FEED (U+000A)",
+        "esid": " 7.3_A5.1_T2",
+        "versionFrontmatter": 5,
+        "description": " Insert real LINE FEED into multi line comment",
+        "negative": {
+            "phase": "runtime",
+            "type": "Test262Error"
+        },
+        "createdOn": "2019-01-01",
+        "lastModified": "2019-01-01"
+    }
 ]

@@ -10,7 +10,7 @@ def runSubProcess(command: list) -> tuple:
     process = subprocess.Popen(command,  bufsize=4096, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     output = ''
     try:
-        output, error = process.communicate(timeout=6)
+        output, error = process.communicate(timeout=60)
         output = output.decode("latin1")
         output += error.decode("latin1")
     except subprocess.TimeoutExpired:

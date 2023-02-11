@@ -20,9 +20,8 @@ def main():
     resultsBuiltIns['correct'] |= output['correct']
     resultsBuiltIns['error'] |= output ['error']
 
-    # prepare results
     for test, result in resultsBuiltIns['correct'].items():
-        wrapperTextTest = list(map(lambda x: x.split('.'), result[1].split(',')))
+        wrapperTextTest = list(map(lambda x: x.split('.'), json.loads(result[1]).keys()))
         outputResult = {}
         for wrapperOutput in wrapperTextTest:
             builtIn = wrapperOutput[0]

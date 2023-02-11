@@ -3,7 +3,7 @@ import json
 with open('../builtIns/results/dynamic.json', 'r') as f:
     builts = json.load(f)
 
-with open('../version/results/dynamic/result_only_es12.json', 'r') as f:
+with open('../version/results/dynamic/result_lastVersion.json', 'r') as f:
     vers = json.load(f)
 
 vers1 = dict(filter(lambda x: x[1] != 'notSupported', vers.items()))
@@ -20,5 +20,5 @@ print(len(diff))
 print(len(s))
 
 
-with open('diffDynamicPass.json','w') as f:
+with open('diffDynamicPass2.json','w') as f:
     f.write(json.dumps(diff, indent=4))
