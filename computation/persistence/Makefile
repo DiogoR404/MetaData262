@@ -1,12 +1,11 @@
 dependencies:
 	npm install -f -g n
-	n install 0.10.48
-	n install 6.17.1
-	n install 16
+	n 0.10.48
+	n 6.17.1
+	n 16
 	python3 -m pip install tqdm
 	npm install esprima
 	npm install escodegen
-	
 	mv node_modules/ package-lock.json package.json ..
 
 submodule:
