@@ -10,6 +10,9 @@ def main():
     with open(currentDirectory + '/../configurations/dynamicAnalysis.json', 'r') as f:
         configuration = json.load(f)
 
+    if '-lastVersion' in sys.argv:
+        configuration['versions'] = configuration['versions'][-1:]
+
     resultsPerVersion = {}
     results = {}
     testMetaData, resultsPerVersion["notSupportedIgnored"] = getTestMetaData()
@@ -30,8 +33,10 @@ def main():
     results = {test : version for version in resultsPerVersion for test in resultsPerVersion[version]}
 
     outputPath = currentDirectory + '/results/dynamic/'
-    if len(sys.argv) > 1 and sys.argv[2] == '-t':
+    if len(sys.argv) > 1 and sys.argv[1] == '-t':
         outputPath += 'result_test.json'
+    if '-lastVersion' in sys.argv:
+        outputPath += 'result_lastVersion.json'
     else:
         outputPath += 'result.json'
     with open(outputPath, 'w') as f:

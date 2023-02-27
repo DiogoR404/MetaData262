@@ -1,4355 +1,2104 @@
-let log42 = [];
-const JSON__ = JSON;
-function copyArgs(from, to){
+var log42 = {};
+const stringify__ = JSON.stringify;
+const wrappedFunctions = {};
+function copyArgs(from){
+	let to = {};
 	for (var i = 0; i<from.length; i++) {
 		to[i] = from[i];
 	}
+	to.length = from.length;
 	return to
 }
+const generalTypedArrayPrototype = Object.getPrototypeOf(Int8Array.prototype)
+wrappedFunctions["Object.prototype.hasOwnProperty"] = Object.prototype.hasOwnProperty;
+Object.prototype.hasOwnProperty = { hasOwnProperty () {
+	log42["Object.prototype.hasOwnProperty"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Object.prototype.hasOwnProperty"].apply__(this, args);
+}}.hasOwnProperty
+Object.prototype.hasOwnProperty.prototype !== undefined ? Object.prototype.hasOwnProperty.prototype = wrappedFunctions["Object.prototype.hasOwnProperty"].prototype : null;
+Object.defineProperty(Object.prototype.hasOwnProperty, "length", {value: wrappedFunctions["Object.prototype.hasOwnProperty"].length});
 
-Object.prototype.hasOwnProperty__= Object.prototype.hasOwnProperty;
-Object.prototype.hasOwnProperty = function (){
-	log42.indexOf__("Object.prototype.hasOwnProperty") === -1 ? log42.push__("Object.prototype.hasOwnProperty") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Object.prototype.hasOwnProperty__.apply__(this, args)
-}
-Object.prototype.hasOwnProperty.prototype = Object.prototype.hasOwnProperty__.prototype;
+wrappedFunctions["Object.prototype.isPrototypeOf"] = Object.prototype.isPrototypeOf;
+Object.prototype.isPrototypeOf = { isPrototypeOf () {
+	log42["Object.prototype.isPrototypeOf"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Object.prototype.isPrototypeOf"].apply__(this, args);
+}}.isPrototypeOf
+Object.prototype.isPrototypeOf.prototype !== undefined ? Object.prototype.isPrototypeOf.prototype = wrappedFunctions["Object.prototype.isPrototypeOf"].prototype : null;
+Object.defineProperty(Object.prototype.isPrototypeOf, "length", {value: wrappedFunctions["Object.prototype.isPrototypeOf"].length});
 
-Object.prototype.isPrototypeOf__= Object.prototype.isPrototypeOf;
-Object.prototype.isPrototypeOf = function (){
-	log42.indexOf__("Object.prototype.isPrototypeOf") === -1 ? log42.push__("Object.prototype.isPrototypeOf") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Object.prototype.isPrototypeOf__.apply__(this, args)
-}
-Object.prototype.isPrototypeOf.prototype = Object.prototype.isPrototypeOf__.prototype;
+wrappedFunctions["Object.prototype.propertyIsEnumerable"] = Object.prototype.propertyIsEnumerable;
+Object.prototype.propertyIsEnumerable = { propertyIsEnumerable () {
+	log42["Object.prototype.propertyIsEnumerable"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Object.prototype.propertyIsEnumerable"].apply__(this, args);
+}}.propertyIsEnumerable
+Object.prototype.propertyIsEnumerable.prototype !== undefined ? Object.prototype.propertyIsEnumerable.prototype = wrappedFunctions["Object.prototype.propertyIsEnumerable"].prototype : null;
+Object.defineProperty(Object.prototype.propertyIsEnumerable, "length", {value: wrappedFunctions["Object.prototype.propertyIsEnumerable"].length});
 
-Object.prototype.propertyIsEnumerable__= Object.prototype.propertyIsEnumerable;
-Object.prototype.propertyIsEnumerable = function (){
-	log42.indexOf__("Object.prototype.propertyIsEnumerable") === -1 ? log42.push__("Object.prototype.propertyIsEnumerable") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Object.prototype.propertyIsEnumerable__.apply__(this, args)
-}
-Object.prototype.propertyIsEnumerable.prototype = Object.prototype.propertyIsEnumerable__.prototype;
+wrappedFunctions["Object.prototype.toLocaleString"] = Object.prototype.toLocaleString;
+Object.prototype.toLocaleString = { toLocaleString () {
+	log42["Object.prototype.toLocaleString"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Object.prototype.toLocaleString"].apply__(this, args);
+}}.toLocaleString
+Object.prototype.toLocaleString.prototype !== undefined ? Object.prototype.toLocaleString.prototype = wrappedFunctions["Object.prototype.toLocaleString"].prototype : null;
+Object.defineProperty(Object.prototype.toLocaleString, "length", {value: wrappedFunctions["Object.prototype.toLocaleString"].length});
 
-Object.prototype.toLocaleString__= Object.prototype.toLocaleString;
-Object.prototype.toLocaleString = function (){
-	log42.indexOf__("Object.prototype.toLocaleString") === -1 ? log42.push__("Object.prototype.toLocaleString") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Object.prototype.toLocaleString__.apply__(this, args)
-}
-Object.prototype.toLocaleString.prototype = Object.prototype.toLocaleString__.prototype;
+wrappedFunctions["Object.prototype.toString"] = Object.prototype.toString;
+Object.prototype.toString = { toString () {
+	log42["Object.prototype.toString"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Object.prototype.toString"].apply__(this, args);
+}}.toString
+Object.prototype.toString.prototype !== undefined ? Object.prototype.toString.prototype = wrappedFunctions["Object.prototype.toString"].prototype : null;
+Object.defineProperty(Object.prototype.toString, "length", {value: wrappedFunctions["Object.prototype.toString"].length});
 
-Object.prototype.toString__= Object.prototype.toString;
-Object.prototype.toString = function (){
-	log42.indexOf__("Object.prototype.toString") === -1 ? log42.push__("Object.prototype.toString") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Object.prototype.toString__.apply__(this, args)
-}
-Object.prototype.toString.prototype = Object.prototype.toString__.prototype;
-
-Object.prototype.valueOf__= Object.prototype.valueOf;
-Object.prototype.valueOf = function (){
-	log42.indexOf__("Object.prototype.valueOf") === -1 ? log42.push__("Object.prototype.valueOf") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Object.prototype.valueOf__.apply__(this, args)
-}
-Object.prototype.valueOf.prototype = Object.prototype.valueOf__.prototype;
+wrappedFunctions["Object.prototype.valueOf"] = Object.prototype.valueOf;
+Object.prototype.valueOf = { valueOf () {
+	log42["Object.prototype.valueOf"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Object.prototype.valueOf"].apply__(this, args);
+}}.valueOf
+Object.prototype.valueOf.prototype !== undefined ? Object.prototype.valueOf.prototype = wrappedFunctions["Object.prototype.valueOf"].prototype : null;
+Object.defineProperty(Object.prototype.valueOf, "length", {value: wrappedFunctions["Object.prototype.valueOf"].length});
 
 Function.prototype.apply__= Function.prototype.apply;
-Function.prototype.apply = function (){
-	log42.indexOf__("Function.prototype.apply") === -1 ? log42.push__("Function.prototype.apply") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Function.prototype.apply__.apply__(this, args)
-}
-Function.prototype.apply.prototype = Function.prototype.apply__.prototype;
+Function.prototype.apply = { apply () {
+	log42["Function.prototype.apply"] = true;	let args = copyArgs(arguments);
+	return Function.prototype.apply__.apply__(this, args);
+}}.apply
+Function.prototype.apply.prototype !== undefined ? Function.prototype.apply.prototype = Function.prototype.apply__.prototype: null;
+Object.defineProperty(Function.prototype.apply, "length", {value: Function.prototype.apply__.length});
 
 Function.prototype.bind__= Function.prototype.bind;
-Function.prototype.bind = function (){
-	log42.indexOf__("Function.prototype.bind") === -1 ? log42.push__("Function.prototype.bind") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Function.prototype.bind__.apply__(this, args)
-}
-Function.prototype.bind.prototype = Function.prototype.bind__.prototype;
+Function.prototype.bind = { bind () {
+	log42["Function.prototype.bind"] = true;	let args = copyArgs(arguments);
+	return Function.prototype.bind__.apply__(this, args);
+}}.bind
+Function.prototype.bind.prototype !== undefined ? Function.prototype.bind.prototype = Function.prototype.bind__.prototype: null;
+Object.defineProperty(Function.prototype.bind, "length", {value: Function.prototype.bind__.length});
 
 Function.prototype.call__= Function.prototype.call;
-Function.prototype.call = function (){
-	log42.indexOf__("Function.prototype.call") === -1 ? log42.push__("Function.prototype.call") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Function.prototype.call__.apply__(this, args)
-}
-Function.prototype.call.prototype = Function.prototype.call__.prototype;
+Function.prototype.call = { call () {
+	log42["Function.prototype.call"] = true;	let args = copyArgs(arguments);
+	return Function.prototype.call__.apply__(this, args);
+}}.call
+Function.prototype.call.prototype !== undefined ? Function.prototype.call.prototype = Function.prototype.call__.prototype: null;
+Object.defineProperty(Function.prototype.call, "length", {value: Function.prototype.call__.length});
 
 Function.prototype.toString__= Function.prototype.toString;
-Function.prototype.toString = function (){
-	log42.indexOf__("Function.prototype.toString") === -1 ? log42.push__("Function.prototype.toString") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Function.prototype.toString__.apply__(this, args)
-}
-Function.prototype.toString.prototype = Function.prototype.toString__.prototype;
-
-Boolean.prototype.toString__= Boolean.prototype.toString;
-Boolean.prototype.toString = function (){
-	log42.indexOf__("Boolean.prototype.toString") === -1 ? log42.push__("Boolean.prototype.toString") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Boolean.prototype.toString__.apply__(this, args)
-}
-Boolean.prototype.toString.prototype = Boolean.prototype.toString__.prototype;
-
-Boolean.prototype.valueOf__= Boolean.prototype.valueOf;
-Boolean.prototype.valueOf = function (){
-	log42.indexOf__("Boolean.prototype.valueOf") === -1 ? log42.push__("Boolean.prototype.valueOf") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Boolean.prototype.valueOf__.apply__(this, args)
-}
-Boolean.prototype.valueOf.prototype = Boolean.prototype.valueOf__.prototype;
-
-Symbol.prototype.toString__= Symbol.prototype.toString;
-Symbol.prototype.toString = function (){
-	log42.indexOf__("Symbol.prototype.toString") === -1 ? log42.push__("Symbol.prototype.toString") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Symbol.prototype.toString__.apply__(this, args)
-}
-Symbol.prototype.toString.prototype = Symbol.prototype.toString__.prototype;
-
-Symbol.prototype.valueOf__= Symbol.prototype.valueOf;
-Symbol.prototype.valueOf = function (){
-	log42.indexOf__("Symbol.prototype.valueOf") === -1 ? log42.push__("Symbol.prototype.valueOf") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Symbol.prototype.valueOf__.apply__(this, args)
-}
-Symbol.prototype.valueOf.prototype = Symbol.prototype.valueOf__.prototype;
-
-Error.prototype.toString__= Error.prototype.toString;
-Error.prototype.toString = function (){
-	log42.indexOf__("Error.prototype.toString") === -1 ? log42.push__("Error.prototype.toString") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Error.prototype.toString__.apply__(this, args)
-}
-Error.prototype.toString.prototype = Error.prototype.toString__.prototype;
-
-Number.prototype.toExponential__= Number.prototype.toExponential;
-Number.prototype.toExponential = function (){
-	log42.indexOf__("Number.prototype.toExponential") === -1 ? log42.push__("Number.prototype.toExponential") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Number.prototype.toExponential__.apply__(this, args)
-}
-Number.prototype.toExponential.prototype = Number.prototype.toExponential__.prototype;
-
-Number.prototype.toFixed__= Number.prototype.toFixed;
-Number.prototype.toFixed = function (){
-	log42.indexOf__("Number.prototype.toFixed") === -1 ? log42.push__("Number.prototype.toFixed") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Number.prototype.toFixed__.apply__(this, args)
-}
-Number.prototype.toFixed.prototype = Number.prototype.toFixed__.prototype;
-
-Number.prototype.toLocaleString__= Number.prototype.toLocaleString;
-Number.prototype.toLocaleString = function (){
-	log42.indexOf__("Number.prototype.toLocaleString") === -1 ? log42.push__("Number.prototype.toLocaleString") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Number.prototype.toLocaleString__.apply__(this, args)
-}
-Number.prototype.toLocaleString.prototype = Number.prototype.toLocaleString__.prototype;
-
-Number.prototype.toPrecision__= Number.prototype.toPrecision;
-Number.prototype.toPrecision = function (){
-	log42.indexOf__("Number.prototype.toPrecision") === -1 ? log42.push__("Number.prototype.toPrecision") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Number.prototype.toPrecision__.apply__(this, args)
-}
-Number.prototype.toPrecision.prototype = Number.prototype.toPrecision__.prototype;
-
-Number.prototype.toString__= Number.prototype.toString;
-Number.prototype.toString = function (){
-	log42.indexOf__("Number.prototype.toString") === -1 ? log42.push__("Number.prototype.toString") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Number.prototype.toString__.apply__(this, args)
-}
-Number.prototype.toString.prototype = Number.prototype.toString__.prototype;
-
-Number.prototype.valueOf__= Number.prototype.valueOf;
-Number.prototype.valueOf = function (){
-	log42.indexOf__("Number.prototype.valueOf") === -1 ? log42.push__("Number.prototype.valueOf") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Number.prototype.valueOf__.apply__(this, args)
-}
-Number.prototype.valueOf.prototype = Number.prototype.valueOf__.prototype;
-
-BigInt.prototype.toLocaleString__= BigInt.prototype.toLocaleString;
-BigInt.prototype.toLocaleString = function (){
-	log42.indexOf__("BigInt.prototype.toLocaleString") === -1 ? log42.push__("BigInt.prototype.toLocaleString") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigInt.prototype.toLocaleString__.apply__(this, args)
-}
-BigInt.prototype.toLocaleString.prototype = BigInt.prototype.toLocaleString__.prototype;
-
-BigInt.prototype.toString__= BigInt.prototype.toString;
-BigInt.prototype.toString = function (){
-	log42.indexOf__("BigInt.prototype.toString") === -1 ? log42.push__("BigInt.prototype.toString") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigInt.prototype.toString__.apply__(this, args)
-}
-BigInt.prototype.toString.prototype = BigInt.prototype.toString__.prototype;
-
-BigInt.prototype.valueOf__= BigInt.prototype.valueOf;
-BigInt.prototype.valueOf = function (){
-	log42.indexOf__("BigInt.prototype.valueOf") === -1 ? log42.push__("BigInt.prototype.valueOf") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigInt.prototype.valueOf__.apply__(this, args)
-}
-BigInt.prototype.valueOf.prototype = BigInt.prototype.valueOf__.prototype;
-
-Date.prototype.getDate__= Date.prototype.getDate;
-Date.prototype.getDate = function (){
-	log42.indexOf__("Date.prototype.getDate") === -1 ? log42.push__("Date.prototype.getDate") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Date.prototype.getDate__.apply__(this, args)
-}
-Date.prototype.getDate.prototype = Date.prototype.getDate__.prototype;
-
-Date.prototype.getDay__= Date.prototype.getDay;
-Date.prototype.getDay = function (){
-	log42.indexOf__("Date.prototype.getDay") === -1 ? log42.push__("Date.prototype.getDay") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Date.prototype.getDay__.apply__(this, args)
-}
-Date.prototype.getDay.prototype = Date.prototype.getDay__.prototype;
-
-Date.prototype.getFullYear__= Date.prototype.getFullYear;
-Date.prototype.getFullYear = function (){
-	log42.indexOf__("Date.prototype.getFullYear") === -1 ? log42.push__("Date.prototype.getFullYear") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Date.prototype.getFullYear__.apply__(this, args)
-}
-Date.prototype.getFullYear.prototype = Date.prototype.getFullYear__.prototype;
-
-Date.prototype.getHours__= Date.prototype.getHours;
-Date.prototype.getHours = function (){
-	log42.indexOf__("Date.prototype.getHours") === -1 ? log42.push__("Date.prototype.getHours") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Date.prototype.getHours__.apply__(this, args)
-}
-Date.prototype.getHours.prototype = Date.prototype.getHours__.prototype;
-
-Date.prototype.getMilliseconds__= Date.prototype.getMilliseconds;
-Date.prototype.getMilliseconds = function (){
-	log42.indexOf__("Date.prototype.getMilliseconds") === -1 ? log42.push__("Date.prototype.getMilliseconds") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Date.prototype.getMilliseconds__.apply__(this, args)
-}
-Date.prototype.getMilliseconds.prototype = Date.prototype.getMilliseconds__.prototype;
-
-Date.prototype.getMinutes__= Date.prototype.getMinutes;
-Date.prototype.getMinutes = function (){
-	log42.indexOf__("Date.prototype.getMinutes") === -1 ? log42.push__("Date.prototype.getMinutes") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Date.prototype.getMinutes__.apply__(this, args)
-}
-Date.prototype.getMinutes.prototype = Date.prototype.getMinutes__.prototype;
-
-Date.prototype.getMonth__= Date.prototype.getMonth;
-Date.prototype.getMonth = function (){
-	log42.indexOf__("Date.prototype.getMonth") === -1 ? log42.push__("Date.prototype.getMonth") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Date.prototype.getMonth__.apply__(this, args)
-}
-Date.prototype.getMonth.prototype = Date.prototype.getMonth__.prototype;
-
-Date.prototype.getSeconds__= Date.prototype.getSeconds;
-Date.prototype.getSeconds = function (){
-	log42.indexOf__("Date.prototype.getSeconds") === -1 ? log42.push__("Date.prototype.getSeconds") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Date.prototype.getSeconds__.apply__(this, args)
-}
-Date.prototype.getSeconds.prototype = Date.prototype.getSeconds__.prototype;
-
-Date.prototype.getTime__= Date.prototype.getTime;
-Date.prototype.getTime = function (){
-	log42.indexOf__("Date.prototype.getTime") === -1 ? log42.push__("Date.prototype.getTime") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Date.prototype.getTime__.apply__(this, args)
-}
-Date.prototype.getTime.prototype = Date.prototype.getTime__.prototype;
-
-Date.prototype.getTimezoneOffset__= Date.prototype.getTimezoneOffset;
-Date.prototype.getTimezoneOffset = function (){
-	log42.indexOf__("Date.prototype.getTimezoneOffset") === -1 ? log42.push__("Date.prototype.getTimezoneOffset") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Date.prototype.getTimezoneOffset__.apply__(this, args)
-}
-Date.prototype.getTimezoneOffset.prototype = Date.prototype.getTimezoneOffset__.prototype;
-
-Date.prototype.getUTCDate__= Date.prototype.getUTCDate;
-Date.prototype.getUTCDate = function (){
-	log42.indexOf__("Date.prototype.getUTCDate") === -1 ? log42.push__("Date.prototype.getUTCDate") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Date.prototype.getUTCDate__.apply__(this, args)
-}
-Date.prototype.getUTCDate.prototype = Date.prototype.getUTCDate__.prototype;
-
-Date.prototype.getUTCDay__= Date.prototype.getUTCDay;
-Date.prototype.getUTCDay = function (){
-	log42.indexOf__("Date.prototype.getUTCDay") === -1 ? log42.push__("Date.prototype.getUTCDay") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Date.prototype.getUTCDay__.apply__(this, args)
-}
-Date.prototype.getUTCDay.prototype = Date.prototype.getUTCDay__.prototype;
-
-Date.prototype.getUTCFullYear__= Date.prototype.getUTCFullYear;
-Date.prototype.getUTCFullYear = function (){
-	log42.indexOf__("Date.prototype.getUTCFullYear") === -1 ? log42.push__("Date.prototype.getUTCFullYear") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Date.prototype.getUTCFullYear__.apply__(this, args)
-}
-Date.prototype.getUTCFullYear.prototype = Date.prototype.getUTCFullYear__.prototype;
-
-Date.prototype.getUTCHours__= Date.prototype.getUTCHours;
-Date.prototype.getUTCHours = function (){
-	log42.indexOf__("Date.prototype.getUTCHours") === -1 ? log42.push__("Date.prototype.getUTCHours") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Date.prototype.getUTCHours__.apply__(this, args)
-}
-Date.prototype.getUTCHours.prototype = Date.prototype.getUTCHours__.prototype;
-
-Date.prototype.getUTCMilliseconds__= Date.prototype.getUTCMilliseconds;
-Date.prototype.getUTCMilliseconds = function (){
-	log42.indexOf__("Date.prototype.getUTCMilliseconds") === -1 ? log42.push__("Date.prototype.getUTCMilliseconds") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Date.prototype.getUTCMilliseconds__.apply__(this, args)
-}
-Date.prototype.getUTCMilliseconds.prototype = Date.prototype.getUTCMilliseconds__.prototype;
-
-Date.prototype.getUTCMinutes__= Date.prototype.getUTCMinutes;
-Date.prototype.getUTCMinutes = function (){
-	log42.indexOf__("Date.prototype.getUTCMinutes") === -1 ? log42.push__("Date.prototype.getUTCMinutes") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Date.prototype.getUTCMinutes__.apply__(this, args)
-}
-Date.prototype.getUTCMinutes.prototype = Date.prototype.getUTCMinutes__.prototype;
-
-Date.prototype.getUTCMonth__= Date.prototype.getUTCMonth;
-Date.prototype.getUTCMonth = function (){
-	log42.indexOf__("Date.prototype.getUTCMonth") === -1 ? log42.push__("Date.prototype.getUTCMonth") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Date.prototype.getUTCMonth__.apply__(this, args)
-}
-Date.prototype.getUTCMonth.prototype = Date.prototype.getUTCMonth__.prototype;
-
-Date.prototype.getUTCSeconds__= Date.prototype.getUTCSeconds;
-Date.prototype.getUTCSeconds = function (){
-	log42.indexOf__("Date.prototype.getUTCSeconds") === -1 ? log42.push__("Date.prototype.getUTCSeconds") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Date.prototype.getUTCSeconds__.apply__(this, args)
-}
-Date.prototype.getUTCSeconds.prototype = Date.prototype.getUTCSeconds__.prototype;
-
-Date.prototype.setDate__= Date.prototype.setDate;
-Date.prototype.setDate = function (){
-	log42.indexOf__("Date.prototype.setDate") === -1 ? log42.push__("Date.prototype.setDate") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Date.prototype.setDate__.apply__(this, args)
-}
-Date.prototype.setDate.prototype = Date.prototype.setDate__.prototype;
-
-Date.prototype.setFullYear__= Date.prototype.setFullYear;
-Date.prototype.setFullYear = function (){
-	log42.indexOf__("Date.prototype.setFullYear") === -1 ? log42.push__("Date.prototype.setFullYear") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Date.prototype.setFullYear__.apply__(this, args)
-}
-Date.prototype.setFullYear.prototype = Date.prototype.setFullYear__.prototype;
-
-Date.prototype.setHours__= Date.prototype.setHours;
-Date.prototype.setHours = function (){
-	log42.indexOf__("Date.prototype.setHours") === -1 ? log42.push__("Date.prototype.setHours") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Date.prototype.setHours__.apply__(this, args)
-}
-Date.prototype.setHours.prototype = Date.prototype.setHours__.prototype;
-
-Date.prototype.setMilliseconds__= Date.prototype.setMilliseconds;
-Date.prototype.setMilliseconds = function (){
-	log42.indexOf__("Date.prototype.setMilliseconds") === -1 ? log42.push__("Date.prototype.setMilliseconds") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Date.prototype.setMilliseconds__.apply__(this, args)
-}
-Date.prototype.setMilliseconds.prototype = Date.prototype.setMilliseconds__.prototype;
-
-Date.prototype.setMinutes__= Date.prototype.setMinutes;
-Date.prototype.setMinutes = function (){
-	log42.indexOf__("Date.prototype.setMinutes") === -1 ? log42.push__("Date.prototype.setMinutes") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Date.prototype.setMinutes__.apply__(this, args)
-}
-Date.prototype.setMinutes.prototype = Date.prototype.setMinutes__.prototype;
-
-Date.prototype.setMonth__= Date.prototype.setMonth;
-Date.prototype.setMonth = function (){
-	log42.indexOf__("Date.prototype.setMonth") === -1 ? log42.push__("Date.prototype.setMonth") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Date.prototype.setMonth__.apply__(this, args)
-}
-Date.prototype.setMonth.prototype = Date.prototype.setMonth__.prototype;
-
-Date.prototype.setSeconds__= Date.prototype.setSeconds;
-Date.prototype.setSeconds = function (){
-	log42.indexOf__("Date.prototype.setSeconds") === -1 ? log42.push__("Date.prototype.setSeconds") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Date.prototype.setSeconds__.apply__(this, args)
-}
-Date.prototype.setSeconds.prototype = Date.prototype.setSeconds__.prototype;
-
-Date.prototype.setTime__= Date.prototype.setTime;
-Date.prototype.setTime = function (){
-	log42.indexOf__("Date.prototype.setTime") === -1 ? log42.push__("Date.prototype.setTime") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Date.prototype.setTime__.apply__(this, args)
-}
-Date.prototype.setTime.prototype = Date.prototype.setTime__.prototype;
-
-Date.prototype.setUTCDate__= Date.prototype.setUTCDate;
-Date.prototype.setUTCDate = function (){
-	log42.indexOf__("Date.prototype.setUTCDate") === -1 ? log42.push__("Date.prototype.setUTCDate") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Date.prototype.setUTCDate__.apply__(this, args)
-}
-Date.prototype.setUTCDate.prototype = Date.prototype.setUTCDate__.prototype;
-
-Date.prototype.setUTCFullYear__= Date.prototype.setUTCFullYear;
-Date.prototype.setUTCFullYear = function (){
-	log42.indexOf__("Date.prototype.setUTCFullYear") === -1 ? log42.push__("Date.prototype.setUTCFullYear") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Date.prototype.setUTCFullYear__.apply__(this, args)
-}
-Date.prototype.setUTCFullYear.prototype = Date.prototype.setUTCFullYear__.prototype;
-
-Date.prototype.setUTCHours__= Date.prototype.setUTCHours;
-Date.prototype.setUTCHours = function (){
-	log42.indexOf__("Date.prototype.setUTCHours") === -1 ? log42.push__("Date.prototype.setUTCHours") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Date.prototype.setUTCHours__.apply__(this, args)
-}
-Date.prototype.setUTCHours.prototype = Date.prototype.setUTCHours__.prototype;
-
-Date.prototype.setUTCMilliseconds__= Date.prototype.setUTCMilliseconds;
-Date.prototype.setUTCMilliseconds = function (){
-	log42.indexOf__("Date.prototype.setUTCMilliseconds") === -1 ? log42.push__("Date.prototype.setUTCMilliseconds") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Date.prototype.setUTCMilliseconds__.apply__(this, args)
-}
-Date.prototype.setUTCMilliseconds.prototype = Date.prototype.setUTCMilliseconds__.prototype;
-
-Date.prototype.setUTCMinutes__= Date.prototype.setUTCMinutes;
-Date.prototype.setUTCMinutes = function (){
-	log42.indexOf__("Date.prototype.setUTCMinutes") === -1 ? log42.push__("Date.prototype.setUTCMinutes") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Date.prototype.setUTCMinutes__.apply__(this, args)
-}
-Date.prototype.setUTCMinutes.prototype = Date.prototype.setUTCMinutes__.prototype;
-
-Date.prototype.setUTCMonth__= Date.prototype.setUTCMonth;
-Date.prototype.setUTCMonth = function (){
-	log42.indexOf__("Date.prototype.setUTCMonth") === -1 ? log42.push__("Date.prototype.setUTCMonth") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Date.prototype.setUTCMonth__.apply__(this, args)
-}
-Date.prototype.setUTCMonth.prototype = Date.prototype.setUTCMonth__.prototype;
-
-Date.prototype.setUTCSeconds__= Date.prototype.setUTCSeconds;
-Date.prototype.setUTCSeconds = function (){
-	log42.indexOf__("Date.prototype.setUTCSeconds") === -1 ? log42.push__("Date.prototype.setUTCSeconds") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Date.prototype.setUTCSeconds__.apply__(this, args)
-}
-Date.prototype.setUTCSeconds.prototype = Date.prototype.setUTCSeconds__.prototype;
-
-Date.prototype.toDateString__= Date.prototype.toDateString;
-Date.prototype.toDateString = function (){
-	log42.indexOf__("Date.prototype.toDateString") === -1 ? log42.push__("Date.prototype.toDateString") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Date.prototype.toDateString__.apply__(this, args)
-}
-Date.prototype.toDateString.prototype = Date.prototype.toDateString__.prototype;
-
-Date.prototype.toISOString__= Date.prototype.toISOString;
-Date.prototype.toISOString = function (){
-	log42.indexOf__("Date.prototype.toISOString") === -1 ? log42.push__("Date.prototype.toISOString") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Date.prototype.toISOString__.apply__(this, args)
-}
-Date.prototype.toISOString.prototype = Date.prototype.toISOString__.prototype;
-
-Date.prototype.toJSON__= Date.prototype.toJSON;
-Date.prototype.toJSON = function (){
-	log42.indexOf__("Date.prototype.toJSON") === -1 ? log42.push__("Date.prototype.toJSON") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Date.prototype.toJSON__.apply__(this, args)
-}
-Date.prototype.toJSON.prototype = Date.prototype.toJSON__.prototype;
-
-Date.prototype.toLocaleDateString__= Date.prototype.toLocaleDateString;
-Date.prototype.toLocaleDateString = function (){
-	log42.indexOf__("Date.prototype.toLocaleDateString") === -1 ? log42.push__("Date.prototype.toLocaleDateString") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Date.prototype.toLocaleDateString__.apply__(this, args)
-}
-Date.prototype.toLocaleDateString.prototype = Date.prototype.toLocaleDateString__.prototype;
-
-Date.prototype.toLocaleString__= Date.prototype.toLocaleString;
-Date.prototype.toLocaleString = function (){
-	log42.indexOf__("Date.prototype.toLocaleString") === -1 ? log42.push__("Date.prototype.toLocaleString") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Date.prototype.toLocaleString__.apply__(this, args)
-}
-Date.prototype.toLocaleString.prototype = Date.prototype.toLocaleString__.prototype;
-
-Date.prototype.toLocaleTimeString__= Date.prototype.toLocaleTimeString;
-Date.prototype.toLocaleTimeString = function (){
-	log42.indexOf__("Date.prototype.toLocaleTimeString") === -1 ? log42.push__("Date.prototype.toLocaleTimeString") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Date.prototype.toLocaleTimeString__.apply__(this, args)
-}
-Date.prototype.toLocaleTimeString.prototype = Date.prototype.toLocaleTimeString__.prototype;
-
-Date.prototype.toString__= Date.prototype.toString;
-Date.prototype.toString = function (){
-	log42.indexOf__("Date.prototype.toString") === -1 ? log42.push__("Date.prototype.toString") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Date.prototype.toString__.apply__(this, args)
-}
-Date.prototype.toString.prototype = Date.prototype.toString__.prototype;
-
-Date.prototype.toTimeString__= Date.prototype.toTimeString;
-Date.prototype.toTimeString = function (){
-	log42.indexOf__("Date.prototype.toTimeString") === -1 ? log42.push__("Date.prototype.toTimeString") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Date.prototype.toTimeString__.apply__(this, args)
-}
-Date.prototype.toTimeString.prototype = Date.prototype.toTimeString__.prototype;
-
-Date.prototype.toUTCString__= Date.prototype.toUTCString;
-Date.prototype.toUTCString = function (){
-	log42.indexOf__("Date.prototype.toUTCString") === -1 ? log42.push__("Date.prototype.toUTCString") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Date.prototype.toUTCString__.apply__(this, args)
-}
-Date.prototype.toUTCString.prototype = Date.prototype.toUTCString__.prototype;
-
-Date.prototype.valueOf__= Date.prototype.valueOf;
-Date.prototype.valueOf = function (){
-	log42.indexOf__("Date.prototype.valueOf") === -1 ? log42.push__("Date.prototype.valueOf") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Date.prototype.valueOf__.apply__(this, args)
-}
-Date.prototype.valueOf.prototype = Date.prototype.valueOf__.prototype;
-
-String.prototype.charAt__= String.prototype.charAt;
-String.prototype.charAt = function (){
-	log42.indexOf__("String.prototype.charAt") === -1 ? log42.push__("String.prototype.charAt") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return String.prototype.charAt__.apply__(this, args)
-}
-String.prototype.charAt.prototype = String.prototype.charAt__.prototype;
-
-String.prototype.charCodeAt__= String.prototype.charCodeAt;
-String.prototype.charCodeAt = function (){
-	log42.indexOf__("String.prototype.charCodeAt") === -1 ? log42.push__("String.prototype.charCodeAt") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return String.prototype.charCodeAt__.apply__(this, args)
-}
-String.prototype.charCodeAt.prototype = String.prototype.charCodeAt__.prototype;
-
-String.prototype.codePointAt__= String.prototype.codePointAt;
-String.prototype.codePointAt = function (){
-	log42.indexOf__("String.prototype.codePointAt") === -1 ? log42.push__("String.prototype.codePointAt") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return String.prototype.codePointAt__.apply__(this, args)
-}
-String.prototype.codePointAt.prototype = String.prototype.codePointAt__.prototype;
-
-String.prototype.concat__= String.prototype.concat;
-String.prototype.concat = function (){
-	log42.indexOf__("String.prototype.concat") === -1 ? log42.push__("String.prototype.concat") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return String.prototype.concat__.apply__(this, args)
-}
-String.prototype.concat.prototype = String.prototype.concat__.prototype;
-
-String.prototype.endsWith__= String.prototype.endsWith;
-String.prototype.endsWith = function (){
-	log42.indexOf__("String.prototype.endsWith") === -1 ? log42.push__("String.prototype.endsWith") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return String.prototype.endsWith__.apply__(this, args)
-}
-String.prototype.endsWith.prototype = String.prototype.endsWith__.prototype;
-
-String.prototype.includes__= String.prototype.includes;
-String.prototype.includes = function (){
-	log42.indexOf__("String.prototype.includes") === -1 ? log42.push__("String.prototype.includes") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return String.prototype.includes__.apply__(this, args)
-}
-String.prototype.includes.prototype = String.prototype.includes__.prototype;
-
-String.prototype.indexOf__= String.prototype.indexOf;
-String.prototype.indexOf = function (){
-	log42.indexOf__("String.prototype.indexOf") === -1 ? log42.push__("String.prototype.indexOf") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return String.prototype.indexOf__.apply__(this, args)
-}
-String.prototype.indexOf.prototype = String.prototype.indexOf__.prototype;
-
-String.prototype.lastIndexOf__= String.prototype.lastIndexOf;
-String.prototype.lastIndexOf = function (){
-	log42.indexOf__("String.prototype.lastIndexOf") === -1 ? log42.push__("String.prototype.lastIndexOf") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return String.prototype.lastIndexOf__.apply__(this, args)
-}
-String.prototype.lastIndexOf.prototype = String.prototype.lastIndexOf__.prototype;
-
-String.prototype.localeCompare__= String.prototype.localeCompare;
-String.prototype.localeCompare = function (){
-	log42.indexOf__("String.prototype.localeCompare") === -1 ? log42.push__("String.prototype.localeCompare") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return String.prototype.localeCompare__.apply__(this, args)
-}
-String.prototype.localeCompare.prototype = String.prototype.localeCompare__.prototype;
-
-String.prototype.match__= String.prototype.match;
-String.prototype.match = function (){
-	log42.indexOf__("String.prototype.match") === -1 ? log42.push__("String.prototype.match") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return String.prototype.match__.apply__(this, args)
-}
-String.prototype.match.prototype = String.prototype.match__.prototype;
-
-String.prototype.matchAll__= String.prototype.matchAll;
-String.prototype.matchAll = function (){
-	log42.indexOf__("String.prototype.matchAll") === -1 ? log42.push__("String.prototype.matchAll") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return String.prototype.matchAll__.apply__(this, args)
-}
-String.prototype.matchAll.prototype = String.prototype.matchAll__.prototype;
-
-String.prototype.normalize__= String.prototype.normalize;
-String.prototype.normalize = function (){
-	log42.indexOf__("String.prototype.normalize") === -1 ? log42.push__("String.prototype.normalize") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return String.prototype.normalize__.apply__(this, args)
-}
-String.prototype.normalize.prototype = String.prototype.normalize__.prototype;
-
-String.prototype.padEnd__= String.prototype.padEnd;
-String.prototype.padEnd = function (){
-	log42.indexOf__("String.prototype.padEnd") === -1 ? log42.push__("String.prototype.padEnd") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return String.prototype.padEnd__.apply__(this, args)
-}
-String.prototype.padEnd.prototype = String.prototype.padEnd__.prototype;
-
-String.prototype.padStart__= String.prototype.padStart;
-String.prototype.padStart = function (){
-	log42.indexOf__("String.prototype.padStart") === -1 ? log42.push__("String.prototype.padStart") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return String.prototype.padStart__.apply__(this, args)
-}
-String.prototype.padStart.prototype = String.prototype.padStart__.prototype;
-
-String.prototype.repeat__= String.prototype.repeat;
-String.prototype.repeat = function (){
-	log42.indexOf__("String.prototype.repeat") === -1 ? log42.push__("String.prototype.repeat") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return String.prototype.repeat__.apply__(this, args)
-}
-String.prototype.repeat.prototype = String.prototype.repeat__.prototype;
-
-String.prototype.replace__= String.prototype.replace;
-String.prototype.replace = function (){
-	log42.indexOf__("String.prototype.replace") === -1 ? log42.push__("String.prototype.replace") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return String.prototype.replace__.apply__(this, args)
-}
-String.prototype.replace.prototype = String.prototype.replace__.prototype;
-
-String.prototype.replaceAll__= String.prototype.replaceAll;
-String.prototype.replaceAll = function (){
-	log42.indexOf__("String.prototype.replaceAll") === -1 ? log42.push__("String.prototype.replaceAll") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return String.prototype.replaceAll__.apply__(this, args)
-}
-String.prototype.replaceAll.prototype = String.prototype.replaceAll__.prototype;
-
-String.prototype.search__= String.prototype.search;
-String.prototype.search = function (){
-	log42.indexOf__("String.prototype.search") === -1 ? log42.push__("String.prototype.search") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return String.prototype.search__.apply__(this, args)
-}
-String.prototype.search.prototype = String.prototype.search__.prototype;
-
-String.prototype.slice__= String.prototype.slice;
-String.prototype.slice = function (){
-	log42.indexOf__("String.prototype.slice") === -1 ? log42.push__("String.prototype.slice") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return String.prototype.slice__.apply__(this, args)
-}
-String.prototype.slice.prototype = String.prototype.slice__.prototype;
-
-String.prototype.split__= String.prototype.split;
-String.prototype.split = function (){
-	log42.indexOf__("String.prototype.split") === -1 ? log42.push__("String.prototype.split") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return String.prototype.split__.apply__(this, args)
-}
-String.prototype.split.prototype = String.prototype.split__.prototype;
-
-String.prototype.startsWith__= String.prototype.startsWith;
-String.prototype.startsWith = function (){
-	log42.indexOf__("String.prototype.startsWith") === -1 ? log42.push__("String.prototype.startsWith") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return String.prototype.startsWith__.apply__(this, args)
-}
-String.prototype.startsWith.prototype = String.prototype.startsWith__.prototype;
-
-String.prototype.substring__= String.prototype.substring;
-String.prototype.substring = function (){
-	log42.indexOf__("String.prototype.substring") === -1 ? log42.push__("String.prototype.substring") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return String.prototype.substring__.apply__(this, args)
-}
-String.prototype.substring.prototype = String.prototype.substring__.prototype;
-
-String.prototype.toLocaleLowerCase__= String.prototype.toLocaleLowerCase;
-String.prototype.toLocaleLowerCase = function (){
-	log42.indexOf__("String.prototype.toLocaleLowerCase") === -1 ? log42.push__("String.prototype.toLocaleLowerCase") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return String.prototype.toLocaleLowerCase__.apply__(this, args)
-}
-String.prototype.toLocaleLowerCase.prototype = String.prototype.toLocaleLowerCase__.prototype;
-
-String.prototype.toLocaleUpperCase__= String.prototype.toLocaleUpperCase;
-String.prototype.toLocaleUpperCase = function (){
-	log42.indexOf__("String.prototype.toLocaleUpperCase") === -1 ? log42.push__("String.prototype.toLocaleUpperCase") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return String.prototype.toLocaleUpperCase__.apply__(this, args)
-}
-String.prototype.toLocaleUpperCase.prototype = String.prototype.toLocaleUpperCase__.prototype;
-
-String.prototype.toLowerCase__= String.prototype.toLowerCase;
-String.prototype.toLowerCase = function (){
-	log42.indexOf__("String.prototype.toLowerCase") === -1 ? log42.push__("String.prototype.toLowerCase") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return String.prototype.toLowerCase__.apply__(this, args)
-}
-String.prototype.toLowerCase.prototype = String.prototype.toLowerCase__.prototype;
-
-String.prototype.toString__= String.prototype.toString;
-String.prototype.toString = function (){
-	log42.indexOf__("String.prototype.toString") === -1 ? log42.push__("String.prototype.toString") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return String.prototype.toString__.apply__(this, args)
-}
-String.prototype.toString.prototype = String.prototype.toString__.prototype;
-
-String.prototype.toUpperCase__= String.prototype.toUpperCase;
-String.prototype.toUpperCase = function (){
-	log42.indexOf__("String.prototype.toUpperCase") === -1 ? log42.push__("String.prototype.toUpperCase") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return String.prototype.toUpperCase__.apply__(this, args)
-}
-String.prototype.toUpperCase.prototype = String.prototype.toUpperCase__.prototype;
-
-String.prototype.trim__= String.prototype.trim;
-String.prototype.trim = function (){
-	log42.indexOf__("String.prototype.trim") === -1 ? log42.push__("String.prototype.trim") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return String.prototype.trim__.apply__(this, args)
-}
-String.prototype.trim.prototype = String.prototype.trim__.prototype;
-
-String.prototype.trimEnd__= String.prototype.trimEnd;
-String.prototype.trimEnd = function (){
-	log42.indexOf__("String.prototype.trimEnd") === -1 ? log42.push__("String.prototype.trimEnd") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return String.prototype.trimEnd__.apply__(this, args)
-}
-String.prototype.trimEnd.prototype = String.prototype.trimEnd__.prototype;
-
-String.prototype.trimStart__= String.prototype.trimStart;
-String.prototype.trimStart = function (){
-	log42.indexOf__("String.prototype.trimStart") === -1 ? log42.push__("String.prototype.trimStart") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return String.prototype.trimStart__.apply__(this, args)
-}
-String.prototype.trimStart.prototype = String.prototype.trimStart__.prototype;
-
-String.prototype.valueOf__= String.prototype.valueOf;
-String.prototype.valueOf = function (){
-	log42.indexOf__("String.prototype.valueOf") === -1 ? log42.push__("String.prototype.valueOf") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return String.prototype.valueOf__.apply__(this, args)
-}
-String.prototype.valueOf.prototype = String.prototype.valueOf__.prototype;
-
-RegExp.prototype.exec__= RegExp.prototype.exec;
-RegExp.prototype.exec = function (){
-	log42.indexOf__("RegExp.prototype.exec") === -1 ? log42.push__("RegExp.prototype.exec") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return RegExp.prototype.exec__.apply__(this, args)
-}
-RegExp.prototype.exec.prototype = RegExp.prototype.exec__.prototype;
-
-RegExp.prototype.test__= RegExp.prototype.test;
-RegExp.prototype.test = function (){
-	log42.indexOf__("RegExp.prototype.test") === -1 ? log42.push__("RegExp.prototype.test") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return RegExp.prototype.test__.apply__(this, args)
-}
-RegExp.prototype.test.prototype = RegExp.prototype.test__.prototype;
-
-RegExp.prototype.toString__= RegExp.prototype.toString;
-RegExp.prototype.toString = function (){
-	log42.indexOf__("RegExp.prototype.toString") === -1 ? log42.push__("RegExp.prototype.toString") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return RegExp.prototype.toString__.apply__(this, args)
-}
-RegExp.prototype.toString.prototype = RegExp.prototype.toString__.prototype;
-
-Array.prototype.concat__= Array.prototype.concat;
-Array.prototype.concat = function (){
-	log42.indexOf__("Array.prototype.concat") === -1 ? log42.push__("Array.prototype.concat") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Array.prototype.concat__.apply__(this, args)
-}
-Array.prototype.concat.prototype = Array.prototype.concat__.prototype;
-
-Array.prototype.copyWithin__= Array.prototype.copyWithin;
-Array.prototype.copyWithin = function (){
-	log42.indexOf__("Array.prototype.copyWithin") === -1 ? log42.push__("Array.prototype.copyWithin") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Array.prototype.copyWithin__.apply__(this, args)
-}
-Array.prototype.copyWithin.prototype = Array.prototype.copyWithin__.prototype;
-
-Array.prototype.entries__= Array.prototype.entries;
-Array.prototype.entries = function (){
-	log42.indexOf__("Array.prototype.entries") === -1 ? log42.push__("Array.prototype.entries") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Array.prototype.entries__.apply__(this, args)
-}
-Array.prototype.entries.prototype = Array.prototype.entries__.prototype;
-
-Array.prototype.every__= Array.prototype.every;
-Array.prototype.every = function (){
-	log42.indexOf__("Array.prototype.every") === -1 ? log42.push__("Array.prototype.every") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Array.prototype.every__.apply__(this, args)
-}
-Array.prototype.every.prototype = Array.prototype.every__.prototype;
-
-Array.prototype.fill__= Array.prototype.fill;
-Array.prototype.fill = function (){
-	log42.indexOf__("Array.prototype.fill") === -1 ? log42.push__("Array.prototype.fill") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Array.prototype.fill__.apply__(this, args)
-}
-Array.prototype.fill.prototype = Array.prototype.fill__.prototype;
-
-Array.prototype.filter__= Array.prototype.filter;
-Array.prototype.filter = function (){
-	log42.indexOf__("Array.prototype.filter") === -1 ? log42.push__("Array.prototype.filter") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Array.prototype.filter__.apply__(this, args)
-}
-Array.prototype.filter.prototype = Array.prototype.filter__.prototype;
-
-Array.prototype.find__= Array.prototype.find;
-Array.prototype.find = function (){
-	log42.indexOf__("Array.prototype.find") === -1 ? log42.push__("Array.prototype.find") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Array.prototype.find__.apply__(this, args)
-}
-Array.prototype.find.prototype = Array.prototype.find__.prototype;
-
-Array.prototype.findIndex__= Array.prototype.findIndex;
-Array.prototype.findIndex = function (){
-	log42.indexOf__("Array.prototype.findIndex") === -1 ? log42.push__("Array.prototype.findIndex") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Array.prototype.findIndex__.apply__(this, args)
-}
-Array.prototype.findIndex.prototype = Array.prototype.findIndex__.prototype;
-
-Array.prototype.flat__= Array.prototype.flat;
-Array.prototype.flat = function (){
-	log42.indexOf__("Array.prototype.flat") === -1 ? log42.push__("Array.prototype.flat") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Array.prototype.flat__.apply__(this, args)
-}
-Array.prototype.flat.prototype = Array.prototype.flat__.prototype;
-
-Array.prototype.flatMap__= Array.prototype.flatMap;
-Array.prototype.flatMap = function (){
-	log42.indexOf__("Array.prototype.flatMap") === -1 ? log42.push__("Array.prototype.flatMap") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Array.prototype.flatMap__.apply__(this, args)
-}
-Array.prototype.flatMap.prototype = Array.prototype.flatMap__.prototype;
-
-Array.prototype.forEach__= Array.prototype.forEach;
-Array.prototype.forEach = function (){
-	log42.indexOf__("Array.prototype.forEach") === -1 ? log42.push__("Array.prototype.forEach") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Array.prototype.forEach__.apply__(this, args)
-}
-Array.prototype.forEach.prototype = Array.prototype.forEach__.prototype;
-
-Array.prototype.includes__= Array.prototype.includes;
-Array.prototype.includes = function (){
-	log42.indexOf__("Array.prototype.includes") === -1 ? log42.push__("Array.prototype.includes") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Array.prototype.includes__.apply__(this, args)
-}
-Array.prototype.includes.prototype = Array.prototype.includes__.prototype;
-
-Array.prototype.indexOf__= Array.prototype.indexOf;
-Array.prototype.indexOf = function (){
-	log42.indexOf__("Array.prototype.indexOf") === -1 ? log42.push__("Array.prototype.indexOf") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Array.prototype.indexOf__.apply__(this, args)
-}
-Array.prototype.indexOf.prototype = Array.prototype.indexOf__.prototype;
-
-Array.prototype.join__= Array.prototype.join;
-Array.prototype.join = function (){
-	log42.indexOf__("Array.prototype.join") === -1 ? log42.push__("Array.prototype.join") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Array.prototype.join__.apply__(this, args)
-}
-Array.prototype.join.prototype = Array.prototype.join__.prototype;
-
-Array.prototype.keys__= Array.prototype.keys;
-Array.prototype.keys = function (){
-	log42.indexOf__("Array.prototype.keys") === -1 ? log42.push__("Array.prototype.keys") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Array.prototype.keys__.apply__(this, args)
-}
-Array.prototype.keys.prototype = Array.prototype.keys__.prototype;
-
-Array.prototype.lastIndexOf__= Array.prototype.lastIndexOf;
-Array.prototype.lastIndexOf = function (){
-	log42.indexOf__("Array.prototype.lastIndexOf") === -1 ? log42.push__("Array.prototype.lastIndexOf") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Array.prototype.lastIndexOf__.apply__(this, args)
-}
-Array.prototype.lastIndexOf.prototype = Array.prototype.lastIndexOf__.prototype;
-
-Array.prototype.map__= Array.prototype.map;
-Array.prototype.map = function (){
-	log42.indexOf__("Array.prototype.map") === -1 ? log42.push__("Array.prototype.map") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Array.prototype.map__.apply__(this, args)
-}
-Array.prototype.map.prototype = Array.prototype.map__.prototype;
-
-Array.prototype.pop__= Array.prototype.pop;
-Array.prototype.pop = function (){
-	log42.indexOf__("Array.prototype.pop") === -1 ? log42.push__("Array.prototype.pop") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Array.prototype.pop__.apply__(this, args)
-}
-Array.prototype.pop.prototype = Array.prototype.pop__.prototype;
-
-Array.prototype.push__= Array.prototype.push;
-Array.prototype.push = function (){
-	log42.indexOf__("Array.prototype.push") === -1 ? log42.push__("Array.prototype.push") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Array.prototype.push__.apply__(this, args)
-}
-Array.prototype.push.prototype = Array.prototype.push__.prototype;
-
-Array.prototype.reduce__= Array.prototype.reduce;
-Array.prototype.reduce = function (){
-	log42.indexOf__("Array.prototype.reduce") === -1 ? log42.push__("Array.prototype.reduce") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Array.prototype.reduce__.apply__(this, args)
-}
-Array.prototype.reduce.prototype = Array.prototype.reduce__.prototype;
-
-Array.prototype.reduceRight__= Array.prototype.reduceRight;
-Array.prototype.reduceRight = function (){
-	log42.indexOf__("Array.prototype.reduceRight") === -1 ? log42.push__("Array.prototype.reduceRight") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Array.prototype.reduceRight__.apply__(this, args)
-}
-Array.prototype.reduceRight.prototype = Array.prototype.reduceRight__.prototype;
-
-Array.prototype.reverse__= Array.prototype.reverse;
-Array.prototype.reverse = function (){
-	log42.indexOf__("Array.prototype.reverse") === -1 ? log42.push__("Array.prototype.reverse") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Array.prototype.reverse__.apply__(this, args)
-}
-Array.prototype.reverse.prototype = Array.prototype.reverse__.prototype;
-
-Array.prototype.shift__= Array.prototype.shift;
-Array.prototype.shift = function (){
-	log42.indexOf__("Array.prototype.shift") === -1 ? log42.push__("Array.prototype.shift") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Array.prototype.shift__.apply__(this, args)
-}
-Array.prototype.shift.prototype = Array.prototype.shift__.prototype;
-
-Array.prototype.slice__= Array.prototype.slice;
-Array.prototype.slice = function (){
-	log42.indexOf__("Array.prototype.slice") === -1 ? log42.push__("Array.prototype.slice") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Array.prototype.slice__.apply__(this, args)
-}
-Array.prototype.slice.prototype = Array.prototype.slice__.prototype;
-
-Array.prototype.some__= Array.prototype.some;
-Array.prototype.some = function (){
-	log42.indexOf__("Array.prototype.some") === -1 ? log42.push__("Array.prototype.some") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Array.prototype.some__.apply__(this, args)
-}
-Array.prototype.some.prototype = Array.prototype.some__.prototype;
-
-Array.prototype.sort__= Array.prototype.sort;
-Array.prototype.sort = function (){
-	log42.indexOf__("Array.prototype.sort") === -1 ? log42.push__("Array.prototype.sort") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Array.prototype.sort__.apply__(this, args)
-}
-Array.prototype.sort.prototype = Array.prototype.sort__.prototype;
-
-Array.prototype.splice__= Array.prototype.splice;
-Array.prototype.splice = function (){
-	log42.indexOf__("Array.prototype.splice") === -1 ? log42.push__("Array.prototype.splice") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Array.prototype.splice__.apply__(this, args)
-}
-Array.prototype.splice.prototype = Array.prototype.splice__.prototype;
-
-Array.prototype.toLocaleString__= Array.prototype.toLocaleString;
-Array.prototype.toLocaleString = function (){
-	log42.indexOf__("Array.prototype.toLocaleString") === -1 ? log42.push__("Array.prototype.toLocaleString") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Array.prototype.toLocaleString__.apply__(this, args)
-}
-Array.prototype.toLocaleString.prototype = Array.prototype.toLocaleString__.prototype;
-
-Array.prototype.toString__= Array.prototype.toString;
-Array.prototype.toString = function (){
-	log42.indexOf__("Array.prototype.toString") === -1 ? log42.push__("Array.prototype.toString") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Array.prototype.toString__.apply__(this, args)
-}
-Array.prototype.toString.prototype = Array.prototype.toString__.prototype;
-
-Array.prototype.unshift__= Array.prototype.unshift;
-Array.prototype.unshift = function (){
-	log42.indexOf__("Array.prototype.unshift") === -1 ? log42.push__("Array.prototype.unshift") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Array.prototype.unshift__.apply__(this, args)
-}
-Array.prototype.unshift.prototype = Array.prototype.unshift__.prototype;
-
-Array.prototype.values__= Array.prototype.values;
-Array.prototype.values = function (){
-	log42.indexOf__("Array.prototype.values") === -1 ? log42.push__("Array.prototype.values") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Array.prototype.values__.apply__(this, args)
-}
-Array.prototype.values.prototype = Array.prototype.values__.prototype;
-
-Int8Array.prototype.copyWithin__= Int8Array.prototype.copyWithin;
-Int8Array.prototype.copyWithin = function (){
-	log42.indexOf__("Int8Array.prototype.copyWithin") === -1 ? log42.push__("Int8Array.prototype.copyWithin") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int8Array.prototype.copyWithin__.apply__(this, args)
-}
-Int8Array.prototype.copyWithin.prototype = Int8Array.prototype.copyWithin__.prototype;
-
-Uint8Array.prototype.copyWithin__= Uint8Array.prototype.copyWithin;
-Uint8Array.prototype.copyWithin = function (){
-	log42.indexOf__("Uint8Array.prototype.copyWithin") === -1 ? log42.push__("Uint8Array.prototype.copyWithin") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8Array.prototype.copyWithin__.apply__(this, args)
-}
-Uint8Array.prototype.copyWithin.prototype = Uint8Array.prototype.copyWithin__.prototype;
-
-Uint8ClampedArray.prototype.copyWithin__= Uint8ClampedArray.prototype.copyWithin;
-Uint8ClampedArray.prototype.copyWithin = function (){
-	log42.indexOf__("Uint8ClampedArray.prototype.copyWithin") === -1 ? log42.push__("Uint8ClampedArray.prototype.copyWithin") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8ClampedArray.prototype.copyWithin__.apply__(this, args)
-}
-Uint8ClampedArray.prototype.copyWithin.prototype = Uint8ClampedArray.prototype.copyWithin__.prototype;
-
-Int16Array.prototype.copyWithin__= Int16Array.prototype.copyWithin;
-Int16Array.prototype.copyWithin = function (){
-	log42.indexOf__("Int16Array.prototype.copyWithin") === -1 ? log42.push__("Int16Array.prototype.copyWithin") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int16Array.prototype.copyWithin__.apply__(this, args)
-}
-Int16Array.prototype.copyWithin.prototype = Int16Array.prototype.copyWithin__.prototype;
-
-Uint16Array.prototype.copyWithin__= Uint16Array.prototype.copyWithin;
-Uint16Array.prototype.copyWithin = function (){
-	log42.indexOf__("Uint16Array.prototype.copyWithin") === -1 ? log42.push__("Uint16Array.prototype.copyWithin") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint16Array.prototype.copyWithin__.apply__(this, args)
-}
-Uint16Array.prototype.copyWithin.prototype = Uint16Array.prototype.copyWithin__.prototype;
-
-Int32Array.prototype.copyWithin__= Int32Array.prototype.copyWithin;
-Int32Array.prototype.copyWithin = function (){
-	log42.indexOf__("Int32Array.prototype.copyWithin") === -1 ? log42.push__("Int32Array.prototype.copyWithin") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int32Array.prototype.copyWithin__.apply__(this, args)
-}
-Int32Array.prototype.copyWithin.prototype = Int32Array.prototype.copyWithin__.prototype;
-
-Uint32Array.prototype.copyWithin__= Uint32Array.prototype.copyWithin;
-Uint32Array.prototype.copyWithin = function (){
-	log42.indexOf__("Uint32Array.prototype.copyWithin") === -1 ? log42.push__("Uint32Array.prototype.copyWithin") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint32Array.prototype.copyWithin__.apply__(this, args)
-}
-Uint32Array.prototype.copyWithin.prototype = Uint32Array.prototype.copyWithin__.prototype;
-
-BigInt64Array.prototype.copyWithin__= BigInt64Array.prototype.copyWithin;
-BigInt64Array.prototype.copyWithin = function (){
-	log42.indexOf__("BigInt64Array.prototype.copyWithin") === -1 ? log42.push__("BigInt64Array.prototype.copyWithin") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigInt64Array.prototype.copyWithin__.apply__(this, args)
-}
-BigInt64Array.prototype.copyWithin.prototype = BigInt64Array.prototype.copyWithin__.prototype;
-
-BigUint64Array.prototype.copyWithin__= BigUint64Array.prototype.copyWithin;
-BigUint64Array.prototype.copyWithin = function (){
-	log42.indexOf__("BigUint64Array.prototype.copyWithin") === -1 ? log42.push__("BigUint64Array.prototype.copyWithin") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigUint64Array.prototype.copyWithin__.apply__(this, args)
-}
-BigUint64Array.prototype.copyWithin.prototype = BigUint64Array.prototype.copyWithin__.prototype;
-
-Float32Array.prototype.copyWithin__= Float32Array.prototype.copyWithin;
-Float32Array.prototype.copyWithin = function (){
-	log42.indexOf__("Float32Array.prototype.copyWithin") === -1 ? log42.push__("Float32Array.prototype.copyWithin") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float32Array.prototype.copyWithin__.apply__(this, args)
-}
-Float32Array.prototype.copyWithin.prototype = Float32Array.prototype.copyWithin__.prototype;
-
-Float64Array.prototype.copyWithin__= Float64Array.prototype.copyWithin;
-Float64Array.prototype.copyWithin = function (){
-	log42.indexOf__("Float64Array.prototype.copyWithin") === -1 ? log42.push__("Float64Array.prototype.copyWithin") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float64Array.prototype.copyWithin__.apply__(this, args)
-}
-Float64Array.prototype.copyWithin.prototype = Float64Array.prototype.copyWithin__.prototype;
-
-Int8Array.prototype.entries__= Int8Array.prototype.entries;
-Int8Array.prototype.entries = function (){
-	log42.indexOf__("Int8Array.prototype.entries") === -1 ? log42.push__("Int8Array.prototype.entries") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int8Array.prototype.entries__.apply__(this, args)
-}
-Int8Array.prototype.entries.prototype = Int8Array.prototype.entries__.prototype;
-
-Uint8Array.prototype.entries__= Uint8Array.prototype.entries;
-Uint8Array.prototype.entries = function (){
-	log42.indexOf__("Uint8Array.prototype.entries") === -1 ? log42.push__("Uint8Array.prototype.entries") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8Array.prototype.entries__.apply__(this, args)
-}
-Uint8Array.prototype.entries.prototype = Uint8Array.prototype.entries__.prototype;
-
-Uint8ClampedArray.prototype.entries__= Uint8ClampedArray.prototype.entries;
-Uint8ClampedArray.prototype.entries = function (){
-	log42.indexOf__("Uint8ClampedArray.prototype.entries") === -1 ? log42.push__("Uint8ClampedArray.prototype.entries") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8ClampedArray.prototype.entries__.apply__(this, args)
-}
-Uint8ClampedArray.prototype.entries.prototype = Uint8ClampedArray.prototype.entries__.prototype;
-
-Int16Array.prototype.entries__= Int16Array.prototype.entries;
-Int16Array.prototype.entries = function (){
-	log42.indexOf__("Int16Array.prototype.entries") === -1 ? log42.push__("Int16Array.prototype.entries") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int16Array.prototype.entries__.apply__(this, args)
-}
-Int16Array.prototype.entries.prototype = Int16Array.prototype.entries__.prototype;
-
-Uint16Array.prototype.entries__= Uint16Array.prototype.entries;
-Uint16Array.prototype.entries = function (){
-	log42.indexOf__("Uint16Array.prototype.entries") === -1 ? log42.push__("Uint16Array.prototype.entries") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint16Array.prototype.entries__.apply__(this, args)
-}
-Uint16Array.prototype.entries.prototype = Uint16Array.prototype.entries__.prototype;
-
-Int32Array.prototype.entries__= Int32Array.prototype.entries;
-Int32Array.prototype.entries = function (){
-	log42.indexOf__("Int32Array.prototype.entries") === -1 ? log42.push__("Int32Array.prototype.entries") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int32Array.prototype.entries__.apply__(this, args)
-}
-Int32Array.prototype.entries.prototype = Int32Array.prototype.entries__.prototype;
-
-Uint32Array.prototype.entries__= Uint32Array.prototype.entries;
-Uint32Array.prototype.entries = function (){
-	log42.indexOf__("Uint32Array.prototype.entries") === -1 ? log42.push__("Uint32Array.prototype.entries") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint32Array.prototype.entries__.apply__(this, args)
-}
-Uint32Array.prototype.entries.prototype = Uint32Array.prototype.entries__.prototype;
-
-BigInt64Array.prototype.entries__= BigInt64Array.prototype.entries;
-BigInt64Array.prototype.entries = function (){
-	log42.indexOf__("BigInt64Array.prototype.entries") === -1 ? log42.push__("BigInt64Array.prototype.entries") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigInt64Array.prototype.entries__.apply__(this, args)
-}
-BigInt64Array.prototype.entries.prototype = BigInt64Array.prototype.entries__.prototype;
-
-BigUint64Array.prototype.entries__= BigUint64Array.prototype.entries;
-BigUint64Array.prototype.entries = function (){
-	log42.indexOf__("BigUint64Array.prototype.entries") === -1 ? log42.push__("BigUint64Array.prototype.entries") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigUint64Array.prototype.entries__.apply__(this, args)
-}
-BigUint64Array.prototype.entries.prototype = BigUint64Array.prototype.entries__.prototype;
-
-Float32Array.prototype.entries__= Float32Array.prototype.entries;
-Float32Array.prototype.entries = function (){
-	log42.indexOf__("Float32Array.prototype.entries") === -1 ? log42.push__("Float32Array.prototype.entries") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float32Array.prototype.entries__.apply__(this, args)
-}
-Float32Array.prototype.entries.prototype = Float32Array.prototype.entries__.prototype;
-
-Float64Array.prototype.entries__= Float64Array.prototype.entries;
-Float64Array.prototype.entries = function (){
-	log42.indexOf__("Float64Array.prototype.entries") === -1 ? log42.push__("Float64Array.prototype.entries") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float64Array.prototype.entries__.apply__(this, args)
-}
-Float64Array.prototype.entries.prototype = Float64Array.prototype.entries__.prototype;
-
-Int8Array.prototype.every__= Int8Array.prototype.every;
-Int8Array.prototype.every = function (){
-	log42.indexOf__("Int8Array.prototype.every") === -1 ? log42.push__("Int8Array.prototype.every") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int8Array.prototype.every__.apply__(this, args)
-}
-Int8Array.prototype.every.prototype = Int8Array.prototype.every__.prototype;
-
-Uint8Array.prototype.every__= Uint8Array.prototype.every;
-Uint8Array.prototype.every = function (){
-	log42.indexOf__("Uint8Array.prototype.every") === -1 ? log42.push__("Uint8Array.prototype.every") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8Array.prototype.every__.apply__(this, args)
-}
-Uint8Array.prototype.every.prototype = Uint8Array.prototype.every__.prototype;
-
-Uint8ClampedArray.prototype.every__= Uint8ClampedArray.prototype.every;
-Uint8ClampedArray.prototype.every = function (){
-	log42.indexOf__("Uint8ClampedArray.prototype.every") === -1 ? log42.push__("Uint8ClampedArray.prototype.every") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8ClampedArray.prototype.every__.apply__(this, args)
-}
-Uint8ClampedArray.prototype.every.prototype = Uint8ClampedArray.prototype.every__.prototype;
-
-Int16Array.prototype.every__= Int16Array.prototype.every;
-Int16Array.prototype.every = function (){
-	log42.indexOf__("Int16Array.prototype.every") === -1 ? log42.push__("Int16Array.prototype.every") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int16Array.prototype.every__.apply__(this, args)
-}
-Int16Array.prototype.every.prototype = Int16Array.prototype.every__.prototype;
-
-Uint16Array.prototype.every__= Uint16Array.prototype.every;
-Uint16Array.prototype.every = function (){
-	log42.indexOf__("Uint16Array.prototype.every") === -1 ? log42.push__("Uint16Array.prototype.every") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint16Array.prototype.every__.apply__(this, args)
-}
-Uint16Array.prototype.every.prototype = Uint16Array.prototype.every__.prototype;
-
-Int32Array.prototype.every__= Int32Array.prototype.every;
-Int32Array.prototype.every = function (){
-	log42.indexOf__("Int32Array.prototype.every") === -1 ? log42.push__("Int32Array.prototype.every") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int32Array.prototype.every__.apply__(this, args)
-}
-Int32Array.prototype.every.prototype = Int32Array.prototype.every__.prototype;
-
-Uint32Array.prototype.every__= Uint32Array.prototype.every;
-Uint32Array.prototype.every = function (){
-	log42.indexOf__("Uint32Array.prototype.every") === -1 ? log42.push__("Uint32Array.prototype.every") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint32Array.prototype.every__.apply__(this, args)
-}
-Uint32Array.prototype.every.prototype = Uint32Array.prototype.every__.prototype;
-
-BigInt64Array.prototype.every__= BigInt64Array.prototype.every;
-BigInt64Array.prototype.every = function (){
-	log42.indexOf__("BigInt64Array.prototype.every") === -1 ? log42.push__("BigInt64Array.prototype.every") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigInt64Array.prototype.every__.apply__(this, args)
-}
-BigInt64Array.prototype.every.prototype = BigInt64Array.prototype.every__.prototype;
-
-BigUint64Array.prototype.every__= BigUint64Array.prototype.every;
-BigUint64Array.prototype.every = function (){
-	log42.indexOf__("BigUint64Array.prototype.every") === -1 ? log42.push__("BigUint64Array.prototype.every") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigUint64Array.prototype.every__.apply__(this, args)
-}
-BigUint64Array.prototype.every.prototype = BigUint64Array.prototype.every__.prototype;
-
-Float32Array.prototype.every__= Float32Array.prototype.every;
-Float32Array.prototype.every = function (){
-	log42.indexOf__("Float32Array.prototype.every") === -1 ? log42.push__("Float32Array.prototype.every") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float32Array.prototype.every__.apply__(this, args)
-}
-Float32Array.prototype.every.prototype = Float32Array.prototype.every__.prototype;
-
-Float64Array.prototype.every__= Float64Array.prototype.every;
-Float64Array.prototype.every = function (){
-	log42.indexOf__("Float64Array.prototype.every") === -1 ? log42.push__("Float64Array.prototype.every") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float64Array.prototype.every__.apply__(this, args)
-}
-Float64Array.prototype.every.prototype = Float64Array.prototype.every__.prototype;
-
-Int8Array.prototype.fill__= Int8Array.prototype.fill;
-Int8Array.prototype.fill = function (){
-	log42.indexOf__("Int8Array.prototype.fill") === -1 ? log42.push__("Int8Array.prototype.fill") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int8Array.prototype.fill__.apply__(this, args)
-}
-Int8Array.prototype.fill.prototype = Int8Array.prototype.fill__.prototype;
-
-Uint8Array.prototype.fill__= Uint8Array.prototype.fill;
-Uint8Array.prototype.fill = function (){
-	log42.indexOf__("Uint8Array.prototype.fill") === -1 ? log42.push__("Uint8Array.prototype.fill") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8Array.prototype.fill__.apply__(this, args)
-}
-Uint8Array.prototype.fill.prototype = Uint8Array.prototype.fill__.prototype;
-
-Uint8ClampedArray.prototype.fill__= Uint8ClampedArray.prototype.fill;
-Uint8ClampedArray.prototype.fill = function (){
-	log42.indexOf__("Uint8ClampedArray.prototype.fill") === -1 ? log42.push__("Uint8ClampedArray.prototype.fill") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8ClampedArray.prototype.fill__.apply__(this, args)
-}
-Uint8ClampedArray.prototype.fill.prototype = Uint8ClampedArray.prototype.fill__.prototype;
-
-Int16Array.prototype.fill__= Int16Array.prototype.fill;
-Int16Array.prototype.fill = function (){
-	log42.indexOf__("Int16Array.prototype.fill") === -1 ? log42.push__("Int16Array.prototype.fill") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int16Array.prototype.fill__.apply__(this, args)
-}
-Int16Array.prototype.fill.prototype = Int16Array.prototype.fill__.prototype;
-
-Uint16Array.prototype.fill__= Uint16Array.prototype.fill;
-Uint16Array.prototype.fill = function (){
-	log42.indexOf__("Uint16Array.prototype.fill") === -1 ? log42.push__("Uint16Array.prototype.fill") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint16Array.prototype.fill__.apply__(this, args)
-}
-Uint16Array.prototype.fill.prototype = Uint16Array.prototype.fill__.prototype;
-
-Int32Array.prototype.fill__= Int32Array.prototype.fill;
-Int32Array.prototype.fill = function (){
-	log42.indexOf__("Int32Array.prototype.fill") === -1 ? log42.push__("Int32Array.prototype.fill") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int32Array.prototype.fill__.apply__(this, args)
-}
-Int32Array.prototype.fill.prototype = Int32Array.prototype.fill__.prototype;
-
-Uint32Array.prototype.fill__= Uint32Array.prototype.fill;
-Uint32Array.prototype.fill = function (){
-	log42.indexOf__("Uint32Array.prototype.fill") === -1 ? log42.push__("Uint32Array.prototype.fill") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint32Array.prototype.fill__.apply__(this, args)
-}
-Uint32Array.prototype.fill.prototype = Uint32Array.prototype.fill__.prototype;
-
-BigInt64Array.prototype.fill__= BigInt64Array.prototype.fill;
-BigInt64Array.prototype.fill = function (){
-	log42.indexOf__("BigInt64Array.prototype.fill") === -1 ? log42.push__("BigInt64Array.prototype.fill") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigInt64Array.prototype.fill__.apply__(this, args)
-}
-BigInt64Array.prototype.fill.prototype = BigInt64Array.prototype.fill__.prototype;
-
-BigUint64Array.prototype.fill__= BigUint64Array.prototype.fill;
-BigUint64Array.prototype.fill = function (){
-	log42.indexOf__("BigUint64Array.prototype.fill") === -1 ? log42.push__("BigUint64Array.prototype.fill") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigUint64Array.prototype.fill__.apply__(this, args)
-}
-BigUint64Array.prototype.fill.prototype = BigUint64Array.prototype.fill__.prototype;
-
-Float32Array.prototype.fill__= Float32Array.prototype.fill;
-Float32Array.prototype.fill = function (){
-	log42.indexOf__("Float32Array.prototype.fill") === -1 ? log42.push__("Float32Array.prototype.fill") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float32Array.prototype.fill__.apply__(this, args)
-}
-Float32Array.prototype.fill.prototype = Float32Array.prototype.fill__.prototype;
-
-Float64Array.prototype.fill__= Float64Array.prototype.fill;
-Float64Array.prototype.fill = function (){
-	log42.indexOf__("Float64Array.prototype.fill") === -1 ? log42.push__("Float64Array.prototype.fill") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float64Array.prototype.fill__.apply__(this, args)
-}
-Float64Array.prototype.fill.prototype = Float64Array.prototype.fill__.prototype;
-
-Int8Array.prototype.filter__= Int8Array.prototype.filter;
-Int8Array.prototype.filter = function (){
-	log42.indexOf__("Int8Array.prototype.filter") === -1 ? log42.push__("Int8Array.prototype.filter") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int8Array.prototype.filter__.apply__(this, args)
-}
-Int8Array.prototype.filter.prototype = Int8Array.prototype.filter__.prototype;
-
-Uint8Array.prototype.filter__= Uint8Array.prototype.filter;
-Uint8Array.prototype.filter = function (){
-	log42.indexOf__("Uint8Array.prototype.filter") === -1 ? log42.push__("Uint8Array.prototype.filter") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8Array.prototype.filter__.apply__(this, args)
-}
-Uint8Array.prototype.filter.prototype = Uint8Array.prototype.filter__.prototype;
-
-Uint8ClampedArray.prototype.filter__= Uint8ClampedArray.prototype.filter;
-Uint8ClampedArray.prototype.filter = function (){
-	log42.indexOf__("Uint8ClampedArray.prototype.filter") === -1 ? log42.push__("Uint8ClampedArray.prototype.filter") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8ClampedArray.prototype.filter__.apply__(this, args)
-}
-Uint8ClampedArray.prototype.filter.prototype = Uint8ClampedArray.prototype.filter__.prototype;
-
-Int16Array.prototype.filter__= Int16Array.prototype.filter;
-Int16Array.prototype.filter = function (){
-	log42.indexOf__("Int16Array.prototype.filter") === -1 ? log42.push__("Int16Array.prototype.filter") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int16Array.prototype.filter__.apply__(this, args)
-}
-Int16Array.prototype.filter.prototype = Int16Array.prototype.filter__.prototype;
-
-Uint16Array.prototype.filter__= Uint16Array.prototype.filter;
-Uint16Array.prototype.filter = function (){
-	log42.indexOf__("Uint16Array.prototype.filter") === -1 ? log42.push__("Uint16Array.prototype.filter") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint16Array.prototype.filter__.apply__(this, args)
-}
-Uint16Array.prototype.filter.prototype = Uint16Array.prototype.filter__.prototype;
-
-Int32Array.prototype.filter__= Int32Array.prototype.filter;
-Int32Array.prototype.filter = function (){
-	log42.indexOf__("Int32Array.prototype.filter") === -1 ? log42.push__("Int32Array.prototype.filter") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int32Array.prototype.filter__.apply__(this, args)
-}
-Int32Array.prototype.filter.prototype = Int32Array.prototype.filter__.prototype;
-
-Uint32Array.prototype.filter__= Uint32Array.prototype.filter;
-Uint32Array.prototype.filter = function (){
-	log42.indexOf__("Uint32Array.prototype.filter") === -1 ? log42.push__("Uint32Array.prototype.filter") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint32Array.prototype.filter__.apply__(this, args)
-}
-Uint32Array.prototype.filter.prototype = Uint32Array.prototype.filter__.prototype;
-
-BigInt64Array.prototype.filter__= BigInt64Array.prototype.filter;
-BigInt64Array.prototype.filter = function (){
-	log42.indexOf__("BigInt64Array.prototype.filter") === -1 ? log42.push__("BigInt64Array.prototype.filter") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigInt64Array.prototype.filter__.apply__(this, args)
-}
-BigInt64Array.prototype.filter.prototype = BigInt64Array.prototype.filter__.prototype;
-
-BigUint64Array.prototype.filter__= BigUint64Array.prototype.filter;
-BigUint64Array.prototype.filter = function (){
-	log42.indexOf__("BigUint64Array.prototype.filter") === -1 ? log42.push__("BigUint64Array.prototype.filter") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigUint64Array.prototype.filter__.apply__(this, args)
-}
-BigUint64Array.prototype.filter.prototype = BigUint64Array.prototype.filter__.prototype;
-
-Float32Array.prototype.filter__= Float32Array.prototype.filter;
-Float32Array.prototype.filter = function (){
-	log42.indexOf__("Float32Array.prototype.filter") === -1 ? log42.push__("Float32Array.prototype.filter") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float32Array.prototype.filter__.apply__(this, args)
-}
-Float32Array.prototype.filter.prototype = Float32Array.prototype.filter__.prototype;
-
-Float64Array.prototype.filter__= Float64Array.prototype.filter;
-Float64Array.prototype.filter = function (){
-	log42.indexOf__("Float64Array.prototype.filter") === -1 ? log42.push__("Float64Array.prototype.filter") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float64Array.prototype.filter__.apply__(this, args)
-}
-Float64Array.prototype.filter.prototype = Float64Array.prototype.filter__.prototype;
-
-Int8Array.prototype.find__= Int8Array.prototype.find;
-Int8Array.prototype.find = function (){
-	log42.indexOf__("Int8Array.prototype.find") === -1 ? log42.push__("Int8Array.prototype.find") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int8Array.prototype.find__.apply__(this, args)
-}
-Int8Array.prototype.find.prototype = Int8Array.prototype.find__.prototype;
-
-Uint8Array.prototype.find__= Uint8Array.prototype.find;
-Uint8Array.prototype.find = function (){
-	log42.indexOf__("Uint8Array.prototype.find") === -1 ? log42.push__("Uint8Array.prototype.find") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8Array.prototype.find__.apply__(this, args)
-}
-Uint8Array.prototype.find.prototype = Uint8Array.prototype.find__.prototype;
-
-Uint8ClampedArray.prototype.find__= Uint8ClampedArray.prototype.find;
-Uint8ClampedArray.prototype.find = function (){
-	log42.indexOf__("Uint8ClampedArray.prototype.find") === -1 ? log42.push__("Uint8ClampedArray.prototype.find") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8ClampedArray.prototype.find__.apply__(this, args)
-}
-Uint8ClampedArray.prototype.find.prototype = Uint8ClampedArray.prototype.find__.prototype;
-
-Int16Array.prototype.find__= Int16Array.prototype.find;
-Int16Array.prototype.find = function (){
-	log42.indexOf__("Int16Array.prototype.find") === -1 ? log42.push__("Int16Array.prototype.find") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int16Array.prototype.find__.apply__(this, args)
-}
-Int16Array.prototype.find.prototype = Int16Array.prototype.find__.prototype;
-
-Uint16Array.prototype.find__= Uint16Array.prototype.find;
-Uint16Array.prototype.find = function (){
-	log42.indexOf__("Uint16Array.prototype.find") === -1 ? log42.push__("Uint16Array.prototype.find") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint16Array.prototype.find__.apply__(this, args)
-}
-Uint16Array.prototype.find.prototype = Uint16Array.prototype.find__.prototype;
-
-Int32Array.prototype.find__= Int32Array.prototype.find;
-Int32Array.prototype.find = function (){
-	log42.indexOf__("Int32Array.prototype.find") === -1 ? log42.push__("Int32Array.prototype.find") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int32Array.prototype.find__.apply__(this, args)
-}
-Int32Array.prototype.find.prototype = Int32Array.prototype.find__.prototype;
-
-Uint32Array.prototype.find__= Uint32Array.prototype.find;
-Uint32Array.prototype.find = function (){
-	log42.indexOf__("Uint32Array.prototype.find") === -1 ? log42.push__("Uint32Array.prototype.find") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint32Array.prototype.find__.apply__(this, args)
-}
-Uint32Array.prototype.find.prototype = Uint32Array.prototype.find__.prototype;
-
-BigInt64Array.prototype.find__= BigInt64Array.prototype.find;
-BigInt64Array.prototype.find = function (){
-	log42.indexOf__("BigInt64Array.prototype.find") === -1 ? log42.push__("BigInt64Array.prototype.find") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigInt64Array.prototype.find__.apply__(this, args)
-}
-BigInt64Array.prototype.find.prototype = BigInt64Array.prototype.find__.prototype;
-
-BigUint64Array.prototype.find__= BigUint64Array.prototype.find;
-BigUint64Array.prototype.find = function (){
-	log42.indexOf__("BigUint64Array.prototype.find") === -1 ? log42.push__("BigUint64Array.prototype.find") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigUint64Array.prototype.find__.apply__(this, args)
-}
-BigUint64Array.prototype.find.prototype = BigUint64Array.prototype.find__.prototype;
-
-Float32Array.prototype.find__= Float32Array.prototype.find;
-Float32Array.prototype.find = function (){
-	log42.indexOf__("Float32Array.prototype.find") === -1 ? log42.push__("Float32Array.prototype.find") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float32Array.prototype.find__.apply__(this, args)
-}
-Float32Array.prototype.find.prototype = Float32Array.prototype.find__.prototype;
-
-Float64Array.prototype.find__= Float64Array.prototype.find;
-Float64Array.prototype.find = function (){
-	log42.indexOf__("Float64Array.prototype.find") === -1 ? log42.push__("Float64Array.prototype.find") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float64Array.prototype.find__.apply__(this, args)
-}
-Float64Array.prototype.find.prototype = Float64Array.prototype.find__.prototype;
-
-Int8Array.prototype.findIndex__= Int8Array.prototype.findIndex;
-Int8Array.prototype.findIndex = function (){
-	log42.indexOf__("Int8Array.prototype.findIndex") === -1 ? log42.push__("Int8Array.prototype.findIndex") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int8Array.prototype.findIndex__.apply__(this, args)
-}
-Int8Array.prototype.findIndex.prototype = Int8Array.prototype.findIndex__.prototype;
-
-Uint8Array.prototype.findIndex__= Uint8Array.prototype.findIndex;
-Uint8Array.prototype.findIndex = function (){
-	log42.indexOf__("Uint8Array.prototype.findIndex") === -1 ? log42.push__("Uint8Array.prototype.findIndex") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8Array.prototype.findIndex__.apply__(this, args)
-}
-Uint8Array.prototype.findIndex.prototype = Uint8Array.prototype.findIndex__.prototype;
-
-Uint8ClampedArray.prototype.findIndex__= Uint8ClampedArray.prototype.findIndex;
-Uint8ClampedArray.prototype.findIndex = function (){
-	log42.indexOf__("Uint8ClampedArray.prototype.findIndex") === -1 ? log42.push__("Uint8ClampedArray.prototype.findIndex") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8ClampedArray.prototype.findIndex__.apply__(this, args)
-}
-Uint8ClampedArray.prototype.findIndex.prototype = Uint8ClampedArray.prototype.findIndex__.prototype;
-
-Int16Array.prototype.findIndex__= Int16Array.prototype.findIndex;
-Int16Array.prototype.findIndex = function (){
-	log42.indexOf__("Int16Array.prototype.findIndex") === -1 ? log42.push__("Int16Array.prototype.findIndex") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int16Array.prototype.findIndex__.apply__(this, args)
-}
-Int16Array.prototype.findIndex.prototype = Int16Array.prototype.findIndex__.prototype;
-
-Uint16Array.prototype.findIndex__= Uint16Array.prototype.findIndex;
-Uint16Array.prototype.findIndex = function (){
-	log42.indexOf__("Uint16Array.prototype.findIndex") === -1 ? log42.push__("Uint16Array.prototype.findIndex") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint16Array.prototype.findIndex__.apply__(this, args)
-}
-Uint16Array.prototype.findIndex.prototype = Uint16Array.prototype.findIndex__.prototype;
-
-Int32Array.prototype.findIndex__= Int32Array.prototype.findIndex;
-Int32Array.prototype.findIndex = function (){
-	log42.indexOf__("Int32Array.prototype.findIndex") === -1 ? log42.push__("Int32Array.prototype.findIndex") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int32Array.prototype.findIndex__.apply__(this, args)
-}
-Int32Array.prototype.findIndex.prototype = Int32Array.prototype.findIndex__.prototype;
-
-Uint32Array.prototype.findIndex__= Uint32Array.prototype.findIndex;
-Uint32Array.prototype.findIndex = function (){
-	log42.indexOf__("Uint32Array.prototype.findIndex") === -1 ? log42.push__("Uint32Array.prototype.findIndex") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint32Array.prototype.findIndex__.apply__(this, args)
-}
-Uint32Array.prototype.findIndex.prototype = Uint32Array.prototype.findIndex__.prototype;
-
-BigInt64Array.prototype.findIndex__= BigInt64Array.prototype.findIndex;
-BigInt64Array.prototype.findIndex = function (){
-	log42.indexOf__("BigInt64Array.prototype.findIndex") === -1 ? log42.push__("BigInt64Array.prototype.findIndex") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigInt64Array.prototype.findIndex__.apply__(this, args)
-}
-BigInt64Array.prototype.findIndex.prototype = BigInt64Array.prototype.findIndex__.prototype;
-
-BigUint64Array.prototype.findIndex__= BigUint64Array.prototype.findIndex;
-BigUint64Array.prototype.findIndex = function (){
-	log42.indexOf__("BigUint64Array.prototype.findIndex") === -1 ? log42.push__("BigUint64Array.prototype.findIndex") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigUint64Array.prototype.findIndex__.apply__(this, args)
-}
-BigUint64Array.prototype.findIndex.prototype = BigUint64Array.prototype.findIndex__.prototype;
-
-Float32Array.prototype.findIndex__= Float32Array.prototype.findIndex;
-Float32Array.prototype.findIndex = function (){
-	log42.indexOf__("Float32Array.prototype.findIndex") === -1 ? log42.push__("Float32Array.prototype.findIndex") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float32Array.prototype.findIndex__.apply__(this, args)
-}
-Float32Array.prototype.findIndex.prototype = Float32Array.prototype.findIndex__.prototype;
-
-Float64Array.prototype.findIndex__= Float64Array.prototype.findIndex;
-Float64Array.prototype.findIndex = function (){
-	log42.indexOf__("Float64Array.prototype.findIndex") === -1 ? log42.push__("Float64Array.prototype.findIndex") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float64Array.prototype.findIndex__.apply__(this, args)
-}
-Float64Array.prototype.findIndex.prototype = Float64Array.prototype.findIndex__.prototype;
-
-Int8Array.prototype.forEach__= Int8Array.prototype.forEach;
-Int8Array.prototype.forEach = function (){
-	log42.indexOf__("Int8Array.prototype.forEach") === -1 ? log42.push__("Int8Array.prototype.forEach") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int8Array.prototype.forEach__.apply__(this, args)
-}
-Int8Array.prototype.forEach.prototype = Int8Array.prototype.forEach__.prototype;
-
-Uint8Array.prototype.forEach__= Uint8Array.prototype.forEach;
-Uint8Array.prototype.forEach = function (){
-	log42.indexOf__("Uint8Array.prototype.forEach") === -1 ? log42.push__("Uint8Array.prototype.forEach") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8Array.prototype.forEach__.apply__(this, args)
-}
-Uint8Array.prototype.forEach.prototype = Uint8Array.prototype.forEach__.prototype;
-
-Uint8ClampedArray.prototype.forEach__= Uint8ClampedArray.prototype.forEach;
-Uint8ClampedArray.prototype.forEach = function (){
-	log42.indexOf__("Uint8ClampedArray.prototype.forEach") === -1 ? log42.push__("Uint8ClampedArray.prototype.forEach") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8ClampedArray.prototype.forEach__.apply__(this, args)
-}
-Uint8ClampedArray.prototype.forEach.prototype = Uint8ClampedArray.prototype.forEach__.prototype;
-
-Int16Array.prototype.forEach__= Int16Array.prototype.forEach;
-Int16Array.prototype.forEach = function (){
-	log42.indexOf__("Int16Array.prototype.forEach") === -1 ? log42.push__("Int16Array.prototype.forEach") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int16Array.prototype.forEach__.apply__(this, args)
-}
-Int16Array.prototype.forEach.prototype = Int16Array.prototype.forEach__.prototype;
-
-Uint16Array.prototype.forEach__= Uint16Array.prototype.forEach;
-Uint16Array.prototype.forEach = function (){
-	log42.indexOf__("Uint16Array.prototype.forEach") === -1 ? log42.push__("Uint16Array.prototype.forEach") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint16Array.prototype.forEach__.apply__(this, args)
-}
-Uint16Array.prototype.forEach.prototype = Uint16Array.prototype.forEach__.prototype;
-
-Int32Array.prototype.forEach__= Int32Array.prototype.forEach;
-Int32Array.prototype.forEach = function (){
-	log42.indexOf__("Int32Array.prototype.forEach") === -1 ? log42.push__("Int32Array.prototype.forEach") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int32Array.prototype.forEach__.apply__(this, args)
-}
-Int32Array.prototype.forEach.prototype = Int32Array.prototype.forEach__.prototype;
-
-Uint32Array.prototype.forEach__= Uint32Array.prototype.forEach;
-Uint32Array.prototype.forEach = function (){
-	log42.indexOf__("Uint32Array.prototype.forEach") === -1 ? log42.push__("Uint32Array.prototype.forEach") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint32Array.prototype.forEach__.apply__(this, args)
-}
-Uint32Array.prototype.forEach.prototype = Uint32Array.prototype.forEach__.prototype;
-
-BigInt64Array.prototype.forEach__= BigInt64Array.prototype.forEach;
-BigInt64Array.prototype.forEach = function (){
-	log42.indexOf__("BigInt64Array.prototype.forEach") === -1 ? log42.push__("BigInt64Array.prototype.forEach") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigInt64Array.prototype.forEach__.apply__(this, args)
-}
-BigInt64Array.prototype.forEach.prototype = BigInt64Array.prototype.forEach__.prototype;
-
-BigUint64Array.prototype.forEach__= BigUint64Array.prototype.forEach;
-BigUint64Array.prototype.forEach = function (){
-	log42.indexOf__("BigUint64Array.prototype.forEach") === -1 ? log42.push__("BigUint64Array.prototype.forEach") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigUint64Array.prototype.forEach__.apply__(this, args)
-}
-BigUint64Array.prototype.forEach.prototype = BigUint64Array.prototype.forEach__.prototype;
-
-Float32Array.prototype.forEach__= Float32Array.prototype.forEach;
-Float32Array.prototype.forEach = function (){
-	log42.indexOf__("Float32Array.prototype.forEach") === -1 ? log42.push__("Float32Array.prototype.forEach") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float32Array.prototype.forEach__.apply__(this, args)
-}
-Float32Array.prototype.forEach.prototype = Float32Array.prototype.forEach__.prototype;
-
-Float64Array.prototype.forEach__= Float64Array.prototype.forEach;
-Float64Array.prototype.forEach = function (){
-	log42.indexOf__("Float64Array.prototype.forEach") === -1 ? log42.push__("Float64Array.prototype.forEach") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float64Array.prototype.forEach__.apply__(this, args)
-}
-Float64Array.prototype.forEach.prototype = Float64Array.prototype.forEach__.prototype;
-
-Int8Array.prototype.includes__= Int8Array.prototype.includes;
-Int8Array.prototype.includes = function (){
-	log42.indexOf__("Int8Array.prototype.includes") === -1 ? log42.push__("Int8Array.prototype.includes") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int8Array.prototype.includes__.apply__(this, args)
-}
-Int8Array.prototype.includes.prototype = Int8Array.prototype.includes__.prototype;
-
-Uint8Array.prototype.includes__= Uint8Array.prototype.includes;
-Uint8Array.prototype.includes = function (){
-	log42.indexOf__("Uint8Array.prototype.includes") === -1 ? log42.push__("Uint8Array.prototype.includes") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8Array.prototype.includes__.apply__(this, args)
-}
-Uint8Array.prototype.includes.prototype = Uint8Array.prototype.includes__.prototype;
-
-Uint8ClampedArray.prototype.includes__= Uint8ClampedArray.prototype.includes;
-Uint8ClampedArray.prototype.includes = function (){
-	log42.indexOf__("Uint8ClampedArray.prototype.includes") === -1 ? log42.push__("Uint8ClampedArray.prototype.includes") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8ClampedArray.prototype.includes__.apply__(this, args)
-}
-Uint8ClampedArray.prototype.includes.prototype = Uint8ClampedArray.prototype.includes__.prototype;
-
-Int16Array.prototype.includes__= Int16Array.prototype.includes;
-Int16Array.prototype.includes = function (){
-	log42.indexOf__("Int16Array.prototype.includes") === -1 ? log42.push__("Int16Array.prototype.includes") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int16Array.prototype.includes__.apply__(this, args)
-}
-Int16Array.prototype.includes.prototype = Int16Array.prototype.includes__.prototype;
-
-Uint16Array.prototype.includes__= Uint16Array.prototype.includes;
-Uint16Array.prototype.includes = function (){
-	log42.indexOf__("Uint16Array.prototype.includes") === -1 ? log42.push__("Uint16Array.prototype.includes") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint16Array.prototype.includes__.apply__(this, args)
-}
-Uint16Array.prototype.includes.prototype = Uint16Array.prototype.includes__.prototype;
-
-Int32Array.prototype.includes__= Int32Array.prototype.includes;
-Int32Array.prototype.includes = function (){
-	log42.indexOf__("Int32Array.prototype.includes") === -1 ? log42.push__("Int32Array.prototype.includes") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int32Array.prototype.includes__.apply__(this, args)
-}
-Int32Array.prototype.includes.prototype = Int32Array.prototype.includes__.prototype;
-
-Uint32Array.prototype.includes__= Uint32Array.prototype.includes;
-Uint32Array.prototype.includes = function (){
-	log42.indexOf__("Uint32Array.prototype.includes") === -1 ? log42.push__("Uint32Array.prototype.includes") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint32Array.prototype.includes__.apply__(this, args)
-}
-Uint32Array.prototype.includes.prototype = Uint32Array.prototype.includes__.prototype;
-
-BigInt64Array.prototype.includes__= BigInt64Array.prototype.includes;
-BigInt64Array.prototype.includes = function (){
-	log42.indexOf__("BigInt64Array.prototype.includes") === -1 ? log42.push__("BigInt64Array.prototype.includes") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigInt64Array.prototype.includes__.apply__(this, args)
-}
-BigInt64Array.prototype.includes.prototype = BigInt64Array.prototype.includes__.prototype;
-
-BigUint64Array.prototype.includes__= BigUint64Array.prototype.includes;
-BigUint64Array.prototype.includes = function (){
-	log42.indexOf__("BigUint64Array.prototype.includes") === -1 ? log42.push__("BigUint64Array.prototype.includes") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigUint64Array.prototype.includes__.apply__(this, args)
-}
-BigUint64Array.prototype.includes.prototype = BigUint64Array.prototype.includes__.prototype;
-
-Float32Array.prototype.includes__= Float32Array.prototype.includes;
-Float32Array.prototype.includes = function (){
-	log42.indexOf__("Float32Array.prototype.includes") === -1 ? log42.push__("Float32Array.prototype.includes") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float32Array.prototype.includes__.apply__(this, args)
-}
-Float32Array.prototype.includes.prototype = Float32Array.prototype.includes__.prototype;
-
-Float64Array.prototype.includes__= Float64Array.prototype.includes;
-Float64Array.prototype.includes = function (){
-	log42.indexOf__("Float64Array.prototype.includes") === -1 ? log42.push__("Float64Array.prototype.includes") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float64Array.prototype.includes__.apply__(this, args)
-}
-Float64Array.prototype.includes.prototype = Float64Array.prototype.includes__.prototype;
-
-Int8Array.prototype.indexOf__= Int8Array.prototype.indexOf;
-Int8Array.prototype.indexOf = function (){
-	log42.indexOf__("Int8Array.prototype.indexOf") === -1 ? log42.push__("Int8Array.prototype.indexOf") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int8Array.prototype.indexOf__.apply__(this, args)
-}
-Int8Array.prototype.indexOf.prototype = Int8Array.prototype.indexOf__.prototype;
-
-Uint8Array.prototype.indexOf__= Uint8Array.prototype.indexOf;
-Uint8Array.prototype.indexOf = function (){
-	log42.indexOf__("Uint8Array.prototype.indexOf") === -1 ? log42.push__("Uint8Array.prototype.indexOf") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8Array.prototype.indexOf__.apply__(this, args)
-}
-Uint8Array.prototype.indexOf.prototype = Uint8Array.prototype.indexOf__.prototype;
-
-Uint8ClampedArray.prototype.indexOf__= Uint8ClampedArray.prototype.indexOf;
-Uint8ClampedArray.prototype.indexOf = function (){
-	log42.indexOf__("Uint8ClampedArray.prototype.indexOf") === -1 ? log42.push__("Uint8ClampedArray.prototype.indexOf") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8ClampedArray.prototype.indexOf__.apply__(this, args)
-}
-Uint8ClampedArray.prototype.indexOf.prototype = Uint8ClampedArray.prototype.indexOf__.prototype;
-
-Int16Array.prototype.indexOf__= Int16Array.prototype.indexOf;
-Int16Array.prototype.indexOf = function (){
-	log42.indexOf__("Int16Array.prototype.indexOf") === -1 ? log42.push__("Int16Array.prototype.indexOf") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int16Array.prototype.indexOf__.apply__(this, args)
-}
-Int16Array.prototype.indexOf.prototype = Int16Array.prototype.indexOf__.prototype;
-
-Uint16Array.prototype.indexOf__= Uint16Array.prototype.indexOf;
-Uint16Array.prototype.indexOf = function (){
-	log42.indexOf__("Uint16Array.prototype.indexOf") === -1 ? log42.push__("Uint16Array.prototype.indexOf") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint16Array.prototype.indexOf__.apply__(this, args)
-}
-Uint16Array.prototype.indexOf.prototype = Uint16Array.prototype.indexOf__.prototype;
-
-Int32Array.prototype.indexOf__= Int32Array.prototype.indexOf;
-Int32Array.prototype.indexOf = function (){
-	log42.indexOf__("Int32Array.prototype.indexOf") === -1 ? log42.push__("Int32Array.prototype.indexOf") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int32Array.prototype.indexOf__.apply__(this, args)
-}
-Int32Array.prototype.indexOf.prototype = Int32Array.prototype.indexOf__.prototype;
-
-Uint32Array.prototype.indexOf__= Uint32Array.prototype.indexOf;
-Uint32Array.prototype.indexOf = function (){
-	log42.indexOf__("Uint32Array.prototype.indexOf") === -1 ? log42.push__("Uint32Array.prototype.indexOf") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint32Array.prototype.indexOf__.apply__(this, args)
-}
-Uint32Array.prototype.indexOf.prototype = Uint32Array.prototype.indexOf__.prototype;
-
-BigInt64Array.prototype.indexOf__= BigInt64Array.prototype.indexOf;
-BigInt64Array.prototype.indexOf = function (){
-	log42.indexOf__("BigInt64Array.prototype.indexOf") === -1 ? log42.push__("BigInt64Array.prototype.indexOf") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigInt64Array.prototype.indexOf__.apply__(this, args)
-}
-BigInt64Array.prototype.indexOf.prototype = BigInt64Array.prototype.indexOf__.prototype;
-
-BigUint64Array.prototype.indexOf__= BigUint64Array.prototype.indexOf;
-BigUint64Array.prototype.indexOf = function (){
-	log42.indexOf__("BigUint64Array.prototype.indexOf") === -1 ? log42.push__("BigUint64Array.prototype.indexOf") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigUint64Array.prototype.indexOf__.apply__(this, args)
-}
-BigUint64Array.prototype.indexOf.prototype = BigUint64Array.prototype.indexOf__.prototype;
-
-Float32Array.prototype.indexOf__= Float32Array.prototype.indexOf;
-Float32Array.prototype.indexOf = function (){
-	log42.indexOf__("Float32Array.prototype.indexOf") === -1 ? log42.push__("Float32Array.prototype.indexOf") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float32Array.prototype.indexOf__.apply__(this, args)
-}
-Float32Array.prototype.indexOf.prototype = Float32Array.prototype.indexOf__.prototype;
-
-Float64Array.prototype.indexOf__= Float64Array.prototype.indexOf;
-Float64Array.prototype.indexOf = function (){
-	log42.indexOf__("Float64Array.prototype.indexOf") === -1 ? log42.push__("Float64Array.prototype.indexOf") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float64Array.prototype.indexOf__.apply__(this, args)
-}
-Float64Array.prototype.indexOf.prototype = Float64Array.prototype.indexOf__.prototype;
-
-Int8Array.prototype.join__= Int8Array.prototype.join;
-Int8Array.prototype.join = function (){
-	log42.indexOf__("Int8Array.prototype.join") === -1 ? log42.push__("Int8Array.prototype.join") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int8Array.prototype.join__.apply__(this, args)
-}
-Int8Array.prototype.join.prototype = Int8Array.prototype.join__.prototype;
-
-Uint8Array.prototype.join__= Uint8Array.prototype.join;
-Uint8Array.prototype.join = function (){
-	log42.indexOf__("Uint8Array.prototype.join") === -1 ? log42.push__("Uint8Array.prototype.join") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8Array.prototype.join__.apply__(this, args)
-}
-Uint8Array.prototype.join.prototype = Uint8Array.prototype.join__.prototype;
-
-Uint8ClampedArray.prototype.join__= Uint8ClampedArray.prototype.join;
-Uint8ClampedArray.prototype.join = function (){
-	log42.indexOf__("Uint8ClampedArray.prototype.join") === -1 ? log42.push__("Uint8ClampedArray.prototype.join") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8ClampedArray.prototype.join__.apply__(this, args)
-}
-Uint8ClampedArray.prototype.join.prototype = Uint8ClampedArray.prototype.join__.prototype;
-
-Int16Array.prototype.join__= Int16Array.prototype.join;
-Int16Array.prototype.join = function (){
-	log42.indexOf__("Int16Array.prototype.join") === -1 ? log42.push__("Int16Array.prototype.join") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int16Array.prototype.join__.apply__(this, args)
-}
-Int16Array.prototype.join.prototype = Int16Array.prototype.join__.prototype;
-
-Uint16Array.prototype.join__= Uint16Array.prototype.join;
-Uint16Array.prototype.join = function (){
-	log42.indexOf__("Uint16Array.prototype.join") === -1 ? log42.push__("Uint16Array.prototype.join") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint16Array.prototype.join__.apply__(this, args)
-}
-Uint16Array.prototype.join.prototype = Uint16Array.prototype.join__.prototype;
-
-Int32Array.prototype.join__= Int32Array.prototype.join;
-Int32Array.prototype.join = function (){
-	log42.indexOf__("Int32Array.prototype.join") === -1 ? log42.push__("Int32Array.prototype.join") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int32Array.prototype.join__.apply__(this, args)
-}
-Int32Array.prototype.join.prototype = Int32Array.prototype.join__.prototype;
-
-Uint32Array.prototype.join__= Uint32Array.prototype.join;
-Uint32Array.prototype.join = function (){
-	log42.indexOf__("Uint32Array.prototype.join") === -1 ? log42.push__("Uint32Array.prototype.join") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint32Array.prototype.join__.apply__(this, args)
-}
-Uint32Array.prototype.join.prototype = Uint32Array.prototype.join__.prototype;
-
-BigInt64Array.prototype.join__= BigInt64Array.prototype.join;
-BigInt64Array.prototype.join = function (){
-	log42.indexOf__("BigInt64Array.prototype.join") === -1 ? log42.push__("BigInt64Array.prototype.join") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigInt64Array.prototype.join__.apply__(this, args)
-}
-BigInt64Array.prototype.join.prototype = BigInt64Array.prototype.join__.prototype;
-
-BigUint64Array.prototype.join__= BigUint64Array.prototype.join;
-BigUint64Array.prototype.join = function (){
-	log42.indexOf__("BigUint64Array.prototype.join") === -1 ? log42.push__("BigUint64Array.prototype.join") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigUint64Array.prototype.join__.apply__(this, args)
-}
-BigUint64Array.prototype.join.prototype = BigUint64Array.prototype.join__.prototype;
-
-Float32Array.prototype.join__= Float32Array.prototype.join;
-Float32Array.prototype.join = function (){
-	log42.indexOf__("Float32Array.prototype.join") === -1 ? log42.push__("Float32Array.prototype.join") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float32Array.prototype.join__.apply__(this, args)
-}
-Float32Array.prototype.join.prototype = Float32Array.prototype.join__.prototype;
-
-Float64Array.prototype.join__= Float64Array.prototype.join;
-Float64Array.prototype.join = function (){
-	log42.indexOf__("Float64Array.prototype.join") === -1 ? log42.push__("Float64Array.prototype.join") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float64Array.prototype.join__.apply__(this, args)
-}
-Float64Array.prototype.join.prototype = Float64Array.prototype.join__.prototype;
-
-Int8Array.prototype.keys__= Int8Array.prototype.keys;
-Int8Array.prototype.keys = function (){
-	log42.indexOf__("Int8Array.prototype.keys") === -1 ? log42.push__("Int8Array.prototype.keys") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int8Array.prototype.keys__.apply__(this, args)
-}
-Int8Array.prototype.keys.prototype = Int8Array.prototype.keys__.prototype;
-
-Uint8Array.prototype.keys__= Uint8Array.prototype.keys;
-Uint8Array.prototype.keys = function (){
-	log42.indexOf__("Uint8Array.prototype.keys") === -1 ? log42.push__("Uint8Array.prototype.keys") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8Array.prototype.keys__.apply__(this, args)
-}
-Uint8Array.prototype.keys.prototype = Uint8Array.prototype.keys__.prototype;
-
-Uint8ClampedArray.prototype.keys__= Uint8ClampedArray.prototype.keys;
-Uint8ClampedArray.prototype.keys = function (){
-	log42.indexOf__("Uint8ClampedArray.prototype.keys") === -1 ? log42.push__("Uint8ClampedArray.prototype.keys") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8ClampedArray.prototype.keys__.apply__(this, args)
-}
-Uint8ClampedArray.prototype.keys.prototype = Uint8ClampedArray.prototype.keys__.prototype;
-
-Int16Array.prototype.keys__= Int16Array.prototype.keys;
-Int16Array.prototype.keys = function (){
-	log42.indexOf__("Int16Array.prototype.keys") === -1 ? log42.push__("Int16Array.prototype.keys") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int16Array.prototype.keys__.apply__(this, args)
-}
-Int16Array.prototype.keys.prototype = Int16Array.prototype.keys__.prototype;
-
-Uint16Array.prototype.keys__= Uint16Array.prototype.keys;
-Uint16Array.prototype.keys = function (){
-	log42.indexOf__("Uint16Array.prototype.keys") === -1 ? log42.push__("Uint16Array.prototype.keys") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint16Array.prototype.keys__.apply__(this, args)
-}
-Uint16Array.prototype.keys.prototype = Uint16Array.prototype.keys__.prototype;
-
-Int32Array.prototype.keys__= Int32Array.prototype.keys;
-Int32Array.prototype.keys = function (){
-	log42.indexOf__("Int32Array.prototype.keys") === -1 ? log42.push__("Int32Array.prototype.keys") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int32Array.prototype.keys__.apply__(this, args)
-}
-Int32Array.prototype.keys.prototype = Int32Array.prototype.keys__.prototype;
-
-Uint32Array.prototype.keys__= Uint32Array.prototype.keys;
-Uint32Array.prototype.keys = function (){
-	log42.indexOf__("Uint32Array.prototype.keys") === -1 ? log42.push__("Uint32Array.prototype.keys") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint32Array.prototype.keys__.apply__(this, args)
-}
-Uint32Array.prototype.keys.prototype = Uint32Array.prototype.keys__.prototype;
-
-BigInt64Array.prototype.keys__= BigInt64Array.prototype.keys;
-BigInt64Array.prototype.keys = function (){
-	log42.indexOf__("BigInt64Array.prototype.keys") === -1 ? log42.push__("BigInt64Array.prototype.keys") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigInt64Array.prototype.keys__.apply__(this, args)
-}
-BigInt64Array.prototype.keys.prototype = BigInt64Array.prototype.keys__.prototype;
-
-BigUint64Array.prototype.keys__= BigUint64Array.prototype.keys;
-BigUint64Array.prototype.keys = function (){
-	log42.indexOf__("BigUint64Array.prototype.keys") === -1 ? log42.push__("BigUint64Array.prototype.keys") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigUint64Array.prototype.keys__.apply__(this, args)
-}
-BigUint64Array.prototype.keys.prototype = BigUint64Array.prototype.keys__.prototype;
-
-Float32Array.prototype.keys__= Float32Array.prototype.keys;
-Float32Array.prototype.keys = function (){
-	log42.indexOf__("Float32Array.prototype.keys") === -1 ? log42.push__("Float32Array.prototype.keys") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float32Array.prototype.keys__.apply__(this, args)
-}
-Float32Array.prototype.keys.prototype = Float32Array.prototype.keys__.prototype;
-
-Float64Array.prototype.keys__= Float64Array.prototype.keys;
-Float64Array.prototype.keys = function (){
-	log42.indexOf__("Float64Array.prototype.keys") === -1 ? log42.push__("Float64Array.prototype.keys") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float64Array.prototype.keys__.apply__(this, args)
-}
-Float64Array.prototype.keys.prototype = Float64Array.prototype.keys__.prototype;
-
-Int8Array.prototype.lastIndexOf__= Int8Array.prototype.lastIndexOf;
-Int8Array.prototype.lastIndexOf = function (){
-	log42.indexOf__("Int8Array.prototype.lastIndexOf") === -1 ? log42.push__("Int8Array.prototype.lastIndexOf") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int8Array.prototype.lastIndexOf__.apply__(this, args)
-}
-Int8Array.prototype.lastIndexOf.prototype = Int8Array.prototype.lastIndexOf__.prototype;
-
-Uint8Array.prototype.lastIndexOf__= Uint8Array.prototype.lastIndexOf;
-Uint8Array.prototype.lastIndexOf = function (){
-	log42.indexOf__("Uint8Array.prototype.lastIndexOf") === -1 ? log42.push__("Uint8Array.prototype.lastIndexOf") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8Array.prototype.lastIndexOf__.apply__(this, args)
-}
-Uint8Array.prototype.lastIndexOf.prototype = Uint8Array.prototype.lastIndexOf__.prototype;
-
-Uint8ClampedArray.prototype.lastIndexOf__= Uint8ClampedArray.prototype.lastIndexOf;
-Uint8ClampedArray.prototype.lastIndexOf = function (){
-	log42.indexOf__("Uint8ClampedArray.prototype.lastIndexOf") === -1 ? log42.push__("Uint8ClampedArray.prototype.lastIndexOf") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8ClampedArray.prototype.lastIndexOf__.apply__(this, args)
-}
-Uint8ClampedArray.prototype.lastIndexOf.prototype = Uint8ClampedArray.prototype.lastIndexOf__.prototype;
-
-Int16Array.prototype.lastIndexOf__= Int16Array.prototype.lastIndexOf;
-Int16Array.prototype.lastIndexOf = function (){
-	log42.indexOf__("Int16Array.prototype.lastIndexOf") === -1 ? log42.push__("Int16Array.prototype.lastIndexOf") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int16Array.prototype.lastIndexOf__.apply__(this, args)
-}
-Int16Array.prototype.lastIndexOf.prototype = Int16Array.prototype.lastIndexOf__.prototype;
-
-Uint16Array.prototype.lastIndexOf__= Uint16Array.prototype.lastIndexOf;
-Uint16Array.prototype.lastIndexOf = function (){
-	log42.indexOf__("Uint16Array.prototype.lastIndexOf") === -1 ? log42.push__("Uint16Array.prototype.lastIndexOf") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint16Array.prototype.lastIndexOf__.apply__(this, args)
-}
-Uint16Array.prototype.lastIndexOf.prototype = Uint16Array.prototype.lastIndexOf__.prototype;
-
-Int32Array.prototype.lastIndexOf__= Int32Array.prototype.lastIndexOf;
-Int32Array.prototype.lastIndexOf = function (){
-	log42.indexOf__("Int32Array.prototype.lastIndexOf") === -1 ? log42.push__("Int32Array.prototype.lastIndexOf") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int32Array.prototype.lastIndexOf__.apply__(this, args)
-}
-Int32Array.prototype.lastIndexOf.prototype = Int32Array.prototype.lastIndexOf__.prototype;
-
-Uint32Array.prototype.lastIndexOf__= Uint32Array.prototype.lastIndexOf;
-Uint32Array.prototype.lastIndexOf = function (){
-	log42.indexOf__("Uint32Array.prototype.lastIndexOf") === -1 ? log42.push__("Uint32Array.prototype.lastIndexOf") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint32Array.prototype.lastIndexOf__.apply__(this, args)
-}
-Uint32Array.prototype.lastIndexOf.prototype = Uint32Array.prototype.lastIndexOf__.prototype;
-
-BigInt64Array.prototype.lastIndexOf__= BigInt64Array.prototype.lastIndexOf;
-BigInt64Array.prototype.lastIndexOf = function (){
-	log42.indexOf__("BigInt64Array.prototype.lastIndexOf") === -1 ? log42.push__("BigInt64Array.prototype.lastIndexOf") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigInt64Array.prototype.lastIndexOf__.apply__(this, args)
-}
-BigInt64Array.prototype.lastIndexOf.prototype = BigInt64Array.prototype.lastIndexOf__.prototype;
-
-BigUint64Array.prototype.lastIndexOf__= BigUint64Array.prototype.lastIndexOf;
-BigUint64Array.prototype.lastIndexOf = function (){
-	log42.indexOf__("BigUint64Array.prototype.lastIndexOf") === -1 ? log42.push__("BigUint64Array.prototype.lastIndexOf") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigUint64Array.prototype.lastIndexOf__.apply__(this, args)
-}
-BigUint64Array.prototype.lastIndexOf.prototype = BigUint64Array.prototype.lastIndexOf__.prototype;
-
-Float32Array.prototype.lastIndexOf__= Float32Array.prototype.lastIndexOf;
-Float32Array.prototype.lastIndexOf = function (){
-	log42.indexOf__("Float32Array.prototype.lastIndexOf") === -1 ? log42.push__("Float32Array.prototype.lastIndexOf") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float32Array.prototype.lastIndexOf__.apply__(this, args)
-}
-Float32Array.prototype.lastIndexOf.prototype = Float32Array.prototype.lastIndexOf__.prototype;
-
-Float64Array.prototype.lastIndexOf__= Float64Array.prototype.lastIndexOf;
-Float64Array.prototype.lastIndexOf = function (){
-	log42.indexOf__("Float64Array.prototype.lastIndexOf") === -1 ? log42.push__("Float64Array.prototype.lastIndexOf") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float64Array.prototype.lastIndexOf__.apply__(this, args)
-}
-Float64Array.prototype.lastIndexOf.prototype = Float64Array.prototype.lastIndexOf__.prototype;
-
-Int8Array.prototype.map__= Int8Array.prototype.map;
-Int8Array.prototype.map = function (){
-	log42.indexOf__("Int8Array.prototype.map") === -1 ? log42.push__("Int8Array.prototype.map") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int8Array.prototype.map__.apply__(this, args)
-}
-Int8Array.prototype.map.prototype = Int8Array.prototype.map__.prototype;
-
-Uint8Array.prototype.map__= Uint8Array.prototype.map;
-Uint8Array.prototype.map = function (){
-	log42.indexOf__("Uint8Array.prototype.map") === -1 ? log42.push__("Uint8Array.prototype.map") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8Array.prototype.map__.apply__(this, args)
-}
-Uint8Array.prototype.map.prototype = Uint8Array.prototype.map__.prototype;
-
-Uint8ClampedArray.prototype.map__= Uint8ClampedArray.prototype.map;
-Uint8ClampedArray.prototype.map = function (){
-	log42.indexOf__("Uint8ClampedArray.prototype.map") === -1 ? log42.push__("Uint8ClampedArray.prototype.map") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8ClampedArray.prototype.map__.apply__(this, args)
-}
-Uint8ClampedArray.prototype.map.prototype = Uint8ClampedArray.prototype.map__.prototype;
-
-Int16Array.prototype.map__= Int16Array.prototype.map;
-Int16Array.prototype.map = function (){
-	log42.indexOf__("Int16Array.prototype.map") === -1 ? log42.push__("Int16Array.prototype.map") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int16Array.prototype.map__.apply__(this, args)
-}
-Int16Array.prototype.map.prototype = Int16Array.prototype.map__.prototype;
-
-Uint16Array.prototype.map__= Uint16Array.prototype.map;
-Uint16Array.prototype.map = function (){
-	log42.indexOf__("Uint16Array.prototype.map") === -1 ? log42.push__("Uint16Array.prototype.map") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint16Array.prototype.map__.apply__(this, args)
-}
-Uint16Array.prototype.map.prototype = Uint16Array.prototype.map__.prototype;
-
-Int32Array.prototype.map__= Int32Array.prototype.map;
-Int32Array.prototype.map = function (){
-	log42.indexOf__("Int32Array.prototype.map") === -1 ? log42.push__("Int32Array.prototype.map") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int32Array.prototype.map__.apply__(this, args)
-}
-Int32Array.prototype.map.prototype = Int32Array.prototype.map__.prototype;
-
-Uint32Array.prototype.map__= Uint32Array.prototype.map;
-Uint32Array.prototype.map = function (){
-	log42.indexOf__("Uint32Array.prototype.map") === -1 ? log42.push__("Uint32Array.prototype.map") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint32Array.prototype.map__.apply__(this, args)
-}
-Uint32Array.prototype.map.prototype = Uint32Array.prototype.map__.prototype;
-
-BigInt64Array.prototype.map__= BigInt64Array.prototype.map;
-BigInt64Array.prototype.map = function (){
-	log42.indexOf__("BigInt64Array.prototype.map") === -1 ? log42.push__("BigInt64Array.prototype.map") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigInt64Array.prototype.map__.apply__(this, args)
-}
-BigInt64Array.prototype.map.prototype = BigInt64Array.prototype.map__.prototype;
-
-BigUint64Array.prototype.map__= BigUint64Array.prototype.map;
-BigUint64Array.prototype.map = function (){
-	log42.indexOf__("BigUint64Array.prototype.map") === -1 ? log42.push__("BigUint64Array.prototype.map") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigUint64Array.prototype.map__.apply__(this, args)
-}
-BigUint64Array.prototype.map.prototype = BigUint64Array.prototype.map__.prototype;
-
-Float32Array.prototype.map__= Float32Array.prototype.map;
-Float32Array.prototype.map = function (){
-	log42.indexOf__("Float32Array.prototype.map") === -1 ? log42.push__("Float32Array.prototype.map") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float32Array.prototype.map__.apply__(this, args)
-}
-Float32Array.prototype.map.prototype = Float32Array.prototype.map__.prototype;
-
-Float64Array.prototype.map__= Float64Array.prototype.map;
-Float64Array.prototype.map = function (){
-	log42.indexOf__("Float64Array.prototype.map") === -1 ? log42.push__("Float64Array.prototype.map") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float64Array.prototype.map__.apply__(this, args)
-}
-Float64Array.prototype.map.prototype = Float64Array.prototype.map__.prototype;
-
-Int8Array.prototype.reduce__= Int8Array.prototype.reduce;
-Int8Array.prototype.reduce = function (){
-	log42.indexOf__("Int8Array.prototype.reduce") === -1 ? log42.push__("Int8Array.prototype.reduce") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int8Array.prototype.reduce__.apply__(this, args)
-}
-Int8Array.prototype.reduce.prototype = Int8Array.prototype.reduce__.prototype;
-
-Uint8Array.prototype.reduce__= Uint8Array.prototype.reduce;
-Uint8Array.prototype.reduce = function (){
-	log42.indexOf__("Uint8Array.prototype.reduce") === -1 ? log42.push__("Uint8Array.prototype.reduce") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8Array.prototype.reduce__.apply__(this, args)
-}
-Uint8Array.prototype.reduce.prototype = Uint8Array.prototype.reduce__.prototype;
-
-Uint8ClampedArray.prototype.reduce__= Uint8ClampedArray.prototype.reduce;
-Uint8ClampedArray.prototype.reduce = function (){
-	log42.indexOf__("Uint8ClampedArray.prototype.reduce") === -1 ? log42.push__("Uint8ClampedArray.prototype.reduce") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8ClampedArray.prototype.reduce__.apply__(this, args)
-}
-Uint8ClampedArray.prototype.reduce.prototype = Uint8ClampedArray.prototype.reduce__.prototype;
-
-Int16Array.prototype.reduce__= Int16Array.prototype.reduce;
-Int16Array.prototype.reduce = function (){
-	log42.indexOf__("Int16Array.prototype.reduce") === -1 ? log42.push__("Int16Array.prototype.reduce") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int16Array.prototype.reduce__.apply__(this, args)
-}
-Int16Array.prototype.reduce.prototype = Int16Array.prototype.reduce__.prototype;
-
-Uint16Array.prototype.reduce__= Uint16Array.prototype.reduce;
-Uint16Array.prototype.reduce = function (){
-	log42.indexOf__("Uint16Array.prototype.reduce") === -1 ? log42.push__("Uint16Array.prototype.reduce") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint16Array.prototype.reduce__.apply__(this, args)
-}
-Uint16Array.prototype.reduce.prototype = Uint16Array.prototype.reduce__.prototype;
-
-Int32Array.prototype.reduce__= Int32Array.prototype.reduce;
-Int32Array.prototype.reduce = function (){
-	log42.indexOf__("Int32Array.prototype.reduce") === -1 ? log42.push__("Int32Array.prototype.reduce") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int32Array.prototype.reduce__.apply__(this, args)
-}
-Int32Array.prototype.reduce.prototype = Int32Array.prototype.reduce__.prototype;
-
-Uint32Array.prototype.reduce__= Uint32Array.prototype.reduce;
-Uint32Array.prototype.reduce = function (){
-	log42.indexOf__("Uint32Array.prototype.reduce") === -1 ? log42.push__("Uint32Array.prototype.reduce") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint32Array.prototype.reduce__.apply__(this, args)
-}
-Uint32Array.prototype.reduce.prototype = Uint32Array.prototype.reduce__.prototype;
-
-BigInt64Array.prototype.reduce__= BigInt64Array.prototype.reduce;
-BigInt64Array.prototype.reduce = function (){
-	log42.indexOf__("BigInt64Array.prototype.reduce") === -1 ? log42.push__("BigInt64Array.prototype.reduce") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigInt64Array.prototype.reduce__.apply__(this, args)
-}
-BigInt64Array.prototype.reduce.prototype = BigInt64Array.prototype.reduce__.prototype;
-
-BigUint64Array.prototype.reduce__= BigUint64Array.prototype.reduce;
-BigUint64Array.prototype.reduce = function (){
-	log42.indexOf__("BigUint64Array.prototype.reduce") === -1 ? log42.push__("BigUint64Array.prototype.reduce") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigUint64Array.prototype.reduce__.apply__(this, args)
-}
-BigUint64Array.prototype.reduce.prototype = BigUint64Array.prototype.reduce__.prototype;
-
-Float32Array.prototype.reduce__= Float32Array.prototype.reduce;
-Float32Array.prototype.reduce = function (){
-	log42.indexOf__("Float32Array.prototype.reduce") === -1 ? log42.push__("Float32Array.prototype.reduce") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float32Array.prototype.reduce__.apply__(this, args)
-}
-Float32Array.prototype.reduce.prototype = Float32Array.prototype.reduce__.prototype;
-
-Float64Array.prototype.reduce__= Float64Array.prototype.reduce;
-Float64Array.prototype.reduce = function (){
-	log42.indexOf__("Float64Array.prototype.reduce") === -1 ? log42.push__("Float64Array.prototype.reduce") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float64Array.prototype.reduce__.apply__(this, args)
-}
-Float64Array.prototype.reduce.prototype = Float64Array.prototype.reduce__.prototype;
-
-Int8Array.prototype.reduceRight__= Int8Array.prototype.reduceRight;
-Int8Array.prototype.reduceRight = function (){
-	log42.indexOf__("Int8Array.prototype.reduceRight") === -1 ? log42.push__("Int8Array.prototype.reduceRight") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int8Array.prototype.reduceRight__.apply__(this, args)
-}
-Int8Array.prototype.reduceRight.prototype = Int8Array.prototype.reduceRight__.prototype;
-
-Uint8Array.prototype.reduceRight__= Uint8Array.prototype.reduceRight;
-Uint8Array.prototype.reduceRight = function (){
-	log42.indexOf__("Uint8Array.prototype.reduceRight") === -1 ? log42.push__("Uint8Array.prototype.reduceRight") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8Array.prototype.reduceRight__.apply__(this, args)
-}
-Uint8Array.prototype.reduceRight.prototype = Uint8Array.prototype.reduceRight__.prototype;
-
-Uint8ClampedArray.prototype.reduceRight__= Uint8ClampedArray.prototype.reduceRight;
-Uint8ClampedArray.prototype.reduceRight = function (){
-	log42.indexOf__("Uint8ClampedArray.prototype.reduceRight") === -1 ? log42.push__("Uint8ClampedArray.prototype.reduceRight") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8ClampedArray.prototype.reduceRight__.apply__(this, args)
-}
-Uint8ClampedArray.prototype.reduceRight.prototype = Uint8ClampedArray.prototype.reduceRight__.prototype;
-
-Int16Array.prototype.reduceRight__= Int16Array.prototype.reduceRight;
-Int16Array.prototype.reduceRight = function (){
-	log42.indexOf__("Int16Array.prototype.reduceRight") === -1 ? log42.push__("Int16Array.prototype.reduceRight") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int16Array.prototype.reduceRight__.apply__(this, args)
-}
-Int16Array.prototype.reduceRight.prototype = Int16Array.prototype.reduceRight__.prototype;
-
-Uint16Array.prototype.reduceRight__= Uint16Array.prototype.reduceRight;
-Uint16Array.prototype.reduceRight = function (){
-	log42.indexOf__("Uint16Array.prototype.reduceRight") === -1 ? log42.push__("Uint16Array.prototype.reduceRight") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint16Array.prototype.reduceRight__.apply__(this, args)
-}
-Uint16Array.prototype.reduceRight.prototype = Uint16Array.prototype.reduceRight__.prototype;
-
-Int32Array.prototype.reduceRight__= Int32Array.prototype.reduceRight;
-Int32Array.prototype.reduceRight = function (){
-	log42.indexOf__("Int32Array.prototype.reduceRight") === -1 ? log42.push__("Int32Array.prototype.reduceRight") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int32Array.prototype.reduceRight__.apply__(this, args)
-}
-Int32Array.prototype.reduceRight.prototype = Int32Array.prototype.reduceRight__.prototype;
-
-Uint32Array.prototype.reduceRight__= Uint32Array.prototype.reduceRight;
-Uint32Array.prototype.reduceRight = function (){
-	log42.indexOf__("Uint32Array.prototype.reduceRight") === -1 ? log42.push__("Uint32Array.prototype.reduceRight") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint32Array.prototype.reduceRight__.apply__(this, args)
-}
-Uint32Array.prototype.reduceRight.prototype = Uint32Array.prototype.reduceRight__.prototype;
-
-BigInt64Array.prototype.reduceRight__= BigInt64Array.prototype.reduceRight;
-BigInt64Array.prototype.reduceRight = function (){
-	log42.indexOf__("BigInt64Array.prototype.reduceRight") === -1 ? log42.push__("BigInt64Array.prototype.reduceRight") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigInt64Array.prototype.reduceRight__.apply__(this, args)
-}
-BigInt64Array.prototype.reduceRight.prototype = BigInt64Array.prototype.reduceRight__.prototype;
-
-BigUint64Array.prototype.reduceRight__= BigUint64Array.prototype.reduceRight;
-BigUint64Array.prototype.reduceRight = function (){
-	log42.indexOf__("BigUint64Array.prototype.reduceRight") === -1 ? log42.push__("BigUint64Array.prototype.reduceRight") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigUint64Array.prototype.reduceRight__.apply__(this, args)
-}
-BigUint64Array.prototype.reduceRight.prototype = BigUint64Array.prototype.reduceRight__.prototype;
-
-Float32Array.prototype.reduceRight__= Float32Array.prototype.reduceRight;
-Float32Array.prototype.reduceRight = function (){
-	log42.indexOf__("Float32Array.prototype.reduceRight") === -1 ? log42.push__("Float32Array.prototype.reduceRight") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float32Array.prototype.reduceRight__.apply__(this, args)
-}
-Float32Array.prototype.reduceRight.prototype = Float32Array.prototype.reduceRight__.prototype;
-
-Float64Array.prototype.reduceRight__= Float64Array.prototype.reduceRight;
-Float64Array.prototype.reduceRight = function (){
-	log42.indexOf__("Float64Array.prototype.reduceRight") === -1 ? log42.push__("Float64Array.prototype.reduceRight") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float64Array.prototype.reduceRight__.apply__(this, args)
-}
-Float64Array.prototype.reduceRight.prototype = Float64Array.prototype.reduceRight__.prototype;
-
-Int8Array.prototype.reverse__= Int8Array.prototype.reverse;
-Int8Array.prototype.reverse = function (){
-	log42.indexOf__("Int8Array.prototype.reverse") === -1 ? log42.push__("Int8Array.prototype.reverse") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int8Array.prototype.reverse__.apply__(this, args)
-}
-Int8Array.prototype.reverse.prototype = Int8Array.prototype.reverse__.prototype;
-
-Uint8Array.prototype.reverse__= Uint8Array.prototype.reverse;
-Uint8Array.prototype.reverse = function (){
-	log42.indexOf__("Uint8Array.prototype.reverse") === -1 ? log42.push__("Uint8Array.prototype.reverse") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8Array.prototype.reverse__.apply__(this, args)
-}
-Uint8Array.prototype.reverse.prototype = Uint8Array.prototype.reverse__.prototype;
-
-Uint8ClampedArray.prototype.reverse__= Uint8ClampedArray.prototype.reverse;
-Uint8ClampedArray.prototype.reverse = function (){
-	log42.indexOf__("Uint8ClampedArray.prototype.reverse") === -1 ? log42.push__("Uint8ClampedArray.prototype.reverse") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8ClampedArray.prototype.reverse__.apply__(this, args)
-}
-Uint8ClampedArray.prototype.reverse.prototype = Uint8ClampedArray.prototype.reverse__.prototype;
-
-Int16Array.prototype.reverse__= Int16Array.prototype.reverse;
-Int16Array.prototype.reverse = function (){
-	log42.indexOf__("Int16Array.prototype.reverse") === -1 ? log42.push__("Int16Array.prototype.reverse") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int16Array.prototype.reverse__.apply__(this, args)
-}
-Int16Array.prototype.reverse.prototype = Int16Array.prototype.reverse__.prototype;
-
-Uint16Array.prototype.reverse__= Uint16Array.prototype.reverse;
-Uint16Array.prototype.reverse = function (){
-	log42.indexOf__("Uint16Array.prototype.reverse") === -1 ? log42.push__("Uint16Array.prototype.reverse") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint16Array.prototype.reverse__.apply__(this, args)
-}
-Uint16Array.prototype.reverse.prototype = Uint16Array.prototype.reverse__.prototype;
-
-Int32Array.prototype.reverse__= Int32Array.prototype.reverse;
-Int32Array.prototype.reverse = function (){
-	log42.indexOf__("Int32Array.prototype.reverse") === -1 ? log42.push__("Int32Array.prototype.reverse") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int32Array.prototype.reverse__.apply__(this, args)
-}
-Int32Array.prototype.reverse.prototype = Int32Array.prototype.reverse__.prototype;
-
-Uint32Array.prototype.reverse__= Uint32Array.prototype.reverse;
-Uint32Array.prototype.reverse = function (){
-	log42.indexOf__("Uint32Array.prototype.reverse") === -1 ? log42.push__("Uint32Array.prototype.reverse") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint32Array.prototype.reverse__.apply__(this, args)
-}
-Uint32Array.prototype.reverse.prototype = Uint32Array.prototype.reverse__.prototype;
-
-BigInt64Array.prototype.reverse__= BigInt64Array.prototype.reverse;
-BigInt64Array.prototype.reverse = function (){
-	log42.indexOf__("BigInt64Array.prototype.reverse") === -1 ? log42.push__("BigInt64Array.prototype.reverse") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigInt64Array.prototype.reverse__.apply__(this, args)
-}
-BigInt64Array.prototype.reverse.prototype = BigInt64Array.prototype.reverse__.prototype;
-
-BigUint64Array.prototype.reverse__= BigUint64Array.prototype.reverse;
-BigUint64Array.prototype.reverse = function (){
-	log42.indexOf__("BigUint64Array.prototype.reverse") === -1 ? log42.push__("BigUint64Array.prototype.reverse") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigUint64Array.prototype.reverse__.apply__(this, args)
-}
-BigUint64Array.prototype.reverse.prototype = BigUint64Array.prototype.reverse__.prototype;
-
-Float32Array.prototype.reverse__= Float32Array.prototype.reverse;
-Float32Array.prototype.reverse = function (){
-	log42.indexOf__("Float32Array.prototype.reverse") === -1 ? log42.push__("Float32Array.prototype.reverse") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float32Array.prototype.reverse__.apply__(this, args)
-}
-Float32Array.prototype.reverse.prototype = Float32Array.prototype.reverse__.prototype;
-
-Float64Array.prototype.reverse__= Float64Array.prototype.reverse;
-Float64Array.prototype.reverse = function (){
-	log42.indexOf__("Float64Array.prototype.reverse") === -1 ? log42.push__("Float64Array.prototype.reverse") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float64Array.prototype.reverse__.apply__(this, args)
-}
-Float64Array.prototype.reverse.prototype = Float64Array.prototype.reverse__.prototype;
-
-Int8Array.prototype.set__= Int8Array.prototype.set;
-Int8Array.prototype.set = function (){
-	log42.indexOf__("Int8Array.prototype.set") === -1 ? log42.push__("Int8Array.prototype.set") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int8Array.prototype.set__.apply__(this, args)
-}
-Int8Array.prototype.set.prototype = Int8Array.prototype.set__.prototype;
-
-Uint8Array.prototype.set__= Uint8Array.prototype.set;
-Uint8Array.prototype.set = function (){
-	log42.indexOf__("Uint8Array.prototype.set") === -1 ? log42.push__("Uint8Array.prototype.set") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8Array.prototype.set__.apply__(this, args)
-}
-Uint8Array.prototype.set.prototype = Uint8Array.prototype.set__.prototype;
-
-Uint8ClampedArray.prototype.set__= Uint8ClampedArray.prototype.set;
-Uint8ClampedArray.prototype.set = function (){
-	log42.indexOf__("Uint8ClampedArray.prototype.set") === -1 ? log42.push__("Uint8ClampedArray.prototype.set") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8ClampedArray.prototype.set__.apply__(this, args)
-}
-Uint8ClampedArray.prototype.set.prototype = Uint8ClampedArray.prototype.set__.prototype;
-
-Int16Array.prototype.set__= Int16Array.prototype.set;
-Int16Array.prototype.set = function (){
-	log42.indexOf__("Int16Array.prototype.set") === -1 ? log42.push__("Int16Array.prototype.set") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int16Array.prototype.set__.apply__(this, args)
-}
-Int16Array.prototype.set.prototype = Int16Array.prototype.set__.prototype;
-
-Uint16Array.prototype.set__= Uint16Array.prototype.set;
-Uint16Array.prototype.set = function (){
-	log42.indexOf__("Uint16Array.prototype.set") === -1 ? log42.push__("Uint16Array.prototype.set") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint16Array.prototype.set__.apply__(this, args)
-}
-Uint16Array.prototype.set.prototype = Uint16Array.prototype.set__.prototype;
-
-Int32Array.prototype.set__= Int32Array.prototype.set;
-Int32Array.prototype.set = function (){
-	log42.indexOf__("Int32Array.prototype.set") === -1 ? log42.push__("Int32Array.prototype.set") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int32Array.prototype.set__.apply__(this, args)
-}
-Int32Array.prototype.set.prototype = Int32Array.prototype.set__.prototype;
-
-Uint32Array.prototype.set__= Uint32Array.prototype.set;
-Uint32Array.prototype.set = function (){
-	log42.indexOf__("Uint32Array.prototype.set") === -1 ? log42.push__("Uint32Array.prototype.set") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint32Array.prototype.set__.apply__(this, args)
-}
-Uint32Array.prototype.set.prototype = Uint32Array.prototype.set__.prototype;
-
-BigInt64Array.prototype.set__= BigInt64Array.prototype.set;
-BigInt64Array.prototype.set = function (){
-	log42.indexOf__("BigInt64Array.prototype.set") === -1 ? log42.push__("BigInt64Array.prototype.set") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigInt64Array.prototype.set__.apply__(this, args)
-}
-BigInt64Array.prototype.set.prototype = BigInt64Array.prototype.set__.prototype;
-
-BigUint64Array.prototype.set__= BigUint64Array.prototype.set;
-BigUint64Array.prototype.set = function (){
-	log42.indexOf__("BigUint64Array.prototype.set") === -1 ? log42.push__("BigUint64Array.prototype.set") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigUint64Array.prototype.set__.apply__(this, args)
-}
-BigUint64Array.prototype.set.prototype = BigUint64Array.prototype.set__.prototype;
-
-Float32Array.prototype.set__= Float32Array.prototype.set;
-Float32Array.prototype.set = function (){
-	log42.indexOf__("Float32Array.prototype.set") === -1 ? log42.push__("Float32Array.prototype.set") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float32Array.prototype.set__.apply__(this, args)
-}
-Float32Array.prototype.set.prototype = Float32Array.prototype.set__.prototype;
-
-Float64Array.prototype.set__= Float64Array.prototype.set;
-Float64Array.prototype.set = function (){
-	log42.indexOf__("Float64Array.prototype.set") === -1 ? log42.push__("Float64Array.prototype.set") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float64Array.prototype.set__.apply__(this, args)
-}
-Float64Array.prototype.set.prototype = Float64Array.prototype.set__.prototype;
-
-Int8Array.prototype.slice__= Int8Array.prototype.slice;
-Int8Array.prototype.slice = function (){
-	log42.indexOf__("Int8Array.prototype.slice") === -1 ? log42.push__("Int8Array.prototype.slice") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int8Array.prototype.slice__.apply__(this, args)
-}
-Int8Array.prototype.slice.prototype = Int8Array.prototype.slice__.prototype;
-
-Uint8Array.prototype.slice__= Uint8Array.prototype.slice;
-Uint8Array.prototype.slice = function (){
-	log42.indexOf__("Uint8Array.prototype.slice") === -1 ? log42.push__("Uint8Array.prototype.slice") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8Array.prototype.slice__.apply__(this, args)
-}
-Uint8Array.prototype.slice.prototype = Uint8Array.prototype.slice__.prototype;
-
-Uint8ClampedArray.prototype.slice__= Uint8ClampedArray.prototype.slice;
-Uint8ClampedArray.prototype.slice = function (){
-	log42.indexOf__("Uint8ClampedArray.prototype.slice") === -1 ? log42.push__("Uint8ClampedArray.prototype.slice") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8ClampedArray.prototype.slice__.apply__(this, args)
-}
-Uint8ClampedArray.prototype.slice.prototype = Uint8ClampedArray.prototype.slice__.prototype;
-
-Int16Array.prototype.slice__= Int16Array.prototype.slice;
-Int16Array.prototype.slice = function (){
-	log42.indexOf__("Int16Array.prototype.slice") === -1 ? log42.push__("Int16Array.prototype.slice") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int16Array.prototype.slice__.apply__(this, args)
-}
-Int16Array.prototype.slice.prototype = Int16Array.prototype.slice__.prototype;
-
-Uint16Array.prototype.slice__= Uint16Array.prototype.slice;
-Uint16Array.prototype.slice = function (){
-	log42.indexOf__("Uint16Array.prototype.slice") === -1 ? log42.push__("Uint16Array.prototype.slice") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint16Array.prototype.slice__.apply__(this, args)
-}
-Uint16Array.prototype.slice.prototype = Uint16Array.prototype.slice__.prototype;
-
-Int32Array.prototype.slice__= Int32Array.prototype.slice;
-Int32Array.prototype.slice = function (){
-	log42.indexOf__("Int32Array.prototype.slice") === -1 ? log42.push__("Int32Array.prototype.slice") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int32Array.prototype.slice__.apply__(this, args)
-}
-Int32Array.prototype.slice.prototype = Int32Array.prototype.slice__.prototype;
-
-Uint32Array.prototype.slice__= Uint32Array.prototype.slice;
-Uint32Array.prototype.slice = function (){
-	log42.indexOf__("Uint32Array.prototype.slice") === -1 ? log42.push__("Uint32Array.prototype.slice") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint32Array.prototype.slice__.apply__(this, args)
-}
-Uint32Array.prototype.slice.prototype = Uint32Array.prototype.slice__.prototype;
-
-BigInt64Array.prototype.slice__= BigInt64Array.prototype.slice;
-BigInt64Array.prototype.slice = function (){
-	log42.indexOf__("BigInt64Array.prototype.slice") === -1 ? log42.push__("BigInt64Array.prototype.slice") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigInt64Array.prototype.slice__.apply__(this, args)
-}
-BigInt64Array.prototype.slice.prototype = BigInt64Array.prototype.slice__.prototype;
-
-BigUint64Array.prototype.slice__= BigUint64Array.prototype.slice;
-BigUint64Array.prototype.slice = function (){
-	log42.indexOf__("BigUint64Array.prototype.slice") === -1 ? log42.push__("BigUint64Array.prototype.slice") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigUint64Array.prototype.slice__.apply__(this, args)
-}
-BigUint64Array.prototype.slice.prototype = BigUint64Array.prototype.slice__.prototype;
-
-Float32Array.prototype.slice__= Float32Array.prototype.slice;
-Float32Array.prototype.slice = function (){
-	log42.indexOf__("Float32Array.prototype.slice") === -1 ? log42.push__("Float32Array.prototype.slice") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float32Array.prototype.slice__.apply__(this, args)
-}
-Float32Array.prototype.slice.prototype = Float32Array.prototype.slice__.prototype;
-
-Float64Array.prototype.slice__= Float64Array.prototype.slice;
-Float64Array.prototype.slice = function (){
-	log42.indexOf__("Float64Array.prototype.slice") === -1 ? log42.push__("Float64Array.prototype.slice") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float64Array.prototype.slice__.apply__(this, args)
-}
-Float64Array.prototype.slice.prototype = Float64Array.prototype.slice__.prototype;
-
-Int8Array.prototype.some__= Int8Array.prototype.some;
-Int8Array.prototype.some = function (){
-	log42.indexOf__("Int8Array.prototype.some") === -1 ? log42.push__("Int8Array.prototype.some") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int8Array.prototype.some__.apply__(this, args)
-}
-Int8Array.prototype.some.prototype = Int8Array.prototype.some__.prototype;
-
-Uint8Array.prototype.some__= Uint8Array.prototype.some;
-Uint8Array.prototype.some = function (){
-	log42.indexOf__("Uint8Array.prototype.some") === -1 ? log42.push__("Uint8Array.prototype.some") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8Array.prototype.some__.apply__(this, args)
-}
-Uint8Array.prototype.some.prototype = Uint8Array.prototype.some__.prototype;
-
-Uint8ClampedArray.prototype.some__= Uint8ClampedArray.prototype.some;
-Uint8ClampedArray.prototype.some = function (){
-	log42.indexOf__("Uint8ClampedArray.prototype.some") === -1 ? log42.push__("Uint8ClampedArray.prototype.some") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8ClampedArray.prototype.some__.apply__(this, args)
-}
-Uint8ClampedArray.prototype.some.prototype = Uint8ClampedArray.prototype.some__.prototype;
-
-Int16Array.prototype.some__= Int16Array.prototype.some;
-Int16Array.prototype.some = function (){
-	log42.indexOf__("Int16Array.prototype.some") === -1 ? log42.push__("Int16Array.prototype.some") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int16Array.prototype.some__.apply__(this, args)
-}
-Int16Array.prototype.some.prototype = Int16Array.prototype.some__.prototype;
-
-Uint16Array.prototype.some__= Uint16Array.prototype.some;
-Uint16Array.prototype.some = function (){
-	log42.indexOf__("Uint16Array.prototype.some") === -1 ? log42.push__("Uint16Array.prototype.some") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint16Array.prototype.some__.apply__(this, args)
-}
-Uint16Array.prototype.some.prototype = Uint16Array.prototype.some__.prototype;
-
-Int32Array.prototype.some__= Int32Array.prototype.some;
-Int32Array.prototype.some = function (){
-	log42.indexOf__("Int32Array.prototype.some") === -1 ? log42.push__("Int32Array.prototype.some") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int32Array.prototype.some__.apply__(this, args)
-}
-Int32Array.prototype.some.prototype = Int32Array.prototype.some__.prototype;
-
-Uint32Array.prototype.some__= Uint32Array.prototype.some;
-Uint32Array.prototype.some = function (){
-	log42.indexOf__("Uint32Array.prototype.some") === -1 ? log42.push__("Uint32Array.prototype.some") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint32Array.prototype.some__.apply__(this, args)
-}
-Uint32Array.prototype.some.prototype = Uint32Array.prototype.some__.prototype;
-
-BigInt64Array.prototype.some__= BigInt64Array.prototype.some;
-BigInt64Array.prototype.some = function (){
-	log42.indexOf__("BigInt64Array.prototype.some") === -1 ? log42.push__("BigInt64Array.prototype.some") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigInt64Array.prototype.some__.apply__(this, args)
-}
-BigInt64Array.prototype.some.prototype = BigInt64Array.prototype.some__.prototype;
-
-BigUint64Array.prototype.some__= BigUint64Array.prototype.some;
-BigUint64Array.prototype.some = function (){
-	log42.indexOf__("BigUint64Array.prototype.some") === -1 ? log42.push__("BigUint64Array.prototype.some") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigUint64Array.prototype.some__.apply__(this, args)
-}
-BigUint64Array.prototype.some.prototype = BigUint64Array.prototype.some__.prototype;
-
-Float32Array.prototype.some__= Float32Array.prototype.some;
-Float32Array.prototype.some = function (){
-	log42.indexOf__("Float32Array.prototype.some") === -1 ? log42.push__("Float32Array.prototype.some") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float32Array.prototype.some__.apply__(this, args)
-}
-Float32Array.prototype.some.prototype = Float32Array.prototype.some__.prototype;
-
-Float64Array.prototype.some__= Float64Array.prototype.some;
-Float64Array.prototype.some = function (){
-	log42.indexOf__("Float64Array.prototype.some") === -1 ? log42.push__("Float64Array.prototype.some") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float64Array.prototype.some__.apply__(this, args)
-}
-Float64Array.prototype.some.prototype = Float64Array.prototype.some__.prototype;
-
-Int8Array.prototype.sort__= Int8Array.prototype.sort;
-Int8Array.prototype.sort = function (){
-	log42.indexOf__("Int8Array.prototype.sort") === -1 ? log42.push__("Int8Array.prototype.sort") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int8Array.prototype.sort__.apply__(this, args)
-}
-Int8Array.prototype.sort.prototype = Int8Array.prototype.sort__.prototype;
-
-Uint8Array.prototype.sort__= Uint8Array.prototype.sort;
-Uint8Array.prototype.sort = function (){
-	log42.indexOf__("Uint8Array.prototype.sort") === -1 ? log42.push__("Uint8Array.prototype.sort") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8Array.prototype.sort__.apply__(this, args)
-}
-Uint8Array.prototype.sort.prototype = Uint8Array.prototype.sort__.prototype;
-
-Uint8ClampedArray.prototype.sort__= Uint8ClampedArray.prototype.sort;
-Uint8ClampedArray.prototype.sort = function (){
-	log42.indexOf__("Uint8ClampedArray.prototype.sort") === -1 ? log42.push__("Uint8ClampedArray.prototype.sort") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8ClampedArray.prototype.sort__.apply__(this, args)
-}
-Uint8ClampedArray.prototype.sort.prototype = Uint8ClampedArray.prototype.sort__.prototype;
-
-Int16Array.prototype.sort__= Int16Array.prototype.sort;
-Int16Array.prototype.sort = function (){
-	log42.indexOf__("Int16Array.prototype.sort") === -1 ? log42.push__("Int16Array.prototype.sort") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int16Array.prototype.sort__.apply__(this, args)
-}
-Int16Array.prototype.sort.prototype = Int16Array.prototype.sort__.prototype;
-
-Uint16Array.prototype.sort__= Uint16Array.prototype.sort;
-Uint16Array.prototype.sort = function (){
-	log42.indexOf__("Uint16Array.prototype.sort") === -1 ? log42.push__("Uint16Array.prototype.sort") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint16Array.prototype.sort__.apply__(this, args)
-}
-Uint16Array.prototype.sort.prototype = Uint16Array.prototype.sort__.prototype;
-
-Int32Array.prototype.sort__= Int32Array.prototype.sort;
-Int32Array.prototype.sort = function (){
-	log42.indexOf__("Int32Array.prototype.sort") === -1 ? log42.push__("Int32Array.prototype.sort") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int32Array.prototype.sort__.apply__(this, args)
-}
-Int32Array.prototype.sort.prototype = Int32Array.prototype.sort__.prototype;
-
-Uint32Array.prototype.sort__= Uint32Array.prototype.sort;
-Uint32Array.prototype.sort = function (){
-	log42.indexOf__("Uint32Array.prototype.sort") === -1 ? log42.push__("Uint32Array.prototype.sort") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint32Array.prototype.sort__.apply__(this, args)
-}
-Uint32Array.prototype.sort.prototype = Uint32Array.prototype.sort__.prototype;
-
-BigInt64Array.prototype.sort__= BigInt64Array.prototype.sort;
-BigInt64Array.prototype.sort = function (){
-	log42.indexOf__("BigInt64Array.prototype.sort") === -1 ? log42.push__("BigInt64Array.prototype.sort") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigInt64Array.prototype.sort__.apply__(this, args)
-}
-BigInt64Array.prototype.sort.prototype = BigInt64Array.prototype.sort__.prototype;
-
-BigUint64Array.prototype.sort__= BigUint64Array.prototype.sort;
-BigUint64Array.prototype.sort = function (){
-	log42.indexOf__("BigUint64Array.prototype.sort") === -1 ? log42.push__("BigUint64Array.prototype.sort") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigUint64Array.prototype.sort__.apply__(this, args)
-}
-BigUint64Array.prototype.sort.prototype = BigUint64Array.prototype.sort__.prototype;
-
-Float32Array.prototype.sort__= Float32Array.prototype.sort;
-Float32Array.prototype.sort = function (){
-	log42.indexOf__("Float32Array.prototype.sort") === -1 ? log42.push__("Float32Array.prototype.sort") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float32Array.prototype.sort__.apply__(this, args)
-}
-Float32Array.prototype.sort.prototype = Float32Array.prototype.sort__.prototype;
-
-Float64Array.prototype.sort__= Float64Array.prototype.sort;
-Float64Array.prototype.sort = function (){
-	log42.indexOf__("Float64Array.prototype.sort") === -1 ? log42.push__("Float64Array.prototype.sort") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float64Array.prototype.sort__.apply__(this, args)
-}
-Float64Array.prototype.sort.prototype = Float64Array.prototype.sort__.prototype;
-
-Int8Array.prototype.subarray__= Int8Array.prototype.subarray;
-Int8Array.prototype.subarray = function (){
-	log42.indexOf__("Int8Array.prototype.subarray") === -1 ? log42.push__("Int8Array.prototype.subarray") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int8Array.prototype.subarray__.apply__(this, args)
-}
-Int8Array.prototype.subarray.prototype = Int8Array.prototype.subarray__.prototype;
-
-Uint8Array.prototype.subarray__= Uint8Array.prototype.subarray;
-Uint8Array.prototype.subarray = function (){
-	log42.indexOf__("Uint8Array.prototype.subarray") === -1 ? log42.push__("Uint8Array.prototype.subarray") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8Array.prototype.subarray__.apply__(this, args)
-}
-Uint8Array.prototype.subarray.prototype = Uint8Array.prototype.subarray__.prototype;
-
-Uint8ClampedArray.prototype.subarray__= Uint8ClampedArray.prototype.subarray;
-Uint8ClampedArray.prototype.subarray = function (){
-	log42.indexOf__("Uint8ClampedArray.prototype.subarray") === -1 ? log42.push__("Uint8ClampedArray.prototype.subarray") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8ClampedArray.prototype.subarray__.apply__(this, args)
-}
-Uint8ClampedArray.prototype.subarray.prototype = Uint8ClampedArray.prototype.subarray__.prototype;
-
-Int16Array.prototype.subarray__= Int16Array.prototype.subarray;
-Int16Array.prototype.subarray = function (){
-	log42.indexOf__("Int16Array.prototype.subarray") === -1 ? log42.push__("Int16Array.prototype.subarray") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int16Array.prototype.subarray__.apply__(this, args)
-}
-Int16Array.prototype.subarray.prototype = Int16Array.prototype.subarray__.prototype;
-
-Uint16Array.prototype.subarray__= Uint16Array.prototype.subarray;
-Uint16Array.prototype.subarray = function (){
-	log42.indexOf__("Uint16Array.prototype.subarray") === -1 ? log42.push__("Uint16Array.prototype.subarray") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint16Array.prototype.subarray__.apply__(this, args)
-}
-Uint16Array.prototype.subarray.prototype = Uint16Array.prototype.subarray__.prototype;
-
-Int32Array.prototype.subarray__= Int32Array.prototype.subarray;
-Int32Array.prototype.subarray = function (){
-	log42.indexOf__("Int32Array.prototype.subarray") === -1 ? log42.push__("Int32Array.prototype.subarray") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int32Array.prototype.subarray__.apply__(this, args)
-}
-Int32Array.prototype.subarray.prototype = Int32Array.prototype.subarray__.prototype;
-
-Uint32Array.prototype.subarray__= Uint32Array.prototype.subarray;
-Uint32Array.prototype.subarray = function (){
-	log42.indexOf__("Uint32Array.prototype.subarray") === -1 ? log42.push__("Uint32Array.prototype.subarray") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint32Array.prototype.subarray__.apply__(this, args)
-}
-Uint32Array.prototype.subarray.prototype = Uint32Array.prototype.subarray__.prototype;
-
-BigInt64Array.prototype.subarray__= BigInt64Array.prototype.subarray;
-BigInt64Array.prototype.subarray = function (){
-	log42.indexOf__("BigInt64Array.prototype.subarray") === -1 ? log42.push__("BigInt64Array.prototype.subarray") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigInt64Array.prototype.subarray__.apply__(this, args)
-}
-BigInt64Array.prototype.subarray.prototype = BigInt64Array.prototype.subarray__.prototype;
-
-BigUint64Array.prototype.subarray__= BigUint64Array.prototype.subarray;
-BigUint64Array.prototype.subarray = function (){
-	log42.indexOf__("BigUint64Array.prototype.subarray") === -1 ? log42.push__("BigUint64Array.prototype.subarray") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigUint64Array.prototype.subarray__.apply__(this, args)
-}
-BigUint64Array.prototype.subarray.prototype = BigUint64Array.prototype.subarray__.prototype;
-
-Float32Array.prototype.subarray__= Float32Array.prototype.subarray;
-Float32Array.prototype.subarray = function (){
-	log42.indexOf__("Float32Array.prototype.subarray") === -1 ? log42.push__("Float32Array.prototype.subarray") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float32Array.prototype.subarray__.apply__(this, args)
-}
-Float32Array.prototype.subarray.prototype = Float32Array.prototype.subarray__.prototype;
-
-Float64Array.prototype.subarray__= Float64Array.prototype.subarray;
-Float64Array.prototype.subarray = function (){
-	log42.indexOf__("Float64Array.prototype.subarray") === -1 ? log42.push__("Float64Array.prototype.subarray") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float64Array.prototype.subarray__.apply__(this, args)
-}
-Float64Array.prototype.subarray.prototype = Float64Array.prototype.subarray__.prototype;
-
-Int8Array.prototype.toLocaleString__= Int8Array.prototype.toLocaleString;
-Int8Array.prototype.toLocaleString = function (){
-	log42.indexOf__("Int8Array.prototype.toLocaleString") === -1 ? log42.push__("Int8Array.prototype.toLocaleString") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int8Array.prototype.toLocaleString__.apply__(this, args)
-}
-Int8Array.prototype.toLocaleString.prototype = Int8Array.prototype.toLocaleString__.prototype;
-
-Uint8Array.prototype.toLocaleString__= Uint8Array.prototype.toLocaleString;
-Uint8Array.prototype.toLocaleString = function (){
-	log42.indexOf__("Uint8Array.prototype.toLocaleString") === -1 ? log42.push__("Uint8Array.prototype.toLocaleString") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8Array.prototype.toLocaleString__.apply__(this, args)
-}
-Uint8Array.prototype.toLocaleString.prototype = Uint8Array.prototype.toLocaleString__.prototype;
-
-Uint8ClampedArray.prototype.toLocaleString__= Uint8ClampedArray.prototype.toLocaleString;
-Uint8ClampedArray.prototype.toLocaleString = function (){
-	log42.indexOf__("Uint8ClampedArray.prototype.toLocaleString") === -1 ? log42.push__("Uint8ClampedArray.prototype.toLocaleString") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8ClampedArray.prototype.toLocaleString__.apply__(this, args)
-}
-Uint8ClampedArray.prototype.toLocaleString.prototype = Uint8ClampedArray.prototype.toLocaleString__.prototype;
-
-Int16Array.prototype.toLocaleString__= Int16Array.prototype.toLocaleString;
-Int16Array.prototype.toLocaleString = function (){
-	log42.indexOf__("Int16Array.prototype.toLocaleString") === -1 ? log42.push__("Int16Array.prototype.toLocaleString") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int16Array.prototype.toLocaleString__.apply__(this, args)
-}
-Int16Array.prototype.toLocaleString.prototype = Int16Array.prototype.toLocaleString__.prototype;
-
-Uint16Array.prototype.toLocaleString__= Uint16Array.prototype.toLocaleString;
-Uint16Array.prototype.toLocaleString = function (){
-	log42.indexOf__("Uint16Array.prototype.toLocaleString") === -1 ? log42.push__("Uint16Array.prototype.toLocaleString") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint16Array.prototype.toLocaleString__.apply__(this, args)
-}
-Uint16Array.prototype.toLocaleString.prototype = Uint16Array.prototype.toLocaleString__.prototype;
-
-Int32Array.prototype.toLocaleString__= Int32Array.prototype.toLocaleString;
-Int32Array.prototype.toLocaleString = function (){
-	log42.indexOf__("Int32Array.prototype.toLocaleString") === -1 ? log42.push__("Int32Array.prototype.toLocaleString") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int32Array.prototype.toLocaleString__.apply__(this, args)
-}
-Int32Array.prototype.toLocaleString.prototype = Int32Array.prototype.toLocaleString__.prototype;
-
-Uint32Array.prototype.toLocaleString__= Uint32Array.prototype.toLocaleString;
-Uint32Array.prototype.toLocaleString = function (){
-	log42.indexOf__("Uint32Array.prototype.toLocaleString") === -1 ? log42.push__("Uint32Array.prototype.toLocaleString") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint32Array.prototype.toLocaleString__.apply__(this, args)
-}
-Uint32Array.prototype.toLocaleString.prototype = Uint32Array.prototype.toLocaleString__.prototype;
-
-BigInt64Array.prototype.toLocaleString__= BigInt64Array.prototype.toLocaleString;
-BigInt64Array.prototype.toLocaleString = function (){
-	log42.indexOf__("BigInt64Array.prototype.toLocaleString") === -1 ? log42.push__("BigInt64Array.prototype.toLocaleString") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigInt64Array.prototype.toLocaleString__.apply__(this, args)
-}
-BigInt64Array.prototype.toLocaleString.prototype = BigInt64Array.prototype.toLocaleString__.prototype;
-
-BigUint64Array.prototype.toLocaleString__= BigUint64Array.prototype.toLocaleString;
-BigUint64Array.prototype.toLocaleString = function (){
-	log42.indexOf__("BigUint64Array.prototype.toLocaleString") === -1 ? log42.push__("BigUint64Array.prototype.toLocaleString") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigUint64Array.prototype.toLocaleString__.apply__(this, args)
-}
-BigUint64Array.prototype.toLocaleString.prototype = BigUint64Array.prototype.toLocaleString__.prototype;
-
-Float32Array.prototype.toLocaleString__= Float32Array.prototype.toLocaleString;
-Float32Array.prototype.toLocaleString = function (){
-	log42.indexOf__("Float32Array.prototype.toLocaleString") === -1 ? log42.push__("Float32Array.prototype.toLocaleString") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float32Array.prototype.toLocaleString__.apply__(this, args)
-}
-Float32Array.prototype.toLocaleString.prototype = Float32Array.prototype.toLocaleString__.prototype;
-
-Float64Array.prototype.toLocaleString__= Float64Array.prototype.toLocaleString;
-Float64Array.prototype.toLocaleString = function (){
-	log42.indexOf__("Float64Array.prototype.toLocaleString") === -1 ? log42.push__("Float64Array.prototype.toLocaleString") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float64Array.prototype.toLocaleString__.apply__(this, args)
-}
-Float64Array.prototype.toLocaleString.prototype = Float64Array.prototype.toLocaleString__.prototype;
-
-Int8Array.prototype.toString__= Int8Array.prototype.toString;
-Int8Array.prototype.toString = function (){
-	log42.indexOf__("Int8Array.prototype.toString") === -1 ? log42.push__("Int8Array.prototype.toString") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int8Array.prototype.toString__.apply__(this, args)
-}
-Int8Array.prototype.toString.prototype = Int8Array.prototype.toString__.prototype;
-
-Uint8Array.prototype.toString__= Uint8Array.prototype.toString;
-Uint8Array.prototype.toString = function (){
-	log42.indexOf__("Uint8Array.prototype.toString") === -1 ? log42.push__("Uint8Array.prototype.toString") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8Array.prototype.toString__.apply__(this, args)
-}
-Uint8Array.prototype.toString.prototype = Uint8Array.prototype.toString__.prototype;
-
-Uint8ClampedArray.prototype.toString__= Uint8ClampedArray.prototype.toString;
-Uint8ClampedArray.prototype.toString = function (){
-	log42.indexOf__("Uint8ClampedArray.prototype.toString") === -1 ? log42.push__("Uint8ClampedArray.prototype.toString") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8ClampedArray.prototype.toString__.apply__(this, args)
-}
-Uint8ClampedArray.prototype.toString.prototype = Uint8ClampedArray.prototype.toString__.prototype;
-
-Int16Array.prototype.toString__= Int16Array.prototype.toString;
-Int16Array.prototype.toString = function (){
-	log42.indexOf__("Int16Array.prototype.toString") === -1 ? log42.push__("Int16Array.prototype.toString") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int16Array.prototype.toString__.apply__(this, args)
-}
-Int16Array.prototype.toString.prototype = Int16Array.prototype.toString__.prototype;
-
-Uint16Array.prototype.toString__= Uint16Array.prototype.toString;
-Uint16Array.prototype.toString = function (){
-	log42.indexOf__("Uint16Array.prototype.toString") === -1 ? log42.push__("Uint16Array.prototype.toString") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint16Array.prototype.toString__.apply__(this, args)
-}
-Uint16Array.prototype.toString.prototype = Uint16Array.prototype.toString__.prototype;
-
-Int32Array.prototype.toString__= Int32Array.prototype.toString;
-Int32Array.prototype.toString = function (){
-	log42.indexOf__("Int32Array.prototype.toString") === -1 ? log42.push__("Int32Array.prototype.toString") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int32Array.prototype.toString__.apply__(this, args)
-}
-Int32Array.prototype.toString.prototype = Int32Array.prototype.toString__.prototype;
-
-Uint32Array.prototype.toString__= Uint32Array.prototype.toString;
-Uint32Array.prototype.toString = function (){
-	log42.indexOf__("Uint32Array.prototype.toString") === -1 ? log42.push__("Uint32Array.prototype.toString") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint32Array.prototype.toString__.apply__(this, args)
-}
-Uint32Array.prototype.toString.prototype = Uint32Array.prototype.toString__.prototype;
-
-BigInt64Array.prototype.toString__= BigInt64Array.prototype.toString;
-BigInt64Array.prototype.toString = function (){
-	log42.indexOf__("BigInt64Array.prototype.toString") === -1 ? log42.push__("BigInt64Array.prototype.toString") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigInt64Array.prototype.toString__.apply__(this, args)
-}
-BigInt64Array.prototype.toString.prototype = BigInt64Array.prototype.toString__.prototype;
-
-BigUint64Array.prototype.toString__= BigUint64Array.prototype.toString;
-BigUint64Array.prototype.toString = function (){
-	log42.indexOf__("BigUint64Array.prototype.toString") === -1 ? log42.push__("BigUint64Array.prototype.toString") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigUint64Array.prototype.toString__.apply__(this, args)
-}
-BigUint64Array.prototype.toString.prototype = BigUint64Array.prototype.toString__.prototype;
-
-Float32Array.prototype.toString__= Float32Array.prototype.toString;
-Float32Array.prototype.toString = function (){
-	log42.indexOf__("Float32Array.prototype.toString") === -1 ? log42.push__("Float32Array.prototype.toString") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float32Array.prototype.toString__.apply__(this, args)
-}
-Float32Array.prototype.toString.prototype = Float32Array.prototype.toString__.prototype;
-
-Float64Array.prototype.toString__= Float64Array.prototype.toString;
-Float64Array.prototype.toString = function (){
-	log42.indexOf__("Float64Array.prototype.toString") === -1 ? log42.push__("Float64Array.prototype.toString") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float64Array.prototype.toString__.apply__(this, args)
-}
-Float64Array.prototype.toString.prototype = Float64Array.prototype.toString__.prototype;
-
-Int8Array.prototype.values__= Int8Array.prototype.values;
-Int8Array.prototype.values = function (){
-	log42.indexOf__("Int8Array.prototype.values") === -1 ? log42.push__("Int8Array.prototype.values") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int8Array.prototype.values__.apply__(this, args)
-}
-Int8Array.prototype.values.prototype = Int8Array.prototype.values__.prototype;
-
-Uint8Array.prototype.values__= Uint8Array.prototype.values;
-Uint8Array.prototype.values = function (){
-	log42.indexOf__("Uint8Array.prototype.values") === -1 ? log42.push__("Uint8Array.prototype.values") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8Array.prototype.values__.apply__(this, args)
-}
-Uint8Array.prototype.values.prototype = Uint8Array.prototype.values__.prototype;
-
-Uint8ClampedArray.prototype.values__= Uint8ClampedArray.prototype.values;
-Uint8ClampedArray.prototype.values = function (){
-	log42.indexOf__("Uint8ClampedArray.prototype.values") === -1 ? log42.push__("Uint8ClampedArray.prototype.values") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint8ClampedArray.prototype.values__.apply__(this, args)
-}
-Uint8ClampedArray.prototype.values.prototype = Uint8ClampedArray.prototype.values__.prototype;
-
-Int16Array.prototype.values__= Int16Array.prototype.values;
-Int16Array.prototype.values = function (){
-	log42.indexOf__("Int16Array.prototype.values") === -1 ? log42.push__("Int16Array.prototype.values") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int16Array.prototype.values__.apply__(this, args)
-}
-Int16Array.prototype.values.prototype = Int16Array.prototype.values__.prototype;
-
-Uint16Array.prototype.values__= Uint16Array.prototype.values;
-Uint16Array.prototype.values = function (){
-	log42.indexOf__("Uint16Array.prototype.values") === -1 ? log42.push__("Uint16Array.prototype.values") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint16Array.prototype.values__.apply__(this, args)
-}
-Uint16Array.prototype.values.prototype = Uint16Array.prototype.values__.prototype;
-
-Int32Array.prototype.values__= Int32Array.prototype.values;
-Int32Array.prototype.values = function (){
-	log42.indexOf__("Int32Array.prototype.values") === -1 ? log42.push__("Int32Array.prototype.values") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Int32Array.prototype.values__.apply__(this, args)
-}
-Int32Array.prototype.values.prototype = Int32Array.prototype.values__.prototype;
-
-Uint32Array.prototype.values__= Uint32Array.prototype.values;
-Uint32Array.prototype.values = function (){
-	log42.indexOf__("Uint32Array.prototype.values") === -1 ? log42.push__("Uint32Array.prototype.values") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Uint32Array.prototype.values__.apply__(this, args)
-}
-Uint32Array.prototype.values.prototype = Uint32Array.prototype.values__.prototype;
-
-BigInt64Array.prototype.values__= BigInt64Array.prototype.values;
-BigInt64Array.prototype.values = function (){
-	log42.indexOf__("BigInt64Array.prototype.values") === -1 ? log42.push__("BigInt64Array.prototype.values") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigInt64Array.prototype.values__.apply__(this, args)
-}
-BigInt64Array.prototype.values.prototype = BigInt64Array.prototype.values__.prototype;
-
-BigUint64Array.prototype.values__= BigUint64Array.prototype.values;
-BigUint64Array.prototype.values = function (){
-	log42.indexOf__("BigUint64Array.prototype.values") === -1 ? log42.push__("BigUint64Array.prototype.values") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return BigUint64Array.prototype.values__.apply__(this, args)
-}
-BigUint64Array.prototype.values.prototype = BigUint64Array.prototype.values__.prototype;
-
-Float32Array.prototype.values__= Float32Array.prototype.values;
-Float32Array.prototype.values = function (){
-	log42.indexOf__("Float32Array.prototype.values") === -1 ? log42.push__("Float32Array.prototype.values") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float32Array.prototype.values__.apply__(this, args)
-}
-Float32Array.prototype.values.prototype = Float32Array.prototype.values__.prototype;
-
-Float64Array.prototype.values__= Float64Array.prototype.values;
-Float64Array.prototype.values = function (){
-	log42.indexOf__("Float64Array.prototype.values") === -1 ? log42.push__("Float64Array.prototype.values") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Float64Array.prototype.values__.apply__(this, args)
-}
-Float64Array.prototype.values.prototype = Float64Array.prototype.values__.prototype;
-
-Map.prototype.clear__= Map.prototype.clear;
-Map.prototype.clear = function (){
-	log42.indexOf__("Map.prototype.clear") === -1 ? log42.push__("Map.prototype.clear") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Map.prototype.clear__.apply__(this, args)
-}
-Map.prototype.clear.prototype = Map.prototype.clear__.prototype;
-
-Map.prototype.delete__= Map.prototype.delete;
-Map.prototype.delete = function (){
-	log42.indexOf__("Map.prototype.delete") === -1 ? log42.push__("Map.prototype.delete") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Map.prototype.delete__.apply__(this, args)
-}
-Map.prototype.delete.prototype = Map.prototype.delete__.prototype;
-
-Map.prototype.entries__= Map.prototype.entries;
-Map.prototype.entries = function (){
-	log42.indexOf__("Map.prototype.entries") === -1 ? log42.push__("Map.prototype.entries") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Map.prototype.entries__.apply__(this, args)
-}
-Map.prototype.entries.prototype = Map.prototype.entries__.prototype;
-
-Map.prototype.forEach__= Map.prototype.forEach;
-Map.prototype.forEach = function (){
-	log42.indexOf__("Map.prototype.forEach") === -1 ? log42.push__("Map.prototype.forEach") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Map.prototype.forEach__.apply__(this, args)
-}
-Map.prototype.forEach.prototype = Map.prototype.forEach__.prototype;
-
-Map.prototype.get__= Map.prototype.get;
-Map.prototype.get = function (){
-	log42.indexOf__("Map.prototype.get") === -1 ? log42.push__("Map.prototype.get") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Map.prototype.get__.apply__(this, args)
-}
-Map.prototype.get.prototype = Map.prototype.get__.prototype;
-
-Map.prototype.has__= Map.prototype.has;
-Map.prototype.has = function (){
-	log42.indexOf__("Map.prototype.has") === -1 ? log42.push__("Map.prototype.has") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Map.prototype.has__.apply__(this, args)
-}
-Map.prototype.has.prototype = Map.prototype.has__.prototype;
-
-Map.prototype.keys__= Map.prototype.keys;
-Map.prototype.keys = function (){
-	log42.indexOf__("Map.prototype.keys") === -1 ? log42.push__("Map.prototype.keys") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Map.prototype.keys__.apply__(this, args)
-}
-Map.prototype.keys.prototype = Map.prototype.keys__.prototype;
-
-Map.prototype.set__= Map.prototype.set;
-Map.prototype.set = function (){
-	log42.indexOf__("Map.prototype.set") === -1 ? log42.push__("Map.prototype.set") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Map.prototype.set__.apply__(this, args)
-}
-Map.prototype.set.prototype = Map.prototype.set__.prototype;
-
-Map.prototype.values__= Map.prototype.values;
-Map.prototype.values = function (){
-	log42.indexOf__("Map.prototype.values") === -1 ? log42.push__("Map.prototype.values") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Map.prototype.values__.apply__(this, args)
-}
-Map.prototype.values.prototype = Map.prototype.values__.prototype;
-
-Set.prototype.add__= Set.prototype.add;
-Set.prototype.add = function (){
-	log42.indexOf__("Set.prototype.add") === -1 ? log42.push__("Set.prototype.add") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Set.prototype.add__.apply__(this, args)
-}
-Set.prototype.add.prototype = Set.prototype.add__.prototype;
-
-Set.prototype.clear__= Set.prototype.clear;
-Set.prototype.clear = function (){
-	log42.indexOf__("Set.prototype.clear") === -1 ? log42.push__("Set.prototype.clear") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Set.prototype.clear__.apply__(this, args)
-}
-Set.prototype.clear.prototype = Set.prototype.clear__.prototype;
-
-Set.prototype.delete__= Set.prototype.delete;
-Set.prototype.delete = function (){
-	log42.indexOf__("Set.prototype.delete") === -1 ? log42.push__("Set.prototype.delete") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Set.prototype.delete__.apply__(this, args)
-}
-Set.prototype.delete.prototype = Set.prototype.delete__.prototype;
-
-Set.prototype.entries__= Set.prototype.entries;
-Set.prototype.entries = function (){
-	log42.indexOf__("Set.prototype.entries") === -1 ? log42.push__("Set.prototype.entries") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Set.prototype.entries__.apply__(this, args)
-}
-Set.prototype.entries.prototype = Set.prototype.entries__.prototype;
-
-Set.prototype.forEach__= Set.prototype.forEach;
-Set.prototype.forEach = function (){
-	log42.indexOf__("Set.prototype.forEach") === -1 ? log42.push__("Set.prototype.forEach") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Set.prototype.forEach__.apply__(this, args)
-}
-Set.prototype.forEach.prototype = Set.prototype.forEach__.prototype;
-
-Set.prototype.has__= Set.prototype.has;
-Set.prototype.has = function (){
-	log42.indexOf__("Set.prototype.has") === -1 ? log42.push__("Set.prototype.has") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Set.prototype.has__.apply__(this, args)
-}
-Set.prototype.has.prototype = Set.prototype.has__.prototype;
-
-Set.prototype.keys__= Set.prototype.keys;
-Set.prototype.keys = function (){
-	log42.indexOf__("Set.prototype.keys") === -1 ? log42.push__("Set.prototype.keys") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Set.prototype.keys__.apply__(this, args)
-}
-Set.prototype.keys.prototype = Set.prototype.keys__.prototype;
-
-Set.prototype.values__= Set.prototype.values;
-Set.prototype.values = function (){
-	log42.indexOf__("Set.prototype.values") === -1 ? log42.push__("Set.prototype.values") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Set.prototype.values__.apply__(this, args)
-}
-Set.prototype.values.prototype = Set.prototype.values__.prototype;
-
-WeakMap.prototype.delete__= WeakMap.prototype.delete;
-WeakMap.prototype.delete = function (){
-	log42.indexOf__("WeakMap.prototype.delete") === -1 ? log42.push__("WeakMap.prototype.delete") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return WeakMap.prototype.delete__.apply__(this, args)
-}
-WeakMap.prototype.delete.prototype = WeakMap.prototype.delete__.prototype;
-
-WeakMap.prototype.get__= WeakMap.prototype.get;
-WeakMap.prototype.get = function (){
-	log42.indexOf__("WeakMap.prototype.get") === -1 ? log42.push__("WeakMap.prototype.get") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return WeakMap.prototype.get__.apply__(this, args)
-}
-WeakMap.prototype.get.prototype = WeakMap.prototype.get__.prototype;
-
-WeakMap.prototype.has__= WeakMap.prototype.has;
-WeakMap.prototype.has = function (){
-	log42.indexOf__("WeakMap.prototype.has") === -1 ? log42.push__("WeakMap.prototype.has") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return WeakMap.prototype.has__.apply__(this, args)
-}
-WeakMap.prototype.has.prototype = WeakMap.prototype.has__.prototype;
-
-WeakMap.prototype.set__= WeakMap.prototype.set;
-WeakMap.prototype.set = function (){
-	log42.indexOf__("WeakMap.prototype.set") === -1 ? log42.push__("WeakMap.prototype.set") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return WeakMap.prototype.set__.apply__(this, args)
-}
-WeakMap.prototype.set.prototype = WeakMap.prototype.set__.prototype;
-
-WeakSet.prototype.add__= WeakSet.prototype.add;
-WeakSet.prototype.add = function (){
-	log42.indexOf__("WeakSet.prototype.add") === -1 ? log42.push__("WeakSet.prototype.add") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return WeakSet.prototype.add__.apply__(this, args)
-}
-WeakSet.prototype.add.prototype = WeakSet.prototype.add__.prototype;
-
-WeakSet.prototype.delete__= WeakSet.prototype.delete;
-WeakSet.prototype.delete = function (){
-	log42.indexOf__("WeakSet.prototype.delete") === -1 ? log42.push__("WeakSet.prototype.delete") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return WeakSet.prototype.delete__.apply__(this, args)
-}
-WeakSet.prototype.delete.prototype = WeakSet.prototype.delete__.prototype;
-
-WeakSet.prototype.has__= WeakSet.prototype.has;
-WeakSet.prototype.has = function (){
-	log42.indexOf__("WeakSet.prototype.has") === -1 ? log42.push__("WeakSet.prototype.has") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return WeakSet.prototype.has__.apply__(this, args)
-}
-WeakSet.prototype.has.prototype = WeakSet.prototype.has__.prototype;
-
-ArrayBuffer.prototype.slice__= ArrayBuffer.prototype.slice;
-ArrayBuffer.prototype.slice = function (){
-	log42.indexOf__("ArrayBuffer.prototype.slice") === -1 ? log42.push__("ArrayBuffer.prototype.slice") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return ArrayBuffer.prototype.slice__.apply__(this, args)
-}
-ArrayBuffer.prototype.slice.prototype = ArrayBuffer.prototype.slice__.prototype;
-
-SharedArrayBuffer.prototype.slice__= SharedArrayBuffer.prototype.slice;
-SharedArrayBuffer.prototype.slice = function (){
-	log42.indexOf__("SharedArrayBuffer.prototype.slice") === -1 ? log42.push__("SharedArrayBuffer.prototype.slice") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return SharedArrayBuffer.prototype.slice__.apply__(this, args)
-}
-SharedArrayBuffer.prototype.slice.prototype = SharedArrayBuffer.prototype.slice__.prototype;
-
-DataView.prototype.getBigInt64__= DataView.prototype.getBigInt64;
-DataView.prototype.getBigInt64 = function (){
-	log42.indexOf__("DataView.prototype.getBigInt64") === -1 ? log42.push__("DataView.prototype.getBigInt64") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return DataView.prototype.getBigInt64__.apply__(this, args)
-}
-DataView.prototype.getBigInt64.prototype = DataView.prototype.getBigInt64__.prototype;
-
-DataView.prototype.getBigUint64__= DataView.prototype.getBigUint64;
-DataView.prototype.getBigUint64 = function (){
-	log42.indexOf__("DataView.prototype.getBigUint64") === -1 ? log42.push__("DataView.prototype.getBigUint64") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return DataView.prototype.getBigUint64__.apply__(this, args)
-}
-DataView.prototype.getBigUint64.prototype = DataView.prototype.getBigUint64__.prototype;
-
-DataView.prototype.getFloat32__= DataView.prototype.getFloat32;
-DataView.prototype.getFloat32 = function (){
-	log42.indexOf__("DataView.prototype.getFloat32") === -1 ? log42.push__("DataView.prototype.getFloat32") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return DataView.prototype.getFloat32__.apply__(this, args)
-}
-DataView.prototype.getFloat32.prototype = DataView.prototype.getFloat32__.prototype;
-
-DataView.prototype.getFloat64__= DataView.prototype.getFloat64;
-DataView.prototype.getFloat64 = function (){
-	log42.indexOf__("DataView.prototype.getFloat64") === -1 ? log42.push__("DataView.prototype.getFloat64") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return DataView.prototype.getFloat64__.apply__(this, args)
-}
-DataView.prototype.getFloat64.prototype = DataView.prototype.getFloat64__.prototype;
-
-DataView.prototype.getInt8__= DataView.prototype.getInt8;
-DataView.prototype.getInt8 = function (){
-	log42.indexOf__("DataView.prototype.getInt8") === -1 ? log42.push__("DataView.prototype.getInt8") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return DataView.prototype.getInt8__.apply__(this, args)
-}
-DataView.prototype.getInt8.prototype = DataView.prototype.getInt8__.prototype;
-
-DataView.prototype.getInt16__= DataView.prototype.getInt16;
-DataView.prototype.getInt16 = function (){
-	log42.indexOf__("DataView.prototype.getInt16") === -1 ? log42.push__("DataView.prototype.getInt16") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return DataView.prototype.getInt16__.apply__(this, args)
-}
-DataView.prototype.getInt16.prototype = DataView.prototype.getInt16__.prototype;
-
-DataView.prototype.getInt32__= DataView.prototype.getInt32;
-DataView.prototype.getInt32 = function (){
-	log42.indexOf__("DataView.prototype.getInt32") === -1 ? log42.push__("DataView.prototype.getInt32") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return DataView.prototype.getInt32__.apply__(this, args)
-}
-DataView.prototype.getInt32.prototype = DataView.prototype.getInt32__.prototype;
-
-DataView.prototype.getUint8__= DataView.prototype.getUint8;
-DataView.prototype.getUint8 = function (){
-	log42.indexOf__("DataView.prototype.getUint8") === -1 ? log42.push__("DataView.prototype.getUint8") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return DataView.prototype.getUint8__.apply__(this, args)
-}
-DataView.prototype.getUint8.prototype = DataView.prototype.getUint8__.prototype;
-
-DataView.prototype.getUint16__= DataView.prototype.getUint16;
-DataView.prototype.getUint16 = function (){
-	log42.indexOf__("DataView.prototype.getUint16") === -1 ? log42.push__("DataView.prototype.getUint16") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return DataView.prototype.getUint16__.apply__(this, args)
-}
-DataView.prototype.getUint16.prototype = DataView.prototype.getUint16__.prototype;
-
-DataView.prototype.getUint32__= DataView.prototype.getUint32;
-DataView.prototype.getUint32 = function (){
-	log42.indexOf__("DataView.prototype.getUint32") === -1 ? log42.push__("DataView.prototype.getUint32") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return DataView.prototype.getUint32__.apply__(this, args)
-}
-DataView.prototype.getUint32.prototype = DataView.prototype.getUint32__.prototype;
-
-DataView.prototype.setBigInt64__= DataView.prototype.setBigInt64;
-DataView.prototype.setBigInt64 = function (){
-	log42.indexOf__("DataView.prototype.setBigInt64") === -1 ? log42.push__("DataView.prototype.setBigInt64") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return DataView.prototype.setBigInt64__.apply__(this, args)
-}
-DataView.prototype.setBigInt64.prototype = DataView.prototype.setBigInt64__.prototype;
-
-DataView.prototype.setBigUint64__= DataView.prototype.setBigUint64;
-DataView.prototype.setBigUint64 = function (){
-	log42.indexOf__("DataView.prototype.setBigUint64") === -1 ? log42.push__("DataView.prototype.setBigUint64") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return DataView.prototype.setBigUint64__.apply__(this, args)
-}
-DataView.prototype.setBigUint64.prototype = DataView.prototype.setBigUint64__.prototype;
-
-DataView.prototype.setFloat32__= DataView.prototype.setFloat32;
-DataView.prototype.setFloat32 = function (){
-	log42.indexOf__("DataView.prototype.setFloat32") === -1 ? log42.push__("DataView.prototype.setFloat32") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return DataView.prototype.setFloat32__.apply__(this, args)
-}
-DataView.prototype.setFloat32.prototype = DataView.prototype.setFloat32__.prototype;
-
-DataView.prototype.setFloat64__= DataView.prototype.setFloat64;
-DataView.prototype.setFloat64 = function (){
-	log42.indexOf__("DataView.prototype.setFloat64") === -1 ? log42.push__("DataView.prototype.setFloat64") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return DataView.prototype.setFloat64__.apply__(this, args)
-}
-DataView.prototype.setFloat64.prototype = DataView.prototype.setFloat64__.prototype;
-
-DataView.prototype.setInt8__= DataView.prototype.setInt8;
-DataView.prototype.setInt8 = function (){
-	log42.indexOf__("DataView.prototype.setInt8") === -1 ? log42.push__("DataView.prototype.setInt8") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return DataView.prototype.setInt8__.apply__(this, args)
-}
-DataView.prototype.setInt8.prototype = DataView.prototype.setInt8__.prototype;
-
-DataView.prototype.setInt16__= DataView.prototype.setInt16;
-DataView.prototype.setInt16 = function (){
-	log42.indexOf__("DataView.prototype.setInt16") === -1 ? log42.push__("DataView.prototype.setInt16") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return DataView.prototype.setInt16__.apply__(this, args)
-}
-DataView.prototype.setInt16.prototype = DataView.prototype.setInt16__.prototype;
-
-DataView.prototype.setInt32__= DataView.prototype.setInt32;
-DataView.prototype.setInt32 = function (){
-	log42.indexOf__("DataView.prototype.setInt32") === -1 ? log42.push__("DataView.prototype.setInt32") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return DataView.prototype.setInt32__.apply__(this, args)
-}
-DataView.prototype.setInt32.prototype = DataView.prototype.setInt32__.prototype;
-
-DataView.prototype.setUint8__= DataView.prototype.setUint8;
-DataView.prototype.setUint8 = function (){
-	log42.indexOf__("DataView.prototype.setUint8") === -1 ? log42.push__("DataView.prototype.setUint8") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return DataView.prototype.setUint8__.apply__(this, args)
-}
-DataView.prototype.setUint8.prototype = DataView.prototype.setUint8__.prototype;
-
-DataView.prototype.setUint16__= DataView.prototype.setUint16;
-DataView.prototype.setUint16 = function (){
-	log42.indexOf__("DataView.prototype.setUint16") === -1 ? log42.push__("DataView.prototype.setUint16") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return DataView.prototype.setUint16__.apply__(this, args)
-}
-DataView.prototype.setUint16.prototype = DataView.prototype.setUint16__.prototype;
-
-DataView.prototype.setUint32__= DataView.prototype.setUint32;
-DataView.prototype.setUint32 = function (){
-	log42.indexOf__("DataView.prototype.setUint32") === -1 ? log42.push__("DataView.prototype.setUint32") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return DataView.prototype.setUint32__.apply__(this, args)
-}
-DataView.prototype.setUint32.prototype = DataView.prototype.setUint32__.prototype;
-
-WeakRef.prototype.deref__= WeakRef.prototype.deref;
-WeakRef.prototype.deref = function (){
-	log42.indexOf__("WeakRef.prototype.deref") === -1 ? log42.push__("WeakRef.prototype.deref") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return WeakRef.prototype.deref__.apply__(this, args)
-}
-WeakRef.prototype.deref.prototype = WeakRef.prototype.deref__.prototype;
-
-FinalizationRegistry.prototype.register__= FinalizationRegistry.prototype.register;
-FinalizationRegistry.prototype.register = function (){
-	log42.indexOf__("FinalizationRegistry.prototype.register") === -1 ? log42.push__("FinalizationRegistry.prototype.register") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return FinalizationRegistry.prototype.register__.apply__(this, args)
-}
-FinalizationRegistry.prototype.register.prototype = FinalizationRegistry.prototype.register__.prototype;
-
-FinalizationRegistry.prototype.unregister__= FinalizationRegistry.prototype.unregister;
-FinalizationRegistry.prototype.unregister = function (){
-	log42.indexOf__("FinalizationRegistry.prototype.unregister") === -1 ? log42.push__("FinalizationRegistry.prototype.unregister") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return FinalizationRegistry.prototype.unregister__.apply__(this, args)
-}
-FinalizationRegistry.prototype.unregister.prototype = FinalizationRegistry.prototype.unregister__.prototype;
-
-Promise.prototype.catch__= Promise.prototype.catch;
-Promise.prototype.catch = function (){
-	log42.indexOf__("Promise.prototype.catch") === -1 ? log42.push__("Promise.prototype.catch") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Promise.prototype.catch__.apply__(this, args)
-}
-Promise.prototype.catch.prototype = Promise.prototype.catch__.prototype;
-
-Promise.prototype.finally__= Promise.prototype.finally;
-Promise.prototype.finally = function (){
-	log42.indexOf__("Promise.prototype.finally") === -1 ? log42.push__("Promise.prototype.finally") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Promise.prototype.finally__.apply__(this, args)
-}
-Promise.prototype.finally.prototype = Promise.prototype.finally__.prototype;
-
-Promise.prototype.then__= Promise.prototype.then;
-Promise.prototype.then = function (){
-	log42.indexOf__("Promise.prototype.then") === -1 ? log42.push__("Promise.prototype.then") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Promise.prototype.then__.apply__(this, args)
-}
-Promise.prototype.then.prototype = Promise.prototype.then__.prototype;
-
-Object.prototype.__defineGetter____= Object.prototype.__defineGetter__;
-Object.prototype.__defineGetter__ = function (){
-	log42.indexOf__("Object.prototype.__defineGetter__") === -1 ? log42.push__("Object.prototype.__defineGetter__") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Object.prototype.__defineGetter____.apply__(this, args)
-}
-Object.prototype.__defineGetter__.prototype = Object.prototype.__defineGetter____.prototype;
-
-Object.prototype.__defineSetter____= Object.prototype.__defineSetter__;
-Object.prototype.__defineSetter__ = function (){
-	log42.indexOf__("Object.prototype.__defineSetter__") === -1 ? log42.push__("Object.prototype.__defineSetter__") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Object.prototype.__defineSetter____.apply__(this, args)
-}
-Object.prototype.__defineSetter__.prototype = Object.prototype.__defineSetter____.prototype;
-
-Object.prototype.__lookupGetter____= Object.prototype.__lookupGetter__;
-Object.prototype.__lookupGetter__ = function (){
-	log42.indexOf__("Object.prototype.__lookupGetter__") === -1 ? log42.push__("Object.prototype.__lookupGetter__") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Object.prototype.__lookupGetter____.apply__(this, args)
-}
-Object.prototype.__lookupGetter__.prototype = Object.prototype.__lookupGetter____.prototype;
-
-Object.prototype.__lookupSetter____= Object.prototype.__lookupSetter__;
-Object.prototype.__lookupSetter__ = function (){
-	log42.indexOf__("Object.prototype.__lookupSetter__") === -1 ? log42.push__("Object.prototype.__lookupSetter__") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Object.prototype.__lookupSetter____.apply__(this, args)
-}
-Object.prototype.__lookupSetter__.prototype = Object.prototype.__lookupSetter____.prototype;
-
-String.prototype.substr__= String.prototype.substr;
-String.prototype.substr = function (){
-	log42.indexOf__("String.prototype.substr") === -1 ? log42.push__("String.prototype.substr") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return String.prototype.substr__.apply__(this, args)
-}
-String.prototype.substr.prototype = String.prototype.substr__.prototype;
-
-String.prototype.anchor__= String.prototype.anchor;
-String.prototype.anchor = function (){
-	log42.indexOf__("String.prototype.anchor") === -1 ? log42.push__("String.prototype.anchor") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return String.prototype.anchor__.apply__(this, args)
-}
-String.prototype.anchor.prototype = String.prototype.anchor__.prototype;
-
-String.prototype.big__= String.prototype.big;
-String.prototype.big = function (){
-	log42.indexOf__("String.prototype.big") === -1 ? log42.push__("String.prototype.big") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return String.prototype.big__.apply__(this, args)
-}
-String.prototype.big.prototype = String.prototype.big__.prototype;
-
-String.prototype.blink__= String.prototype.blink;
-String.prototype.blink = function (){
-	log42.indexOf__("String.prototype.blink") === -1 ? log42.push__("String.prototype.blink") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return String.prototype.blink__.apply__(this, args)
-}
-String.prototype.blink.prototype = String.prototype.blink__.prototype;
-
-String.prototype.bold__= String.prototype.bold;
-String.prototype.bold = function (){
-	log42.indexOf__("String.prototype.bold") === -1 ? log42.push__("String.prototype.bold") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return String.prototype.bold__.apply__(this, args)
-}
-String.prototype.bold.prototype = String.prototype.bold__.prototype;
-
-String.prototype.fixed__= String.prototype.fixed;
-String.prototype.fixed = function (){
-	log42.indexOf__("String.prototype.fixed") === -1 ? log42.push__("String.prototype.fixed") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return String.prototype.fixed__.apply__(this, args)
-}
-String.prototype.fixed.prototype = String.prototype.fixed__.prototype;
-
-String.prototype.fontcolor__= String.prototype.fontcolor;
-String.prototype.fontcolor = function (){
-	log42.indexOf__("String.prototype.fontcolor") === -1 ? log42.push__("String.prototype.fontcolor") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return String.prototype.fontcolor__.apply__(this, args)
-}
-String.prototype.fontcolor.prototype = String.prototype.fontcolor__.prototype;
-
-String.prototype.fontsize__= String.prototype.fontsize;
-String.prototype.fontsize = function (){
-	log42.indexOf__("String.prototype.fontsize") === -1 ? log42.push__("String.prototype.fontsize") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return String.prototype.fontsize__.apply__(this, args)
-}
-String.prototype.fontsize.prototype = String.prototype.fontsize__.prototype;
-
-String.prototype.italics__= String.prototype.italics;
-String.prototype.italics = function (){
-	log42.indexOf__("String.prototype.italics") === -1 ? log42.push__("String.prototype.italics") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return String.prototype.italics__.apply__(this, args)
-}
-String.prototype.italics.prototype = String.prototype.italics__.prototype;
-
-String.prototype.link__= String.prototype.link;
-String.prototype.link = function (){
-	log42.indexOf__("String.prototype.link") === -1 ? log42.push__("String.prototype.link") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return String.prototype.link__.apply__(this, args)
-}
-String.prototype.link.prototype = String.prototype.link__.prototype;
-
-String.prototype.small__= String.prototype.small;
-String.prototype.small = function (){
-	log42.indexOf__("String.prototype.small") === -1 ? log42.push__("String.prototype.small") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return String.prototype.small__.apply__(this, args)
-}
-String.prototype.small.prototype = String.prototype.small__.prototype;
-
-String.prototype.strike__= String.prototype.strike;
-String.prototype.strike = function (){
-	log42.indexOf__("String.prototype.strike") === -1 ? log42.push__("String.prototype.strike") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return String.prototype.strike__.apply__(this, args)
-}
-String.prototype.strike.prototype = String.prototype.strike__.prototype;
-
-String.prototype.sub__= String.prototype.sub;
-String.prototype.sub = function (){
-	log42.indexOf__("String.prototype.sub") === -1 ? log42.push__("String.prototype.sub") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return String.prototype.sub__.apply__(this, args)
-}
-String.prototype.sub.prototype = String.prototype.sub__.prototype;
-
-String.prototype.sup__= String.prototype.sup;
-String.prototype.sup = function (){
-	log42.indexOf__("String.prototype.sup") === -1 ? log42.push__("String.prototype.sup") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return String.prototype.sup__.apply__(this, args)
-}
-String.prototype.sup.prototype = String.prototype.sup__.prototype;
-
-String.prototype.trimLeft__= String.prototype.trimLeft;
-String.prototype.trimLeft = function (){
-	log42.indexOf__("String.prototype.trimLeft") === -1 ? log42.push__("String.prototype.trimLeft") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return String.prototype.trimLeft__.apply__(this, args)
-}
-String.prototype.trimLeft.prototype = String.prototype.trimLeft__.prototype;
-
-String.prototype.trimRight__= String.prototype.trimRight;
-String.prototype.trimRight = function (){
-	log42.indexOf__("String.prototype.trimRight") === -1 ? log42.push__("String.prototype.trimRight") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return String.prototype.trimRight__.apply__(this, args)
-}
-String.prototype.trimRight.prototype = String.prototype.trimRight__.prototype;
-
-Date.prototype.getYear__= Date.prototype.getYear;
-Date.prototype.getYear = function (){
-	log42.indexOf__("Date.prototype.getYear") === -1 ? log42.push__("Date.prototype.getYear") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Date.prototype.getYear__.apply__(this, args)
-}
-Date.prototype.getYear.prototype = Date.prototype.getYear__.prototype;
-
-Date.prototype.setYear__= Date.prototype.setYear;
-Date.prototype.setYear = function (){
-	log42.indexOf__("Date.prototype.setYear") === -1 ? log42.push__("Date.prototype.setYear") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Date.prototype.setYear__.apply__(this, args)
-}
-Date.prototype.setYear.prototype = Date.prototype.setYear__.prototype;
-
-Date.prototype.toGMTString__= Date.prototype.toGMTString;
-Date.prototype.toGMTString = function (){
-	log42.indexOf__("Date.prototype.toGMTString") === -1 ? log42.push__("Date.prototype.toGMTString") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return Date.prototype.toGMTString__.apply__(this, args)
-}
-Date.prototype.toGMTString.prototype = Date.prototype.toGMTString__.prototype;
-
-RegExp.prototype.compile__= RegExp.prototype.compile;
-RegExp.prototype.compile = function (){
-	log42.indexOf__("RegExp.prototype.compile") === -1 ? log42.push__("RegExp.prototype.compile") : null;
-	var args = []
-	args = copyArgs(arguments, args);
-	return RegExp.prototype.compile__.apply__(this, args)
-}
-RegExp.prototype.compile.prototype = RegExp.prototype.compile__.prototype;
+Function.prototype.toString = { toString () {
+	log42["Function.prototype.toString"] = true;	let args = copyArgs(arguments);
+	return Function.prototype.toString__.apply__(this, args);
+}}.toString
+Function.prototype.toString.prototype !== undefined ? Function.prototype.toString.prototype = Function.prototype.toString__.prototype: null;
+Object.defineProperty(Function.prototype.toString, "length", {value: Function.prototype.toString__.length});
+
+wrappedFunctions["Boolean.prototype.toString"] = Boolean.prototype.toString;
+Boolean.prototype.toString = { toString () {
+	log42["Boolean.prototype.toString"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Boolean.prototype.toString"].apply__(this, args);
+}}.toString
+Boolean.prototype.toString.prototype !== undefined ? Boolean.prototype.toString.prototype = wrappedFunctions["Boolean.prototype.toString"].prototype : null;
+Object.defineProperty(Boolean.prototype.toString, "length", {value: wrappedFunctions["Boolean.prototype.toString"].length});
+
+wrappedFunctions["Boolean.prototype.valueOf"] = Boolean.prototype.valueOf;
+Boolean.prototype.valueOf = { valueOf () {
+	log42["Boolean.prototype.valueOf"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Boolean.prototype.valueOf"].apply__(this, args);
+}}.valueOf
+Boolean.prototype.valueOf.prototype !== undefined ? Boolean.prototype.valueOf.prototype = wrappedFunctions["Boolean.prototype.valueOf"].prototype : null;
+Object.defineProperty(Boolean.prototype.valueOf, "length", {value: wrappedFunctions["Boolean.prototype.valueOf"].length});
+
+wrappedFunctions["Symbol.prototype.toString"] = Symbol.prototype.toString;
+Symbol.prototype.toString = { toString () {
+	log42["Symbol.prototype.toString"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Symbol.prototype.toString"].apply__(this, args);
+}}.toString
+Symbol.prototype.toString.prototype !== undefined ? Symbol.prototype.toString.prototype = wrappedFunctions["Symbol.prototype.toString"].prototype : null;
+Object.defineProperty(Symbol.prototype.toString, "length", {value: wrappedFunctions["Symbol.prototype.toString"].length});
+
+wrappedFunctions["Symbol.prototype.valueOf"] = Symbol.prototype.valueOf;
+Symbol.prototype.valueOf = { valueOf () {
+	log42["Symbol.prototype.valueOf"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Symbol.prototype.valueOf"].apply__(this, args);
+}}.valueOf
+Symbol.prototype.valueOf.prototype !== undefined ? Symbol.prototype.valueOf.prototype = wrappedFunctions["Symbol.prototype.valueOf"].prototype : null;
+Object.defineProperty(Symbol.prototype.valueOf, "length", {value: wrappedFunctions["Symbol.prototype.valueOf"].length});
+
+wrappedFunctions["Error.prototype.toString"] = Error.prototype.toString;
+Error.prototype.toString = { toString () {
+	log42["Error.prototype.toString"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Error.prototype.toString"].apply__(this, args);
+}}.toString
+Error.prototype.toString.prototype !== undefined ? Error.prototype.toString.prototype = wrappedFunctions["Error.prototype.toString"].prototype : null;
+Object.defineProperty(Error.prototype.toString, "length", {value: wrappedFunctions["Error.prototype.toString"].length});
+
+wrappedFunctions["Number.prototype.toExponential"] = Number.prototype.toExponential;
+Number.prototype.toExponential = { toExponential () {
+	log42["Number.prototype.toExponential"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Number.prototype.toExponential"].apply__(this, args);
+}}.toExponential
+Number.prototype.toExponential.prototype !== undefined ? Number.prototype.toExponential.prototype = wrappedFunctions["Number.prototype.toExponential"].prototype : null;
+Object.defineProperty(Number.prototype.toExponential, "length", {value: wrappedFunctions["Number.prototype.toExponential"].length});
+
+wrappedFunctions["Number.prototype.toFixed"] = Number.prototype.toFixed;
+Number.prototype.toFixed = { toFixed () {
+	log42["Number.prototype.toFixed"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Number.prototype.toFixed"].apply__(this, args);
+}}.toFixed
+Number.prototype.toFixed.prototype !== undefined ? Number.prototype.toFixed.prototype = wrappedFunctions["Number.prototype.toFixed"].prototype : null;
+Object.defineProperty(Number.prototype.toFixed, "length", {value: wrappedFunctions["Number.prototype.toFixed"].length});
+
+wrappedFunctions["Number.prototype.toLocaleString"] = Number.prototype.toLocaleString;
+Number.prototype.toLocaleString = { toLocaleString () {
+	log42["Number.prototype.toLocaleString"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Number.prototype.toLocaleString"].apply__(this, args);
+}}.toLocaleString
+Number.prototype.toLocaleString.prototype !== undefined ? Number.prototype.toLocaleString.prototype = wrappedFunctions["Number.prototype.toLocaleString"].prototype : null;
+Object.defineProperty(Number.prototype.toLocaleString, "length", {value: wrappedFunctions["Number.prototype.toLocaleString"].length});
+
+wrappedFunctions["Number.prototype.toPrecision"] = Number.prototype.toPrecision;
+Number.prototype.toPrecision = { toPrecision () {
+	log42["Number.prototype.toPrecision"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Number.prototype.toPrecision"].apply__(this, args);
+}}.toPrecision
+Number.prototype.toPrecision.prototype !== undefined ? Number.prototype.toPrecision.prototype = wrappedFunctions["Number.prototype.toPrecision"].prototype : null;
+Object.defineProperty(Number.prototype.toPrecision, "length", {value: wrappedFunctions["Number.prototype.toPrecision"].length});
+
+wrappedFunctions["Number.prototype.toString"] = Number.prototype.toString;
+Number.prototype.toString = { toString () {
+	log42["Number.prototype.toString"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Number.prototype.toString"].apply__(this, args);
+}}.toString
+Number.prototype.toString.prototype !== undefined ? Number.prototype.toString.prototype = wrappedFunctions["Number.prototype.toString"].prototype : null;
+Object.defineProperty(Number.prototype.toString, "length", {value: wrappedFunctions["Number.prototype.toString"].length});
+
+wrappedFunctions["Number.prototype.valueOf"] = Number.prototype.valueOf;
+Number.prototype.valueOf = { valueOf () {
+	log42["Number.prototype.valueOf"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Number.prototype.valueOf"].apply__(this, args);
+}}.valueOf
+Number.prototype.valueOf.prototype !== undefined ? Number.prototype.valueOf.prototype = wrappedFunctions["Number.prototype.valueOf"].prototype : null;
+Object.defineProperty(Number.prototype.valueOf, "length", {value: wrappedFunctions["Number.prototype.valueOf"].length});
+
+wrappedFunctions["BigInt.prototype.toLocaleString"] = BigInt.prototype.toLocaleString;
+BigInt.prototype.toLocaleString = { toLocaleString () {
+	log42["BigInt.prototype.toLocaleString"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["BigInt.prototype.toLocaleString"].apply__(this, args);
+}}.toLocaleString
+BigInt.prototype.toLocaleString.prototype !== undefined ? BigInt.prototype.toLocaleString.prototype = wrappedFunctions["BigInt.prototype.toLocaleString"].prototype : null;
+Object.defineProperty(BigInt.prototype.toLocaleString, "length", {value: wrappedFunctions["BigInt.prototype.toLocaleString"].length});
+
+wrappedFunctions["BigInt.prototype.toString"] = BigInt.prototype.toString;
+BigInt.prototype.toString = { toString () {
+	log42["BigInt.prototype.toString"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["BigInt.prototype.toString"].apply__(this, args);
+}}.toString
+BigInt.prototype.toString.prototype !== undefined ? BigInt.prototype.toString.prototype = wrappedFunctions["BigInt.prototype.toString"].prototype : null;
+Object.defineProperty(BigInt.prototype.toString, "length", {value: wrappedFunctions["BigInt.prototype.toString"].length});
+
+wrappedFunctions["BigInt.prototype.valueOf"] = BigInt.prototype.valueOf;
+BigInt.prototype.valueOf = { valueOf () {
+	log42["BigInt.prototype.valueOf"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["BigInt.prototype.valueOf"].apply__(this, args);
+}}.valueOf
+BigInt.prototype.valueOf.prototype !== undefined ? BigInt.prototype.valueOf.prototype = wrappedFunctions["BigInt.prototype.valueOf"].prototype : null;
+Object.defineProperty(BigInt.prototype.valueOf, "length", {value: wrappedFunctions["BigInt.prototype.valueOf"].length});
+
+wrappedFunctions["Date.prototype.getDate"] = Date.prototype.getDate;
+Date.prototype.getDate = { getDate () {
+	log42["Date.prototype.getDate"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Date.prototype.getDate"].apply__(this, args);
+}}.getDate
+Date.prototype.getDate.prototype !== undefined ? Date.prototype.getDate.prototype = wrappedFunctions["Date.prototype.getDate"].prototype : null;
+Object.defineProperty(Date.prototype.getDate, "length", {value: wrappedFunctions["Date.prototype.getDate"].length});
+
+wrappedFunctions["Date.prototype.getDay"] = Date.prototype.getDay;
+Date.prototype.getDay = { getDay () {
+	log42["Date.prototype.getDay"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Date.prototype.getDay"].apply__(this, args);
+}}.getDay
+Date.prototype.getDay.prototype !== undefined ? Date.prototype.getDay.prototype = wrappedFunctions["Date.prototype.getDay"].prototype : null;
+Object.defineProperty(Date.prototype.getDay, "length", {value: wrappedFunctions["Date.prototype.getDay"].length});
+
+wrappedFunctions["Date.prototype.getFullYear"] = Date.prototype.getFullYear;
+Date.prototype.getFullYear = { getFullYear () {
+	log42["Date.prototype.getFullYear"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Date.prototype.getFullYear"].apply__(this, args);
+}}.getFullYear
+Date.prototype.getFullYear.prototype !== undefined ? Date.prototype.getFullYear.prototype = wrappedFunctions["Date.prototype.getFullYear"].prototype : null;
+Object.defineProperty(Date.prototype.getFullYear, "length", {value: wrappedFunctions["Date.prototype.getFullYear"].length});
+
+wrappedFunctions["Date.prototype.getHours"] = Date.prototype.getHours;
+Date.prototype.getHours = { getHours () {
+	log42["Date.prototype.getHours"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Date.prototype.getHours"].apply__(this, args);
+}}.getHours
+Date.prototype.getHours.prototype !== undefined ? Date.prototype.getHours.prototype = wrappedFunctions["Date.prototype.getHours"].prototype : null;
+Object.defineProperty(Date.prototype.getHours, "length", {value: wrappedFunctions["Date.prototype.getHours"].length});
+
+wrappedFunctions["Date.prototype.getMilliseconds"] = Date.prototype.getMilliseconds;
+Date.prototype.getMilliseconds = { getMilliseconds () {
+	log42["Date.prototype.getMilliseconds"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Date.prototype.getMilliseconds"].apply__(this, args);
+}}.getMilliseconds
+Date.prototype.getMilliseconds.prototype !== undefined ? Date.prototype.getMilliseconds.prototype = wrappedFunctions["Date.prototype.getMilliseconds"].prototype : null;
+Object.defineProperty(Date.prototype.getMilliseconds, "length", {value: wrappedFunctions["Date.prototype.getMilliseconds"].length});
+
+wrappedFunctions["Date.prototype.getMinutes"] = Date.prototype.getMinutes;
+Date.prototype.getMinutes = { getMinutes () {
+	log42["Date.prototype.getMinutes"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Date.prototype.getMinutes"].apply__(this, args);
+}}.getMinutes
+Date.prototype.getMinutes.prototype !== undefined ? Date.prototype.getMinutes.prototype = wrappedFunctions["Date.prototype.getMinutes"].prototype : null;
+Object.defineProperty(Date.prototype.getMinutes, "length", {value: wrappedFunctions["Date.prototype.getMinutes"].length});
+
+wrappedFunctions["Date.prototype.getMonth"] = Date.prototype.getMonth;
+Date.prototype.getMonth = { getMonth () {
+	log42["Date.prototype.getMonth"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Date.prototype.getMonth"].apply__(this, args);
+}}.getMonth
+Date.prototype.getMonth.prototype !== undefined ? Date.prototype.getMonth.prototype = wrappedFunctions["Date.prototype.getMonth"].prototype : null;
+Object.defineProperty(Date.prototype.getMonth, "length", {value: wrappedFunctions["Date.prototype.getMonth"].length});
+
+wrappedFunctions["Date.prototype.getSeconds"] = Date.prototype.getSeconds;
+Date.prototype.getSeconds = { getSeconds () {
+	log42["Date.prototype.getSeconds"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Date.prototype.getSeconds"].apply__(this, args);
+}}.getSeconds
+Date.prototype.getSeconds.prototype !== undefined ? Date.prototype.getSeconds.prototype = wrappedFunctions["Date.prototype.getSeconds"].prototype : null;
+Object.defineProperty(Date.prototype.getSeconds, "length", {value: wrappedFunctions["Date.prototype.getSeconds"].length});
+
+wrappedFunctions["Date.prototype.getTime"] = Date.prototype.getTime;
+Date.prototype.getTime = { getTime () {
+	log42["Date.prototype.getTime"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Date.prototype.getTime"].apply__(this, args);
+}}.getTime
+Date.prototype.getTime.prototype !== undefined ? Date.prototype.getTime.prototype = wrappedFunctions["Date.prototype.getTime"].prototype : null;
+Object.defineProperty(Date.prototype.getTime, "length", {value: wrappedFunctions["Date.prototype.getTime"].length});
+
+wrappedFunctions["Date.prototype.getTimezoneOffset"] = Date.prototype.getTimezoneOffset;
+Date.prototype.getTimezoneOffset = { getTimezoneOffset () {
+	log42["Date.prototype.getTimezoneOffset"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Date.prototype.getTimezoneOffset"].apply__(this, args);
+}}.getTimezoneOffset
+Date.prototype.getTimezoneOffset.prototype !== undefined ? Date.prototype.getTimezoneOffset.prototype = wrappedFunctions["Date.prototype.getTimezoneOffset"].prototype : null;
+Object.defineProperty(Date.prototype.getTimezoneOffset, "length", {value: wrappedFunctions["Date.prototype.getTimezoneOffset"].length});
+
+wrappedFunctions["Date.prototype.getUTCDate"] = Date.prototype.getUTCDate;
+Date.prototype.getUTCDate = { getUTCDate () {
+	log42["Date.prototype.getUTCDate"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Date.prototype.getUTCDate"].apply__(this, args);
+}}.getUTCDate
+Date.prototype.getUTCDate.prototype !== undefined ? Date.prototype.getUTCDate.prototype = wrappedFunctions["Date.prototype.getUTCDate"].prototype : null;
+Object.defineProperty(Date.prototype.getUTCDate, "length", {value: wrappedFunctions["Date.prototype.getUTCDate"].length});
+
+wrappedFunctions["Date.prototype.getUTCDay"] = Date.prototype.getUTCDay;
+Date.prototype.getUTCDay = { getUTCDay () {
+	log42["Date.prototype.getUTCDay"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Date.prototype.getUTCDay"].apply__(this, args);
+}}.getUTCDay
+Date.prototype.getUTCDay.prototype !== undefined ? Date.prototype.getUTCDay.prototype = wrappedFunctions["Date.prototype.getUTCDay"].prototype : null;
+Object.defineProperty(Date.prototype.getUTCDay, "length", {value: wrappedFunctions["Date.prototype.getUTCDay"].length});
+
+wrappedFunctions["Date.prototype.getUTCFullYear"] = Date.prototype.getUTCFullYear;
+Date.prototype.getUTCFullYear = { getUTCFullYear () {
+	log42["Date.prototype.getUTCFullYear"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Date.prototype.getUTCFullYear"].apply__(this, args);
+}}.getUTCFullYear
+Date.prototype.getUTCFullYear.prototype !== undefined ? Date.prototype.getUTCFullYear.prototype = wrappedFunctions["Date.prototype.getUTCFullYear"].prototype : null;
+Object.defineProperty(Date.prototype.getUTCFullYear, "length", {value: wrappedFunctions["Date.prototype.getUTCFullYear"].length});
+
+wrappedFunctions["Date.prototype.getUTCHours"] = Date.prototype.getUTCHours;
+Date.prototype.getUTCHours = { getUTCHours () {
+	log42["Date.prototype.getUTCHours"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Date.prototype.getUTCHours"].apply__(this, args);
+}}.getUTCHours
+Date.prototype.getUTCHours.prototype !== undefined ? Date.prototype.getUTCHours.prototype = wrappedFunctions["Date.prototype.getUTCHours"].prototype : null;
+Object.defineProperty(Date.prototype.getUTCHours, "length", {value: wrappedFunctions["Date.prototype.getUTCHours"].length});
+
+wrappedFunctions["Date.prototype.getUTCMilliseconds"] = Date.prototype.getUTCMilliseconds;
+Date.prototype.getUTCMilliseconds = { getUTCMilliseconds () {
+	log42["Date.prototype.getUTCMilliseconds"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Date.prototype.getUTCMilliseconds"].apply__(this, args);
+}}.getUTCMilliseconds
+Date.prototype.getUTCMilliseconds.prototype !== undefined ? Date.prototype.getUTCMilliseconds.prototype = wrappedFunctions["Date.prototype.getUTCMilliseconds"].prototype : null;
+Object.defineProperty(Date.prototype.getUTCMilliseconds, "length", {value: wrappedFunctions["Date.prototype.getUTCMilliseconds"].length});
+
+wrappedFunctions["Date.prototype.getUTCMinutes"] = Date.prototype.getUTCMinutes;
+Date.prototype.getUTCMinutes = { getUTCMinutes () {
+	log42["Date.prototype.getUTCMinutes"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Date.prototype.getUTCMinutes"].apply__(this, args);
+}}.getUTCMinutes
+Date.prototype.getUTCMinutes.prototype !== undefined ? Date.prototype.getUTCMinutes.prototype = wrappedFunctions["Date.prototype.getUTCMinutes"].prototype : null;
+Object.defineProperty(Date.prototype.getUTCMinutes, "length", {value: wrappedFunctions["Date.prototype.getUTCMinutes"].length});
+
+wrappedFunctions["Date.prototype.getUTCMonth"] = Date.prototype.getUTCMonth;
+Date.prototype.getUTCMonth = { getUTCMonth () {
+	log42["Date.prototype.getUTCMonth"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Date.prototype.getUTCMonth"].apply__(this, args);
+}}.getUTCMonth
+Date.prototype.getUTCMonth.prototype !== undefined ? Date.prototype.getUTCMonth.prototype = wrappedFunctions["Date.prototype.getUTCMonth"].prototype : null;
+Object.defineProperty(Date.prototype.getUTCMonth, "length", {value: wrappedFunctions["Date.prototype.getUTCMonth"].length});
+
+wrappedFunctions["Date.prototype.getUTCSeconds"] = Date.prototype.getUTCSeconds;
+Date.prototype.getUTCSeconds = { getUTCSeconds () {
+	log42["Date.prototype.getUTCSeconds"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Date.prototype.getUTCSeconds"].apply__(this, args);
+}}.getUTCSeconds
+Date.prototype.getUTCSeconds.prototype !== undefined ? Date.prototype.getUTCSeconds.prototype = wrappedFunctions["Date.prototype.getUTCSeconds"].prototype : null;
+Object.defineProperty(Date.prototype.getUTCSeconds, "length", {value: wrappedFunctions["Date.prototype.getUTCSeconds"].length});
+
+wrappedFunctions["Date.prototype.setDate"] = Date.prototype.setDate;
+Date.prototype.setDate = { setDate () {
+	log42["Date.prototype.setDate"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Date.prototype.setDate"].apply__(this, args);
+}}.setDate
+Date.prototype.setDate.prototype !== undefined ? Date.prototype.setDate.prototype = wrappedFunctions["Date.prototype.setDate"].prototype : null;
+Object.defineProperty(Date.prototype.setDate, "length", {value: wrappedFunctions["Date.prototype.setDate"].length});
+
+wrappedFunctions["Date.prototype.setFullYear"] = Date.prototype.setFullYear;
+Date.prototype.setFullYear = { setFullYear () {
+	log42["Date.prototype.setFullYear"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Date.prototype.setFullYear"].apply__(this, args);
+}}.setFullYear
+Date.prototype.setFullYear.prototype !== undefined ? Date.prototype.setFullYear.prototype = wrappedFunctions["Date.prototype.setFullYear"].prototype : null;
+Object.defineProperty(Date.prototype.setFullYear, "length", {value: wrappedFunctions["Date.prototype.setFullYear"].length});
+
+wrappedFunctions["Date.prototype.setHours"] = Date.prototype.setHours;
+Date.prototype.setHours = { setHours () {
+	log42["Date.prototype.setHours"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Date.prototype.setHours"].apply__(this, args);
+}}.setHours
+Date.prototype.setHours.prototype !== undefined ? Date.prototype.setHours.prototype = wrappedFunctions["Date.prototype.setHours"].prototype : null;
+Object.defineProperty(Date.prototype.setHours, "length", {value: wrappedFunctions["Date.prototype.setHours"].length});
+
+wrappedFunctions["Date.prototype.setMilliseconds"] = Date.prototype.setMilliseconds;
+Date.prototype.setMilliseconds = { setMilliseconds () {
+	log42["Date.prototype.setMilliseconds"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Date.prototype.setMilliseconds"].apply__(this, args);
+}}.setMilliseconds
+Date.prototype.setMilliseconds.prototype !== undefined ? Date.prototype.setMilliseconds.prototype = wrappedFunctions["Date.prototype.setMilliseconds"].prototype : null;
+Object.defineProperty(Date.prototype.setMilliseconds, "length", {value: wrappedFunctions["Date.prototype.setMilliseconds"].length});
+
+wrappedFunctions["Date.prototype.setMinutes"] = Date.prototype.setMinutes;
+Date.prototype.setMinutes = { setMinutes () {
+	log42["Date.prototype.setMinutes"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Date.prototype.setMinutes"].apply__(this, args);
+}}.setMinutes
+Date.prototype.setMinutes.prototype !== undefined ? Date.prototype.setMinutes.prototype = wrappedFunctions["Date.prototype.setMinutes"].prototype : null;
+Object.defineProperty(Date.prototype.setMinutes, "length", {value: wrappedFunctions["Date.prototype.setMinutes"].length});
+
+wrappedFunctions["Date.prototype.setMonth"] = Date.prototype.setMonth;
+Date.prototype.setMonth = { setMonth () {
+	log42["Date.prototype.setMonth"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Date.prototype.setMonth"].apply__(this, args);
+}}.setMonth
+Date.prototype.setMonth.prototype !== undefined ? Date.prototype.setMonth.prototype = wrappedFunctions["Date.prototype.setMonth"].prototype : null;
+Object.defineProperty(Date.prototype.setMonth, "length", {value: wrappedFunctions["Date.prototype.setMonth"].length});
+
+wrappedFunctions["Date.prototype.setSeconds"] = Date.prototype.setSeconds;
+Date.prototype.setSeconds = { setSeconds () {
+	log42["Date.prototype.setSeconds"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Date.prototype.setSeconds"].apply__(this, args);
+}}.setSeconds
+Date.prototype.setSeconds.prototype !== undefined ? Date.prototype.setSeconds.prototype = wrappedFunctions["Date.prototype.setSeconds"].prototype : null;
+Object.defineProperty(Date.prototype.setSeconds, "length", {value: wrappedFunctions["Date.prototype.setSeconds"].length});
+
+wrappedFunctions["Date.prototype.setTime"] = Date.prototype.setTime;
+Date.prototype.setTime = { setTime () {
+	log42["Date.prototype.setTime"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Date.prototype.setTime"].apply__(this, args);
+}}.setTime
+Date.prototype.setTime.prototype !== undefined ? Date.prototype.setTime.prototype = wrappedFunctions["Date.prototype.setTime"].prototype : null;
+Object.defineProperty(Date.prototype.setTime, "length", {value: wrappedFunctions["Date.prototype.setTime"].length});
+
+wrappedFunctions["Date.prototype.setUTCDate"] = Date.prototype.setUTCDate;
+Date.prototype.setUTCDate = { setUTCDate () {
+	log42["Date.prototype.setUTCDate"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Date.prototype.setUTCDate"].apply__(this, args);
+}}.setUTCDate
+Date.prototype.setUTCDate.prototype !== undefined ? Date.prototype.setUTCDate.prototype = wrappedFunctions["Date.prototype.setUTCDate"].prototype : null;
+Object.defineProperty(Date.prototype.setUTCDate, "length", {value: wrappedFunctions["Date.prototype.setUTCDate"].length});
+
+wrappedFunctions["Date.prototype.setUTCFullYear"] = Date.prototype.setUTCFullYear;
+Date.prototype.setUTCFullYear = { setUTCFullYear () {
+	log42["Date.prototype.setUTCFullYear"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Date.prototype.setUTCFullYear"].apply__(this, args);
+}}.setUTCFullYear
+Date.prototype.setUTCFullYear.prototype !== undefined ? Date.prototype.setUTCFullYear.prototype = wrappedFunctions["Date.prototype.setUTCFullYear"].prototype : null;
+Object.defineProperty(Date.prototype.setUTCFullYear, "length", {value: wrappedFunctions["Date.prototype.setUTCFullYear"].length});
+
+wrappedFunctions["Date.prototype.setUTCHours"] = Date.prototype.setUTCHours;
+Date.prototype.setUTCHours = { setUTCHours () {
+	log42["Date.prototype.setUTCHours"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Date.prototype.setUTCHours"].apply__(this, args);
+}}.setUTCHours
+Date.prototype.setUTCHours.prototype !== undefined ? Date.prototype.setUTCHours.prototype = wrappedFunctions["Date.prototype.setUTCHours"].prototype : null;
+Object.defineProperty(Date.prototype.setUTCHours, "length", {value: wrappedFunctions["Date.prototype.setUTCHours"].length});
+
+wrappedFunctions["Date.prototype.setUTCMilliseconds"] = Date.prototype.setUTCMilliseconds;
+Date.prototype.setUTCMilliseconds = { setUTCMilliseconds () {
+	log42["Date.prototype.setUTCMilliseconds"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Date.prototype.setUTCMilliseconds"].apply__(this, args);
+}}.setUTCMilliseconds
+Date.prototype.setUTCMilliseconds.prototype !== undefined ? Date.prototype.setUTCMilliseconds.prototype = wrappedFunctions["Date.prototype.setUTCMilliseconds"].prototype : null;
+Object.defineProperty(Date.prototype.setUTCMilliseconds, "length", {value: wrappedFunctions["Date.prototype.setUTCMilliseconds"].length});
+
+wrappedFunctions["Date.prototype.setUTCMinutes"] = Date.prototype.setUTCMinutes;
+Date.prototype.setUTCMinutes = { setUTCMinutes () {
+	log42["Date.prototype.setUTCMinutes"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Date.prototype.setUTCMinutes"].apply__(this, args);
+}}.setUTCMinutes
+Date.prototype.setUTCMinutes.prototype !== undefined ? Date.prototype.setUTCMinutes.prototype = wrappedFunctions["Date.prototype.setUTCMinutes"].prototype : null;
+Object.defineProperty(Date.prototype.setUTCMinutes, "length", {value: wrappedFunctions["Date.prototype.setUTCMinutes"].length});
+
+wrappedFunctions["Date.prototype.setUTCMonth"] = Date.prototype.setUTCMonth;
+Date.prototype.setUTCMonth = { setUTCMonth () {
+	log42["Date.prototype.setUTCMonth"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Date.prototype.setUTCMonth"].apply__(this, args);
+}}.setUTCMonth
+Date.prototype.setUTCMonth.prototype !== undefined ? Date.prototype.setUTCMonth.prototype = wrappedFunctions["Date.prototype.setUTCMonth"].prototype : null;
+Object.defineProperty(Date.prototype.setUTCMonth, "length", {value: wrappedFunctions["Date.prototype.setUTCMonth"].length});
+
+wrappedFunctions["Date.prototype.setUTCSeconds"] = Date.prototype.setUTCSeconds;
+Date.prototype.setUTCSeconds = { setUTCSeconds () {
+	log42["Date.prototype.setUTCSeconds"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Date.prototype.setUTCSeconds"].apply__(this, args);
+}}.setUTCSeconds
+Date.prototype.setUTCSeconds.prototype !== undefined ? Date.prototype.setUTCSeconds.prototype = wrappedFunctions["Date.prototype.setUTCSeconds"].prototype : null;
+Object.defineProperty(Date.prototype.setUTCSeconds, "length", {value: wrappedFunctions["Date.prototype.setUTCSeconds"].length});
+
+wrappedFunctions["Date.prototype.toDateString"] = Date.prototype.toDateString;
+Date.prototype.toDateString = { toDateString () {
+	log42["Date.prototype.toDateString"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Date.prototype.toDateString"].apply__(this, args);
+}}.toDateString
+Date.prototype.toDateString.prototype !== undefined ? Date.prototype.toDateString.prototype = wrappedFunctions["Date.prototype.toDateString"].prototype : null;
+Object.defineProperty(Date.prototype.toDateString, "length", {value: wrappedFunctions["Date.prototype.toDateString"].length});
+
+wrappedFunctions["Date.prototype.toISOString"] = Date.prototype.toISOString;
+Date.prototype.toISOString = { toISOString () {
+	log42["Date.prototype.toISOString"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Date.prototype.toISOString"].apply__(this, args);
+}}.toISOString
+Date.prototype.toISOString.prototype !== undefined ? Date.prototype.toISOString.prototype = wrappedFunctions["Date.prototype.toISOString"].prototype : null;
+Object.defineProperty(Date.prototype.toISOString, "length", {value: wrappedFunctions["Date.prototype.toISOString"].length});
+
+wrappedFunctions["Date.prototype.toJSON"] = Date.prototype.toJSON;
+Date.prototype.toJSON = { toJSON () {
+	log42["Date.prototype.toJSON"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Date.prototype.toJSON"].apply__(this, args);
+}}.toJSON
+Date.prototype.toJSON.prototype !== undefined ? Date.prototype.toJSON.prototype = wrappedFunctions["Date.prototype.toJSON"].prototype : null;
+Object.defineProperty(Date.prototype.toJSON, "length", {value: wrappedFunctions["Date.prototype.toJSON"].length});
+
+wrappedFunctions["Date.prototype.toLocaleDateString"] = Date.prototype.toLocaleDateString;
+Date.prototype.toLocaleDateString = { toLocaleDateString () {
+	log42["Date.prototype.toLocaleDateString"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Date.prototype.toLocaleDateString"].apply__(this, args);
+}}.toLocaleDateString
+Date.prototype.toLocaleDateString.prototype !== undefined ? Date.prototype.toLocaleDateString.prototype = wrappedFunctions["Date.prototype.toLocaleDateString"].prototype : null;
+Object.defineProperty(Date.prototype.toLocaleDateString, "length", {value: wrappedFunctions["Date.prototype.toLocaleDateString"].length});
+
+wrappedFunctions["Date.prototype.toLocaleString"] = Date.prototype.toLocaleString;
+Date.prototype.toLocaleString = { toLocaleString () {
+	log42["Date.prototype.toLocaleString"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Date.prototype.toLocaleString"].apply__(this, args);
+}}.toLocaleString
+Date.prototype.toLocaleString.prototype !== undefined ? Date.prototype.toLocaleString.prototype = wrappedFunctions["Date.prototype.toLocaleString"].prototype : null;
+Object.defineProperty(Date.prototype.toLocaleString, "length", {value: wrappedFunctions["Date.prototype.toLocaleString"].length});
+
+wrappedFunctions["Date.prototype.toLocaleTimeString"] = Date.prototype.toLocaleTimeString;
+Date.prototype.toLocaleTimeString = { toLocaleTimeString () {
+	log42["Date.prototype.toLocaleTimeString"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Date.prototype.toLocaleTimeString"].apply__(this, args);
+}}.toLocaleTimeString
+Date.prototype.toLocaleTimeString.prototype !== undefined ? Date.prototype.toLocaleTimeString.prototype = wrappedFunctions["Date.prototype.toLocaleTimeString"].prototype : null;
+Object.defineProperty(Date.prototype.toLocaleTimeString, "length", {value: wrappedFunctions["Date.prototype.toLocaleTimeString"].length});
+
+wrappedFunctions["Date.prototype.toString"] = Date.prototype.toString;
+Date.prototype.toString = { toString () {
+	log42["Date.prototype.toString"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Date.prototype.toString"].apply__(this, args);
+}}.toString
+Date.prototype.toString.prototype !== undefined ? Date.prototype.toString.prototype = wrappedFunctions["Date.prototype.toString"].prototype : null;
+Object.defineProperty(Date.prototype.toString, "length", {value: wrappedFunctions["Date.prototype.toString"].length});
+
+wrappedFunctions["Date.prototype.toTimeString"] = Date.prototype.toTimeString;
+Date.prototype.toTimeString = { toTimeString () {
+	log42["Date.prototype.toTimeString"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Date.prototype.toTimeString"].apply__(this, args);
+}}.toTimeString
+Date.prototype.toTimeString.prototype !== undefined ? Date.prototype.toTimeString.prototype = wrappedFunctions["Date.prototype.toTimeString"].prototype : null;
+Object.defineProperty(Date.prototype.toTimeString, "length", {value: wrappedFunctions["Date.prototype.toTimeString"].length});
+
+wrappedFunctions["Date.prototype.toUTCString"] = Date.prototype.toUTCString;
+Date.prototype.toUTCString = { toUTCString () {
+	log42["Date.prototype.toUTCString"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Date.prototype.toUTCString"].apply__(this, args);
+}}.toUTCString
+Date.prototype.toUTCString.prototype !== undefined ? Date.prototype.toUTCString.prototype = wrappedFunctions["Date.prototype.toUTCString"].prototype : null;
+Object.defineProperty(Date.prototype.toUTCString, "length", {value: wrappedFunctions["Date.prototype.toUTCString"].length});
+
+wrappedFunctions["Date.prototype.valueOf"] = Date.prototype.valueOf;
+Date.prototype.valueOf = { valueOf () {
+	log42["Date.prototype.valueOf"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Date.prototype.valueOf"].apply__(this, args);
+}}.valueOf
+Date.prototype.valueOf.prototype !== undefined ? Date.prototype.valueOf.prototype = wrappedFunctions["Date.prototype.valueOf"].prototype : null;
+Object.defineProperty(Date.prototype.valueOf, "length", {value: wrappedFunctions["Date.prototype.valueOf"].length});
+
+wrappedFunctions["String.prototype.charAt"] = String.prototype.charAt;
+String.prototype.charAt = { charAt () {
+	log42["String.prototype.charAt"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["String.prototype.charAt"].apply__(this, args);
+}}.charAt
+String.prototype.charAt.prototype !== undefined ? String.prototype.charAt.prototype = wrappedFunctions["String.prototype.charAt"].prototype : null;
+Object.defineProperty(String.prototype.charAt, "length", {value: wrappedFunctions["String.prototype.charAt"].length});
+
+wrappedFunctions["String.prototype.charCodeAt"] = String.prototype.charCodeAt;
+String.prototype.charCodeAt = { charCodeAt () {
+	log42["String.prototype.charCodeAt"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["String.prototype.charCodeAt"].apply__(this, args);
+}}.charCodeAt
+String.prototype.charCodeAt.prototype !== undefined ? String.prototype.charCodeAt.prototype = wrappedFunctions["String.prototype.charCodeAt"].prototype : null;
+Object.defineProperty(String.prototype.charCodeAt, "length", {value: wrappedFunctions["String.prototype.charCodeAt"].length});
+
+wrappedFunctions["String.prototype.codePointAt"] = String.prototype.codePointAt;
+String.prototype.codePointAt = { codePointAt () {
+	log42["String.prototype.codePointAt"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["String.prototype.codePointAt"].apply__(this, args);
+}}.codePointAt
+String.prototype.codePointAt.prototype !== undefined ? String.prototype.codePointAt.prototype = wrappedFunctions["String.prototype.codePointAt"].prototype : null;
+Object.defineProperty(String.prototype.codePointAt, "length", {value: wrappedFunctions["String.prototype.codePointAt"].length});
+
+wrappedFunctions["String.prototype.concat"] = String.prototype.concat;
+String.prototype.concat = { concat () {
+	log42["String.prototype.concat"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["String.prototype.concat"].apply__(this, args);
+}}.concat
+String.prototype.concat.prototype !== undefined ? String.prototype.concat.prototype = wrappedFunctions["String.prototype.concat"].prototype : null;
+Object.defineProperty(String.prototype.concat, "length", {value: wrappedFunctions["String.prototype.concat"].length});
+
+wrappedFunctions["String.prototype.endsWith"] = String.prototype.endsWith;
+String.prototype.endsWith = { endsWith () {
+	log42["String.prototype.endsWith"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["String.prototype.endsWith"].apply__(this, args);
+}}.endsWith
+String.prototype.endsWith.prototype !== undefined ? String.prototype.endsWith.prototype = wrappedFunctions["String.prototype.endsWith"].prototype : null;
+Object.defineProperty(String.prototype.endsWith, "length", {value: wrappedFunctions["String.prototype.endsWith"].length});
+
+wrappedFunctions["String.prototype.includes"] = String.prototype.includes;
+String.prototype.includes = { includes () {
+	log42["String.prototype.includes"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["String.prototype.includes"].apply__(this, args);
+}}.includes
+String.prototype.includes.prototype !== undefined ? String.prototype.includes.prototype = wrappedFunctions["String.prototype.includes"].prototype : null;
+Object.defineProperty(String.prototype.includes, "length", {value: wrappedFunctions["String.prototype.includes"].length});
+
+wrappedFunctions["String.prototype.indexOf"] = String.prototype.indexOf;
+String.prototype.indexOf = { indexOf () {
+	log42["String.prototype.indexOf"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["String.prototype.indexOf"].apply__(this, args);
+}}.indexOf
+String.prototype.indexOf.prototype !== undefined ? String.prototype.indexOf.prototype = wrappedFunctions["String.prototype.indexOf"].prototype : null;
+Object.defineProperty(String.prototype.indexOf, "length", {value: wrappedFunctions["String.prototype.indexOf"].length});
+
+wrappedFunctions["String.prototype.lastIndexOf"] = String.prototype.lastIndexOf;
+String.prototype.lastIndexOf = { lastIndexOf () {
+	log42["String.prototype.lastIndexOf"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["String.prototype.lastIndexOf"].apply__(this, args);
+}}.lastIndexOf
+String.prototype.lastIndexOf.prototype !== undefined ? String.prototype.lastIndexOf.prototype = wrappedFunctions["String.prototype.lastIndexOf"].prototype : null;
+Object.defineProperty(String.prototype.lastIndexOf, "length", {value: wrappedFunctions["String.prototype.lastIndexOf"].length});
+
+wrappedFunctions["String.prototype.localeCompare"] = String.prototype.localeCompare;
+String.prototype.localeCompare = { localeCompare () {
+	log42["String.prototype.localeCompare"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["String.prototype.localeCompare"].apply__(this, args);
+}}.localeCompare
+String.prototype.localeCompare.prototype !== undefined ? String.prototype.localeCompare.prototype = wrappedFunctions["String.prototype.localeCompare"].prototype : null;
+Object.defineProperty(String.prototype.localeCompare, "length", {value: wrappedFunctions["String.prototype.localeCompare"].length});
+
+wrappedFunctions["String.prototype.match"] = String.prototype.match;
+String.prototype.match = { match () {
+	log42["String.prototype.match"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["String.prototype.match"].apply__(this, args);
+}}.match
+String.prototype.match.prototype !== undefined ? String.prototype.match.prototype = wrappedFunctions["String.prototype.match"].prototype : null;
+Object.defineProperty(String.prototype.match, "length", {value: wrappedFunctions["String.prototype.match"].length});
+
+wrappedFunctions["String.prototype.matchAll"] = String.prototype.matchAll;
+String.prototype.matchAll = { matchAll () {
+	log42["String.prototype.matchAll"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["String.prototype.matchAll"].apply__(this, args);
+}}.matchAll
+String.prototype.matchAll.prototype !== undefined ? String.prototype.matchAll.prototype = wrappedFunctions["String.prototype.matchAll"].prototype : null;
+Object.defineProperty(String.prototype.matchAll, "length", {value: wrappedFunctions["String.prototype.matchAll"].length});
+
+wrappedFunctions["String.prototype.normalize"] = String.prototype.normalize;
+String.prototype.normalize = { normalize () {
+	log42["String.prototype.normalize"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["String.prototype.normalize"].apply__(this, args);
+}}.normalize
+String.prototype.normalize.prototype !== undefined ? String.prototype.normalize.prototype = wrappedFunctions["String.prototype.normalize"].prototype : null;
+Object.defineProperty(String.prototype.normalize, "length", {value: wrappedFunctions["String.prototype.normalize"].length});
+
+wrappedFunctions["String.prototype.padEnd"] = String.prototype.padEnd;
+String.prototype.padEnd = { padEnd () {
+	log42["String.prototype.padEnd"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["String.prototype.padEnd"].apply__(this, args);
+}}.padEnd
+String.prototype.padEnd.prototype !== undefined ? String.prototype.padEnd.prototype = wrappedFunctions["String.prototype.padEnd"].prototype : null;
+Object.defineProperty(String.prototype.padEnd, "length", {value: wrappedFunctions["String.prototype.padEnd"].length});
+
+wrappedFunctions["String.prototype.padStart"] = String.prototype.padStart;
+String.prototype.padStart = { padStart () {
+	log42["String.prototype.padStart"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["String.prototype.padStart"].apply__(this, args);
+}}.padStart
+String.prototype.padStart.prototype !== undefined ? String.prototype.padStart.prototype = wrappedFunctions["String.prototype.padStart"].prototype : null;
+Object.defineProperty(String.prototype.padStart, "length", {value: wrappedFunctions["String.prototype.padStart"].length});
+
+wrappedFunctions["String.prototype.repeat"] = String.prototype.repeat;
+String.prototype.repeat = { repeat () {
+	log42["String.prototype.repeat"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["String.prototype.repeat"].apply__(this, args);
+}}.repeat
+String.prototype.repeat.prototype !== undefined ? String.prototype.repeat.prototype = wrappedFunctions["String.prototype.repeat"].prototype : null;
+Object.defineProperty(String.prototype.repeat, "length", {value: wrappedFunctions["String.prototype.repeat"].length});
+
+wrappedFunctions["String.prototype.replace"] = String.prototype.replace;
+String.prototype.replace = { replace () {
+	log42["String.prototype.replace"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["String.prototype.replace"].apply__(this, args);
+}}.replace
+String.prototype.replace.prototype !== undefined ? String.prototype.replace.prototype = wrappedFunctions["String.prototype.replace"].prototype : null;
+Object.defineProperty(String.prototype.replace, "length", {value: wrappedFunctions["String.prototype.replace"].length});
+
+wrappedFunctions["String.prototype.replaceAll"] = String.prototype.replaceAll;
+String.prototype.replaceAll = { replaceAll () {
+	log42["String.prototype.replaceAll"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["String.prototype.replaceAll"].apply__(this, args);
+}}.replaceAll
+String.prototype.replaceAll.prototype !== undefined ? String.prototype.replaceAll.prototype = wrappedFunctions["String.prototype.replaceAll"].prototype : null;
+Object.defineProperty(String.prototype.replaceAll, "length", {value: wrappedFunctions["String.prototype.replaceAll"].length});
+
+wrappedFunctions["String.prototype.search"] = String.prototype.search;
+String.prototype.search = { search () {
+	log42["String.prototype.search"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["String.prototype.search"].apply__(this, args);
+}}.search
+String.prototype.search.prototype !== undefined ? String.prototype.search.prototype = wrappedFunctions["String.prototype.search"].prototype : null;
+Object.defineProperty(String.prototype.search, "length", {value: wrappedFunctions["String.prototype.search"].length});
+
+wrappedFunctions["String.prototype.slice"] = String.prototype.slice;
+String.prototype.slice = { slice () {
+	log42["String.prototype.slice"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["String.prototype.slice"].apply__(this, args);
+}}.slice
+String.prototype.slice.prototype !== undefined ? String.prototype.slice.prototype = wrappedFunctions["String.prototype.slice"].prototype : null;
+Object.defineProperty(String.prototype.slice, "length", {value: wrappedFunctions["String.prototype.slice"].length});
+
+wrappedFunctions["String.prototype.split"] = String.prototype.split;
+String.prototype.split = { split () {
+	log42["String.prototype.split"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["String.prototype.split"].apply__(this, args);
+}}.split
+String.prototype.split.prototype !== undefined ? String.prototype.split.prototype = wrappedFunctions["String.prototype.split"].prototype : null;
+Object.defineProperty(String.prototype.split, "length", {value: wrappedFunctions["String.prototype.split"].length});
+
+wrappedFunctions["String.prototype.startsWith"] = String.prototype.startsWith;
+String.prototype.startsWith = { startsWith () {
+	log42["String.prototype.startsWith"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["String.prototype.startsWith"].apply__(this, args);
+}}.startsWith
+String.prototype.startsWith.prototype !== undefined ? String.prototype.startsWith.prototype = wrappedFunctions["String.prototype.startsWith"].prototype : null;
+Object.defineProperty(String.prototype.startsWith, "length", {value: wrappedFunctions["String.prototype.startsWith"].length});
+
+wrappedFunctions["String.prototype.substring"] = String.prototype.substring;
+String.prototype.substring = { substring () {
+	log42["String.prototype.substring"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["String.prototype.substring"].apply__(this, args);
+}}.substring
+String.prototype.substring.prototype !== undefined ? String.prototype.substring.prototype = wrappedFunctions["String.prototype.substring"].prototype : null;
+Object.defineProperty(String.prototype.substring, "length", {value: wrappedFunctions["String.prototype.substring"].length});
+
+wrappedFunctions["String.prototype.toLocaleLowerCase"] = String.prototype.toLocaleLowerCase;
+String.prototype.toLocaleLowerCase = { toLocaleLowerCase () {
+	log42["String.prototype.toLocaleLowerCase"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["String.prototype.toLocaleLowerCase"].apply__(this, args);
+}}.toLocaleLowerCase
+String.prototype.toLocaleLowerCase.prototype !== undefined ? String.prototype.toLocaleLowerCase.prototype = wrappedFunctions["String.prototype.toLocaleLowerCase"].prototype : null;
+Object.defineProperty(String.prototype.toLocaleLowerCase, "length", {value: wrappedFunctions["String.prototype.toLocaleLowerCase"].length});
+
+wrappedFunctions["String.prototype.toLocaleUpperCase"] = String.prototype.toLocaleUpperCase;
+String.prototype.toLocaleUpperCase = { toLocaleUpperCase () {
+	log42["String.prototype.toLocaleUpperCase"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["String.prototype.toLocaleUpperCase"].apply__(this, args);
+}}.toLocaleUpperCase
+String.prototype.toLocaleUpperCase.prototype !== undefined ? String.prototype.toLocaleUpperCase.prototype = wrappedFunctions["String.prototype.toLocaleUpperCase"].prototype : null;
+Object.defineProperty(String.prototype.toLocaleUpperCase, "length", {value: wrappedFunctions["String.prototype.toLocaleUpperCase"].length});
+
+wrappedFunctions["String.prototype.toLowerCase"] = String.prototype.toLowerCase;
+String.prototype.toLowerCase = { toLowerCase () {
+	log42["String.prototype.toLowerCase"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["String.prototype.toLowerCase"].apply__(this, args);
+}}.toLowerCase
+String.prototype.toLowerCase.prototype !== undefined ? String.prototype.toLowerCase.prototype = wrappedFunctions["String.prototype.toLowerCase"].prototype : null;
+Object.defineProperty(String.prototype.toLowerCase, "length", {value: wrappedFunctions["String.prototype.toLowerCase"].length});
+
+wrappedFunctions["String.prototype.toString"] = String.prototype.toString;
+String.prototype.toString = { toString () {
+	log42["String.prototype.toString"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["String.prototype.toString"].apply__(this, args);
+}}.toString
+String.prototype.toString.prototype !== undefined ? String.prototype.toString.prototype = wrappedFunctions["String.prototype.toString"].prototype : null;
+Object.defineProperty(String.prototype.toString, "length", {value: wrappedFunctions["String.prototype.toString"].length});
+
+wrappedFunctions["String.prototype.toUpperCase"] = String.prototype.toUpperCase;
+String.prototype.toUpperCase = { toUpperCase () {
+	log42["String.prototype.toUpperCase"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["String.prototype.toUpperCase"].apply__(this, args);
+}}.toUpperCase
+String.prototype.toUpperCase.prototype !== undefined ? String.prototype.toUpperCase.prototype = wrappedFunctions["String.prototype.toUpperCase"].prototype : null;
+Object.defineProperty(String.prototype.toUpperCase, "length", {value: wrappedFunctions["String.prototype.toUpperCase"].length});
+
+wrappedFunctions["String.prototype.trim"] = String.prototype.trim;
+String.prototype.trim = { trim () {
+	log42["String.prototype.trim"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["String.prototype.trim"].apply__(this, args);
+}}.trim
+String.prototype.trim.prototype !== undefined ? String.prototype.trim.prototype = wrappedFunctions["String.prototype.trim"].prototype : null;
+Object.defineProperty(String.prototype.trim, "length", {value: wrappedFunctions["String.prototype.trim"].length});
+
+wrappedFunctions["String.prototype.trimEnd"] = String.prototype.trimEnd;
+String.prototype.trimEnd = { trimEnd () {
+	log42["String.prototype.trimEnd"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["String.prototype.trimEnd"].apply__(this, args);
+}}.trimEnd
+String.prototype.trimEnd.prototype !== undefined ? String.prototype.trimEnd.prototype = wrappedFunctions["String.prototype.trimEnd"].prototype : null;
+Object.defineProperty(String.prototype.trimEnd, "length", {value: wrappedFunctions["String.prototype.trimEnd"].length});
+
+wrappedFunctions["String.prototype.trimStart"] = String.prototype.trimStart;
+String.prototype.trimStart = { trimStart () {
+	log42["String.prototype.trimStart"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["String.prototype.trimStart"].apply__(this, args);
+}}.trimStart
+String.prototype.trimStart.prototype !== undefined ? String.prototype.trimStart.prototype = wrappedFunctions["String.prototype.trimStart"].prototype : null;
+Object.defineProperty(String.prototype.trimStart, "length", {value: wrappedFunctions["String.prototype.trimStart"].length});
+
+wrappedFunctions["String.prototype.valueOf"] = String.prototype.valueOf;
+String.prototype.valueOf = { valueOf () {
+	log42["String.prototype.valueOf"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["String.prototype.valueOf"].apply__(this, args);
+}}.valueOf
+String.prototype.valueOf.prototype !== undefined ? String.prototype.valueOf.prototype = wrappedFunctions["String.prototype.valueOf"].prototype : null;
+Object.defineProperty(String.prototype.valueOf, "length", {value: wrappedFunctions["String.prototype.valueOf"].length});
+
+wrappedFunctions["RegExp.prototype.exec"] = RegExp.prototype.exec;
+RegExp.prototype.exec = { exec () {
+	log42["RegExp.prototype.exec"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["RegExp.prototype.exec"].apply__(this, args);
+}}.exec
+RegExp.prototype.exec.prototype !== undefined ? RegExp.prototype.exec.prototype = wrappedFunctions["RegExp.prototype.exec"].prototype : null;
+Object.defineProperty(RegExp.prototype.exec, "length", {value: wrappedFunctions["RegExp.prototype.exec"].length});
+
+wrappedFunctions["RegExp.prototype.test"] = RegExp.prototype.test;
+RegExp.prototype.test = { test () {
+	log42["RegExp.prototype.test"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["RegExp.prototype.test"].apply__(this, args);
+}}.test
+RegExp.prototype.test.prototype !== undefined ? RegExp.prototype.test.prototype = wrappedFunctions["RegExp.prototype.test"].prototype : null;
+Object.defineProperty(RegExp.prototype.test, "length", {value: wrappedFunctions["RegExp.prototype.test"].length});
+
+wrappedFunctions["RegExp.prototype.toString"] = RegExp.prototype.toString;
+RegExp.prototype.toString = { toString () {
+	log42["RegExp.prototype.toString"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["RegExp.prototype.toString"].apply__(this, args);
+}}.toString
+RegExp.prototype.toString.prototype !== undefined ? RegExp.prototype.toString.prototype = wrappedFunctions["RegExp.prototype.toString"].prototype : null;
+Object.defineProperty(RegExp.prototype.toString, "length", {value: wrappedFunctions["RegExp.prototype.toString"].length});
+
+wrappedFunctions["Array.prototype.concat"] = Array.prototype.concat;
+Array.prototype.concat = { concat () {
+	log42["Array.prototype.concat"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Array.prototype.concat"].apply__(this, args);
+}}.concat
+Array.prototype.concat.prototype !== undefined ? Array.prototype.concat.prototype = wrappedFunctions["Array.prototype.concat"].prototype : null;
+Object.defineProperty(Array.prototype.concat, "length", {value: wrappedFunctions["Array.prototype.concat"].length});
+
+wrappedFunctions["Array.prototype.copyWithin"] = Array.prototype.copyWithin;
+Array.prototype.copyWithin = { copyWithin () {
+	log42["Array.prototype.copyWithin"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Array.prototype.copyWithin"].apply__(this, args);
+}}.copyWithin
+Array.prototype.copyWithin.prototype !== undefined ? Array.prototype.copyWithin.prototype = wrappedFunctions["Array.prototype.copyWithin"].prototype : null;
+Object.defineProperty(Array.prototype.copyWithin, "length", {value: wrappedFunctions["Array.prototype.copyWithin"].length});
+
+wrappedFunctions["Array.prototype.entries"] = Array.prototype.entries;
+Array.prototype.entries = { entries () {
+	log42["Array.prototype.entries"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Array.prototype.entries"].apply__(this, args);
+}}.entries
+Array.prototype.entries.prototype !== undefined ? Array.prototype.entries.prototype = wrappedFunctions["Array.prototype.entries"].prototype : null;
+Object.defineProperty(Array.prototype.entries, "length", {value: wrappedFunctions["Array.prototype.entries"].length});
+
+wrappedFunctions["Array.prototype.every"] = Array.prototype.every;
+Array.prototype.every = { every () {
+	log42["Array.prototype.every"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Array.prototype.every"].apply__(this, args);
+}}.every
+Array.prototype.every.prototype !== undefined ? Array.prototype.every.prototype = wrappedFunctions["Array.prototype.every"].prototype : null;
+Object.defineProperty(Array.prototype.every, "length", {value: wrappedFunctions["Array.prototype.every"].length});
+
+wrappedFunctions["Array.prototype.fill"] = Array.prototype.fill;
+Array.prototype.fill = { fill () {
+	log42["Array.prototype.fill"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Array.prototype.fill"].apply__(this, args);
+}}.fill
+Array.prototype.fill.prototype !== undefined ? Array.prototype.fill.prototype = wrappedFunctions["Array.prototype.fill"].prototype : null;
+Object.defineProperty(Array.prototype.fill, "length", {value: wrappedFunctions["Array.prototype.fill"].length});
+
+wrappedFunctions["Array.prototype.filter"] = Array.prototype.filter;
+Array.prototype.filter = { filter () {
+	log42["Array.prototype.filter"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Array.prototype.filter"].apply__(this, args);
+}}.filter
+Array.prototype.filter.prototype !== undefined ? Array.prototype.filter.prototype = wrappedFunctions["Array.prototype.filter"].prototype : null;
+Object.defineProperty(Array.prototype.filter, "length", {value: wrappedFunctions["Array.prototype.filter"].length});
+
+wrappedFunctions["Array.prototype.find"] = Array.prototype.find;
+Array.prototype.find = { find () {
+	log42["Array.prototype.find"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Array.prototype.find"].apply__(this, args);
+}}.find
+Array.prototype.find.prototype !== undefined ? Array.prototype.find.prototype = wrappedFunctions["Array.prototype.find"].prototype : null;
+Object.defineProperty(Array.prototype.find, "length", {value: wrappedFunctions["Array.prototype.find"].length});
+
+wrappedFunctions["Array.prototype.findIndex"] = Array.prototype.findIndex;
+Array.prototype.findIndex = { findIndex () {
+	log42["Array.prototype.findIndex"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Array.prototype.findIndex"].apply__(this, args);
+}}.findIndex
+Array.prototype.findIndex.prototype !== undefined ? Array.prototype.findIndex.prototype = wrappedFunctions["Array.prototype.findIndex"].prototype : null;
+Object.defineProperty(Array.prototype.findIndex, "length", {value: wrappedFunctions["Array.prototype.findIndex"].length});
+
+wrappedFunctions["Array.prototype.flat"] = Array.prototype.flat;
+Array.prototype.flat = { flat () {
+	log42["Array.prototype.flat"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Array.prototype.flat"].apply__(this, args);
+}}.flat
+Array.prototype.flat.prototype !== undefined ? Array.prototype.flat.prototype = wrappedFunctions["Array.prototype.flat"].prototype : null;
+Object.defineProperty(Array.prototype.flat, "length", {value: wrappedFunctions["Array.prototype.flat"].length});
+
+wrappedFunctions["Array.prototype.flatMap"] = Array.prototype.flatMap;
+Array.prototype.flatMap = { flatMap () {
+	log42["Array.prototype.flatMap"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Array.prototype.flatMap"].apply__(this, args);
+}}.flatMap
+Array.prototype.flatMap.prototype !== undefined ? Array.prototype.flatMap.prototype = wrappedFunctions["Array.prototype.flatMap"].prototype : null;
+Object.defineProperty(Array.prototype.flatMap, "length", {value: wrappedFunctions["Array.prototype.flatMap"].length});
+
+wrappedFunctions["Array.prototype.forEach"] = Array.prototype.forEach;
+Array.prototype.forEach = { forEach () {
+	log42["Array.prototype.forEach"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Array.prototype.forEach"].apply__(this, args);
+}}.forEach
+Array.prototype.forEach.prototype !== undefined ? Array.prototype.forEach.prototype = wrappedFunctions["Array.prototype.forEach"].prototype : null;
+Object.defineProperty(Array.prototype.forEach, "length", {value: wrappedFunctions["Array.prototype.forEach"].length});
+
+wrappedFunctions["Array.prototype.includes"] = Array.prototype.includes;
+Array.prototype.includes = { includes () {
+	log42["Array.prototype.includes"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Array.prototype.includes"].apply__(this, args);
+}}.includes
+Array.prototype.includes.prototype !== undefined ? Array.prototype.includes.prototype = wrappedFunctions["Array.prototype.includes"].prototype : null;
+Object.defineProperty(Array.prototype.includes, "length", {value: wrappedFunctions["Array.prototype.includes"].length});
+
+wrappedFunctions["Array.prototype.indexOf"] = Array.prototype.indexOf;
+Array.prototype.indexOf = { indexOf () {
+	log42["Array.prototype.indexOf"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Array.prototype.indexOf"].apply__(this, args);
+}}.indexOf
+Array.prototype.indexOf.prototype !== undefined ? Array.prototype.indexOf.prototype = wrappedFunctions["Array.prototype.indexOf"].prototype : null;
+Object.defineProperty(Array.prototype.indexOf, "length", {value: wrappedFunctions["Array.prototype.indexOf"].length});
+
+wrappedFunctions["Array.prototype.join"] = Array.prototype.join;
+Array.prototype.join = { join () {
+	log42["Array.prototype.join"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Array.prototype.join"].apply__(this, args);
+}}.join
+Array.prototype.join.prototype !== undefined ? Array.prototype.join.prototype = wrappedFunctions["Array.prototype.join"].prototype : null;
+Object.defineProperty(Array.prototype.join, "length", {value: wrappedFunctions["Array.prototype.join"].length});
+
+wrappedFunctions["Array.prototype.keys"] = Array.prototype.keys;
+Array.prototype.keys = { keys () {
+	log42["Array.prototype.keys"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Array.prototype.keys"].apply__(this, args);
+}}.keys
+Array.prototype.keys.prototype !== undefined ? Array.prototype.keys.prototype = wrappedFunctions["Array.prototype.keys"].prototype : null;
+Object.defineProperty(Array.prototype.keys, "length", {value: wrappedFunctions["Array.prototype.keys"].length});
+
+wrappedFunctions["Array.prototype.lastIndexOf"] = Array.prototype.lastIndexOf;
+Array.prototype.lastIndexOf = { lastIndexOf () {
+	log42["Array.prototype.lastIndexOf"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Array.prototype.lastIndexOf"].apply__(this, args);
+}}.lastIndexOf
+Array.prototype.lastIndexOf.prototype !== undefined ? Array.prototype.lastIndexOf.prototype = wrappedFunctions["Array.prototype.lastIndexOf"].prototype : null;
+Object.defineProperty(Array.prototype.lastIndexOf, "length", {value: wrappedFunctions["Array.prototype.lastIndexOf"].length});
+
+wrappedFunctions["Array.prototype.map"] = Array.prototype.map;
+Array.prototype.map = { map () {
+	log42["Array.prototype.map"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Array.prototype.map"].apply__(this, args);
+}}.map
+Array.prototype.map.prototype !== undefined ? Array.prototype.map.prototype = wrappedFunctions["Array.prototype.map"].prototype : null;
+Object.defineProperty(Array.prototype.map, "length", {value: wrappedFunctions["Array.prototype.map"].length});
+
+wrappedFunctions["Array.prototype.pop"] = Array.prototype.pop;
+Array.prototype.pop = { pop () {
+	log42["Array.prototype.pop"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Array.prototype.pop"].apply__(this, args);
+}}.pop
+Array.prototype.pop.prototype !== undefined ? Array.prototype.pop.prototype = wrappedFunctions["Array.prototype.pop"].prototype : null;
+Object.defineProperty(Array.prototype.pop, "length", {value: wrappedFunctions["Array.prototype.pop"].length});
+
+wrappedFunctions["Array.prototype.push"] = Array.prototype.push;
+Array.prototype.push = { push () {
+	log42["Array.prototype.push"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Array.prototype.push"].apply__(this, args);
+}}.push
+Array.prototype.push.prototype !== undefined ? Array.prototype.push.prototype = wrappedFunctions["Array.prototype.push"].prototype : null;
+Object.defineProperty(Array.prototype.push, "length", {value: wrappedFunctions["Array.prototype.push"].length});
+
+wrappedFunctions["Array.prototype.reduce"] = Array.prototype.reduce;
+Array.prototype.reduce = { reduce () {
+	log42["Array.prototype.reduce"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Array.prototype.reduce"].apply__(this, args);
+}}.reduce
+Array.prototype.reduce.prototype !== undefined ? Array.prototype.reduce.prototype = wrappedFunctions["Array.prototype.reduce"].prototype : null;
+Object.defineProperty(Array.prototype.reduce, "length", {value: wrappedFunctions["Array.prototype.reduce"].length});
+
+wrappedFunctions["Array.prototype.reduceRight"] = Array.prototype.reduceRight;
+Array.prototype.reduceRight = { reduceRight () {
+	log42["Array.prototype.reduceRight"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Array.prototype.reduceRight"].apply__(this, args);
+}}.reduceRight
+Array.prototype.reduceRight.prototype !== undefined ? Array.prototype.reduceRight.prototype = wrappedFunctions["Array.prototype.reduceRight"].prototype : null;
+Object.defineProperty(Array.prototype.reduceRight, "length", {value: wrappedFunctions["Array.prototype.reduceRight"].length});
+
+wrappedFunctions["Array.prototype.reverse"] = Array.prototype.reverse;
+Array.prototype.reverse = { reverse () {
+	log42["Array.prototype.reverse"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Array.prototype.reverse"].apply__(this, args);
+}}.reverse
+Array.prototype.reverse.prototype !== undefined ? Array.prototype.reverse.prototype = wrappedFunctions["Array.prototype.reverse"].prototype : null;
+Object.defineProperty(Array.prototype.reverse, "length", {value: wrappedFunctions["Array.prototype.reverse"].length});
+
+wrappedFunctions["Array.prototype.shift"] = Array.prototype.shift;
+Array.prototype.shift = { shift () {
+	log42["Array.prototype.shift"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Array.prototype.shift"].apply__(this, args);
+}}.shift
+Array.prototype.shift.prototype !== undefined ? Array.prototype.shift.prototype = wrappedFunctions["Array.prototype.shift"].prototype : null;
+Object.defineProperty(Array.prototype.shift, "length", {value: wrappedFunctions["Array.prototype.shift"].length});
+
+wrappedFunctions["Array.prototype.slice"] = Array.prototype.slice;
+Array.prototype.slice = { slice () {
+	log42["Array.prototype.slice"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Array.prototype.slice"].apply__(this, args);
+}}.slice
+Array.prototype.slice.prototype !== undefined ? Array.prototype.slice.prototype = wrappedFunctions["Array.prototype.slice"].prototype : null;
+Object.defineProperty(Array.prototype.slice, "length", {value: wrappedFunctions["Array.prototype.slice"].length});
+
+wrappedFunctions["Array.prototype.some"] = Array.prototype.some;
+Array.prototype.some = { some () {
+	log42["Array.prototype.some"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Array.prototype.some"].apply__(this, args);
+}}.some
+Array.prototype.some.prototype !== undefined ? Array.prototype.some.prototype = wrappedFunctions["Array.prototype.some"].prototype : null;
+Object.defineProperty(Array.prototype.some, "length", {value: wrappedFunctions["Array.prototype.some"].length});
+
+wrappedFunctions["Array.prototype.sort"] = Array.prototype.sort;
+Array.prototype.sort = { sort () {
+	log42["Array.prototype.sort"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Array.prototype.sort"].apply__(this, args);
+}}.sort
+Array.prototype.sort.prototype !== undefined ? Array.prototype.sort.prototype = wrappedFunctions["Array.prototype.sort"].prototype : null;
+Object.defineProperty(Array.prototype.sort, "length", {value: wrappedFunctions["Array.prototype.sort"].length});
+
+wrappedFunctions["Array.prototype.splice"] = Array.prototype.splice;
+Array.prototype.splice = { splice () {
+	log42["Array.prototype.splice"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Array.prototype.splice"].apply__(this, args);
+}}.splice
+Array.prototype.splice.prototype !== undefined ? Array.prototype.splice.prototype = wrappedFunctions["Array.prototype.splice"].prototype : null;
+Object.defineProperty(Array.prototype.splice, "length", {value: wrappedFunctions["Array.prototype.splice"].length});
+
+wrappedFunctions["Array.prototype.toLocaleString"] = Array.prototype.toLocaleString;
+Array.prototype.toLocaleString = { toLocaleString () {
+	log42["Array.prototype.toLocaleString"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Array.prototype.toLocaleString"].apply__(this, args);
+}}.toLocaleString
+Array.prototype.toLocaleString.prototype !== undefined ? Array.prototype.toLocaleString.prototype = wrappedFunctions["Array.prototype.toLocaleString"].prototype : null;
+Object.defineProperty(Array.prototype.toLocaleString, "length", {value: wrappedFunctions["Array.prototype.toLocaleString"].length});
+
+wrappedFunctions["Array.prototype.toString"] = Array.prototype.toString;
+Array.prototype.toString = { toString () {
+	log42["Array.prototype.toString"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Array.prototype.toString"].apply__(this, args);
+}}.toString
+Array.prototype.toString.prototype !== undefined ? Array.prototype.toString.prototype = wrappedFunctions["Array.prototype.toString"].prototype : null;
+Object.defineProperty(Array.prototype.toString, "length", {value: wrappedFunctions["Array.prototype.toString"].length});
+
+wrappedFunctions["Array.prototype.unshift"] = Array.prototype.unshift;
+Array.prototype.unshift = { unshift () {
+	log42["Array.prototype.unshift"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Array.prototype.unshift"].apply__(this, args);
+}}.unshift
+Array.prototype.unshift.prototype !== undefined ? Array.prototype.unshift.prototype = wrappedFunctions["Array.prototype.unshift"].prototype : null;
+Object.defineProperty(Array.prototype.unshift, "length", {value: wrappedFunctions["Array.prototype.unshift"].length});
+
+wrappedFunctions["Array.prototype.values"] = Array.prototype.values;
+Array.prototype.values = { values () {
+	log42["Array.prototype.values"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Array.prototype.values"].apply__(this, args);
+}}.values
+Array.prototype.values.prototype !== undefined ? Array.prototype.values.prototype = wrappedFunctions["Array.prototype.values"].prototype : null;
+Object.defineProperty(Array.prototype.values, "length", {value: wrappedFunctions["Array.prototype.values"].length});
+
+wrappedFunctions["TypedArray.prototype.copyWithin"] = Int8Array.prototype.copyWithin;
+generalTypedArrayPrototype.copyWithin = { copyWithin () {
+	log42["TypedArray.prototype.copyWithin"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["TypedArray.prototype.copyWithin"].apply__(this, args);
+}}.copyWithin
+generalTypedArrayPrototype.copyWithin.prototype !== undefined ? Int8Array.prototype.copyWithin.prototype = wrappedFunctions["TypedArray.prototype.copyWithin"].prototype : null;
+Object.defineProperty(generalTypedArrayPrototype.copyWithin, "length", {value: wrappedFunctions["TypedArray.prototype.copyWithin"].length});
+
+wrappedFunctions["TypedArray.prototype.entries"] = Int8Array.prototype.entries;
+generalTypedArrayPrototype.entries = { entries () {
+	log42["TypedArray.prototype.entries"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["TypedArray.prototype.entries"].apply__(this, args);
+}}.entries
+generalTypedArrayPrototype.entries.prototype !== undefined ? Int8Array.prototype.entries.prototype = wrappedFunctions["TypedArray.prototype.entries"].prototype : null;
+Object.defineProperty(generalTypedArrayPrototype.entries, "length", {value: wrappedFunctions["TypedArray.prototype.entries"].length});
+
+wrappedFunctions["TypedArray.prototype.every"] = Int8Array.prototype.every;
+generalTypedArrayPrototype.every = { every () {
+	log42["TypedArray.prototype.every"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["TypedArray.prototype.every"].apply__(this, args);
+}}.every
+generalTypedArrayPrototype.every.prototype !== undefined ? Int8Array.prototype.every.prototype = wrappedFunctions["TypedArray.prototype.every"].prototype : null;
+Object.defineProperty(generalTypedArrayPrototype.every, "length", {value: wrappedFunctions["TypedArray.prototype.every"].length});
+
+wrappedFunctions["TypedArray.prototype.fill"] = Int8Array.prototype.fill;
+generalTypedArrayPrototype.fill = { fill () {
+	log42["TypedArray.prototype.fill"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["TypedArray.prototype.fill"].apply__(this, args);
+}}.fill
+generalTypedArrayPrototype.fill.prototype !== undefined ? Int8Array.prototype.fill.prototype = wrappedFunctions["TypedArray.prototype.fill"].prototype : null;
+Object.defineProperty(generalTypedArrayPrototype.fill, "length", {value: wrappedFunctions["TypedArray.prototype.fill"].length});
+
+wrappedFunctions["TypedArray.prototype.filter"] = Int8Array.prototype.filter;
+generalTypedArrayPrototype.filter = { filter () {
+	log42["TypedArray.prototype.filter"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["TypedArray.prototype.filter"].apply__(this, args);
+}}.filter
+generalTypedArrayPrototype.filter.prototype !== undefined ? Int8Array.prototype.filter.prototype = wrappedFunctions["TypedArray.prototype.filter"].prototype : null;
+Object.defineProperty(generalTypedArrayPrototype.filter, "length", {value: wrappedFunctions["TypedArray.prototype.filter"].length});
+
+wrappedFunctions["TypedArray.prototype.find"] = Int8Array.prototype.find;
+generalTypedArrayPrototype.find = { find () {
+	log42["TypedArray.prototype.find"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["TypedArray.prototype.find"].apply__(this, args);
+}}.find
+generalTypedArrayPrototype.find.prototype !== undefined ? Int8Array.prototype.find.prototype = wrappedFunctions["TypedArray.prototype.find"].prototype : null;
+Object.defineProperty(generalTypedArrayPrototype.find, "length", {value: wrappedFunctions["TypedArray.prototype.find"].length});
+
+wrappedFunctions["TypedArray.prototype.findIndex"] = Int8Array.prototype.findIndex;
+generalTypedArrayPrototype.findIndex = { findIndex () {
+	log42["TypedArray.prototype.findIndex"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["TypedArray.prototype.findIndex"].apply__(this, args);
+}}.findIndex
+generalTypedArrayPrototype.findIndex.prototype !== undefined ? Int8Array.prototype.findIndex.prototype = wrappedFunctions["TypedArray.prototype.findIndex"].prototype : null;
+Object.defineProperty(generalTypedArrayPrototype.findIndex, "length", {value: wrappedFunctions["TypedArray.prototype.findIndex"].length});
+
+wrappedFunctions["TypedArray.prototype.forEach"] = Int8Array.prototype.forEach;
+generalTypedArrayPrototype.forEach = { forEach () {
+	log42["TypedArray.prototype.forEach"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["TypedArray.prototype.forEach"].apply__(this, args);
+}}.forEach
+generalTypedArrayPrototype.forEach.prototype !== undefined ? Int8Array.prototype.forEach.prototype = wrappedFunctions["TypedArray.prototype.forEach"].prototype : null;
+Object.defineProperty(generalTypedArrayPrototype.forEach, "length", {value: wrappedFunctions["TypedArray.prototype.forEach"].length});
+
+wrappedFunctions["TypedArray.prototype.includes"] = Int8Array.prototype.includes;
+generalTypedArrayPrototype.includes = { includes () {
+	log42["TypedArray.prototype.includes"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["TypedArray.prototype.includes"].apply__(this, args);
+}}.includes
+generalTypedArrayPrototype.includes.prototype !== undefined ? Int8Array.prototype.includes.prototype = wrappedFunctions["TypedArray.prototype.includes"].prototype : null;
+Object.defineProperty(generalTypedArrayPrototype.includes, "length", {value: wrappedFunctions["TypedArray.prototype.includes"].length});
+
+wrappedFunctions["TypedArray.prototype.indexOf"] = Int8Array.prototype.indexOf;
+generalTypedArrayPrototype.indexOf = { indexOf () {
+	log42["TypedArray.prototype.indexOf"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["TypedArray.prototype.indexOf"].apply__(this, args);
+}}.indexOf
+generalTypedArrayPrototype.indexOf.prototype !== undefined ? Int8Array.prototype.indexOf.prototype = wrappedFunctions["TypedArray.prototype.indexOf"].prototype : null;
+Object.defineProperty(generalTypedArrayPrototype.indexOf, "length", {value: wrappedFunctions["TypedArray.prototype.indexOf"].length});
+
+wrappedFunctions["TypedArray.prototype.join"] = Int8Array.prototype.join;
+generalTypedArrayPrototype.join = { join () {
+	log42["TypedArray.prototype.join"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["TypedArray.prototype.join"].apply__(this, args);
+}}.join
+generalTypedArrayPrototype.join.prototype !== undefined ? Int8Array.prototype.join.prototype = wrappedFunctions["TypedArray.prototype.join"].prototype : null;
+Object.defineProperty(generalTypedArrayPrototype.join, "length", {value: wrappedFunctions["TypedArray.prototype.join"].length});
+
+wrappedFunctions["TypedArray.prototype.keys"] = Int8Array.prototype.keys;
+generalTypedArrayPrototype.keys = { keys () {
+	log42["TypedArray.prototype.keys"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["TypedArray.prototype.keys"].apply__(this, args);
+}}.keys
+generalTypedArrayPrototype.keys.prototype !== undefined ? Int8Array.prototype.keys.prototype = wrappedFunctions["TypedArray.prototype.keys"].prototype : null;
+Object.defineProperty(generalTypedArrayPrototype.keys, "length", {value: wrappedFunctions["TypedArray.prototype.keys"].length});
+
+wrappedFunctions["TypedArray.prototype.lastIndexOf"] = Int8Array.prototype.lastIndexOf;
+generalTypedArrayPrototype.lastIndexOf = { lastIndexOf () {
+	log42["TypedArray.prototype.lastIndexOf"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["TypedArray.prototype.lastIndexOf"].apply__(this, args);
+}}.lastIndexOf
+generalTypedArrayPrototype.lastIndexOf.prototype !== undefined ? Int8Array.prototype.lastIndexOf.prototype = wrappedFunctions["TypedArray.prototype.lastIndexOf"].prototype : null;
+Object.defineProperty(generalTypedArrayPrototype.lastIndexOf, "length", {value: wrappedFunctions["TypedArray.prototype.lastIndexOf"].length});
+
+wrappedFunctions["TypedArray.prototype.map"] = Int8Array.prototype.map;
+generalTypedArrayPrototype.map = { map () {
+	log42["TypedArray.prototype.map"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["TypedArray.prototype.map"].apply__(this, args);
+}}.map
+generalTypedArrayPrototype.map.prototype !== undefined ? Int8Array.prototype.map.prototype = wrappedFunctions["TypedArray.prototype.map"].prototype : null;
+Object.defineProperty(generalTypedArrayPrototype.map, "length", {value: wrappedFunctions["TypedArray.prototype.map"].length});
+
+wrappedFunctions["TypedArray.prototype.reduce"] = Int8Array.prototype.reduce;
+generalTypedArrayPrototype.reduce = { reduce () {
+	log42["TypedArray.prototype.reduce"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["TypedArray.prototype.reduce"].apply__(this, args);
+}}.reduce
+generalTypedArrayPrototype.reduce.prototype !== undefined ? Int8Array.prototype.reduce.prototype = wrappedFunctions["TypedArray.prototype.reduce"].prototype : null;
+Object.defineProperty(generalTypedArrayPrototype.reduce, "length", {value: wrappedFunctions["TypedArray.prototype.reduce"].length});
+
+wrappedFunctions["TypedArray.prototype.reduceRight"] = Int8Array.prototype.reduceRight;
+generalTypedArrayPrototype.reduceRight = { reduceRight () {
+	log42["TypedArray.prototype.reduceRight"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["TypedArray.prototype.reduceRight"].apply__(this, args);
+}}.reduceRight
+generalTypedArrayPrototype.reduceRight.prototype !== undefined ? Int8Array.prototype.reduceRight.prototype = wrappedFunctions["TypedArray.prototype.reduceRight"].prototype : null;
+Object.defineProperty(generalTypedArrayPrototype.reduceRight, "length", {value: wrappedFunctions["TypedArray.prototype.reduceRight"].length});
+
+wrappedFunctions["TypedArray.prototype.reverse"] = Int8Array.prototype.reverse;
+generalTypedArrayPrototype.reverse = { reverse () {
+	log42["TypedArray.prototype.reverse"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["TypedArray.prototype.reverse"].apply__(this, args);
+}}.reverse
+generalTypedArrayPrototype.reverse.prototype !== undefined ? Int8Array.prototype.reverse.prototype = wrappedFunctions["TypedArray.prototype.reverse"].prototype : null;
+Object.defineProperty(generalTypedArrayPrototype.reverse, "length", {value: wrappedFunctions["TypedArray.prototype.reverse"].length});
+
+wrappedFunctions["TypedArray.prototype.set"] = Int8Array.prototype.set;
+generalTypedArrayPrototype.set = { set () {
+	log42["TypedArray.prototype.set"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["TypedArray.prototype.set"].apply__(this, args);
+}}.set
+generalTypedArrayPrototype.set.prototype !== undefined ? Int8Array.prototype.set.prototype = wrappedFunctions["TypedArray.prototype.set"].prototype : null;
+Object.defineProperty(generalTypedArrayPrototype.set, "length", {value: wrappedFunctions["TypedArray.prototype.set"].length});
+
+wrappedFunctions["TypedArray.prototype.slice"] = Int8Array.prototype.slice;
+generalTypedArrayPrototype.slice = { slice () {
+	log42["TypedArray.prototype.slice"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["TypedArray.prototype.slice"].apply__(this, args);
+}}.slice
+generalTypedArrayPrototype.slice.prototype !== undefined ? Int8Array.prototype.slice.prototype = wrappedFunctions["TypedArray.prototype.slice"].prototype : null;
+Object.defineProperty(generalTypedArrayPrototype.slice, "length", {value: wrappedFunctions["TypedArray.prototype.slice"].length});
+
+wrappedFunctions["TypedArray.prototype.some"] = Int8Array.prototype.some;
+generalTypedArrayPrototype.some = { some () {
+	log42["TypedArray.prototype.some"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["TypedArray.prototype.some"].apply__(this, args);
+}}.some
+generalTypedArrayPrototype.some.prototype !== undefined ? Int8Array.prototype.some.prototype = wrappedFunctions["TypedArray.prototype.some"].prototype : null;
+Object.defineProperty(generalTypedArrayPrototype.some, "length", {value: wrappedFunctions["TypedArray.prototype.some"].length});
+
+wrappedFunctions["TypedArray.prototype.sort"] = Int8Array.prototype.sort;
+generalTypedArrayPrototype.sort = { sort () {
+	log42["TypedArray.prototype.sort"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["TypedArray.prototype.sort"].apply__(this, args);
+}}.sort
+generalTypedArrayPrototype.sort.prototype !== undefined ? Int8Array.prototype.sort.prototype = wrappedFunctions["TypedArray.prototype.sort"].prototype : null;
+Object.defineProperty(generalTypedArrayPrototype.sort, "length", {value: wrappedFunctions["TypedArray.prototype.sort"].length});
+
+wrappedFunctions["TypedArray.prototype.subarray"] = Int8Array.prototype.subarray;
+generalTypedArrayPrototype.subarray = { subarray () {
+	log42["TypedArray.prototype.subarray"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["TypedArray.prototype.subarray"].apply__(this, args);
+}}.subarray
+generalTypedArrayPrototype.subarray.prototype !== undefined ? Int8Array.prototype.subarray.prototype = wrappedFunctions["TypedArray.prototype.subarray"].prototype : null;
+Object.defineProperty(generalTypedArrayPrototype.subarray, "length", {value: wrappedFunctions["TypedArray.prototype.subarray"].length});
+
+wrappedFunctions["TypedArray.prototype.toLocaleString"] = Int8Array.prototype.toLocaleString;
+generalTypedArrayPrototype.toLocaleString = { toLocaleString () {
+	log42["TypedArray.prototype.toLocaleString"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["TypedArray.prototype.toLocaleString"].apply__(this, args);
+}}.toLocaleString
+generalTypedArrayPrototype.toLocaleString.prototype !== undefined ? Int8Array.prototype.toLocaleString.prototype = wrappedFunctions["TypedArray.prototype.toLocaleString"].prototype : null;
+Object.defineProperty(generalTypedArrayPrototype.toLocaleString, "length", {value: wrappedFunctions["TypedArray.prototype.toLocaleString"].length});
+
+wrappedFunctions["TypedArray.prototype.toString"] = Int8Array.prototype.toString;
+generalTypedArrayPrototype.toString = { toString () {
+	log42["TypedArray.prototype.toString"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["TypedArray.prototype.toString"].apply__(this, args);
+}}.toString
+generalTypedArrayPrototype.toString.prototype !== undefined ? Int8Array.prototype.toString.prototype = wrappedFunctions["TypedArray.prototype.toString"].prototype : null;
+Object.defineProperty(generalTypedArrayPrototype.toString, "length", {value: wrappedFunctions["TypedArray.prototype.toString"].length});
+
+wrappedFunctions["TypedArray.prototype.values"] = Int8Array.prototype.values;
+generalTypedArrayPrototype.values = { values () {
+	log42["TypedArray.prototype.values"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["TypedArray.prototype.values"].apply__(this, args);
+}}.values
+generalTypedArrayPrototype.values.prototype !== undefined ? Int8Array.prototype.values.prototype = wrappedFunctions["TypedArray.prototype.values"].prototype : null;
+Object.defineProperty(generalTypedArrayPrototype.values, "length", {value: wrappedFunctions["TypedArray.prototype.values"].length});
+
+wrappedFunctions["Map.prototype.clear"] = Map.prototype.clear;
+Map.prototype.clear = { clear () {
+	log42["Map.prototype.clear"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Map.prototype.clear"].apply__(this, args);
+}}.clear
+Map.prototype.clear.prototype !== undefined ? Map.prototype.clear.prototype = wrappedFunctions["Map.prototype.clear"].prototype : null;
+Object.defineProperty(Map.prototype.clear, "length", {value: wrappedFunctions["Map.prototype.clear"].length});
+
+wrappedFunctions["Map.prototype.delete"] = Map.prototype.delete;
+Map.prototype.delete = { delete () {
+	log42["Map.prototype.delete"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Map.prototype.delete"].apply__(this, args);
+}}.delete
+Map.prototype.delete.prototype !== undefined ? Map.prototype.delete.prototype = wrappedFunctions["Map.prototype.delete"].prototype : null;
+Object.defineProperty(Map.prototype.delete, "length", {value: wrappedFunctions["Map.prototype.delete"].length});
+
+wrappedFunctions["Map.prototype.entries"] = Map.prototype.entries;
+Map.prototype.entries = { entries () {
+	log42["Map.prototype.entries"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Map.prototype.entries"].apply__(this, args);
+}}.entries
+Map.prototype.entries.prototype !== undefined ? Map.prototype.entries.prototype = wrappedFunctions["Map.prototype.entries"].prototype : null;
+Object.defineProperty(Map.prototype.entries, "length", {value: wrappedFunctions["Map.prototype.entries"].length});
+
+wrappedFunctions["Map.prototype.forEach"] = Map.prototype.forEach;
+Map.prototype.forEach = { forEach () {
+	log42["Map.prototype.forEach"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Map.prototype.forEach"].apply__(this, args);
+}}.forEach
+Map.prototype.forEach.prototype !== undefined ? Map.prototype.forEach.prototype = wrappedFunctions["Map.prototype.forEach"].prototype : null;
+Object.defineProperty(Map.prototype.forEach, "length", {value: wrappedFunctions["Map.prototype.forEach"].length});
+
+wrappedFunctions["Map.prototype.get"] = Map.prototype.get;
+Map.prototype.get = { get () {
+	log42["Map.prototype.get"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Map.prototype.get"].apply__(this, args);
+}}.get
+Map.prototype.get.prototype !== undefined ? Map.prototype.get.prototype = wrappedFunctions["Map.prototype.get"].prototype : null;
+Object.defineProperty(Map.prototype.get, "length", {value: wrappedFunctions["Map.prototype.get"].length});
+
+wrappedFunctions["Map.prototype.has"] = Map.prototype.has;
+Map.prototype.has = { has () {
+	log42["Map.prototype.has"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Map.prototype.has"].apply__(this, args);
+}}.has
+Map.prototype.has.prototype !== undefined ? Map.prototype.has.prototype = wrappedFunctions["Map.prototype.has"].prototype : null;
+Object.defineProperty(Map.prototype.has, "length", {value: wrappedFunctions["Map.prototype.has"].length});
+
+wrappedFunctions["Map.prototype.keys"] = Map.prototype.keys;
+Map.prototype.keys = { keys () {
+	log42["Map.prototype.keys"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Map.prototype.keys"].apply__(this, args);
+}}.keys
+Map.prototype.keys.prototype !== undefined ? Map.prototype.keys.prototype = wrappedFunctions["Map.prototype.keys"].prototype : null;
+Object.defineProperty(Map.prototype.keys, "length", {value: wrappedFunctions["Map.prototype.keys"].length});
+
+wrappedFunctions["Map.prototype.set"] = Map.prototype.set;
+Map.prototype.set = { set () {
+	log42["Map.prototype.set"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Map.prototype.set"].apply__(this, args);
+}}.set
+Map.prototype.set.prototype !== undefined ? Map.prototype.set.prototype = wrappedFunctions["Map.prototype.set"].prototype : null;
+Object.defineProperty(Map.prototype.set, "length", {value: wrappedFunctions["Map.prototype.set"].length});
+
+wrappedFunctions["Map.prototype.values"] = Map.prototype.values;
+Map.prototype.values = { values () {
+	log42["Map.prototype.values"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Map.prototype.values"].apply__(this, args);
+}}.values
+Map.prototype.values.prototype !== undefined ? Map.prototype.values.prototype = wrappedFunctions["Map.prototype.values"].prototype : null;
+Object.defineProperty(Map.prototype.values, "length", {value: wrappedFunctions["Map.prototype.values"].length});
+
+wrappedFunctions["Set.prototype.add"] = Set.prototype.add;
+Set.prototype.add = { add () {
+	log42["Set.prototype.add"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Set.prototype.add"].apply__(this, args);
+}}.add
+Set.prototype.add.prototype !== undefined ? Set.prototype.add.prototype = wrappedFunctions["Set.prototype.add"].prototype : null;
+Object.defineProperty(Set.prototype.add, "length", {value: wrappedFunctions["Set.prototype.add"].length});
+
+wrappedFunctions["Set.prototype.clear"] = Set.prototype.clear;
+Set.prototype.clear = { clear () {
+	log42["Set.prototype.clear"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Set.prototype.clear"].apply__(this, args);
+}}.clear
+Set.prototype.clear.prototype !== undefined ? Set.prototype.clear.prototype = wrappedFunctions["Set.prototype.clear"].prototype : null;
+Object.defineProperty(Set.prototype.clear, "length", {value: wrappedFunctions["Set.prototype.clear"].length});
+
+wrappedFunctions["Set.prototype.delete"] = Set.prototype.delete;
+Set.prototype.delete = { delete () {
+	log42["Set.prototype.delete"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Set.prototype.delete"].apply__(this, args);
+}}.delete
+Set.prototype.delete.prototype !== undefined ? Set.prototype.delete.prototype = wrappedFunctions["Set.prototype.delete"].prototype : null;
+Object.defineProperty(Set.prototype.delete, "length", {value: wrappedFunctions["Set.prototype.delete"].length});
+
+wrappedFunctions["Set.prototype.entries"] = Set.prototype.entries;
+Set.prototype.entries = { entries () {
+	log42["Set.prototype.entries"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Set.prototype.entries"].apply__(this, args);
+}}.entries
+Set.prototype.entries.prototype !== undefined ? Set.prototype.entries.prototype = wrappedFunctions["Set.prototype.entries"].prototype : null;
+Object.defineProperty(Set.prototype.entries, "length", {value: wrappedFunctions["Set.prototype.entries"].length});
+
+wrappedFunctions["Set.prototype.forEach"] = Set.prototype.forEach;
+Set.prototype.forEach = { forEach () {
+	log42["Set.prototype.forEach"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Set.prototype.forEach"].apply__(this, args);
+}}.forEach
+Set.prototype.forEach.prototype !== undefined ? Set.prototype.forEach.prototype = wrappedFunctions["Set.prototype.forEach"].prototype : null;
+Object.defineProperty(Set.prototype.forEach, "length", {value: wrappedFunctions["Set.prototype.forEach"].length});
+
+wrappedFunctions["Set.prototype.has"] = Set.prototype.has;
+Set.prototype.has = { has () {
+	log42["Set.prototype.has"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Set.prototype.has"].apply__(this, args);
+}}.has
+Set.prototype.has.prototype !== undefined ? Set.prototype.has.prototype = wrappedFunctions["Set.prototype.has"].prototype : null;
+Object.defineProperty(Set.prototype.has, "length", {value: wrappedFunctions["Set.prototype.has"].length});
+
+wrappedFunctions["Set.prototype.keys"] = Set.prototype.keys;
+Set.prototype.keys = { keys () {
+	log42["Set.prototype.keys"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Set.prototype.keys"].apply__(this, args);
+}}.keys
+Set.prototype.keys.prototype !== undefined ? Set.prototype.keys.prototype = wrappedFunctions["Set.prototype.keys"].prototype : null;
+Object.defineProperty(Set.prototype.keys, "length", {value: wrappedFunctions["Set.prototype.keys"].length});
+
+wrappedFunctions["Set.prototype.values"] = Set.prototype.values;
+Set.prototype.values = { values () {
+	log42["Set.prototype.values"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Set.prototype.values"].apply__(this, args);
+}}.values
+Set.prototype.values.prototype !== undefined ? Set.prototype.values.prototype = wrappedFunctions["Set.prototype.values"].prototype : null;
+Object.defineProperty(Set.prototype.values, "length", {value: wrappedFunctions["Set.prototype.values"].length});
+
+wrappedFunctions["WeakMap.prototype.delete"] = WeakMap.prototype.delete;
+WeakMap.prototype.delete = { delete () {
+	log42["WeakMap.prototype.delete"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["WeakMap.prototype.delete"].apply__(this, args);
+}}.delete
+WeakMap.prototype.delete.prototype !== undefined ? WeakMap.prototype.delete.prototype = wrappedFunctions["WeakMap.prototype.delete"].prototype : null;
+Object.defineProperty(WeakMap.prototype.delete, "length", {value: wrappedFunctions["WeakMap.prototype.delete"].length});
+
+wrappedFunctions["WeakMap.prototype.get"] = WeakMap.prototype.get;
+WeakMap.prototype.get = { get () {
+	log42["WeakMap.prototype.get"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["WeakMap.prototype.get"].apply__(this, args);
+}}.get
+WeakMap.prototype.get.prototype !== undefined ? WeakMap.prototype.get.prototype = wrappedFunctions["WeakMap.prototype.get"].prototype : null;
+Object.defineProperty(WeakMap.prototype.get, "length", {value: wrappedFunctions["WeakMap.prototype.get"].length});
+
+wrappedFunctions["WeakMap.prototype.has"] = WeakMap.prototype.has;
+WeakMap.prototype.has = { has () {
+	log42["WeakMap.prototype.has"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["WeakMap.prototype.has"].apply__(this, args);
+}}.has
+WeakMap.prototype.has.prototype !== undefined ? WeakMap.prototype.has.prototype = wrappedFunctions["WeakMap.prototype.has"].prototype : null;
+Object.defineProperty(WeakMap.prototype.has, "length", {value: wrappedFunctions["WeakMap.prototype.has"].length});
+
+wrappedFunctions["WeakMap.prototype.set"] = WeakMap.prototype.set;
+WeakMap.prototype.set = { set () {
+	log42["WeakMap.prototype.set"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["WeakMap.prototype.set"].apply__(this, args);
+}}.set
+WeakMap.prototype.set.prototype !== undefined ? WeakMap.prototype.set.prototype = wrappedFunctions["WeakMap.prototype.set"].prototype : null;
+Object.defineProperty(WeakMap.prototype.set, "length", {value: wrappedFunctions["WeakMap.prototype.set"].length});
+
+wrappedFunctions["WeakSet.prototype.add"] = WeakSet.prototype.add;
+WeakSet.prototype.add = { add () {
+	log42["WeakSet.prototype.add"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["WeakSet.prototype.add"].apply__(this, args);
+}}.add
+WeakSet.prototype.add.prototype !== undefined ? WeakSet.prototype.add.prototype = wrappedFunctions["WeakSet.prototype.add"].prototype : null;
+Object.defineProperty(WeakSet.prototype.add, "length", {value: wrappedFunctions["WeakSet.prototype.add"].length});
+
+wrappedFunctions["WeakSet.prototype.delete"] = WeakSet.prototype.delete;
+WeakSet.prototype.delete = { delete () {
+	log42["WeakSet.prototype.delete"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["WeakSet.prototype.delete"].apply__(this, args);
+}}.delete
+WeakSet.prototype.delete.prototype !== undefined ? WeakSet.prototype.delete.prototype = wrappedFunctions["WeakSet.prototype.delete"].prototype : null;
+Object.defineProperty(WeakSet.prototype.delete, "length", {value: wrappedFunctions["WeakSet.prototype.delete"].length});
+
+wrappedFunctions["WeakSet.prototype.has"] = WeakSet.prototype.has;
+WeakSet.prototype.has = { has () {
+	log42["WeakSet.prototype.has"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["WeakSet.prototype.has"].apply__(this, args);
+}}.has
+WeakSet.prototype.has.prototype !== undefined ? WeakSet.prototype.has.prototype = wrappedFunctions["WeakSet.prototype.has"].prototype : null;
+Object.defineProperty(WeakSet.prototype.has, "length", {value: wrappedFunctions["WeakSet.prototype.has"].length});
+
+wrappedFunctions["ArrayBuffer.prototype.slice"] = ArrayBuffer.prototype.slice;
+ArrayBuffer.prototype.slice = { slice () {
+	log42["ArrayBuffer.prototype.slice"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["ArrayBuffer.prototype.slice"].apply__(this, args);
+}}.slice
+ArrayBuffer.prototype.slice.prototype !== undefined ? ArrayBuffer.prototype.slice.prototype = wrappedFunctions["ArrayBuffer.prototype.slice"].prototype : null;
+Object.defineProperty(ArrayBuffer.prototype.slice, "length", {value: wrappedFunctions["ArrayBuffer.prototype.slice"].length});
+
+wrappedFunctions["SharedArrayBuffer.prototype.slice"] = SharedArrayBuffer.prototype.slice;
+SharedArrayBuffer.prototype.slice = { slice () {
+	log42["SharedArrayBuffer.prototype.slice"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["SharedArrayBuffer.prototype.slice"].apply__(this, args);
+}}.slice
+SharedArrayBuffer.prototype.slice.prototype !== undefined ? SharedArrayBuffer.prototype.slice.prototype = wrappedFunctions["SharedArrayBuffer.prototype.slice"].prototype : null;
+Object.defineProperty(SharedArrayBuffer.prototype.slice, "length", {value: wrappedFunctions["SharedArrayBuffer.prototype.slice"].length});
+
+wrappedFunctions["DataView.prototype.getBigInt64"] = DataView.prototype.getBigInt64;
+DataView.prototype.getBigInt64 = { getBigInt64 () {
+	log42["DataView.prototype.getBigInt64"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["DataView.prototype.getBigInt64"].apply__(this, args);
+}}.getBigInt64
+DataView.prototype.getBigInt64.prototype !== undefined ? DataView.prototype.getBigInt64.prototype = wrappedFunctions["DataView.prototype.getBigInt64"].prototype : null;
+Object.defineProperty(DataView.prototype.getBigInt64, "length", {value: wrappedFunctions["DataView.prototype.getBigInt64"].length});
+
+wrappedFunctions["DataView.prototype.getBigUint64"] = DataView.prototype.getBigUint64;
+DataView.prototype.getBigUint64 = { getBigUint64 () {
+	log42["DataView.prototype.getBigUint64"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["DataView.prototype.getBigUint64"].apply__(this, args);
+}}.getBigUint64
+DataView.prototype.getBigUint64.prototype !== undefined ? DataView.prototype.getBigUint64.prototype = wrappedFunctions["DataView.prototype.getBigUint64"].prototype : null;
+Object.defineProperty(DataView.prototype.getBigUint64, "length", {value: wrappedFunctions["DataView.prototype.getBigUint64"].length});
+
+wrappedFunctions["DataView.prototype.getFloat32"] = DataView.prototype.getFloat32;
+DataView.prototype.getFloat32 = { getFloat32 () {
+	log42["DataView.prototype.getFloat32"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["DataView.prototype.getFloat32"].apply__(this, args);
+}}.getFloat32
+DataView.prototype.getFloat32.prototype !== undefined ? DataView.prototype.getFloat32.prototype = wrappedFunctions["DataView.prototype.getFloat32"].prototype : null;
+Object.defineProperty(DataView.prototype.getFloat32, "length", {value: wrappedFunctions["DataView.prototype.getFloat32"].length});
+
+wrappedFunctions["DataView.prototype.getFloat64"] = DataView.prototype.getFloat64;
+DataView.prototype.getFloat64 = { getFloat64 () {
+	log42["DataView.prototype.getFloat64"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["DataView.prototype.getFloat64"].apply__(this, args);
+}}.getFloat64
+DataView.prototype.getFloat64.prototype !== undefined ? DataView.prototype.getFloat64.prototype = wrappedFunctions["DataView.prototype.getFloat64"].prototype : null;
+Object.defineProperty(DataView.prototype.getFloat64, "length", {value: wrappedFunctions["DataView.prototype.getFloat64"].length});
+
+wrappedFunctions["DataView.prototype.getInt8"] = DataView.prototype.getInt8;
+DataView.prototype.getInt8 = { getInt8 () {
+	log42["DataView.prototype.getInt8"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["DataView.prototype.getInt8"].apply__(this, args);
+}}.getInt8
+DataView.prototype.getInt8.prototype !== undefined ? DataView.prototype.getInt8.prototype = wrappedFunctions["DataView.prototype.getInt8"].prototype : null;
+Object.defineProperty(DataView.prototype.getInt8, "length", {value: wrappedFunctions["DataView.prototype.getInt8"].length});
+
+wrappedFunctions["DataView.prototype.getInt16"] = DataView.prototype.getInt16;
+DataView.prototype.getInt16 = { getInt16 () {
+	log42["DataView.prototype.getInt16"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["DataView.prototype.getInt16"].apply__(this, args);
+}}.getInt16
+DataView.prototype.getInt16.prototype !== undefined ? DataView.prototype.getInt16.prototype = wrappedFunctions["DataView.prototype.getInt16"].prototype : null;
+Object.defineProperty(DataView.prototype.getInt16, "length", {value: wrappedFunctions["DataView.prototype.getInt16"].length});
+
+wrappedFunctions["DataView.prototype.getInt32"] = DataView.prototype.getInt32;
+DataView.prototype.getInt32 = { getInt32 () {
+	log42["DataView.prototype.getInt32"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["DataView.prototype.getInt32"].apply__(this, args);
+}}.getInt32
+DataView.prototype.getInt32.prototype !== undefined ? DataView.prototype.getInt32.prototype = wrappedFunctions["DataView.prototype.getInt32"].prototype : null;
+Object.defineProperty(DataView.prototype.getInt32, "length", {value: wrappedFunctions["DataView.prototype.getInt32"].length});
+
+wrappedFunctions["DataView.prototype.getUint8"] = DataView.prototype.getUint8;
+DataView.prototype.getUint8 = { getUint8 () {
+	log42["DataView.prototype.getUint8"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["DataView.prototype.getUint8"].apply__(this, args);
+}}.getUint8
+DataView.prototype.getUint8.prototype !== undefined ? DataView.prototype.getUint8.prototype = wrappedFunctions["DataView.prototype.getUint8"].prototype : null;
+Object.defineProperty(DataView.prototype.getUint8, "length", {value: wrappedFunctions["DataView.prototype.getUint8"].length});
+
+wrappedFunctions["DataView.prototype.getUint16"] = DataView.prototype.getUint16;
+DataView.prototype.getUint16 = { getUint16 () {
+	log42["DataView.prototype.getUint16"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["DataView.prototype.getUint16"].apply__(this, args);
+}}.getUint16
+DataView.prototype.getUint16.prototype !== undefined ? DataView.prototype.getUint16.prototype = wrappedFunctions["DataView.prototype.getUint16"].prototype : null;
+Object.defineProperty(DataView.prototype.getUint16, "length", {value: wrappedFunctions["DataView.prototype.getUint16"].length});
+
+wrappedFunctions["DataView.prototype.getUint32"] = DataView.prototype.getUint32;
+DataView.prototype.getUint32 = { getUint32 () {
+	log42["DataView.prototype.getUint32"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["DataView.prototype.getUint32"].apply__(this, args);
+}}.getUint32
+DataView.prototype.getUint32.prototype !== undefined ? DataView.prototype.getUint32.prototype = wrappedFunctions["DataView.prototype.getUint32"].prototype : null;
+Object.defineProperty(DataView.prototype.getUint32, "length", {value: wrappedFunctions["DataView.prototype.getUint32"].length});
+
+wrappedFunctions["DataView.prototype.setBigInt64"] = DataView.prototype.setBigInt64;
+DataView.prototype.setBigInt64 = { setBigInt64 () {
+	log42["DataView.prototype.setBigInt64"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["DataView.prototype.setBigInt64"].apply__(this, args);
+}}.setBigInt64
+DataView.prototype.setBigInt64.prototype !== undefined ? DataView.prototype.setBigInt64.prototype = wrappedFunctions["DataView.prototype.setBigInt64"].prototype : null;
+Object.defineProperty(DataView.prototype.setBigInt64, "length", {value: wrappedFunctions["DataView.prototype.setBigInt64"].length});
+
+wrappedFunctions["DataView.prototype.setBigUint64"] = DataView.prototype.setBigUint64;
+DataView.prototype.setBigUint64 = { setBigUint64 () {
+	log42["DataView.prototype.setBigUint64"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["DataView.prototype.setBigUint64"].apply__(this, args);
+}}.setBigUint64
+DataView.prototype.setBigUint64.prototype !== undefined ? DataView.prototype.setBigUint64.prototype = wrappedFunctions["DataView.prototype.setBigUint64"].prototype : null;
+Object.defineProperty(DataView.prototype.setBigUint64, "length", {value: wrappedFunctions["DataView.prototype.setBigUint64"].length});
+
+wrappedFunctions["DataView.prototype.setFloat32"] = DataView.prototype.setFloat32;
+DataView.prototype.setFloat32 = { setFloat32 () {
+	log42["DataView.prototype.setFloat32"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["DataView.prototype.setFloat32"].apply__(this, args);
+}}.setFloat32
+DataView.prototype.setFloat32.prototype !== undefined ? DataView.prototype.setFloat32.prototype = wrappedFunctions["DataView.prototype.setFloat32"].prototype : null;
+Object.defineProperty(DataView.prototype.setFloat32, "length", {value: wrappedFunctions["DataView.prototype.setFloat32"].length});
+
+wrappedFunctions["DataView.prototype.setFloat64"] = DataView.prototype.setFloat64;
+DataView.prototype.setFloat64 = { setFloat64 () {
+	log42["DataView.prototype.setFloat64"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["DataView.prototype.setFloat64"].apply__(this, args);
+}}.setFloat64
+DataView.prototype.setFloat64.prototype !== undefined ? DataView.prototype.setFloat64.prototype = wrappedFunctions["DataView.prototype.setFloat64"].prototype : null;
+Object.defineProperty(DataView.prototype.setFloat64, "length", {value: wrappedFunctions["DataView.prototype.setFloat64"].length});
+
+wrappedFunctions["DataView.prototype.setInt8"] = DataView.prototype.setInt8;
+DataView.prototype.setInt8 = { setInt8 () {
+	log42["DataView.prototype.setInt8"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["DataView.prototype.setInt8"].apply__(this, args);
+}}.setInt8
+DataView.prototype.setInt8.prototype !== undefined ? DataView.prototype.setInt8.prototype = wrappedFunctions["DataView.prototype.setInt8"].prototype : null;
+Object.defineProperty(DataView.prototype.setInt8, "length", {value: wrappedFunctions["DataView.prototype.setInt8"].length});
+
+wrappedFunctions["DataView.prototype.setInt16"] = DataView.prototype.setInt16;
+DataView.prototype.setInt16 = { setInt16 () {
+	log42["DataView.prototype.setInt16"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["DataView.prototype.setInt16"].apply__(this, args);
+}}.setInt16
+DataView.prototype.setInt16.prototype !== undefined ? DataView.prototype.setInt16.prototype = wrappedFunctions["DataView.prototype.setInt16"].prototype : null;
+Object.defineProperty(DataView.prototype.setInt16, "length", {value: wrappedFunctions["DataView.prototype.setInt16"].length});
+
+wrappedFunctions["DataView.prototype.setInt32"] = DataView.prototype.setInt32;
+DataView.prototype.setInt32 = { setInt32 () {
+	log42["DataView.prototype.setInt32"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["DataView.prototype.setInt32"].apply__(this, args);
+}}.setInt32
+DataView.prototype.setInt32.prototype !== undefined ? DataView.prototype.setInt32.prototype = wrappedFunctions["DataView.prototype.setInt32"].prototype : null;
+Object.defineProperty(DataView.prototype.setInt32, "length", {value: wrappedFunctions["DataView.prototype.setInt32"].length});
+
+wrappedFunctions["DataView.prototype.setUint8"] = DataView.prototype.setUint8;
+DataView.prototype.setUint8 = { setUint8 () {
+	log42["DataView.prototype.setUint8"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["DataView.prototype.setUint8"].apply__(this, args);
+}}.setUint8
+DataView.prototype.setUint8.prototype !== undefined ? DataView.prototype.setUint8.prototype = wrappedFunctions["DataView.prototype.setUint8"].prototype : null;
+Object.defineProperty(DataView.prototype.setUint8, "length", {value: wrappedFunctions["DataView.prototype.setUint8"].length});
+
+wrappedFunctions["DataView.prototype.setUint16"] = DataView.prototype.setUint16;
+DataView.prototype.setUint16 = { setUint16 () {
+	log42["DataView.prototype.setUint16"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["DataView.prototype.setUint16"].apply__(this, args);
+}}.setUint16
+DataView.prototype.setUint16.prototype !== undefined ? DataView.prototype.setUint16.prototype = wrappedFunctions["DataView.prototype.setUint16"].prototype : null;
+Object.defineProperty(DataView.prototype.setUint16, "length", {value: wrappedFunctions["DataView.prototype.setUint16"].length});
+
+wrappedFunctions["DataView.prototype.setUint32"] = DataView.prototype.setUint32;
+DataView.prototype.setUint32 = { setUint32 () {
+	log42["DataView.prototype.setUint32"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["DataView.prototype.setUint32"].apply__(this, args);
+}}.setUint32
+DataView.prototype.setUint32.prototype !== undefined ? DataView.prototype.setUint32.prototype = wrappedFunctions["DataView.prototype.setUint32"].prototype : null;
+Object.defineProperty(DataView.prototype.setUint32, "length", {value: wrappedFunctions["DataView.prototype.setUint32"].length});
+
+wrappedFunctions["WeakRef.prototype.deref"] = WeakRef.prototype.deref;
+WeakRef.prototype.deref = { deref () {
+	log42["WeakRef.prototype.deref"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["WeakRef.prototype.deref"].apply__(this, args);
+}}.deref
+WeakRef.prototype.deref.prototype !== undefined ? WeakRef.prototype.deref.prototype = wrappedFunctions["WeakRef.prototype.deref"].prototype : null;
+Object.defineProperty(WeakRef.prototype.deref, "length", {value: wrappedFunctions["WeakRef.prototype.deref"].length});
+
+wrappedFunctions["FinalizationRegistry.prototype.register"] = FinalizationRegistry.prototype.register;
+FinalizationRegistry.prototype.register = { register () {
+	log42["FinalizationRegistry.prototype.register"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["FinalizationRegistry.prototype.register"].apply__(this, args);
+}}.register
+FinalizationRegistry.prototype.register.prototype !== undefined ? FinalizationRegistry.prototype.register.prototype = wrappedFunctions["FinalizationRegistry.prototype.register"].prototype : null;
+Object.defineProperty(FinalizationRegistry.prototype.register, "length", {value: wrappedFunctions["FinalizationRegistry.prototype.register"].length});
+
+wrappedFunctions["FinalizationRegistry.prototype.unregister"] = FinalizationRegistry.prototype.unregister;
+FinalizationRegistry.prototype.unregister = { unregister () {
+	log42["FinalizationRegistry.prototype.unregister"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["FinalizationRegistry.prototype.unregister"].apply__(this, args);
+}}.unregister
+FinalizationRegistry.prototype.unregister.prototype !== undefined ? FinalizationRegistry.prototype.unregister.prototype = wrappedFunctions["FinalizationRegistry.prototype.unregister"].prototype : null;
+Object.defineProperty(FinalizationRegistry.prototype.unregister, "length", {value: wrappedFunctions["FinalizationRegistry.prototype.unregister"].length});
+
+wrappedFunctions["Promise.prototype.catch"] = Promise.prototype.catch;
+Promise.prototype.catch = { catch () {
+	log42["Promise.prototype.catch"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Promise.prototype.catch"].apply__(this, args);
+}}.catch
+Promise.prototype.catch.prototype !== undefined ? Promise.prototype.catch.prototype = wrappedFunctions["Promise.prototype.catch"].prototype : null;
+Object.defineProperty(Promise.prototype.catch, "length", {value: wrappedFunctions["Promise.prototype.catch"].length});
+
+wrappedFunctions["Promise.prototype.finally"] = Promise.prototype.finally;
+Promise.prototype.finally = { finally () {
+	log42["Promise.prototype.finally"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Promise.prototype.finally"].apply__(this, args);
+}}.finally
+Promise.prototype.finally.prototype !== undefined ? Promise.prototype.finally.prototype = wrappedFunctions["Promise.prototype.finally"].prototype : null;
+Object.defineProperty(Promise.prototype.finally, "length", {value: wrappedFunctions["Promise.prototype.finally"].length});
+
+wrappedFunctions["Promise.prototype.then"] = Promise.prototype.then;
+Promise.prototype.then = { then () {
+	log42["Promise.prototype.then"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Promise.prototype.then"].apply__(this, args);
+}}.then
+Promise.prototype.then.prototype !== undefined ? Promise.prototype.then.prototype = wrappedFunctions["Promise.prototype.then"].prototype : null;
+Object.defineProperty(Promise.prototype.then, "length", {value: wrappedFunctions["Promise.prototype.then"].length});
+
+wrappedFunctions["Object.prototype.__defineGetter__"] = Object.prototype.__defineGetter__;
+Object.prototype.__defineGetter__ = { __defineGetter__ () {
+	log42["Object.prototype.__defineGetter__"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Object.prototype.__defineGetter__"].apply__(this, args);
+}}.__defineGetter__
+Object.prototype.__defineGetter__.prototype !== undefined ? Object.prototype.__defineGetter__.prototype = wrappedFunctions["Object.prototype.__defineGetter__"].prototype : null;
+Object.defineProperty(Object.prototype.__defineGetter__, "length", {value: wrappedFunctions["Object.prototype.__defineGetter__"].length});
+
+wrappedFunctions["Object.prototype.__defineSetter__"] = Object.prototype.__defineSetter__;
+Object.prototype.__defineSetter__ = { __defineSetter__ () {
+	log42["Object.prototype.__defineSetter__"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Object.prototype.__defineSetter__"].apply__(this, args);
+}}.__defineSetter__
+Object.prototype.__defineSetter__.prototype !== undefined ? Object.prototype.__defineSetter__.prototype = wrappedFunctions["Object.prototype.__defineSetter__"].prototype : null;
+Object.defineProperty(Object.prototype.__defineSetter__, "length", {value: wrappedFunctions["Object.prototype.__defineSetter__"].length});
+
+wrappedFunctions["Object.prototype.__lookupGetter__"] = Object.prototype.__lookupGetter__;
+Object.prototype.__lookupGetter__ = { __lookupGetter__ () {
+	log42["Object.prototype.__lookupGetter__"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Object.prototype.__lookupGetter__"].apply__(this, args);
+}}.__lookupGetter__
+Object.prototype.__lookupGetter__.prototype !== undefined ? Object.prototype.__lookupGetter__.prototype = wrappedFunctions["Object.prototype.__lookupGetter__"].prototype : null;
+Object.defineProperty(Object.prototype.__lookupGetter__, "length", {value: wrappedFunctions["Object.prototype.__lookupGetter__"].length});
+
+wrappedFunctions["Object.prototype.__lookupSetter__"] = Object.prototype.__lookupSetter__;
+Object.prototype.__lookupSetter__ = { __lookupSetter__ () {
+	log42["Object.prototype.__lookupSetter__"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Object.prototype.__lookupSetter__"].apply__(this, args);
+}}.__lookupSetter__
+Object.prototype.__lookupSetter__.prototype !== undefined ? Object.prototype.__lookupSetter__.prototype = wrappedFunctions["Object.prototype.__lookupSetter__"].prototype : null;
+Object.defineProperty(Object.prototype.__lookupSetter__, "length", {value: wrappedFunctions["Object.prototype.__lookupSetter__"].length});
+
+wrappedFunctions["String.prototype.substr"] = String.prototype.substr;
+String.prototype.substr = { substr () {
+	log42["String.prototype.substr"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["String.prototype.substr"].apply__(this, args);
+}}.substr
+String.prototype.substr.prototype !== undefined ? String.prototype.substr.prototype = wrappedFunctions["String.prototype.substr"].prototype : null;
+Object.defineProperty(String.prototype.substr, "length", {value: wrappedFunctions["String.prototype.substr"].length});
+
+wrappedFunctions["String.prototype.anchor"] = String.prototype.anchor;
+String.prototype.anchor = { anchor () {
+	log42["String.prototype.anchor"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["String.prototype.anchor"].apply__(this, args);
+}}.anchor
+String.prototype.anchor.prototype !== undefined ? String.prototype.anchor.prototype = wrappedFunctions["String.prototype.anchor"].prototype : null;
+Object.defineProperty(String.prototype.anchor, "length", {value: wrappedFunctions["String.prototype.anchor"].length});
+
+wrappedFunctions["String.prototype.big"] = String.prototype.big;
+String.prototype.big = { big () {
+	log42["String.prototype.big"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["String.prototype.big"].apply__(this, args);
+}}.big
+String.prototype.big.prototype !== undefined ? String.prototype.big.prototype = wrappedFunctions["String.prototype.big"].prototype : null;
+Object.defineProperty(String.prototype.big, "length", {value: wrappedFunctions["String.prototype.big"].length});
+
+wrappedFunctions["String.prototype.blink"] = String.prototype.blink;
+String.prototype.blink = { blink () {
+	log42["String.prototype.blink"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["String.prototype.blink"].apply__(this, args);
+}}.blink
+String.prototype.blink.prototype !== undefined ? String.prototype.blink.prototype = wrappedFunctions["String.prototype.blink"].prototype : null;
+Object.defineProperty(String.prototype.blink, "length", {value: wrappedFunctions["String.prototype.blink"].length});
+
+wrappedFunctions["String.prototype.bold"] = String.prototype.bold;
+String.prototype.bold = { bold () {
+	log42["String.prototype.bold"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["String.prototype.bold"].apply__(this, args);
+}}.bold
+String.prototype.bold.prototype !== undefined ? String.prototype.bold.prototype = wrappedFunctions["String.prototype.bold"].prototype : null;
+Object.defineProperty(String.prototype.bold, "length", {value: wrappedFunctions["String.prototype.bold"].length});
+
+wrappedFunctions["String.prototype.fixed"] = String.prototype.fixed;
+String.prototype.fixed = { fixed () {
+	log42["String.prototype.fixed"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["String.prototype.fixed"].apply__(this, args);
+}}.fixed
+String.prototype.fixed.prototype !== undefined ? String.prototype.fixed.prototype = wrappedFunctions["String.prototype.fixed"].prototype : null;
+Object.defineProperty(String.prototype.fixed, "length", {value: wrappedFunctions["String.prototype.fixed"].length});
+
+wrappedFunctions["String.prototype.fontcolor"] = String.prototype.fontcolor;
+String.prototype.fontcolor = { fontcolor () {
+	log42["String.prototype.fontcolor"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["String.prototype.fontcolor"].apply__(this, args);
+}}.fontcolor
+String.prototype.fontcolor.prototype !== undefined ? String.prototype.fontcolor.prototype = wrappedFunctions["String.prototype.fontcolor"].prototype : null;
+Object.defineProperty(String.prototype.fontcolor, "length", {value: wrappedFunctions["String.prototype.fontcolor"].length});
+
+wrappedFunctions["String.prototype.fontsize"] = String.prototype.fontsize;
+String.prototype.fontsize = { fontsize () {
+	log42["String.prototype.fontsize"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["String.prototype.fontsize"].apply__(this, args);
+}}.fontsize
+String.prototype.fontsize.prototype !== undefined ? String.prototype.fontsize.prototype = wrappedFunctions["String.prototype.fontsize"].prototype : null;
+Object.defineProperty(String.prototype.fontsize, "length", {value: wrappedFunctions["String.prototype.fontsize"].length});
+
+wrappedFunctions["String.prototype.italics"] = String.prototype.italics;
+String.prototype.italics = { italics () {
+	log42["String.prototype.italics"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["String.prototype.italics"].apply__(this, args);
+}}.italics
+String.prototype.italics.prototype !== undefined ? String.prototype.italics.prototype = wrappedFunctions["String.prototype.italics"].prototype : null;
+Object.defineProperty(String.prototype.italics, "length", {value: wrappedFunctions["String.prototype.italics"].length});
+
+wrappedFunctions["String.prototype.link"] = String.prototype.link;
+String.prototype.link = { link () {
+	log42["String.prototype.link"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["String.prototype.link"].apply__(this, args);
+}}.link
+String.prototype.link.prototype !== undefined ? String.prototype.link.prototype = wrappedFunctions["String.prototype.link"].prototype : null;
+Object.defineProperty(String.prototype.link, "length", {value: wrappedFunctions["String.prototype.link"].length});
+
+wrappedFunctions["String.prototype.small"] = String.prototype.small;
+String.prototype.small = { small () {
+	log42["String.prototype.small"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["String.prototype.small"].apply__(this, args);
+}}.small
+String.prototype.small.prototype !== undefined ? String.prototype.small.prototype = wrappedFunctions["String.prototype.small"].prototype : null;
+Object.defineProperty(String.prototype.small, "length", {value: wrappedFunctions["String.prototype.small"].length});
+
+wrappedFunctions["String.prototype.strike"] = String.prototype.strike;
+String.prototype.strike = { strike () {
+	log42["String.prototype.strike"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["String.prototype.strike"].apply__(this, args);
+}}.strike
+String.prototype.strike.prototype !== undefined ? String.prototype.strike.prototype = wrappedFunctions["String.prototype.strike"].prototype : null;
+Object.defineProperty(String.prototype.strike, "length", {value: wrappedFunctions["String.prototype.strike"].length});
+
+wrappedFunctions["String.prototype.sub"] = String.prototype.sub;
+String.prototype.sub = { sub () {
+	log42["String.prototype.sub"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["String.prototype.sub"].apply__(this, args);
+}}.sub
+String.prototype.sub.prototype !== undefined ? String.prototype.sub.prototype = wrappedFunctions["String.prototype.sub"].prototype : null;
+Object.defineProperty(String.prototype.sub, "length", {value: wrappedFunctions["String.prototype.sub"].length});
+
+wrappedFunctions["String.prototype.sup"] = String.prototype.sup;
+String.prototype.sup = { sup () {
+	log42["String.prototype.sup"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["String.prototype.sup"].apply__(this, args);
+}}.sup
+String.prototype.sup.prototype !== undefined ? String.prototype.sup.prototype = wrappedFunctions["String.prototype.sup"].prototype : null;
+Object.defineProperty(String.prototype.sup, "length", {value: wrappedFunctions["String.prototype.sup"].length});
+
+wrappedFunctions["String.prototype.trimLeft"] = String.prototype.trimLeft;
+String.prototype.trimLeft = { trimLeft () {
+	log42["String.prototype.trimLeft"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["String.prototype.trimLeft"].apply__(this, args);
+}}.trimLeft
+String.prototype.trimLeft.prototype !== undefined ? String.prototype.trimLeft.prototype = wrappedFunctions["String.prototype.trimLeft"].prototype : null;
+Object.defineProperty(String.prototype.trimLeft, "length", {value: wrappedFunctions["String.prototype.trimLeft"].length});
+
+wrappedFunctions["String.prototype.trimRight"] = String.prototype.trimRight;
+String.prototype.trimRight = { trimRight () {
+	log42["String.prototype.trimRight"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["String.prototype.trimRight"].apply__(this, args);
+}}.trimRight
+String.prototype.trimRight.prototype !== undefined ? String.prototype.trimRight.prototype = wrappedFunctions["String.prototype.trimRight"].prototype : null;
+Object.defineProperty(String.prototype.trimRight, "length", {value: wrappedFunctions["String.prototype.trimRight"].length});
+
+wrappedFunctions["Date.prototype.getYear"] = Date.prototype.getYear;
+Date.prototype.getYear = { getYear () {
+	log42["Date.prototype.getYear"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Date.prototype.getYear"].apply__(this, args);
+}}.getYear
+Date.prototype.getYear.prototype !== undefined ? Date.prototype.getYear.prototype = wrappedFunctions["Date.prototype.getYear"].prototype : null;
+Object.defineProperty(Date.prototype.getYear, "length", {value: wrappedFunctions["Date.prototype.getYear"].length});
+
+wrappedFunctions["Date.prototype.setYear"] = Date.prototype.setYear;
+Date.prototype.setYear = { setYear () {
+	log42["Date.prototype.setYear"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Date.prototype.setYear"].apply__(this, args);
+}}.setYear
+Date.prototype.setYear.prototype !== undefined ? Date.prototype.setYear.prototype = wrappedFunctions["Date.prototype.setYear"].prototype : null;
+Object.defineProperty(Date.prototype.setYear, "length", {value: wrappedFunctions["Date.prototype.setYear"].length});
+
+wrappedFunctions["Date.prototype.toGMTString"] = Date.prototype.toGMTString;
+Date.prototype.toGMTString = { toGMTString () {
+	log42["Date.prototype.toGMTString"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["Date.prototype.toGMTString"].apply__(this, args);
+}}.toGMTString
+Date.prototype.toGMTString.prototype !== undefined ? Date.prototype.toGMTString.prototype = wrappedFunctions["Date.prototype.toGMTString"].prototype : null;
+Object.defineProperty(Date.prototype.toGMTString, "length", {value: wrappedFunctions["Date.prototype.toGMTString"].length});
+
+wrappedFunctions["RegExp.prototype.compile"] = RegExp.prototype.compile;
+RegExp.prototype.compile = { compile () {
+	log42["RegExp.prototype.compile"] = true;
+	let args = copyArgs(arguments);
+	return wrappedFunctions["RegExp.prototype.compile"].apply__(this, args);
+}}.compile
+RegExp.prototype.compile.prototype !== undefined ? RegExp.prototype.compile.prototype = wrappedFunctions["RegExp.prototype.compile"].prototype : null;
+Object.defineProperty(RegExp.prototype.compile, "length", {value: wrappedFunctions["RegExp.prototype.compile"].length});

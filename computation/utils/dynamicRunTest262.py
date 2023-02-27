@@ -10,7 +10,7 @@ def runSubProcess(command: list) -> tuple:
     process = subprocess.Popen(command,  bufsize=4096, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     output = ''
     try:
-        output, error = process.communicate(timeout=6)
+        output, error = process.communicate(timeout=60)
         output = output.decode("latin1")
         output += error.decode("latin1")
     except subprocess.TimeoutExpired:
@@ -32,25 +32,30 @@ def runTest(engine: str, test: dict, harness: dict, version: int, builtInWrapper
         return testFlags != None and flag in testFlags
 
     # create test file with every thing needed to run
-    codeToExecute = ''
+    testPath = currentDirectory + '/' + test['path']
+    with open(testPath, 'r') as f:
+        testCode = f.read()
+    #some tests start with hashbang before the copyright section
+    beginCopyrightIndex = testCode.index('//')
+    codeToExecute = testCode[:beginCopyrightIndex]
+    testCode = testCode[beginCopyrightIndex:]
+
     testFlags = test.get('flags')
-    if hasFlag('onlyStrict'):
+    if not hasFlag('noStrict') and not hasFlag('raw') and not hasFlag('module'):
         codeToExecute += '"use strict";\n'
-    if builtInWrappers: # if is running the builtIn dynamic approach
-        codeToExecute += builtInWrappers
     if not hasFlag('raw'):
         codeToExecute += getHarness()
     if 'includes' in test:
         for file in test['includes']:
             with open(getPathTest262() + 'harness/' + file, 'r') as f:
                 codeToExecute += f.read()
-    if builtInWrappers != '':
-        codeToExecute += 'log42 = [];\n'
-    testPath = currentDirectory + '/' + test['path']
-    with open(testPath, 'r') as f:
-        codeToExecute += f.read()
-    if builtInWrappers:
-        codeToExecute += '\nconsole.log("`###`"+JSON__.stringify(log42)+"`###`");'
+
+    if builtInWrappers: # if is running the builtIn dynamic computation
+        codeToExecute += builtInWrappers + ''.join(testCode)
+        codeToExecute += '\nconsole.log("`###`"+stringify__(log42)+"`###`");'
+    else:
+        codeToExecute += ''.join(testCode)
+
     with open(testPath, "w") as f:
         f.write(codeToExecute)
     command = [engine]
@@ -66,7 +71,9 @@ def runTest(engine: str, test: dict, harness: dict, version: int, builtInWrapper
         if len(output) > 1:
             builtInOutput = output[1]
             output = output[0] + output[2][1:]
-        else: output = output[0]
+        else:
+            builtInOutput = '{}'
+            output = output[0]
 
     ret = [output, builtInOutput]
     # check if the result is correct

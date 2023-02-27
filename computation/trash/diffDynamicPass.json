@@ -1,0 +1,548 @@
+[
+    [
+        "test/built-ins/TypedArrayConstructors/prototype/subarray/inherited.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArrayConstructors/prototype/subarray/inherited.js:7417: Test262Error: Expected SameValue(\u00c2\u00abtrue\u00c2\u00bb, \u00c2\u00abfalse\u00c2\u00bb) to be true (Testing with Float64Array.)\n      throw e;\n      ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/language/types/object/S8.6.1_A2.js",
+        "/home/diogo/MetaData262/computation/utils/test/language/types/object/S8.6.1_A2.js:11722: ReferenceError: p is not defined\nfor (p in Number) count++;\n     ^\nReferenceError: p is not defined\n    at /home/diogo/MetaData262/computation/utils/test/language/types/object/S8.6.1_A2.js:11722:6\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/Map/prototype/Symbol.iterator.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/Map/prototype/Symbol.iterator.js:872: Test262Error: Expected SameValue(\u00c2\u00abfunction entries() { [native code] }\u00c2\u00bb, \u00c2\u00abentries () {\n\tlog42[\"Map.prototype.entries\"] = true;\n\tlet args = copyArgs(arguments);\n\treturn wrappedFunctions[\"Map.prototype.entries\"].apply__(this, args);\n}\u00c2\u00bb) to be true\n  throw new Test262Error(message);\n  ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/TypedArray/prototype/toString.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArray/prototype/toString.js:872: Test262Error: Expected SameValue(\u00c2\u00abfunction toString() { [native code] }\u00c2\u00bb, \u00c2\u00abtoString () {\n\tlog42[\"Array.prototype.toString\"] = true;\n\tlet args = copyArgs(arguments);\n\treturn wrappedFunctions[\"Array.prototype.toString\"].apply__(this, args);\n}\u00c2\u00bb) to be true\n  throw new Test262Error(message);\n  ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/TypedArrayConstructors/prototype/toString/bigint-inherited.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArrayConstructors/prototype/toString/bigint-inherited.js:7393: Test262Error: Expected SameValue(\u00c2\u00abtrue\u00c2\u00bb, \u00c2\u00abfalse\u00c2\u00bb) to be true (Testing with BigInt64Array.)\n      throw e;\n      ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/TypedArrayConstructors/prototype/subarray/bigint-inherited.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArrayConstructors/prototype/subarray/bigint-inherited.js:7393: Test262Error: Expected SameValue(\u00c2\u00abtrue\u00c2\u00bb, \u00c2\u00abfalse\u00c2\u00bb) to be true (Testing with BigInt64Array.)\n      throw e;\n      ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/Array/prototype/lastIndexOf/15.4.4.15-8-b-i-14.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/lastIndexOf/15.4.4.15-8-b-i-14.js:7363: TypeError: Cannot set property 0 of [object Object] which has only a getter\n\t\tto[i] = from[i];\n        ^\nTypeError: Cannot set property 0 of [object Object] which has only a getter\n    at copyArgs (/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/lastIndexOf/15.4.4.15-8-b-i-14.js:7363:9)\n    at Function.call (/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/lastIndexOf/15.4.4.15-8-b-i-14.js:7441:54)\n    at /home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/lastIndexOf/15.4.4.15-8-b-i-14.js:11740:46\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/Array/prototype/lastIndexOf/15.4.4.15-8-b-i-6.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/lastIndexOf/15.4.4.15-8-b-i-6.js:7363: TypeError: Cannot set property 0 of [object Object] which has only a getter\n\t\tto[i] = from[i];\n        ^\nTypeError: Cannot set property 0 of [object Object] which has only a getter\n    at copyArgs (/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/lastIndexOf/15.4.4.15-8-b-i-6.js:7363:9)\n    at Function.call (/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/lastIndexOf/15.4.4.15-8-b-i-6.js:7441:54)\n    at /home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/lastIndexOf/15.4.4.15-8-b-i-6.js:11729:46\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/TypedArrayConstructors/prototype/forEach/inherited.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArrayConstructors/prototype/forEach/inherited.js:7417: Test262Error: Expected SameValue(\u00c2\u00abtrue\u00c2\u00bb, \u00c2\u00abfalse\u00c2\u00bb) to be true (Testing with Float64Array.)\n      throw e;\n      ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/TypedArrayConstructors/prototype/reverse/bigint-inherited.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArrayConstructors/prototype/reverse/bigint-inherited.js:7393: Test262Error: Expected SameValue(\u00c2\u00abtrue\u00c2\u00bb, \u00c2\u00abfalse\u00c2\u00bb) to be true (Testing with BigInt64Array.)\n      throw e;\n      ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/TypedArrayConstructors/prototype/copyWithin/bigint-inherited.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArrayConstructors/prototype/copyWithin/bigint-inherited.js:7393: Test262Error: Expected SameValue(\u00c2\u00abtrue\u00c2\u00bb, \u00c2\u00abfalse\u00c2\u00bb) to be true (Testing with BigInt64Array.)\n      throw e;\n      ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/TypedArrayConstructors/prototype/indexOf/bigint-inherited.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArrayConstructors/prototype/indexOf/bigint-inherited.js:7393: Test262Error: Expected SameValue(\u00c2\u00abtrue\u00c2\u00bb, \u00c2\u00abfalse\u00c2\u00bb) to be true (Testing with BigInt64Array.)\n      throw e;\n      ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/TypedArrayConstructors/prototype/slice/bigint-inherited.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArrayConstructors/prototype/slice/bigint-inherited.js:7393: Test262Error: Expected SameValue(\u00c2\u00abtrue\u00c2\u00bb, \u00c2\u00abfalse\u00c2\u00bb) to be true (Testing with BigInt64Array.)\n      throw e;\n      ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/Function/prop-desc.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/Function/prop-desc.js:7675: ReferenceError: Function is not defined\n\treturn Function.prototype.call__.apply__(this, args);\n ^\nReferenceError: Function is not defined\n    at Function.call (/home/diogo/MetaData262/computation/utils/test/built-ins/Function/prop-desc.js:7675:2)\n    at isConfigurable (/home/diogo/MetaData262/computation/utils/test/built-ins/Function/prop-desc.js:7468:26)\n    at verifyConfigurable (/home/diogo/MetaData262/computation/utils/test/built-ins/Function/prop-desc.js:7578:8)\n    at /home/diogo/MetaData262/computation/utils/test/built-ins/Function/prop-desc.js:11959:1\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/eval/length-enumerable.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/eval/length-enumerable.js:11727: ReferenceError: p is not defined\nfor (p in eval) {\n     ^\nReferenceError: p is not defined\n    at /home/diogo/MetaData262/computation/utils/test/built-ins/eval/length-enumerable.js:11727:6\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/Function/prototype/toString/proxy-async-generator-method-definition.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/Function/prototype/toString/proxy-async-generator-method-definition.js:7574: Test262Error: Conforms to NativeFunction Syntax: \"apply () {\\n\\tlog42[\\\"Function.prototype.apply\\\"] = true;\\tlet args = copyArgs(arguments);\\n\\treturn Function.prototype.apply__.apply__(this, args);\\n}\"\n    throw new Test262Error('Conforms to NativeFunction Syntax: ' + JSON.stringify(actual) + (special ? ' (' + special + ')' : ''));\n    ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/language/arguments-object/10.6-7-1.js",
+        "/home/diogo/MetaData262/computation/utils/test/language/arguments-object/10.6-7-1.js:872: Test262Error: data Expected SameValue(\u00c2\u00ab1\u00c2\u00bb, \u00c2\u00abdata\u00c2\u00bb) to be true\n  throw new Test262Error(message);\n  ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/TypedArrayConstructors/prototype/fill/bigint-inherited.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArrayConstructors/prototype/fill/bigint-inherited.js:7393: Test262Error: Expected SameValue(\u00c2\u00abtrue\u00c2\u00bb, \u00c2\u00abfalse\u00c2\u00bb) to be true (Testing with BigInt64Array.)\n      throw e;\n      ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/Array/prototype/indexOf/15.4.4.14-9-b-i-6.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/indexOf/15.4.4.14-9-b-i-6.js:7363: TypeError: Cannot set property 0 of [object Object] which has only a getter\n\t\tto[i] = from[i];\n        ^\nTypeError: Cannot set property 0 of [object Object] which has only a getter\n    at copyArgs (/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/indexOf/15.4.4.14-9-b-i-6.js:7363:9)\n    at Function.call (/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/indexOf/15.4.4.14-9-b-i-6.js:7441:54)\n    at /home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/indexOf/15.4.4.14-9-b-i-6.js:11729:42\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/Function/prototype/toString/proxy-class.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/Function/prototype/toString/proxy-class.js:7574: Test262Error: Conforms to NativeFunction Syntax: \"apply () {\\n\\tlog42[\\\"Function.prototype.apply\\\"] = true;\\tlet args = copyArgs(arguments);\\n\\treturn Function.prototype.apply__.apply__(this, args);\\n}\"\n    throw new Test262Error('Conforms to NativeFunction Syntax: ' + JSON.stringify(actual) + (special ? ' (' + special + ')' : ''));\n    ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/TypedArrayConstructors/prototype/filter/inherited.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArrayConstructors/prototype/filter/inherited.js:7417: Test262Error: Expected SameValue(\u00c2\u00abtrue\u00c2\u00bb, \u00c2\u00abfalse\u00c2\u00bb) to be true (Testing with Float64Array.)\n      throw e;\n      ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/Array/prototype/map/15.4.4.19-2-12.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/map/15.4.4.19-2-12.js:7365: <string conversion failed>\n\tto.length = from.length;\n           ^\nTypeError: Cannot set property length of [object Object] which has only a getter\n    at copyArgs (/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/map/15.4.4.19-2-12.js:7365:12)\n    at Function.call (/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/map/15.4.4.19-2-12.js:7441:54)\n    at /home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/map/15.4.4.19-2-12.js:11742:38\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/TypedArrayConstructors/prototype/keys/inherited.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArrayConstructors/prototype/keys/inherited.js:7417: Test262Error: Expected SameValue(\u00c2\u00abtrue\u00c2\u00bb, \u00c2\u00abfalse\u00c2\u00bb) to be true (Testing with Float64Array.)\n      throw e;\n      ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/Function/prototype/toString/proxy-function-expression.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/Function/prototype/toString/proxy-function-expression.js:7574: Test262Error: Conforms to NativeFunction Syntax: \"apply () {\\n\\tlog42[\\\"Function.prototype.apply\\\"] = true;\\tlet args = copyArgs(arguments);\\n\\treturn Function.prototype.apply__.apply__(this, args);\\n}\"\n    throw new Test262Error('Conforms to NativeFunction Syntax: ' + JSON.stringify(actual) + (special ? ' (' + special + ')' : ''));\n    ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/TypedArrayConstructors/prototype/join/bigint-inherited.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArrayConstructors/prototype/join/bigint-inherited.js:7393: Test262Error: Expected SameValue(\u00c2\u00abtrue\u00c2\u00bb, \u00c2\u00abfalse\u00c2\u00bb) to be true (Testing with BigInt64Array.)\n      throw e;\n      ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/TypedArrayConstructors/prototype/reduceRight/inherited.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArrayConstructors/prototype/reduceRight/inherited.js:7417: Test262Error: Expected SameValue(\u00c2\u00abtrue\u00c2\u00bb, \u00c2\u00abfalse\u00c2\u00bb) to be true (Testing with Float64Array.)\n      throw e;\n      ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/TypedArrayConstructors/prototype/every/bigint-inherited.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArrayConstructors/prototype/every/bigint-inherited.js:7393: Test262Error: Expected SameValue(\u00c2\u00abtrue\u00c2\u00bb, \u00c2\u00abfalse\u00c2\u00bb) to be true (Testing with BigInt64Array.)\n      throw e;\n      ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/Function/prototype/toString/proxy-generator-function.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/Function/prototype/toString/proxy-generator-function.js:7574: Test262Error: Conforms to NativeFunction Syntax: \"apply () {\\n\\tlog42[\\\"Function.prototype.apply\\\"] = true;\\tlet args = copyArgs(arguments);\\n\\treturn Function.prototype.apply__.apply__(this, args);\\n}\"\n    throw new Test262Error('Conforms to NativeFunction Syntax: ' + JSON.stringify(actual) + (special ? ' (' + special + ')' : ''));\n    ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/TypedArrayConstructors/prototype/every/inherited.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArrayConstructors/prototype/every/inherited.js:7417: Test262Error: Expected SameValue(\u00c2\u00abtrue\u00c2\u00bb, \u00c2\u00abfalse\u00c2\u00bb) to be true (Testing with Float64Array.)\n      throw e;\n      ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/Function/prototype/toString/proxy-async-method-definition.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/Function/prototype/toString/proxy-async-method-definition.js:7574: Test262Error: Conforms to NativeFunction Syntax: \"apply () {\\n\\tlog42[\\\"Function.prototype.apply\\\"] = true;\\tlet args = copyArgs(arguments);\\n\\treturn Function.prototype.apply__.apply__(this, args);\\n}\"\n    throw new Test262Error('Conforms to NativeFunction Syntax: ' + JSON.stringify(actual) + (special ? ' (' + special + ')' : ''));\n    ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/Array/prototype/lastIndexOf/15.4.4.15-8-b-i-22.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/lastIndexOf/15.4.4.15-8-b-i-22.js:8413: TypeError: Cannot convert undefined or null to object\n\treturn wrappedFunctions[\"Array.prototype.lastIndexOf\"].apply__(this, args);\n                                                        ^\nTypeError: Cannot convert undefined or null to object\n    at lastIndexOf (<anonymous>)\n    at lastIndexOf (/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/lastIndexOf/15.4.4.15-8-b-i-22.js:8413:57)\n    at Function.call (/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/lastIndexOf/15.4.4.15-8-b-i-22.js:7442:35)\n    at /home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/lastIndexOf/15.4.4.15-8-b-i-22.js:11726:46\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/Array/prototype/lastIndexOf/15.4.4.15-8-b-i-16.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/lastIndexOf/15.4.4.15-8-b-i-16.js:7363: TypeError: Cannot set property 0 of [object Object] which has only a getter\n\t\tto[i] = from[i];\n        ^\nTypeError: Cannot set property 0 of [object Object] which has only a getter\n    at copyArgs (/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/lastIndexOf/15.4.4.15-8-b-i-16.js:7363:9)\n    at Function.call (/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/lastIndexOf/15.4.4.15-8-b-i-16.js:7441:54)\n    at /home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/lastIndexOf/15.4.4.15-8-b-i-16.js:11742:46\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/TypedArrayConstructors/prototype/find/inherited.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArrayConstructors/prototype/find/inherited.js:7417: Test262Error: Expected SameValue(\u00c2\u00abtrue\u00c2\u00bb, \u00c2\u00abfalse\u00c2\u00bb) to be true (Testing with Float64Array.)\n      throw e;\n      ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/TypedArrayConstructors/prototype/set/bigint-inherited.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArrayConstructors/prototype/set/bigint-inherited.js:7393: Test262Error: Expected SameValue(\u00c2\u00abtrue\u00c2\u00bb, \u00c2\u00abfalse\u00c2\u00bb) to be true (Testing with BigInt64Array.)\n      throw e;\n      ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/TypedArrayConstructors/prototype/reverse/inherited.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArrayConstructors/prototype/reverse/inherited.js:7417: Test262Error: Expected SameValue(\u00c2\u00abtrue\u00c2\u00bb, \u00c2\u00abfalse\u00c2\u00bb) to be true (Testing with Float64Array.)\n      throw e;\n      ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/TypedArrayConstructors/prototype/entries/bigint-inherited.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArrayConstructors/prototype/entries/bigint-inherited.js:7393: Test262Error: Expected SameValue(\u00c2\u00abtrue\u00c2\u00bb, \u00c2\u00abfalse\u00c2\u00bb) to be true (Testing with BigInt64Array.)\n      throw e;\n      ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/TypedArrayConstructors/prototype/toLocaleString/bigint-inherited.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArrayConstructors/prototype/toLocaleString/bigint-inherited.js:7393: Test262Error: Expected SameValue(\u00c2\u00abtrue\u00c2\u00bb, \u00c2\u00abfalse\u00c2\u00bb) to be true (Testing with BigInt64Array.)\n      throw e;\n      ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/TypedArrayConstructors/prototype/forEach/bigint-inherited.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArrayConstructors/prototype/forEach/bigint-inherited.js:7393: Test262Error: Expected SameValue(\u00c2\u00abtrue\u00c2\u00bb, \u00c2\u00abfalse\u00c2\u00bb) to be true (Testing with BigInt64Array.)\n      throw e;\n      ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/TypedArrayConstructors/prototype/values/inherited.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArrayConstructors/prototype/values/inherited.js:7417: Test262Error: Expected SameValue(\u00c2\u00abtrue\u00c2\u00bb, \u00c2\u00abfalse\u00c2\u00bb) to be true (Testing with Float64Array.)\n      throw e;\n      ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/TypedArrayConstructors/prototype/map/inherited.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArrayConstructors/prototype/map/inherited.js:7417: Test262Error: Expected SameValue(\u00c2\u00abtrue\u00c2\u00bb, \u00c2\u00abfalse\u00c2\u00bb) to be true (Testing with Float64Array.)\n      throw e;\n      ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/TypedArrayConstructors/prototype/some/inherited.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArrayConstructors/prototype/some/inherited.js:7417: Test262Error: Expected SameValue(\u00c2\u00abtrue\u00c2\u00bb, \u00c2\u00abfalse\u00c2\u00bb) to be true (Testing with Float64Array.)\n      throw e;\n      ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/Array/prototype/forEach/15.4.4.18-2-12.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/forEach/15.4.4.18-2-12.js:7365: <string conversion failed>\n\tto.length = from.length;\n           ^\nTypeError: Cannot set property length of [object Object] which has only a getter\n    at copyArgs (/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/forEach/15.4.4.18-2-12.js:7365:12)\n    at Function.call (/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/forEach/15.4.4.18-2-12.js:7441:54)\n    at /home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/forEach/15.4.4.18-2-12.js:11744:25\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/Array/prototype/indexOf/15.4.4.14-9-b-i-16.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/indexOf/15.4.4.14-9-b-i-16.js:7363: TypeError: Cannot set property 0 of [object Object] which has only a getter\n\t\tto[i] = from[i];\n        ^\nTypeError: Cannot set property 0 of [object Object] which has only a getter\n    at copyArgs (/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/indexOf/15.4.4.14-9-b-i-16.js:7363:9)\n    at Function.call (/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/indexOf/15.4.4.14-9-b-i-16.js:7441:54)\n    at /home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/indexOf/15.4.4.14-9-b-i-16.js:11742:42\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/Array/prototype/reduce/15.4.4.21-9-c-i-19.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/reduce/15.4.4.21-9-c-i-19.js:7363: TypeError: Cannot set property 1 of [object Object] which has only a getter\n\t\tto[i] = from[i];\n        ^\nTypeError: Cannot set property 1 of [object Object] which has only a getter\n    at copyArgs (/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/reduce/15.4.4.21-9-c-i-19.js:7363:9)\n    at Function.call (/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/reduce/15.4.4.21-9-c-i-19.js:7441:54)\n    at /home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/reduce/15.4.4.21-9-c-i-19.js:11749:24\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/TypedArrayConstructors/prototype/reduceRight/bigint-inherited.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArrayConstructors/prototype/reduceRight/bigint-inherited.js:7393: Test262Error: Expected SameValue(\u00c2\u00abtrue\u00c2\u00bb, \u00c2\u00abfalse\u00c2\u00bb) to be true (Testing with BigInt64Array.)\n      throw e;\n      ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/TypedArrayConstructors/prototype/set/inherited.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArrayConstructors/prototype/set/inherited.js:7417: Test262Error: Expected SameValue(\u00c2\u00abtrue\u00c2\u00bb, \u00c2\u00abfalse\u00c2\u00bb) to be true (Testing with Float64Array.)\n      throw e;\n      ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/TypedArrayConstructors/prototype/fill/inherited.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArrayConstructors/prototype/fill/inherited.js:7417: Test262Error: Expected SameValue(\u00c2\u00abtrue\u00c2\u00bb, \u00c2\u00abfalse\u00c2\u00bb) to be true (Testing with Float64Array.)\n      throw e;\n      ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/Array/prototype/Symbol.iterator.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/Symbol.iterator.js:872: Test262Error: Expected SameValue(\u00c2\u00abfunction values() { [native code] }\u00c2\u00bb, \u00c2\u00abvalues () {\n\tlog42[\"Array.prototype.values\"] = true;\n\tlet args = copyArgs(arguments);\n\treturn wrappedFunctions[\"Array.prototype.values\"].apply__(this, args);\n}\u00c2\u00bb) to be true\n  throw new Test262Error(message);\n  ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/TypedArrayConstructors/prototype/copyWithin/inherited.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArrayConstructors/prototype/copyWithin/inherited.js:7417: Test262Error: Expected SameValue(\u00c2\u00abtrue\u00c2\u00bb, \u00c2\u00abfalse\u00c2\u00bb) to be true (Testing with Float64Array.)\n      throw e;\n      ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/Function/prototype/toString/proxy-async-generator-function.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/Function/prototype/toString/proxy-async-generator-function.js:7574: Test262Error: Conforms to NativeFunction Syntax: \"apply () {\\n\\tlog42[\\\"Function.prototype.apply\\\"] = true;\\tlet args = copyArgs(arguments);\\n\\treturn Function.prototype.apply__.apply__(this, args);\\n}\"\n    throw new Test262Error('Conforms to NativeFunction Syntax: ' + JSON.stringify(actual) + (special ? ' (' + special + ')' : ''));\n    ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/TypedArrayConstructors/prototype/join/inherited.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArrayConstructors/prototype/join/inherited.js:7417: Test262Error: Expected SameValue(\u00c2\u00abtrue\u00c2\u00bb, \u00c2\u00abfalse\u00c2\u00bb) to be true (Testing with Float64Array.)\n      throw e;\n      ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/TypedArrayConstructors/prototype/toLocaleString/inherited.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArrayConstructors/prototype/toLocaleString/inherited.js:7417: Test262Error: Expected SameValue(\u00c2\u00abtrue\u00c2\u00bb, \u00c2\u00abfalse\u00c2\u00bb) to be true (Testing with Float64Array.)\n      throw e;\n      ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/Array/prototype/lastIndexOf/15.4.4.15-2-12.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/lastIndexOf/15.4.4.15-2-12.js:7365: <string conversion failed>\n\tto.length = from.length;\n           ^\nTypeError: Cannot set property length of [object Object] which has only a getter\n    at copyArgs (/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/lastIndexOf/15.4.4.15-2-12.js:7365:12)\n    at Function.call (/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/lastIndexOf/15.4.4.15-2-12.js:7441:54)\n    at /home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/lastIndexOf/15.4.4.15-2-12.js:11737:46\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/TypedArrayConstructors/prototype/entries/inherited.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArrayConstructors/prototype/entries/inherited.js:7417: Test262Error: Expected SameValue(\u00c2\u00abtrue\u00c2\u00bb, \u00c2\u00abfalse\u00c2\u00bb) to be true (Testing with Float64Array.)\n      throw e;\n      ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/TypedArrayConstructors/prototype/toString/inherited.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArrayConstructors/prototype/toString/inherited.js:7417: Test262Error: Expected SameValue(\u00c2\u00abtrue\u00c2\u00bb, \u00c2\u00abfalse\u00c2\u00bb) to be true (Testing with Float64Array.)\n      throw e;\n      ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/TypedArrayConstructors/prototype/findIndex/inherited.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArrayConstructors/prototype/findIndex/inherited.js:7417: Test262Error: Expected SameValue(\u00c2\u00abtrue\u00c2\u00bb, \u00c2\u00abfalse\u00c2\u00bb) to be true (Testing with Float64Array.)\n      throw e;\n      ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/Function/prototype/toString/proxy-method-definition.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/Function/prototype/toString/proxy-method-definition.js:7574: Test262Error: Conforms to NativeFunction Syntax: \"apply () {\\n\\tlog42[\\\"Function.prototype.apply\\\"] = true;\\tlet args = copyArgs(arguments);\\n\\treturn Function.prototype.apply__.apply__(this, args);\\n}\"\n    throw new Test262Error('Conforms to NativeFunction Syntax: ' + JSON.stringify(actual) + (special ? ' (' + special + ')' : ''));\n    ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/TypedArrayConstructors/prototype/some/bigint-inherited.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArrayConstructors/prototype/some/bigint-inherited.js:7393: Test262Error: Expected SameValue(\u00c2\u00abtrue\u00c2\u00bb, \u00c2\u00abfalse\u00c2\u00bb) to be true (Testing with BigInt64Array.)\n      throw e;\n      ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/Set/prototype/keys/keys.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/Set/prototype/keys/keys.js:872: Test262Error: The value of `Set.prototype.keys` is `Set.prototype.values` Expected SameValue(\u00c2\u00abkeys () {\n\tlog42[\"Set.prototype.keys\"] = true;\n\tlet args = copyArgs(arguments);\n\treturn wrappedFunctions[\"Set.prototype.keys\"].apply__(this, args);\n}\u00c2\u00bb, \u00c2\u00abvalues () {\n\tlog42[\"Set.prototype.values\"] = true;\n\tlet args = copyArgs(arguments);\n\treturn wrappedFunctions[\"Set.prototype.values\"].apply__(this, args);\n}\u00c2\u00bb) to be true\n  throw new Test262Error(message);\n  ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/Array/prototype/forEach/15.4.4.18-7-c-i-19.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/forEach/15.4.4.18-7-c-i-19.js:7363: TypeError: Cannot set property 1 of [object Object] which has only a getter\n\t\tto[i] = from[i];\n        ^\nTypeError: Cannot set property 1 of [object Object] which has only a getter\n    at copyArgs (/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/forEach/15.4.4.18-7-c-i-19.js:7363:9)\n    at Function.call (/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/forEach/15.4.4.18-7-c-i-19.js:7441:54)\n    at /home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/forEach/15.4.4.18-7-c-i-19.js:11746:25\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/Array/prototype/reduceRight/15.4.4.22-2-12.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/reduceRight/15.4.4.22-2-12.js:7365: <string conversion failed>\n\tto.length = from.length;\n           ^\nTypeError: Cannot set property length of [object Object] which has only a getter\n    at copyArgs (/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/reduceRight/15.4.4.22-2-12.js:7365:12)\n    at Function.call (/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/reduceRight/15.4.4.22-2-12.js:7441:54)\n    at /home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/reduceRight/15.4.4.22-2-12.js:11745:46\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/Array/prototype/indexOf/15.4.4.14-9-b-i-14.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/indexOf/15.4.4.14-9-b-i-14.js:7363: TypeError: Cannot set property 0 of [object Object] which has only a getter\n\t\tto[i] = from[i];\n        ^\nTypeError: Cannot set property 0 of [object Object] which has only a getter\n    at copyArgs (/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/indexOf/15.4.4.14-9-b-i-14.js:7363:9)\n    at Function.call (/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/indexOf/15.4.4.14-9-b-i-14.js:7441:54)\n    at /home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/indexOf/15.4.4.14-9-b-i-14.js:11740:42\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/Boolean/prototype/S15.6.3.1_A4.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/Boolean/prototype/S15.6.3.1_A4.js:11720: ReferenceError: x is not defined\nfor (x in Boolean) {\n     ^\nReferenceError: x is not defined\n    at /home/diogo/MetaData262/computation/utils/test/built-ins/Boolean/prototype/S15.6.3.1_A4.js:11720:6\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/Array/prototype/indexOf/15.4.4.14-9-b-i-22.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/indexOf/15.4.4.14-9-b-i-22.js:8386: TypeError: Array.prototype.indexOf called on null or undefined\n\treturn wrappedFunctions[\"Array.prototype.indexOf\"].apply__(this, args);\n                                                    ^\nTypeError: Array.prototype.indexOf called on null or undefined\n    at indexOf (<anonymous>)\n    at indexOf (/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/indexOf/15.4.4.14-9-b-i-22.js:8386:53)\n    at Function.call (/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/indexOf/15.4.4.14-9-b-i-22.js:7442:35)\n    at /home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/indexOf/15.4.4.14-9-b-i-22.js:11726:42\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/TypedArrayConstructors/prototype/sort/inherited.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArrayConstructors/prototype/sort/inherited.js:7417: Test262Error: Expected SameValue(\u00c2\u00abtrue\u00c2\u00bb, \u00c2\u00abfalse\u00c2\u00bb) to be true (Testing with Float64Array.)\n      throw e;\n      ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/TypedArrayConstructors/prototype/lastIndexOf/bigint-inherited.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArrayConstructors/prototype/lastIndexOf/bigint-inherited.js:7393: Test262Error: Expected SameValue(\u00c2\u00abtrue\u00c2\u00bb, \u00c2\u00abfalse\u00c2\u00bb) to be true (Testing with BigInt64Array.)\n      throw e;\n      ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/TypedArrayConstructors/prototype/filter/bigint-inherited.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArrayConstructors/prototype/filter/bigint-inherited.js:7393: Test262Error: Expected SameValue(\u00c2\u00abtrue\u00c2\u00bb, \u00c2\u00abfalse\u00c2\u00bb) to be true (Testing with BigInt64Array.)\n      throw e;\n      ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/TypedArrayConstructors/prototype/find/bigint-inherited.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArrayConstructors/prototype/find/bigint-inherited.js:7393: Test262Error: Expected SameValue(\u00c2\u00abtrue\u00c2\u00bb, \u00c2\u00abfalse\u00c2\u00bb) to be true (Testing with BigInt64Array.)\n      throw e;\n      ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/TypedArrayConstructors/prototype/sort/bigint-inherited.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArrayConstructors/prototype/sort/bigint-inherited.js:7393: Test262Error: Expected SameValue(\u00c2\u00abtrue\u00c2\u00bb, \u00c2\u00abfalse\u00c2\u00bb) to be true (Testing with BigInt64Array.)\n      throw e;\n      ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/language/comments/hashbang/use-strict.js",
+        "/home/diogo/MetaData262/computation/utils/test/language/comments/hashbang/use-strict.js:4372: SyntaxError: Strict mode code may not include a with statement\nwith ({}) {}\n^^^^\nSyntaxError: Strict mode code may not include a with statement\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/TypedArrayConstructors/prototype/values/bigint-inherited.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArrayConstructors/prototype/values/bigint-inherited.js:7393: Test262Error: Expected SameValue(\u00c2\u00abtrue\u00c2\u00bb, \u00c2\u00abfalse\u00c2\u00bb) to be true (Testing with BigInt64Array.)\n      throw e;\n      ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/Array/prototype/reduce/15.4.4.21-2-12.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/reduce/15.4.4.21-2-12.js:7365: <string conversion failed>\n\tto.length = from.length;\n           ^\nTypeError: Cannot set property length of [object Object] which has only a getter\n    at copyArgs (/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/reduce/15.4.4.21-2-12.js:7365:12)\n    at Function.call (/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/reduce/15.4.4.21-2-12.js:7441:54)\n    at /home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/reduce/15.4.4.21-2-12.js:11744:41\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/Array/prototype/filter/15.4.4.20-2-12.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/filter/15.4.4.20-2-12.js:7365: <string conversion failed>\n\tto.length = from.length;\n           ^\nTypeError: Cannot set property length of [object Object] which has only a getter\n    at copyArgs (/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/filter/15.4.4.20-2-12.js:7365:12)\n    at Function.call (/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/filter/15.4.4.20-2-12.js:7441:54)\n    at /home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/filter/15.4.4.20-2-12.js:11744:37\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/TypedArrayConstructors/prototype/indexOf/inherited.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArrayConstructors/prototype/indexOf/inherited.js:7417: Test262Error: Expected SameValue(\u00c2\u00abtrue\u00c2\u00bb, \u00c2\u00abfalse\u00c2\u00bb) to be true (Testing with Float64Array.)\n      throw e;\n      ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/TypedArrayConstructors/prototype/lastIndexOf/inherited.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArrayConstructors/prototype/lastIndexOf/inherited.js:7417: Test262Error: Expected SameValue(\u00c2\u00abtrue\u00c2\u00bb, \u00c2\u00abfalse\u00c2\u00bb) to be true (Testing with Float64Array.)\n      throw e;\n      ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/TypedArrayConstructors/prototype/reduce/inherited.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArrayConstructors/prototype/reduce/inherited.js:7417: Test262Error: Expected SameValue(\u00c2\u00abtrue\u00c2\u00bb, \u00c2\u00abfalse\u00c2\u00bb) to be true (Testing with Float64Array.)\n      throw e;\n      ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/Function/prototype/toString/proxy-arrow-function.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/Function/prototype/toString/proxy-arrow-function.js:7574: Test262Error: Conforms to NativeFunction Syntax: \"apply () {\\n\\tlog42[\\\"Function.prototype.apply\\\"] = true;\\tlet args = copyArgs(arguments);\\n\\treturn Function.prototype.apply__.apply__(this, args);\\n}\"\n    throw new Test262Error('Conforms to NativeFunction Syntax: ' + JSON.stringify(actual) + (special ? ' (' + special + ')' : ''));\n    ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/Array/prototype/some/15.4.4.17-2-12.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/some/15.4.4.17-2-12.js:7365: <string conversion failed>\n\tto.length = from.length;\n           ^\nTypeError: Cannot set property length of [object Object] which has only a getter\n    at copyArgs (/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/some/15.4.4.17-2-12.js:7365:12)\n    at Function.call (/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/some/15.4.4.17-2-12.js:7441:54)\n    at /home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/some/15.4.4.17-2-12.js:11745:39\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/TypedArrayConstructors/prototype/reduce/bigint-inherited.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArrayConstructors/prototype/reduce/bigint-inherited.js:7393: Test262Error: Expected SameValue(\u00c2\u00abtrue\u00c2\u00bb, \u00c2\u00abfalse\u00c2\u00bb) to be true (Testing with BigInt64Array.)\n      throw e;\n      ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/Array/prototype/lastIndexOf/15.4.4.15-8-b-i-19.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/lastIndexOf/15.4.4.15-8-b-i-19.js:7363: TypeError: Cannot set property 0 of [object Object] which has only a getter\n\t\tto[i] = from[i];\n        ^\nTypeError: Cannot set property 0 of [object Object] which has only a getter\n    at copyArgs (/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/lastIndexOf/15.4.4.15-8-b-i-19.js:7363:9)\n    at Object.hasOwnProperty (/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/lastIndexOf/15.4.4.15-8-b-i-19.js:7372:13)\n    at /home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/lastIndexOf/15.4.4.15-8-b-i-19.js:11737:12\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/Set/prototype/Symbol.iterator.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/Set/prototype/Symbol.iterator.js:872: Test262Error: Expected SameValue(\u00c2\u00abfunction values() { [native code] }\u00c2\u00bb, \u00c2\u00abvalues () {\n\tlog42[\"Set.prototype.values\"] = true;\n\tlet args = copyArgs(arguments);\n\treturn wrappedFunctions[\"Set.prototype.values\"].apply__(this, args);\n}\u00c2\u00bb) to be true\n  throw new Test262Error(message);\n  ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/Object/keys/15.2.3.14-2-3.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/Object/keys/15.2.3.14-2-3.js:8281: TypeError: Cannot read properties of undefined (reading 'length')\nObject.defineProperty(Array.prototype.concat, \"length\", {value: wrappedFunctions[\"Array.prototype.concat\"].length});\n                                                                                                           ^\nTypeError: Cannot read properties of undefined (reading 'length')\n    at /home/diogo/MetaData262/computation/utils/test/built-ins/Object/keys/15.2.3.14-2-3.js:8281:108\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/TypedArrayConstructors/prototype/keys/bigint-inherited.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArrayConstructors/prototype/keys/bigint-inherited.js:7393: Test262Error: Expected SameValue(\u00c2\u00abtrue\u00c2\u00bb, \u00c2\u00abfalse\u00c2\u00bb) to be true (Testing with BigInt64Array.)\n      throw e;\n      ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/language/arguments-object/10.6-11-b-1.js",
+        "/home/diogo/MetaData262/computation/utils/test/language/arguments-object/10.6-11-b-1.js:872: Test262Error: data Expected SameValue(\u00c2\u00ab0\u00c2\u00bb, \u00c2\u00abdata\u00c2\u00bb) to be true\n  throw new Test262Error(message);\n  ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/TypedArrayConstructors/prototype/findIndex/bigint-inherited.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArrayConstructors/prototype/findIndex/bigint-inherited.js:7393: Test262Error: Expected SameValue(\u00c2\u00abtrue\u00c2\u00bb, \u00c2\u00abfalse\u00c2\u00bb) to be true (Testing with BigInt64Array.)\n      throw e;\n      ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/Function/prototype/toString/proxy-async-function.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/Function/prototype/toString/proxy-async-function.js:7574: Test262Error: Conforms to NativeFunction Syntax: \"apply () {\\n\\tlog42[\\\"Function.prototype.apply\\\"] = true;\\tlet args = copyArgs(arguments);\\n\\treturn Function.prototype.apply__.apply__(this, args);\\n}\"\n    throw new Test262Error('Conforms to NativeFunction Syntax: ' + JSON.stringify(actual) + (special ? ' (' + special + ')' : ''));\n    ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/Function/prototype/toString/proxy-bound-function.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/Function/prototype/toString/proxy-bound-function.js:7574: Test262Error: Conforms to NativeFunction Syntax: \"apply () {\\n\\tlog42[\\\"Function.prototype.apply\\\"] = true;\\tlet args = copyArgs(arguments);\\n\\treturn Function.prototype.apply__.apply__(this, args);\\n}\"\n    throw new Test262Error('Conforms to NativeFunction Syntax: ' + JSON.stringify(actual) + (special ? ' (' + special + ')' : ''));\n    ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/Array/prototype/every/15.4.4.16-2-12.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/every/15.4.4.16-2-12.js:7365: <string conversion failed>\n\tto.length = from.length;\n           ^\nTypeError: Cannot set property length of [object Object] which has only a getter\n    at copyArgs (/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/every/15.4.4.16-2-12.js:7365:12)\n    at Function.call (/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/every/15.4.4.16-2-12.js:7441:54)\n    at /home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/every/15.4.4.16-2-12.js:11744:30\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/TypedArrayConstructors/prototype/map/bigint-inherited.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArrayConstructors/prototype/map/bigint-inherited.js:7393: Test262Error: Expected SameValue(\u00c2\u00abtrue\u00c2\u00bb, \u00c2\u00abfalse\u00c2\u00bb) to be true (Testing with BigInt64Array.)\n      throw e;\n      ^\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/Array/prototype/indexOf/15.4.4.14-2-12.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/indexOf/15.4.4.14-2-12.js:7365: <string conversion failed>\n\tto.length = from.length;\n           ^\nTypeError: Cannot set property length of [object Object] which has only a getter\n    at copyArgs (/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/indexOf/15.4.4.14-2-12.js:7365:12)\n    at Function.call (/home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/indexOf/15.4.4.14-2-12.js:7441:54)\n    at /home/diogo/MetaData262/computation/utils/test/built-ins/Array/prototype/indexOf/15.4.4.14-2-12.js:11737:42\n\n",
+        "",
+        12
+    ],
+    [
+        "test/built-ins/TypedArrayConstructors/prototype/slice/inherited.js",
+        "/home/diogo/MetaData262/computation/utils/test/built-ins/TypedArrayConstructors/prototype/slice/inherited.js:7417: Test262Error: Expected SameValue(\u00c2\u00abtrue\u00c2\u00bb, \u00c2\u00abfalse\u00c2\u00bb) to be true (Testing with Float64Array.)\n      throw e;\n      ^\n\n",
+        "",
+        12
+    ]
+]

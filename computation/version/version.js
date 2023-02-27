@@ -53,9 +53,7 @@ async function computeVersion(pathToTest262, metadata, testing) {
     // const diffVersion = [];
     for (let test in metadata) {
         const path = metadata[test].path;
-        let version = getHigherVersion(metadata[test].versionFrontmatter, resultsStatic[path].slice(2));
-        version = getHigherVersion(resultsDynamic[path], version);
-        // let version = getHigherVersion(resultsDynamic[path], resultsStatic[path].slice(2));
+        let version = getHigherVersion(resultsDynamic[path], resultsStatic[path].slice(2));
         version = minimumVersion(metadata[test], version);
         results[path] = version;
 
