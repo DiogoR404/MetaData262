@@ -1,5 +1,4 @@
 const fs = require('fs');
-const { hasUncaughtExceptionCaptureCallback } = require('process');
 const runProcess = require('../utils/runProcess');
 const computeStaticVersion = require('./static')
 
@@ -41,34 +40,38 @@ function minimumVersion(test, version) {
     return version;
 }
 
-async function computeVersion(pathToTest262, metadata, testing) {
+async function computeVersion(pathToTest262, metadata, configuration, testing) {
     const resultsStatic = computeStaticVersion(pathToTest262, metadata);
     let args = [__dirname + '/dynamic.py'];
-    if (testing) args.push('-t')
+    let dynamicOuputFile = 'result.json';
+    if (testing) {
+        args.push('-t');
+        dynamicOuputFile = 'result_test.json'
+    }
     await runProcess('python3', args);
-    const resultsDynamic = JSON.parse(readFileContent(__dirname + "/results/dynamic/result.json"));
+    const resultsDynamic = [];
+    for (const engine in configuration['engines']) {
+        resultsDynamic.push(JSON.parse(readFileContent(__dirname + "/results/dynamic/" + engine+ "/" + dynamicOuputFile)))
+    }
 
     const results = {};
     const stats = {};
     // const diffVersion = [];
     for (let test in metadata) {
         const path = metadata[test].path;
-        let version = getHigherVersion(resultsDynamic[path], resultsStatic[path].slice(2));
+        let version = resultsStatic[path].slice(2);
+
+        for (let i = 0; i < resultsDynamic.length; i++) {
+            version = getHigherVersion(version, resultsDynamic[i][path]);
+        }
+
         version = minimumVersion(metadata[test], version);
         results[path] = version;
 
         // for checking results
         if (!stats.hasOwnProperty(version)) stats[version] = 0;
         stats[version] += 1;
-
-        // if (metadata[test].versionFrontmatter && metadata[test].versionFrontmatter != version && version !== 'notSupported') {
-        //     diffVersion.push({ 'path': path, 'official': metadata[test].versionFrontmatter, 'version': version });
-        // }
     }
-
-    // fs.writeFileSync(__dirname + '/results/diff.json', JSON.stringify(diffVersion));
-    // console.log(`\ntotal diff ${diffVersion.length}`);
-    // console.log(diffVersion.filter(elm => { return elm.official > elm.version; }).length)
 
     fs.writeFileSync(__dirname + '/results/stats.json', JSON.stringify(stats));
     console.log(stats);
@@ -78,8 +81,9 @@ async function computeVersion(pathToTest262, metadata, testing) {
 }
 if (require.main === module) {
     const metadata = JSON.parse(readFileContent(__dirname + "/../official/results/metadata_test262.json"));
+    const configuration = JSON.parse(readFileContent(__dirname + "/../configurations/dynamicAnalysis.json"));
     const testing = process.argv[2] === '-t';
-    computeVersion(__dirname + "/../../resources/test262/", metadata, testing);
+    computeVersion(__dirname + "/../../resources/test262/", metadata, configuration, testing);
 } else {
     module.exports = computeVersion;
 }

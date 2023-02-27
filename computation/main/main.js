@@ -87,7 +87,7 @@ async function main() {
         constructs = JSON.parse(fs.readFileSync(__dirname + '/../constructs/results/result.json'));
         builtIns = JSON.parse(fs.readFileSync(__dirname + '/../builtIns/results/result.json'));
     } else {
-        versions = await computeVersion(pathToTest262, metadata, testing);
+        versions = await computeVersion(pathToTest262, metadata, computationConfig, testing);
         constructs = computeConstructs(pathToTest262, metadata);
         builtIns = await computeBuiltIns(pathToTest262, metadata, testing, computationConfig);
     }

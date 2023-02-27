@@ -31,21 +31,6 @@ const getStringToReplace = '\nwrappedFunctions[\"$1\.$2\.$3\"] = $1.$2.$3;\n'+
 function generateBuiltInWrappers(versions) {
     function write_to_file(func) {
         let str_parsed = func.replace(/\<var\>/g, "").replace(/\<\/var\>/g, "").replace(/\%|\[|\]/g, "");
-<<<<<<< HEAD
-        let strToBeReplaced = '\nlogObjects["$1.$2.$3"] = $1.$2.$3;\n$1.$2.$3 = function ';
-        if (str_parsed.endsWith('delete') || str_parsed.endsWith('catch') || str_parsed.endsWith('finally')){
-            strToBeReplaced += '$3 ';
-        }
-        strToBeReplaced += '(){\n'+
-				'\tlog42.indexOf__(\"$1\.$2\.$3\") === -1 ? log42.push__(\"$1\.$2\.$3\") : null;\n'+
-				'\tvar args = []\n'+
-				'\targs = copyArgs(arguments, args);\n'+
-				'\treturn logObjects["$1.$2.$3"].apply(this, args)\n'+
-			'}\n'+
-			'$1.$2.$3.prototype = $1.$2.$3__.prototype;\n';
-        let str = str_parsed.replace(regex, strToBeReplaced);
-        stream.write(str);
-=======
 		let strToReplace;
 		if (str_parsed.includes("TypedArray")) {
 			strToReplace = getStringToReplaceTypedArray;
@@ -55,7 +40,6 @@ function generateBuiltInWrappers(versions) {
 			strToReplace = getStringToReplace;
 		}
         stream.write(str_parsed.replace(regex, strToReplace));
->>>>>>> 1aa354f1ad28309c47face306f73cd09242d6ba5
     }
 
     const lines = collectBuiltInSignatures(versions);
@@ -73,11 +57,7 @@ function generateBuiltInWrappers(versions) {
 			"\tto.length = from.length;\n"+
 			"\treturn to\n"+
 		"}\n"+
-<<<<<<< HEAD
-    		"var logObjects = {};\n");
-=======
 		"const generalTypedArrayPrototype = Object.getPrototypeOf(Int8Array.prototype)");
->>>>>>> 1aa354f1ad28309c47face306f73cd09242d6ba5
 
     for (let line in lines) {
         if (lines[line].includes('.prototype.') && !lines[line].includes("Generator")) {
