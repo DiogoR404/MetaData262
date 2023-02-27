@@ -9,9 +9,13 @@ async function computeBuiltIns(pathToTest262, metadata, testing, conf) {
     generateBuiltInWrappers(conf.versions);
 
     let args = [__dirname + '/dynamic.py'];
-    if (testing) args.push('-t');
+    let dynamicOuputFile = 'dynamic.json';
+    if (testing) {
+        args.push('-t');
+        dynamicOuputFile = 'dynamic_test.json'
+    }
     await runProcess('python3', args);
-    const dynamicResult = JSON.parse(fs.readFileSync(__dirname + '/results/dynamic.json'))['correct'];
+    const dynamicResult = JSON.parse(fs.readFileSync(__dirname + '/results/' + dynamicOuputFile))['correct'];
 
     let result = {};
     for (const test in staticResult) {
