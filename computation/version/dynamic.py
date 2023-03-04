@@ -44,10 +44,13 @@ def main():
     if '-lastVersion' in sys.argv:
         configuration['versions'] = configuration['versions'][-1:]
     
+<<<<<<< HEAD
     if '-engine' in sys.argv:
         engine = sys.argv[sys.argv.index('-engine') + 1]
         configuration['engines'] = {engine: configuration['engines'][engine]}
 
+=======
+>>>>>>> dd47ed551b04a5d45b0e553839184a3812551075
     for engine in configuration['engines'].keys():
         print('Running engine', engine)
         runEngine(configuration, engine)
