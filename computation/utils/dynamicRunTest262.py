@@ -90,7 +90,13 @@ def runTest(engine: str, test: dict, harness: dict, version: int, builtInWrapper
     return [False] + ret
 
 def dynamicComputation(configuration: dict, engine: str, version: int, testMetaData: list, builtInWrappers='') -> dict:
-    harness = loadHarness(configuration['harness'])
+    harness_key = ''
+    if engine == 'v8':
+        harness_key = 'harness_v8'
+    else:
+        harness_key = 'harness'
+    harness = loadHarness(configuration[harness_key])
+
     enginePath = configuration['engines'][engine][str(version)]
     currentDirectory = os.path.dirname(os.path.abspath(__file__))
     os.system(f'rm -rf {currentDirectory}/test/')
@@ -117,14 +123,14 @@ def loadHarness(data) -> dict:
 
 def getTestMetaData() -> tuple:
     currentDirectory = os.path.dirname(os.path.abspath(__file__))
-    if len(sys.argv) > 1 and sys.argv[1] == '-t':
+    if '-t' in sys.argv:
         pathMetadata = currentDirectory + '/../support/testingDynamicSubSet.json'
     else:
         pathMetadata = currentDirectory + '/../official/results/metadata_test262.json'
     with open(pathMetadata, 'r') as f:
         testMetaData = json.load(f)
-    if len(sys.argv) > 2:
-        testMetaData = testMetaData[int(sys.argv[2]):]
+    if '-start' in sys.argv:
+        testMetaData = testMetaData[int(sys.argv[sys.argv.index('-start') + 1]):]
     ignore = []
     toTest = []
     for test in testMetaData:
