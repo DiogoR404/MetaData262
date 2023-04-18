@@ -46,10 +46,9 @@ function addFinalMetadata(pathToTest262, test) {
     //loads the test
     const fileToAnalyse = test.path;
     const program_text = fs.readFileSync(pathToTest262 + fileToAnalyse, 'utf-8');
-    test['pathSplit'] = fileToAnalyse.replace('test/', '').split('/');
 
     try {
-        [test["asserts"], test["error"]] = analysisProgram(esprima.parse(program_text));
+        [test["asserts"], test["errors"]] = analysisProgram(esprima.parse(program_text));
         test["isSupportedEsprima"] = true;
 
     } catch (e) {//fault in esprima
@@ -57,7 +56,7 @@ function addFinalMetadata(pathToTest262, test) {
         const code = program_text.slice(program_text.indexOf('---*/'));
 
         test["asserts"] = (code.match(/assert\.|assert\(/g) || []).length;
-        test["error"] = (code.match(/Test262Error/g) || []).length;
+        test["errors"] = (code.match(/Test262Error/g) || []).length;
         test["isSupportedEsprima"] = false;
     }
     test["lines"] = getLines(program_text);
@@ -100,10 +99,10 @@ async function main() {
         if (testVersion) test['version'] = testVersion;
 
         const testBuiltIns = builtIns[test.path];
-        if (Object.keys(testBuiltIns).length !== 0) test['built-ins'] = testBuiltIns;
+        if (Object.keys(testBuiltIns).length !== 0) test['builtIns'] = testBuiltIns;
 
         const testConstructs = constructs[test.path];
-        if (testConstructs) test['syntactic_constructors'] = testConstructs;
+        if (testConstructs) test['syntacticConstructors'] = testConstructs;
 
         addFinalMetadata(pathToTest262, test);
     }

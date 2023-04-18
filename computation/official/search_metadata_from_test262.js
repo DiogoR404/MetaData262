@@ -24,11 +24,12 @@ function GetMetadata(pathToTest262, path) {
     let program_text = fs.readFileSync(pathToTest262 + path, 'utf-8');
 
     let metadata = { path: path };
+    metadata['pathSplit'] = path.replace('test/', '').split('/');
 
     program = program_text.split("\n");
 
     
-    let line = 2 //saltar o copyright
+    let line = 2 //skip copyright lines
     for (; line < program.length - 1; line++) {
         lineArray = program[line].split(":");
         switch (lineArray[0].replace(/ /g, "")) {
@@ -94,7 +95,7 @@ function recursive(pathToTest262, path, json) {
             } else if (-1 === files[file].indexOf('_FIXTURE')) {
                 let metadata_final = GetMetadata(pathToTest262, path + "/" + files[file]);
                 if (metadata_final === null) {
-                    console.log(testingPath + "/" + files[file]);
+                    console.log("Error with test: " + testingPath + "/" + files[file]);
                 }
                 json.push(metadata_final);
             }
