@@ -33,6 +33,10 @@ the following commands expect the shell to be withing `./computation/buitlIns/`
 ## Version computation
 very similar to builtIns computation just change for the full computation to `node version.js`
 
+For the dynamic computation it is possible to run:
+- only with the engines corresponding to the latest verion `python3 dynamic.py -lastversion`
+- only one of the engines `python3 dynamic.py -engine [engineName]`
+
 ## run "manually"
 - `node official/search_metadata_from_test262.js`
 - `node version/version.js`
