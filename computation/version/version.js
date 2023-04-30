@@ -79,6 +79,7 @@ async function computeVersion(pathToTest262, metadata, configuration, testing) {
     fs.writeFileSync(__dirname + '/results/result.json', JSON.stringify(results));
     return results;
 }
+
 if (require.main === module) {
     const metadata = JSON.parse(readFileContent(__dirname + "/../official/results/metadata_test262.json"));
     const configuration = JSON.parse(readFileContent(__dirname + "/../configurations/dynamicAnalysis.json"));

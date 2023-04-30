@@ -1,21 +1,64 @@
+# Compute Metadata
+## Main script
+- to run every computation `node main/main.js`
+- to run just run the final merger of every computation `node main/main.js -nc`
+- to run the full computation with only the testing subset of files `node main/main.js -t`
+
+## Explain folders
+- **builtIns** - contains scripts related with the builtIns computation
+- **configurations** - contains json files related to the configuration computation
+- **constructs** - contains scripts related with the syntactic constructs computation
+- **harness** - contains scripts related with harness computation
+- **main** - contains files for running the whole computation
+- **official** - contains scripts related with the official metadata
+- **persistence** - contains the makefile that does the default installations of the project
+- **support** - contains file with a paths of a subset of test262 tests for testing the scripts
+- **trash** - contains scripts that will be removed
+- **utils** - contains scripts that are used across multiple parts of the computation
+- **version** - contains scripts that are related with the version computation
+
+Typically each folder will store the results of its scripts within a folder called **results**
+
+
+## BuiltIns computation
+
+the following commands expect the shell to be withing `./computation/buitlIns/`
+- run full computation `node builtIns.js`
+- run full computation with subset of test262 `node builtIns.js -t`
+- run static computation `node static.js`
+- run dynamic computation `python3 dynamic.py`
+- run dynamic with subset of test262 `python3 dynamic.py -t`
+- run dynamic with subset of subset of test262 `python3 dynamic.py -t -2` (runs the last two tests of the subset)
+
+## Version computation
+very similar to builtIns computation just change for the full computation to `node version.js`
+
+## run "manually"
+- `node official/search_metadata_from_test262.js`
+- `node version/version.js`
+- `node constructs/search_syntactic_constructs.js`
+- `node builtIns/builtIns.js`
+- `node main/main.js -nc`
+
+# Deprecated README!!
+
+
 # Installation
 
 To run this project it is necessary to have nodejs, npm, python3 and pip installed.
-To have access to the test262 it is necessary to run the following two commands inside the folder **test262**:
+To have access to the test262 it is necessary to run the following two commands inside the folder **/resourses/test262**:
 
 `git submodule init`
 
 `git submodule update`
 
-Finally to install the dependecies of the project the makefile has to be executed.
+Finally to install the dependencies of the project the makefile in **./presistence/Makefile** has to be executed.
 
 `sudo make`
 
-# Existing Metadata
+The first step in the search for metadata will be to collect all the metadata already present in the test of the test suite Test262 for this we will go through all the test and parse the metadata that it contains. For this the next command will be executed:
 
-The first step in the search for metadata will be to collect all the metadata already present in the test of the testsuite Test262 for this we will go through all the test and parse the metadata that it contains. For this the next command will be executed:
-
-`node search_metadata_from_test262.js`
+`node official/search_metadata_from_test262.js`
 
 The results are saved in the json file with the name **"metadata_test262.json"**
 
