@@ -52,7 +52,7 @@ def runTest(engine: str, test: dict, harness: dict, version: int, builtInWrapper
 
     if builtInWrappers: # if is running the builtIn dynamic computation
         codeToExecute += builtInWrappers + ''.join(testCode)
-        codeToExecute += '\nconsole.log("`###`"+stringify__(log42)+"`###`");'
+        codeToExecute += '\nconsole.log("`###`"+stringify__(loggedBuiltIns)+"`###`");'
     else:
         codeToExecute += ''.join(testCode)
 

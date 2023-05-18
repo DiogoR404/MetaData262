@@ -1,4 +1,4 @@
-var log42 = {};
+var loggedBuiltIns = {};
 const stringify__ = JSON.stringify;
 const wrappedFunctions = {};
 function copyArgs(from){
@@ -10,9 +10,11 @@ function copyArgs(from){
 	return to
 }
 const generalTypedArrayPrototype = Object.getPrototypeOf(Int8Array.prototype)
+
+
 wrappedFunctions["Object.prototype.hasOwnProperty"] = Object.prototype.hasOwnProperty;
 Object.prototype.hasOwnProperty = { hasOwnProperty () {
-	log42["Object.prototype.hasOwnProperty"] = true;
+	loggedBuiltIns["Object.prototype.hasOwnProperty"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Object.prototype.hasOwnProperty"].apply__(this, args);
 }}.hasOwnProperty
@@ -21,7 +23,7 @@ Object.defineProperty(Object.prototype.hasOwnProperty, "length", {value: wrapped
 
 wrappedFunctions["Object.prototype.isPrototypeOf"] = Object.prototype.isPrototypeOf;
 Object.prototype.isPrototypeOf = { isPrototypeOf () {
-	log42["Object.prototype.isPrototypeOf"] = true;
+	loggedBuiltIns["Object.prototype.isPrototypeOf"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Object.prototype.isPrototypeOf"].apply__(this, args);
 }}.isPrototypeOf
@@ -30,7 +32,7 @@ Object.defineProperty(Object.prototype.isPrototypeOf, "length", {value: wrappedF
 
 wrappedFunctions["Object.prototype.propertyIsEnumerable"] = Object.prototype.propertyIsEnumerable;
 Object.prototype.propertyIsEnumerable = { propertyIsEnumerable () {
-	log42["Object.prototype.propertyIsEnumerable"] = true;
+	loggedBuiltIns["Object.prototype.propertyIsEnumerable"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Object.prototype.propertyIsEnumerable"].apply__(this, args);
 }}.propertyIsEnumerable
@@ -39,7 +41,7 @@ Object.defineProperty(Object.prototype.propertyIsEnumerable, "length", {value: w
 
 wrappedFunctions["Object.prototype.toLocaleString"] = Object.prototype.toLocaleString;
 Object.prototype.toLocaleString = { toLocaleString () {
-	log42["Object.prototype.toLocaleString"] = true;
+	loggedBuiltIns["Object.prototype.toLocaleString"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Object.prototype.toLocaleString"].apply__(this, args);
 }}.toLocaleString
@@ -48,7 +50,7 @@ Object.defineProperty(Object.prototype.toLocaleString, "length", {value: wrapped
 
 wrappedFunctions["Object.prototype.toString"] = Object.prototype.toString;
 Object.prototype.toString = { toString () {
-	log42["Object.prototype.toString"] = true;
+	loggedBuiltIns["Object.prototype.toString"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Object.prototype.toString"].apply__(this, args);
 }}.toString
@@ -57,7 +59,7 @@ Object.defineProperty(Object.prototype.toString, "length", {value: wrappedFuncti
 
 wrappedFunctions["Object.prototype.valueOf"] = Object.prototype.valueOf;
 Object.prototype.valueOf = { valueOf () {
-	log42["Object.prototype.valueOf"] = true;
+	loggedBuiltIns["Object.prototype.valueOf"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Object.prototype.valueOf"].apply__(this, args);
 }}.valueOf
@@ -66,7 +68,7 @@ Object.defineProperty(Object.prototype.valueOf, "length", {value: wrappedFunctio
 
 Function.prototype.apply__= Function.prototype.apply;
 Function.prototype.apply = { apply () {
-	log42["Function.prototype.apply"] = true;	let args = copyArgs(arguments);
+	loggedBuiltIns["Function.prototype.apply"] = true;	let args = copyArgs(arguments);
 	return Function.prototype.apply__.apply__(this, args);
 }}.apply
 Function.prototype.apply.prototype !== undefined ? Function.prototype.apply.prototype = Function.prototype.apply__.prototype: null;
@@ -74,7 +76,7 @@ Object.defineProperty(Function.prototype.apply, "length", {value: Function.proto
 
 Function.prototype.bind__= Function.prototype.bind;
 Function.prototype.bind = { bind () {
-	log42["Function.prototype.bind"] = true;	let args = copyArgs(arguments);
+	loggedBuiltIns["Function.prototype.bind"] = true;	let args = copyArgs(arguments);
 	return Function.prototype.bind__.apply__(this, args);
 }}.bind
 Function.prototype.bind.prototype !== undefined ? Function.prototype.bind.prototype = Function.prototype.bind__.prototype: null;
@@ -82,7 +84,7 @@ Object.defineProperty(Function.prototype.bind, "length", {value: Function.protot
 
 Function.prototype.call__= Function.prototype.call;
 Function.prototype.call = { call () {
-	log42["Function.prototype.call"] = true;	let args = copyArgs(arguments);
+	loggedBuiltIns["Function.prototype.call"] = true;	let args = copyArgs(arguments);
 	return Function.prototype.call__.apply__(this, args);
 }}.call
 Function.prototype.call.prototype !== undefined ? Function.prototype.call.prototype = Function.prototype.call__.prototype: null;
@@ -90,7 +92,7 @@ Object.defineProperty(Function.prototype.call, "length", {value: Function.protot
 
 Function.prototype.toString__= Function.prototype.toString;
 Function.prototype.toString = { toString () {
-	log42["Function.prototype.toString"] = true;	let args = copyArgs(arguments);
+	loggedBuiltIns["Function.prototype.toString"] = true;	let args = copyArgs(arguments);
 	return Function.prototype.toString__.apply__(this, args);
 }}.toString
 Function.prototype.toString.prototype !== undefined ? Function.prototype.toString.prototype = Function.prototype.toString__.prototype: null;
@@ -98,7 +100,7 @@ Object.defineProperty(Function.prototype.toString, "length", {value: Function.pr
 
 wrappedFunctions["Boolean.prototype.toString"] = Boolean.prototype.toString;
 Boolean.prototype.toString = { toString () {
-	log42["Boolean.prototype.toString"] = true;
+	loggedBuiltIns["Boolean.prototype.toString"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Boolean.prototype.toString"].apply__(this, args);
 }}.toString
@@ -107,7 +109,7 @@ Object.defineProperty(Boolean.prototype.toString, "length", {value: wrappedFunct
 
 wrappedFunctions["Boolean.prototype.valueOf"] = Boolean.prototype.valueOf;
 Boolean.prototype.valueOf = { valueOf () {
-	log42["Boolean.prototype.valueOf"] = true;
+	loggedBuiltIns["Boolean.prototype.valueOf"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Boolean.prototype.valueOf"].apply__(this, args);
 }}.valueOf
@@ -116,7 +118,7 @@ Object.defineProperty(Boolean.prototype.valueOf, "length", {value: wrappedFuncti
 
 wrappedFunctions["Symbol.prototype.toString"] = Symbol.prototype.toString;
 Symbol.prototype.toString = { toString () {
-	log42["Symbol.prototype.toString"] = true;
+	loggedBuiltIns["Symbol.prototype.toString"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Symbol.prototype.toString"].apply__(this, args);
 }}.toString
@@ -125,7 +127,7 @@ Object.defineProperty(Symbol.prototype.toString, "length", {value: wrappedFuncti
 
 wrappedFunctions["Symbol.prototype.valueOf"] = Symbol.prototype.valueOf;
 Symbol.prototype.valueOf = { valueOf () {
-	log42["Symbol.prototype.valueOf"] = true;
+	loggedBuiltIns["Symbol.prototype.valueOf"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Symbol.prototype.valueOf"].apply__(this, args);
 }}.valueOf
@@ -134,7 +136,7 @@ Object.defineProperty(Symbol.prototype.valueOf, "length", {value: wrappedFunctio
 
 wrappedFunctions["Error.prototype.toString"] = Error.prototype.toString;
 Error.prototype.toString = { toString () {
-	log42["Error.prototype.toString"] = true;
+	loggedBuiltIns["Error.prototype.toString"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Error.prototype.toString"].apply__(this, args);
 }}.toString
@@ -143,7 +145,7 @@ Object.defineProperty(Error.prototype.toString, "length", {value: wrappedFunctio
 
 wrappedFunctions["Number.prototype.toExponential"] = Number.prototype.toExponential;
 Number.prototype.toExponential = { toExponential () {
-	log42["Number.prototype.toExponential"] = true;
+	loggedBuiltIns["Number.prototype.toExponential"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Number.prototype.toExponential"].apply__(this, args);
 }}.toExponential
@@ -152,7 +154,7 @@ Object.defineProperty(Number.prototype.toExponential, "length", {value: wrappedF
 
 wrappedFunctions["Number.prototype.toFixed"] = Number.prototype.toFixed;
 Number.prototype.toFixed = { toFixed () {
-	log42["Number.prototype.toFixed"] = true;
+	loggedBuiltIns["Number.prototype.toFixed"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Number.prototype.toFixed"].apply__(this, args);
 }}.toFixed
@@ -161,7 +163,7 @@ Object.defineProperty(Number.prototype.toFixed, "length", {value: wrappedFunctio
 
 wrappedFunctions["Number.prototype.toLocaleString"] = Number.prototype.toLocaleString;
 Number.prototype.toLocaleString = { toLocaleString () {
-	log42["Number.prototype.toLocaleString"] = true;
+	loggedBuiltIns["Number.prototype.toLocaleString"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Number.prototype.toLocaleString"].apply__(this, args);
 }}.toLocaleString
@@ -170,7 +172,7 @@ Object.defineProperty(Number.prototype.toLocaleString, "length", {value: wrapped
 
 wrappedFunctions["Number.prototype.toPrecision"] = Number.prototype.toPrecision;
 Number.prototype.toPrecision = { toPrecision () {
-	log42["Number.prototype.toPrecision"] = true;
+	loggedBuiltIns["Number.prototype.toPrecision"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Number.prototype.toPrecision"].apply__(this, args);
 }}.toPrecision
@@ -179,7 +181,7 @@ Object.defineProperty(Number.prototype.toPrecision, "length", {value: wrappedFun
 
 wrappedFunctions["Number.prototype.toString"] = Number.prototype.toString;
 Number.prototype.toString = { toString () {
-	log42["Number.prototype.toString"] = true;
+	loggedBuiltIns["Number.prototype.toString"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Number.prototype.toString"].apply__(this, args);
 }}.toString
@@ -188,7 +190,7 @@ Object.defineProperty(Number.prototype.toString, "length", {value: wrappedFuncti
 
 wrappedFunctions["Number.prototype.valueOf"] = Number.prototype.valueOf;
 Number.prototype.valueOf = { valueOf () {
-	log42["Number.prototype.valueOf"] = true;
+	loggedBuiltIns["Number.prototype.valueOf"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Number.prototype.valueOf"].apply__(this, args);
 }}.valueOf
@@ -197,7 +199,7 @@ Object.defineProperty(Number.prototype.valueOf, "length", {value: wrappedFunctio
 
 wrappedFunctions["BigInt.prototype.toLocaleString"] = BigInt.prototype.toLocaleString;
 BigInt.prototype.toLocaleString = { toLocaleString () {
-	log42["BigInt.prototype.toLocaleString"] = true;
+	loggedBuiltIns["BigInt.prototype.toLocaleString"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["BigInt.prototype.toLocaleString"].apply__(this, args);
 }}.toLocaleString
@@ -206,7 +208,7 @@ Object.defineProperty(BigInt.prototype.toLocaleString, "length", {value: wrapped
 
 wrappedFunctions["BigInt.prototype.toString"] = BigInt.prototype.toString;
 BigInt.prototype.toString = { toString () {
-	log42["BigInt.prototype.toString"] = true;
+	loggedBuiltIns["BigInt.prototype.toString"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["BigInt.prototype.toString"].apply__(this, args);
 }}.toString
@@ -215,7 +217,7 @@ Object.defineProperty(BigInt.prototype.toString, "length", {value: wrappedFuncti
 
 wrappedFunctions["BigInt.prototype.valueOf"] = BigInt.prototype.valueOf;
 BigInt.prototype.valueOf = { valueOf () {
-	log42["BigInt.prototype.valueOf"] = true;
+	loggedBuiltIns["BigInt.prototype.valueOf"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["BigInt.prototype.valueOf"].apply__(this, args);
 }}.valueOf
@@ -224,7 +226,7 @@ Object.defineProperty(BigInt.prototype.valueOf, "length", {value: wrappedFunctio
 
 wrappedFunctions["Date.prototype.getDate"] = Date.prototype.getDate;
 Date.prototype.getDate = { getDate () {
-	log42["Date.prototype.getDate"] = true;
+	loggedBuiltIns["Date.prototype.getDate"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Date.prototype.getDate"].apply__(this, args);
 }}.getDate
@@ -233,7 +235,7 @@ Object.defineProperty(Date.prototype.getDate, "length", {value: wrappedFunctions
 
 wrappedFunctions["Date.prototype.getDay"] = Date.prototype.getDay;
 Date.prototype.getDay = { getDay () {
-	log42["Date.prototype.getDay"] = true;
+	loggedBuiltIns["Date.prototype.getDay"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Date.prototype.getDay"].apply__(this, args);
 }}.getDay
@@ -242,7 +244,7 @@ Object.defineProperty(Date.prototype.getDay, "length", {value: wrappedFunctions[
 
 wrappedFunctions["Date.prototype.getFullYear"] = Date.prototype.getFullYear;
 Date.prototype.getFullYear = { getFullYear () {
-	log42["Date.prototype.getFullYear"] = true;
+	loggedBuiltIns["Date.prototype.getFullYear"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Date.prototype.getFullYear"].apply__(this, args);
 }}.getFullYear
@@ -251,7 +253,7 @@ Object.defineProperty(Date.prototype.getFullYear, "length", {value: wrappedFunct
 
 wrappedFunctions["Date.prototype.getHours"] = Date.prototype.getHours;
 Date.prototype.getHours = { getHours () {
-	log42["Date.prototype.getHours"] = true;
+	loggedBuiltIns["Date.prototype.getHours"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Date.prototype.getHours"].apply__(this, args);
 }}.getHours
@@ -260,7 +262,7 @@ Object.defineProperty(Date.prototype.getHours, "length", {value: wrappedFunction
 
 wrappedFunctions["Date.prototype.getMilliseconds"] = Date.prototype.getMilliseconds;
 Date.prototype.getMilliseconds = { getMilliseconds () {
-	log42["Date.prototype.getMilliseconds"] = true;
+	loggedBuiltIns["Date.prototype.getMilliseconds"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Date.prototype.getMilliseconds"].apply__(this, args);
 }}.getMilliseconds
@@ -269,7 +271,7 @@ Object.defineProperty(Date.prototype.getMilliseconds, "length", {value: wrappedF
 
 wrappedFunctions["Date.prototype.getMinutes"] = Date.prototype.getMinutes;
 Date.prototype.getMinutes = { getMinutes () {
-	log42["Date.prototype.getMinutes"] = true;
+	loggedBuiltIns["Date.prototype.getMinutes"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Date.prototype.getMinutes"].apply__(this, args);
 }}.getMinutes
@@ -278,7 +280,7 @@ Object.defineProperty(Date.prototype.getMinutes, "length", {value: wrappedFuncti
 
 wrappedFunctions["Date.prototype.getMonth"] = Date.prototype.getMonth;
 Date.prototype.getMonth = { getMonth () {
-	log42["Date.prototype.getMonth"] = true;
+	loggedBuiltIns["Date.prototype.getMonth"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Date.prototype.getMonth"].apply__(this, args);
 }}.getMonth
@@ -287,7 +289,7 @@ Object.defineProperty(Date.prototype.getMonth, "length", {value: wrappedFunction
 
 wrappedFunctions["Date.prototype.getSeconds"] = Date.prototype.getSeconds;
 Date.prototype.getSeconds = { getSeconds () {
-	log42["Date.prototype.getSeconds"] = true;
+	loggedBuiltIns["Date.prototype.getSeconds"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Date.prototype.getSeconds"].apply__(this, args);
 }}.getSeconds
@@ -296,7 +298,7 @@ Object.defineProperty(Date.prototype.getSeconds, "length", {value: wrappedFuncti
 
 wrappedFunctions["Date.prototype.getTime"] = Date.prototype.getTime;
 Date.prototype.getTime = { getTime () {
-	log42["Date.prototype.getTime"] = true;
+	loggedBuiltIns["Date.prototype.getTime"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Date.prototype.getTime"].apply__(this, args);
 }}.getTime
@@ -305,7 +307,7 @@ Object.defineProperty(Date.prototype.getTime, "length", {value: wrappedFunctions
 
 wrappedFunctions["Date.prototype.getTimezoneOffset"] = Date.prototype.getTimezoneOffset;
 Date.prototype.getTimezoneOffset = { getTimezoneOffset () {
-	log42["Date.prototype.getTimezoneOffset"] = true;
+	loggedBuiltIns["Date.prototype.getTimezoneOffset"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Date.prototype.getTimezoneOffset"].apply__(this, args);
 }}.getTimezoneOffset
@@ -314,7 +316,7 @@ Object.defineProperty(Date.prototype.getTimezoneOffset, "length", {value: wrappe
 
 wrappedFunctions["Date.prototype.getUTCDate"] = Date.prototype.getUTCDate;
 Date.prototype.getUTCDate = { getUTCDate () {
-	log42["Date.prototype.getUTCDate"] = true;
+	loggedBuiltIns["Date.prototype.getUTCDate"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Date.prototype.getUTCDate"].apply__(this, args);
 }}.getUTCDate
@@ -323,7 +325,7 @@ Object.defineProperty(Date.prototype.getUTCDate, "length", {value: wrappedFuncti
 
 wrappedFunctions["Date.prototype.getUTCDay"] = Date.prototype.getUTCDay;
 Date.prototype.getUTCDay = { getUTCDay () {
-	log42["Date.prototype.getUTCDay"] = true;
+	loggedBuiltIns["Date.prototype.getUTCDay"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Date.prototype.getUTCDay"].apply__(this, args);
 }}.getUTCDay
@@ -332,7 +334,7 @@ Object.defineProperty(Date.prototype.getUTCDay, "length", {value: wrappedFunctio
 
 wrappedFunctions["Date.prototype.getUTCFullYear"] = Date.prototype.getUTCFullYear;
 Date.prototype.getUTCFullYear = { getUTCFullYear () {
-	log42["Date.prototype.getUTCFullYear"] = true;
+	loggedBuiltIns["Date.prototype.getUTCFullYear"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Date.prototype.getUTCFullYear"].apply__(this, args);
 }}.getUTCFullYear
@@ -341,7 +343,7 @@ Object.defineProperty(Date.prototype.getUTCFullYear, "length", {value: wrappedFu
 
 wrappedFunctions["Date.prototype.getUTCHours"] = Date.prototype.getUTCHours;
 Date.prototype.getUTCHours = { getUTCHours () {
-	log42["Date.prototype.getUTCHours"] = true;
+	loggedBuiltIns["Date.prototype.getUTCHours"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Date.prototype.getUTCHours"].apply__(this, args);
 }}.getUTCHours
@@ -350,7 +352,7 @@ Object.defineProperty(Date.prototype.getUTCHours, "length", {value: wrappedFunct
 
 wrappedFunctions["Date.prototype.getUTCMilliseconds"] = Date.prototype.getUTCMilliseconds;
 Date.prototype.getUTCMilliseconds = { getUTCMilliseconds () {
-	log42["Date.prototype.getUTCMilliseconds"] = true;
+	loggedBuiltIns["Date.prototype.getUTCMilliseconds"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Date.prototype.getUTCMilliseconds"].apply__(this, args);
 }}.getUTCMilliseconds
@@ -359,7 +361,7 @@ Object.defineProperty(Date.prototype.getUTCMilliseconds, "length", {value: wrapp
 
 wrappedFunctions["Date.prototype.getUTCMinutes"] = Date.prototype.getUTCMinutes;
 Date.prototype.getUTCMinutes = { getUTCMinutes () {
-	log42["Date.prototype.getUTCMinutes"] = true;
+	loggedBuiltIns["Date.prototype.getUTCMinutes"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Date.prototype.getUTCMinutes"].apply__(this, args);
 }}.getUTCMinutes
@@ -368,7 +370,7 @@ Object.defineProperty(Date.prototype.getUTCMinutes, "length", {value: wrappedFun
 
 wrappedFunctions["Date.prototype.getUTCMonth"] = Date.prototype.getUTCMonth;
 Date.prototype.getUTCMonth = { getUTCMonth () {
-	log42["Date.prototype.getUTCMonth"] = true;
+	loggedBuiltIns["Date.prototype.getUTCMonth"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Date.prototype.getUTCMonth"].apply__(this, args);
 }}.getUTCMonth
@@ -377,7 +379,7 @@ Object.defineProperty(Date.prototype.getUTCMonth, "length", {value: wrappedFunct
 
 wrappedFunctions["Date.prototype.getUTCSeconds"] = Date.prototype.getUTCSeconds;
 Date.prototype.getUTCSeconds = { getUTCSeconds () {
-	log42["Date.prototype.getUTCSeconds"] = true;
+	loggedBuiltIns["Date.prototype.getUTCSeconds"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Date.prototype.getUTCSeconds"].apply__(this, args);
 }}.getUTCSeconds
@@ -386,7 +388,7 @@ Object.defineProperty(Date.prototype.getUTCSeconds, "length", {value: wrappedFun
 
 wrappedFunctions["Date.prototype.setDate"] = Date.prototype.setDate;
 Date.prototype.setDate = { setDate () {
-	log42["Date.prototype.setDate"] = true;
+	loggedBuiltIns["Date.prototype.setDate"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Date.prototype.setDate"].apply__(this, args);
 }}.setDate
@@ -395,7 +397,7 @@ Object.defineProperty(Date.prototype.setDate, "length", {value: wrappedFunctions
 
 wrappedFunctions["Date.prototype.setFullYear"] = Date.prototype.setFullYear;
 Date.prototype.setFullYear = { setFullYear () {
-	log42["Date.prototype.setFullYear"] = true;
+	loggedBuiltIns["Date.prototype.setFullYear"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Date.prototype.setFullYear"].apply__(this, args);
 }}.setFullYear
@@ -404,7 +406,7 @@ Object.defineProperty(Date.prototype.setFullYear, "length", {value: wrappedFunct
 
 wrappedFunctions["Date.prototype.setHours"] = Date.prototype.setHours;
 Date.prototype.setHours = { setHours () {
-	log42["Date.prototype.setHours"] = true;
+	loggedBuiltIns["Date.prototype.setHours"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Date.prototype.setHours"].apply__(this, args);
 }}.setHours
@@ -413,7 +415,7 @@ Object.defineProperty(Date.prototype.setHours, "length", {value: wrappedFunction
 
 wrappedFunctions["Date.prototype.setMilliseconds"] = Date.prototype.setMilliseconds;
 Date.prototype.setMilliseconds = { setMilliseconds () {
-	log42["Date.prototype.setMilliseconds"] = true;
+	loggedBuiltIns["Date.prototype.setMilliseconds"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Date.prototype.setMilliseconds"].apply__(this, args);
 }}.setMilliseconds
@@ -422,7 +424,7 @@ Object.defineProperty(Date.prototype.setMilliseconds, "length", {value: wrappedF
 
 wrappedFunctions["Date.prototype.setMinutes"] = Date.prototype.setMinutes;
 Date.prototype.setMinutes = { setMinutes () {
-	log42["Date.prototype.setMinutes"] = true;
+	loggedBuiltIns["Date.prototype.setMinutes"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Date.prototype.setMinutes"].apply__(this, args);
 }}.setMinutes
@@ -431,7 +433,7 @@ Object.defineProperty(Date.prototype.setMinutes, "length", {value: wrappedFuncti
 
 wrappedFunctions["Date.prototype.setMonth"] = Date.prototype.setMonth;
 Date.prototype.setMonth = { setMonth () {
-	log42["Date.prototype.setMonth"] = true;
+	loggedBuiltIns["Date.prototype.setMonth"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Date.prototype.setMonth"].apply__(this, args);
 }}.setMonth
@@ -440,7 +442,7 @@ Object.defineProperty(Date.prototype.setMonth, "length", {value: wrappedFunction
 
 wrappedFunctions["Date.prototype.setSeconds"] = Date.prototype.setSeconds;
 Date.prototype.setSeconds = { setSeconds () {
-	log42["Date.prototype.setSeconds"] = true;
+	loggedBuiltIns["Date.prototype.setSeconds"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Date.prototype.setSeconds"].apply__(this, args);
 }}.setSeconds
@@ -449,7 +451,7 @@ Object.defineProperty(Date.prototype.setSeconds, "length", {value: wrappedFuncti
 
 wrappedFunctions["Date.prototype.setTime"] = Date.prototype.setTime;
 Date.prototype.setTime = { setTime () {
-	log42["Date.prototype.setTime"] = true;
+	loggedBuiltIns["Date.prototype.setTime"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Date.prototype.setTime"].apply__(this, args);
 }}.setTime
@@ -458,7 +460,7 @@ Object.defineProperty(Date.prototype.setTime, "length", {value: wrappedFunctions
 
 wrappedFunctions["Date.prototype.setUTCDate"] = Date.prototype.setUTCDate;
 Date.prototype.setUTCDate = { setUTCDate () {
-	log42["Date.prototype.setUTCDate"] = true;
+	loggedBuiltIns["Date.prototype.setUTCDate"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Date.prototype.setUTCDate"].apply__(this, args);
 }}.setUTCDate
@@ -467,7 +469,7 @@ Object.defineProperty(Date.prototype.setUTCDate, "length", {value: wrappedFuncti
 
 wrappedFunctions["Date.prototype.setUTCFullYear"] = Date.prototype.setUTCFullYear;
 Date.prototype.setUTCFullYear = { setUTCFullYear () {
-	log42["Date.prototype.setUTCFullYear"] = true;
+	loggedBuiltIns["Date.prototype.setUTCFullYear"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Date.prototype.setUTCFullYear"].apply__(this, args);
 }}.setUTCFullYear
@@ -476,7 +478,7 @@ Object.defineProperty(Date.prototype.setUTCFullYear, "length", {value: wrappedFu
 
 wrappedFunctions["Date.prototype.setUTCHours"] = Date.prototype.setUTCHours;
 Date.prototype.setUTCHours = { setUTCHours () {
-	log42["Date.prototype.setUTCHours"] = true;
+	loggedBuiltIns["Date.prototype.setUTCHours"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Date.prototype.setUTCHours"].apply__(this, args);
 }}.setUTCHours
@@ -485,7 +487,7 @@ Object.defineProperty(Date.prototype.setUTCHours, "length", {value: wrappedFunct
 
 wrappedFunctions["Date.prototype.setUTCMilliseconds"] = Date.prototype.setUTCMilliseconds;
 Date.prototype.setUTCMilliseconds = { setUTCMilliseconds () {
-	log42["Date.prototype.setUTCMilliseconds"] = true;
+	loggedBuiltIns["Date.prototype.setUTCMilliseconds"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Date.prototype.setUTCMilliseconds"].apply__(this, args);
 }}.setUTCMilliseconds
@@ -494,7 +496,7 @@ Object.defineProperty(Date.prototype.setUTCMilliseconds, "length", {value: wrapp
 
 wrappedFunctions["Date.prototype.setUTCMinutes"] = Date.prototype.setUTCMinutes;
 Date.prototype.setUTCMinutes = { setUTCMinutes () {
-	log42["Date.prototype.setUTCMinutes"] = true;
+	loggedBuiltIns["Date.prototype.setUTCMinutes"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Date.prototype.setUTCMinutes"].apply__(this, args);
 }}.setUTCMinutes
@@ -503,7 +505,7 @@ Object.defineProperty(Date.prototype.setUTCMinutes, "length", {value: wrappedFun
 
 wrappedFunctions["Date.prototype.setUTCMonth"] = Date.prototype.setUTCMonth;
 Date.prototype.setUTCMonth = { setUTCMonth () {
-	log42["Date.prototype.setUTCMonth"] = true;
+	loggedBuiltIns["Date.prototype.setUTCMonth"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Date.prototype.setUTCMonth"].apply__(this, args);
 }}.setUTCMonth
@@ -512,7 +514,7 @@ Object.defineProperty(Date.prototype.setUTCMonth, "length", {value: wrappedFunct
 
 wrappedFunctions["Date.prototype.setUTCSeconds"] = Date.prototype.setUTCSeconds;
 Date.prototype.setUTCSeconds = { setUTCSeconds () {
-	log42["Date.prototype.setUTCSeconds"] = true;
+	loggedBuiltIns["Date.prototype.setUTCSeconds"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Date.prototype.setUTCSeconds"].apply__(this, args);
 }}.setUTCSeconds
@@ -521,7 +523,7 @@ Object.defineProperty(Date.prototype.setUTCSeconds, "length", {value: wrappedFun
 
 wrappedFunctions["Date.prototype.toDateString"] = Date.prototype.toDateString;
 Date.prototype.toDateString = { toDateString () {
-	log42["Date.prototype.toDateString"] = true;
+	loggedBuiltIns["Date.prototype.toDateString"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Date.prototype.toDateString"].apply__(this, args);
 }}.toDateString
@@ -530,7 +532,7 @@ Object.defineProperty(Date.prototype.toDateString, "length", {value: wrappedFunc
 
 wrappedFunctions["Date.prototype.toISOString"] = Date.prototype.toISOString;
 Date.prototype.toISOString = { toISOString () {
-	log42["Date.prototype.toISOString"] = true;
+	loggedBuiltIns["Date.prototype.toISOString"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Date.prototype.toISOString"].apply__(this, args);
 }}.toISOString
@@ -539,7 +541,7 @@ Object.defineProperty(Date.prototype.toISOString, "length", {value: wrappedFunct
 
 wrappedFunctions["Date.prototype.toJSON"] = Date.prototype.toJSON;
 Date.prototype.toJSON = { toJSON () {
-	log42["Date.prototype.toJSON"] = true;
+	loggedBuiltIns["Date.prototype.toJSON"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Date.prototype.toJSON"].apply__(this, args);
 }}.toJSON
@@ -548,7 +550,7 @@ Object.defineProperty(Date.prototype.toJSON, "length", {value: wrappedFunctions[
 
 wrappedFunctions["Date.prototype.toLocaleDateString"] = Date.prototype.toLocaleDateString;
 Date.prototype.toLocaleDateString = { toLocaleDateString () {
-	log42["Date.prototype.toLocaleDateString"] = true;
+	loggedBuiltIns["Date.prototype.toLocaleDateString"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Date.prototype.toLocaleDateString"].apply__(this, args);
 }}.toLocaleDateString
@@ -557,7 +559,7 @@ Object.defineProperty(Date.prototype.toLocaleDateString, "length", {value: wrapp
 
 wrappedFunctions["Date.prototype.toLocaleString"] = Date.prototype.toLocaleString;
 Date.prototype.toLocaleString = { toLocaleString () {
-	log42["Date.prototype.toLocaleString"] = true;
+	loggedBuiltIns["Date.prototype.toLocaleString"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Date.prototype.toLocaleString"].apply__(this, args);
 }}.toLocaleString
@@ -566,7 +568,7 @@ Object.defineProperty(Date.prototype.toLocaleString, "length", {value: wrappedFu
 
 wrappedFunctions["Date.prototype.toLocaleTimeString"] = Date.prototype.toLocaleTimeString;
 Date.prototype.toLocaleTimeString = { toLocaleTimeString () {
-	log42["Date.prototype.toLocaleTimeString"] = true;
+	loggedBuiltIns["Date.prototype.toLocaleTimeString"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Date.prototype.toLocaleTimeString"].apply__(this, args);
 }}.toLocaleTimeString
@@ -575,7 +577,7 @@ Object.defineProperty(Date.prototype.toLocaleTimeString, "length", {value: wrapp
 
 wrappedFunctions["Date.prototype.toString"] = Date.prototype.toString;
 Date.prototype.toString = { toString () {
-	log42["Date.prototype.toString"] = true;
+	loggedBuiltIns["Date.prototype.toString"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Date.prototype.toString"].apply__(this, args);
 }}.toString
@@ -584,7 +586,7 @@ Object.defineProperty(Date.prototype.toString, "length", {value: wrappedFunction
 
 wrappedFunctions["Date.prototype.toTimeString"] = Date.prototype.toTimeString;
 Date.prototype.toTimeString = { toTimeString () {
-	log42["Date.prototype.toTimeString"] = true;
+	loggedBuiltIns["Date.prototype.toTimeString"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Date.prototype.toTimeString"].apply__(this, args);
 }}.toTimeString
@@ -593,7 +595,7 @@ Object.defineProperty(Date.prototype.toTimeString, "length", {value: wrappedFunc
 
 wrappedFunctions["Date.prototype.toUTCString"] = Date.prototype.toUTCString;
 Date.prototype.toUTCString = { toUTCString () {
-	log42["Date.prototype.toUTCString"] = true;
+	loggedBuiltIns["Date.prototype.toUTCString"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Date.prototype.toUTCString"].apply__(this, args);
 }}.toUTCString
@@ -602,7 +604,7 @@ Object.defineProperty(Date.prototype.toUTCString, "length", {value: wrappedFunct
 
 wrappedFunctions["Date.prototype.valueOf"] = Date.prototype.valueOf;
 Date.prototype.valueOf = { valueOf () {
-	log42["Date.prototype.valueOf"] = true;
+	loggedBuiltIns["Date.prototype.valueOf"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Date.prototype.valueOf"].apply__(this, args);
 }}.valueOf
@@ -611,7 +613,7 @@ Object.defineProperty(Date.prototype.valueOf, "length", {value: wrappedFunctions
 
 wrappedFunctions["String.prototype.charAt"] = String.prototype.charAt;
 String.prototype.charAt = { charAt () {
-	log42["String.prototype.charAt"] = true;
+	loggedBuiltIns["String.prototype.charAt"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["String.prototype.charAt"].apply__(this, args);
 }}.charAt
@@ -620,7 +622,7 @@ Object.defineProperty(String.prototype.charAt, "length", {value: wrappedFunction
 
 wrappedFunctions["String.prototype.charCodeAt"] = String.prototype.charCodeAt;
 String.prototype.charCodeAt = { charCodeAt () {
-	log42["String.prototype.charCodeAt"] = true;
+	loggedBuiltIns["String.prototype.charCodeAt"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["String.prototype.charCodeAt"].apply__(this, args);
 }}.charCodeAt
@@ -629,7 +631,7 @@ Object.defineProperty(String.prototype.charCodeAt, "length", {value: wrappedFunc
 
 wrappedFunctions["String.prototype.codePointAt"] = String.prototype.codePointAt;
 String.prototype.codePointAt = { codePointAt () {
-	log42["String.prototype.codePointAt"] = true;
+	loggedBuiltIns["String.prototype.codePointAt"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["String.prototype.codePointAt"].apply__(this, args);
 }}.codePointAt
@@ -638,7 +640,7 @@ Object.defineProperty(String.prototype.codePointAt, "length", {value: wrappedFun
 
 wrappedFunctions["String.prototype.concat"] = String.prototype.concat;
 String.prototype.concat = { concat () {
-	log42["String.prototype.concat"] = true;
+	loggedBuiltIns["String.prototype.concat"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["String.prototype.concat"].apply__(this, args);
 }}.concat
@@ -647,7 +649,7 @@ Object.defineProperty(String.prototype.concat, "length", {value: wrappedFunction
 
 wrappedFunctions["String.prototype.endsWith"] = String.prototype.endsWith;
 String.prototype.endsWith = { endsWith () {
-	log42["String.prototype.endsWith"] = true;
+	loggedBuiltIns["String.prototype.endsWith"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["String.prototype.endsWith"].apply__(this, args);
 }}.endsWith
@@ -656,7 +658,7 @@ Object.defineProperty(String.prototype.endsWith, "length", {value: wrappedFuncti
 
 wrappedFunctions["String.prototype.includes"] = String.prototype.includes;
 String.prototype.includes = { includes () {
-	log42["String.prototype.includes"] = true;
+	loggedBuiltIns["String.prototype.includes"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["String.prototype.includes"].apply__(this, args);
 }}.includes
@@ -665,7 +667,7 @@ Object.defineProperty(String.prototype.includes, "length", {value: wrappedFuncti
 
 wrappedFunctions["String.prototype.indexOf"] = String.prototype.indexOf;
 String.prototype.indexOf = { indexOf () {
-	log42["String.prototype.indexOf"] = true;
+	loggedBuiltIns["String.prototype.indexOf"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["String.prototype.indexOf"].apply__(this, args);
 }}.indexOf
@@ -674,7 +676,7 @@ Object.defineProperty(String.prototype.indexOf, "length", {value: wrappedFunctio
 
 wrappedFunctions["String.prototype.lastIndexOf"] = String.prototype.lastIndexOf;
 String.prototype.lastIndexOf = { lastIndexOf () {
-	log42["String.prototype.lastIndexOf"] = true;
+	loggedBuiltIns["String.prototype.lastIndexOf"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["String.prototype.lastIndexOf"].apply__(this, args);
 }}.lastIndexOf
@@ -683,7 +685,7 @@ Object.defineProperty(String.prototype.lastIndexOf, "length", {value: wrappedFun
 
 wrappedFunctions["String.prototype.localeCompare"] = String.prototype.localeCompare;
 String.prototype.localeCompare = { localeCompare () {
-	log42["String.prototype.localeCompare"] = true;
+	loggedBuiltIns["String.prototype.localeCompare"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["String.prototype.localeCompare"].apply__(this, args);
 }}.localeCompare
@@ -692,7 +694,7 @@ Object.defineProperty(String.prototype.localeCompare, "length", {value: wrappedF
 
 wrappedFunctions["String.prototype.match"] = String.prototype.match;
 String.prototype.match = { match () {
-	log42["String.prototype.match"] = true;
+	loggedBuiltIns["String.prototype.match"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["String.prototype.match"].apply__(this, args);
 }}.match
@@ -701,7 +703,7 @@ Object.defineProperty(String.prototype.match, "length", {value: wrappedFunctions
 
 wrappedFunctions["String.prototype.matchAll"] = String.prototype.matchAll;
 String.prototype.matchAll = { matchAll () {
-	log42["String.prototype.matchAll"] = true;
+	loggedBuiltIns["String.prototype.matchAll"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["String.prototype.matchAll"].apply__(this, args);
 }}.matchAll
@@ -710,7 +712,7 @@ Object.defineProperty(String.prototype.matchAll, "length", {value: wrappedFuncti
 
 wrappedFunctions["String.prototype.normalize"] = String.prototype.normalize;
 String.prototype.normalize = { normalize () {
-	log42["String.prototype.normalize"] = true;
+	loggedBuiltIns["String.prototype.normalize"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["String.prototype.normalize"].apply__(this, args);
 }}.normalize
@@ -719,7 +721,7 @@ Object.defineProperty(String.prototype.normalize, "length", {value: wrappedFunct
 
 wrappedFunctions["String.prototype.padEnd"] = String.prototype.padEnd;
 String.prototype.padEnd = { padEnd () {
-	log42["String.prototype.padEnd"] = true;
+	loggedBuiltIns["String.prototype.padEnd"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["String.prototype.padEnd"].apply__(this, args);
 }}.padEnd
@@ -728,7 +730,7 @@ Object.defineProperty(String.prototype.padEnd, "length", {value: wrappedFunction
 
 wrappedFunctions["String.prototype.padStart"] = String.prototype.padStart;
 String.prototype.padStart = { padStart () {
-	log42["String.prototype.padStart"] = true;
+	loggedBuiltIns["String.prototype.padStart"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["String.prototype.padStart"].apply__(this, args);
 }}.padStart
@@ -737,7 +739,7 @@ Object.defineProperty(String.prototype.padStart, "length", {value: wrappedFuncti
 
 wrappedFunctions["String.prototype.repeat"] = String.prototype.repeat;
 String.prototype.repeat = { repeat () {
-	log42["String.prototype.repeat"] = true;
+	loggedBuiltIns["String.prototype.repeat"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["String.prototype.repeat"].apply__(this, args);
 }}.repeat
@@ -746,7 +748,7 @@ Object.defineProperty(String.prototype.repeat, "length", {value: wrappedFunction
 
 wrappedFunctions["String.prototype.replace"] = String.prototype.replace;
 String.prototype.replace = { replace () {
-	log42["String.prototype.replace"] = true;
+	loggedBuiltIns["String.prototype.replace"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["String.prototype.replace"].apply__(this, args);
 }}.replace
@@ -755,7 +757,7 @@ Object.defineProperty(String.prototype.replace, "length", {value: wrappedFunctio
 
 wrappedFunctions["String.prototype.replaceAll"] = String.prototype.replaceAll;
 String.prototype.replaceAll = { replaceAll () {
-	log42["String.prototype.replaceAll"] = true;
+	loggedBuiltIns["String.prototype.replaceAll"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["String.prototype.replaceAll"].apply__(this, args);
 }}.replaceAll
@@ -764,7 +766,7 @@ Object.defineProperty(String.prototype.replaceAll, "length", {value: wrappedFunc
 
 wrappedFunctions["String.prototype.search"] = String.prototype.search;
 String.prototype.search = { search () {
-	log42["String.prototype.search"] = true;
+	loggedBuiltIns["String.prototype.search"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["String.prototype.search"].apply__(this, args);
 }}.search
@@ -773,7 +775,7 @@ Object.defineProperty(String.prototype.search, "length", {value: wrappedFunction
 
 wrappedFunctions["String.prototype.slice"] = String.prototype.slice;
 String.prototype.slice = { slice () {
-	log42["String.prototype.slice"] = true;
+	loggedBuiltIns["String.prototype.slice"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["String.prototype.slice"].apply__(this, args);
 }}.slice
@@ -782,7 +784,7 @@ Object.defineProperty(String.prototype.slice, "length", {value: wrappedFunctions
 
 wrappedFunctions["String.prototype.split"] = String.prototype.split;
 String.prototype.split = { split () {
-	log42["String.prototype.split"] = true;
+	loggedBuiltIns["String.prototype.split"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["String.prototype.split"].apply__(this, args);
 }}.split
@@ -791,7 +793,7 @@ Object.defineProperty(String.prototype.split, "length", {value: wrappedFunctions
 
 wrappedFunctions["String.prototype.startsWith"] = String.prototype.startsWith;
 String.prototype.startsWith = { startsWith () {
-	log42["String.prototype.startsWith"] = true;
+	loggedBuiltIns["String.prototype.startsWith"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["String.prototype.startsWith"].apply__(this, args);
 }}.startsWith
@@ -800,7 +802,7 @@ Object.defineProperty(String.prototype.startsWith, "length", {value: wrappedFunc
 
 wrappedFunctions["String.prototype.substring"] = String.prototype.substring;
 String.prototype.substring = { substring () {
-	log42["String.prototype.substring"] = true;
+	loggedBuiltIns["String.prototype.substring"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["String.prototype.substring"].apply__(this, args);
 }}.substring
@@ -809,7 +811,7 @@ Object.defineProperty(String.prototype.substring, "length", {value: wrappedFunct
 
 wrappedFunctions["String.prototype.toLocaleLowerCase"] = String.prototype.toLocaleLowerCase;
 String.prototype.toLocaleLowerCase = { toLocaleLowerCase () {
-	log42["String.prototype.toLocaleLowerCase"] = true;
+	loggedBuiltIns["String.prototype.toLocaleLowerCase"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["String.prototype.toLocaleLowerCase"].apply__(this, args);
 }}.toLocaleLowerCase
@@ -818,7 +820,7 @@ Object.defineProperty(String.prototype.toLocaleLowerCase, "length", {value: wrap
 
 wrappedFunctions["String.prototype.toLocaleUpperCase"] = String.prototype.toLocaleUpperCase;
 String.prototype.toLocaleUpperCase = { toLocaleUpperCase () {
-	log42["String.prototype.toLocaleUpperCase"] = true;
+	loggedBuiltIns["String.prototype.toLocaleUpperCase"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["String.prototype.toLocaleUpperCase"].apply__(this, args);
 }}.toLocaleUpperCase
@@ -827,7 +829,7 @@ Object.defineProperty(String.prototype.toLocaleUpperCase, "length", {value: wrap
 
 wrappedFunctions["String.prototype.toLowerCase"] = String.prototype.toLowerCase;
 String.prototype.toLowerCase = { toLowerCase () {
-	log42["String.prototype.toLowerCase"] = true;
+	loggedBuiltIns["String.prototype.toLowerCase"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["String.prototype.toLowerCase"].apply__(this, args);
 }}.toLowerCase
@@ -836,7 +838,7 @@ Object.defineProperty(String.prototype.toLowerCase, "length", {value: wrappedFun
 
 wrappedFunctions["String.prototype.toString"] = String.prototype.toString;
 String.prototype.toString = { toString () {
-	log42["String.prototype.toString"] = true;
+	loggedBuiltIns["String.prototype.toString"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["String.prototype.toString"].apply__(this, args);
 }}.toString
@@ -845,7 +847,7 @@ Object.defineProperty(String.prototype.toString, "length", {value: wrappedFuncti
 
 wrappedFunctions["String.prototype.toUpperCase"] = String.prototype.toUpperCase;
 String.prototype.toUpperCase = { toUpperCase () {
-	log42["String.prototype.toUpperCase"] = true;
+	loggedBuiltIns["String.prototype.toUpperCase"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["String.prototype.toUpperCase"].apply__(this, args);
 }}.toUpperCase
@@ -854,7 +856,7 @@ Object.defineProperty(String.prototype.toUpperCase, "length", {value: wrappedFun
 
 wrappedFunctions["String.prototype.trim"] = String.prototype.trim;
 String.prototype.trim = { trim () {
-	log42["String.prototype.trim"] = true;
+	loggedBuiltIns["String.prototype.trim"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["String.prototype.trim"].apply__(this, args);
 }}.trim
@@ -863,7 +865,7 @@ Object.defineProperty(String.prototype.trim, "length", {value: wrappedFunctions[
 
 wrappedFunctions["String.prototype.trimEnd"] = String.prototype.trimEnd;
 String.prototype.trimEnd = { trimEnd () {
-	log42["String.prototype.trimEnd"] = true;
+	loggedBuiltIns["String.prototype.trimEnd"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["String.prototype.trimEnd"].apply__(this, args);
 }}.trimEnd
@@ -872,7 +874,7 @@ Object.defineProperty(String.prototype.trimEnd, "length", {value: wrappedFunctio
 
 wrappedFunctions["String.prototype.trimStart"] = String.prototype.trimStart;
 String.prototype.trimStart = { trimStart () {
-	log42["String.prototype.trimStart"] = true;
+	loggedBuiltIns["String.prototype.trimStart"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["String.prototype.trimStart"].apply__(this, args);
 }}.trimStart
@@ -881,7 +883,7 @@ Object.defineProperty(String.prototype.trimStart, "length", {value: wrappedFunct
 
 wrappedFunctions["String.prototype.valueOf"] = String.prototype.valueOf;
 String.prototype.valueOf = { valueOf () {
-	log42["String.prototype.valueOf"] = true;
+	loggedBuiltIns["String.prototype.valueOf"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["String.prototype.valueOf"].apply__(this, args);
 }}.valueOf
@@ -890,7 +892,7 @@ Object.defineProperty(String.prototype.valueOf, "length", {value: wrappedFunctio
 
 wrappedFunctions["RegExp.prototype.exec"] = RegExp.prototype.exec;
 RegExp.prototype.exec = { exec () {
-	log42["RegExp.prototype.exec"] = true;
+	loggedBuiltIns["RegExp.prototype.exec"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["RegExp.prototype.exec"].apply__(this, args);
 }}.exec
@@ -899,7 +901,7 @@ Object.defineProperty(RegExp.prototype.exec, "length", {value: wrappedFunctions[
 
 wrappedFunctions["RegExp.prototype.test"] = RegExp.prototype.test;
 RegExp.prototype.test = { test () {
-	log42["RegExp.prototype.test"] = true;
+	loggedBuiltIns["RegExp.prototype.test"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["RegExp.prototype.test"].apply__(this, args);
 }}.test
@@ -908,7 +910,7 @@ Object.defineProperty(RegExp.prototype.test, "length", {value: wrappedFunctions[
 
 wrappedFunctions["RegExp.prototype.toString"] = RegExp.prototype.toString;
 RegExp.prototype.toString = { toString () {
-	log42["RegExp.prototype.toString"] = true;
+	loggedBuiltIns["RegExp.prototype.toString"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["RegExp.prototype.toString"].apply__(this, args);
 }}.toString
@@ -917,7 +919,7 @@ Object.defineProperty(RegExp.prototype.toString, "length", {value: wrappedFuncti
 
 wrappedFunctions["Array.prototype.concat"] = Array.prototype.concat;
 Array.prototype.concat = { concat () {
-	log42["Array.prototype.concat"] = true;
+	loggedBuiltIns["Array.prototype.concat"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Array.prototype.concat"].apply__(this, args);
 }}.concat
@@ -926,7 +928,7 @@ Object.defineProperty(Array.prototype.concat, "length", {value: wrappedFunctions
 
 wrappedFunctions["Array.prototype.copyWithin"] = Array.prototype.copyWithin;
 Array.prototype.copyWithin = { copyWithin () {
-	log42["Array.prototype.copyWithin"] = true;
+	loggedBuiltIns["Array.prototype.copyWithin"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Array.prototype.copyWithin"].apply__(this, args);
 }}.copyWithin
@@ -935,7 +937,7 @@ Object.defineProperty(Array.prototype.copyWithin, "length", {value: wrappedFunct
 
 wrappedFunctions["Array.prototype.entries"] = Array.prototype.entries;
 Array.prototype.entries = { entries () {
-	log42["Array.prototype.entries"] = true;
+	loggedBuiltIns["Array.prototype.entries"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Array.prototype.entries"].apply__(this, args);
 }}.entries
@@ -944,7 +946,7 @@ Object.defineProperty(Array.prototype.entries, "length", {value: wrappedFunction
 
 wrappedFunctions["Array.prototype.every"] = Array.prototype.every;
 Array.prototype.every = { every () {
-	log42["Array.prototype.every"] = true;
+	loggedBuiltIns["Array.prototype.every"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Array.prototype.every"].apply__(this, args);
 }}.every
@@ -953,7 +955,7 @@ Object.defineProperty(Array.prototype.every, "length", {value: wrappedFunctions[
 
 wrappedFunctions["Array.prototype.fill"] = Array.prototype.fill;
 Array.prototype.fill = { fill () {
-	log42["Array.prototype.fill"] = true;
+	loggedBuiltIns["Array.prototype.fill"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Array.prototype.fill"].apply__(this, args);
 }}.fill
@@ -962,7 +964,7 @@ Object.defineProperty(Array.prototype.fill, "length", {value: wrappedFunctions["
 
 wrappedFunctions["Array.prototype.filter"] = Array.prototype.filter;
 Array.prototype.filter = { filter () {
-	log42["Array.prototype.filter"] = true;
+	loggedBuiltIns["Array.prototype.filter"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Array.prototype.filter"].apply__(this, args);
 }}.filter
@@ -971,7 +973,7 @@ Object.defineProperty(Array.prototype.filter, "length", {value: wrappedFunctions
 
 wrappedFunctions["Array.prototype.find"] = Array.prototype.find;
 Array.prototype.find = { find () {
-	log42["Array.prototype.find"] = true;
+	loggedBuiltIns["Array.prototype.find"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Array.prototype.find"].apply__(this, args);
 }}.find
@@ -980,7 +982,7 @@ Object.defineProperty(Array.prototype.find, "length", {value: wrappedFunctions["
 
 wrappedFunctions["Array.prototype.findIndex"] = Array.prototype.findIndex;
 Array.prototype.findIndex = { findIndex () {
-	log42["Array.prototype.findIndex"] = true;
+	loggedBuiltIns["Array.prototype.findIndex"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Array.prototype.findIndex"].apply__(this, args);
 }}.findIndex
@@ -989,7 +991,7 @@ Object.defineProperty(Array.prototype.findIndex, "length", {value: wrappedFuncti
 
 wrappedFunctions["Array.prototype.flat"] = Array.prototype.flat;
 Array.prototype.flat = { flat () {
-	log42["Array.prototype.flat"] = true;
+	loggedBuiltIns["Array.prototype.flat"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Array.prototype.flat"].apply__(this, args);
 }}.flat
@@ -998,7 +1000,7 @@ Object.defineProperty(Array.prototype.flat, "length", {value: wrappedFunctions["
 
 wrappedFunctions["Array.prototype.flatMap"] = Array.prototype.flatMap;
 Array.prototype.flatMap = { flatMap () {
-	log42["Array.prototype.flatMap"] = true;
+	loggedBuiltIns["Array.prototype.flatMap"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Array.prototype.flatMap"].apply__(this, args);
 }}.flatMap
@@ -1007,7 +1009,7 @@ Object.defineProperty(Array.prototype.flatMap, "length", {value: wrappedFunction
 
 wrappedFunctions["Array.prototype.forEach"] = Array.prototype.forEach;
 Array.prototype.forEach = { forEach () {
-	log42["Array.prototype.forEach"] = true;
+	loggedBuiltIns["Array.prototype.forEach"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Array.prototype.forEach"].apply__(this, args);
 }}.forEach
@@ -1016,7 +1018,7 @@ Object.defineProperty(Array.prototype.forEach, "length", {value: wrappedFunction
 
 wrappedFunctions["Array.prototype.includes"] = Array.prototype.includes;
 Array.prototype.includes = { includes () {
-	log42["Array.prototype.includes"] = true;
+	loggedBuiltIns["Array.prototype.includes"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Array.prototype.includes"].apply__(this, args);
 }}.includes
@@ -1025,7 +1027,7 @@ Object.defineProperty(Array.prototype.includes, "length", {value: wrappedFunctio
 
 wrappedFunctions["Array.prototype.indexOf"] = Array.prototype.indexOf;
 Array.prototype.indexOf = { indexOf () {
-	log42["Array.prototype.indexOf"] = true;
+	loggedBuiltIns["Array.prototype.indexOf"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Array.prototype.indexOf"].apply__(this, args);
 }}.indexOf
@@ -1034,7 +1036,7 @@ Object.defineProperty(Array.prototype.indexOf, "length", {value: wrappedFunction
 
 wrappedFunctions["Array.prototype.join"] = Array.prototype.join;
 Array.prototype.join = { join () {
-	log42["Array.prototype.join"] = true;
+	loggedBuiltIns["Array.prototype.join"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Array.prototype.join"].apply__(this, args);
 }}.join
@@ -1043,7 +1045,7 @@ Object.defineProperty(Array.prototype.join, "length", {value: wrappedFunctions["
 
 wrappedFunctions["Array.prototype.keys"] = Array.prototype.keys;
 Array.prototype.keys = { keys () {
-	log42["Array.prototype.keys"] = true;
+	loggedBuiltIns["Array.prototype.keys"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Array.prototype.keys"].apply__(this, args);
 }}.keys
@@ -1052,7 +1054,7 @@ Object.defineProperty(Array.prototype.keys, "length", {value: wrappedFunctions["
 
 wrappedFunctions["Array.prototype.lastIndexOf"] = Array.prototype.lastIndexOf;
 Array.prototype.lastIndexOf = { lastIndexOf () {
-	log42["Array.prototype.lastIndexOf"] = true;
+	loggedBuiltIns["Array.prototype.lastIndexOf"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Array.prototype.lastIndexOf"].apply__(this, args);
 }}.lastIndexOf
@@ -1061,7 +1063,7 @@ Object.defineProperty(Array.prototype.lastIndexOf, "length", {value: wrappedFunc
 
 wrappedFunctions["Array.prototype.map"] = Array.prototype.map;
 Array.prototype.map = { map () {
-	log42["Array.prototype.map"] = true;
+	loggedBuiltIns["Array.prototype.map"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Array.prototype.map"].apply__(this, args);
 }}.map
@@ -1070,7 +1072,7 @@ Object.defineProperty(Array.prototype.map, "length", {value: wrappedFunctions["A
 
 wrappedFunctions["Array.prototype.pop"] = Array.prototype.pop;
 Array.prototype.pop = { pop () {
-	log42["Array.prototype.pop"] = true;
+	loggedBuiltIns["Array.prototype.pop"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Array.prototype.pop"].apply__(this, args);
 }}.pop
@@ -1079,7 +1081,7 @@ Object.defineProperty(Array.prototype.pop, "length", {value: wrappedFunctions["A
 
 wrappedFunctions["Array.prototype.push"] = Array.prototype.push;
 Array.prototype.push = { push () {
-	log42["Array.prototype.push"] = true;
+	loggedBuiltIns["Array.prototype.push"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Array.prototype.push"].apply__(this, args);
 }}.push
@@ -1088,7 +1090,7 @@ Object.defineProperty(Array.prototype.push, "length", {value: wrappedFunctions["
 
 wrappedFunctions["Array.prototype.reduce"] = Array.prototype.reduce;
 Array.prototype.reduce = { reduce () {
-	log42["Array.prototype.reduce"] = true;
+	loggedBuiltIns["Array.prototype.reduce"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Array.prototype.reduce"].apply__(this, args);
 }}.reduce
@@ -1097,7 +1099,7 @@ Object.defineProperty(Array.prototype.reduce, "length", {value: wrappedFunctions
 
 wrappedFunctions["Array.prototype.reduceRight"] = Array.prototype.reduceRight;
 Array.prototype.reduceRight = { reduceRight () {
-	log42["Array.prototype.reduceRight"] = true;
+	loggedBuiltIns["Array.prototype.reduceRight"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Array.prototype.reduceRight"].apply__(this, args);
 }}.reduceRight
@@ -1106,7 +1108,7 @@ Object.defineProperty(Array.prototype.reduceRight, "length", {value: wrappedFunc
 
 wrappedFunctions["Array.prototype.reverse"] = Array.prototype.reverse;
 Array.prototype.reverse = { reverse () {
-	log42["Array.prototype.reverse"] = true;
+	loggedBuiltIns["Array.prototype.reverse"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Array.prototype.reverse"].apply__(this, args);
 }}.reverse
@@ -1115,7 +1117,7 @@ Object.defineProperty(Array.prototype.reverse, "length", {value: wrappedFunction
 
 wrappedFunctions["Array.prototype.shift"] = Array.prototype.shift;
 Array.prototype.shift = { shift () {
-	log42["Array.prototype.shift"] = true;
+	loggedBuiltIns["Array.prototype.shift"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Array.prototype.shift"].apply__(this, args);
 }}.shift
@@ -1124,7 +1126,7 @@ Object.defineProperty(Array.prototype.shift, "length", {value: wrappedFunctions[
 
 wrappedFunctions["Array.prototype.slice"] = Array.prototype.slice;
 Array.prototype.slice = { slice () {
-	log42["Array.prototype.slice"] = true;
+	loggedBuiltIns["Array.prototype.slice"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Array.prototype.slice"].apply__(this, args);
 }}.slice
@@ -1133,7 +1135,7 @@ Object.defineProperty(Array.prototype.slice, "length", {value: wrappedFunctions[
 
 wrappedFunctions["Array.prototype.some"] = Array.prototype.some;
 Array.prototype.some = { some () {
-	log42["Array.prototype.some"] = true;
+	loggedBuiltIns["Array.prototype.some"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Array.prototype.some"].apply__(this, args);
 }}.some
@@ -1142,7 +1144,7 @@ Object.defineProperty(Array.prototype.some, "length", {value: wrappedFunctions["
 
 wrappedFunctions["Array.prototype.sort"] = Array.prototype.sort;
 Array.prototype.sort = { sort () {
-	log42["Array.prototype.sort"] = true;
+	loggedBuiltIns["Array.prototype.sort"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Array.prototype.sort"].apply__(this, args);
 }}.sort
@@ -1151,7 +1153,7 @@ Object.defineProperty(Array.prototype.sort, "length", {value: wrappedFunctions["
 
 wrappedFunctions["Array.prototype.splice"] = Array.prototype.splice;
 Array.prototype.splice = { splice () {
-	log42["Array.prototype.splice"] = true;
+	loggedBuiltIns["Array.prototype.splice"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Array.prototype.splice"].apply__(this, args);
 }}.splice
@@ -1160,7 +1162,7 @@ Object.defineProperty(Array.prototype.splice, "length", {value: wrappedFunctions
 
 wrappedFunctions["Array.prototype.toLocaleString"] = Array.prototype.toLocaleString;
 Array.prototype.toLocaleString = { toLocaleString () {
-	log42["Array.prototype.toLocaleString"] = true;
+	loggedBuiltIns["Array.prototype.toLocaleString"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Array.prototype.toLocaleString"].apply__(this, args);
 }}.toLocaleString
@@ -1169,7 +1171,7 @@ Object.defineProperty(Array.prototype.toLocaleString, "length", {value: wrappedF
 
 wrappedFunctions["Array.prototype.toString"] = Array.prototype.toString;
 Array.prototype.toString = { toString () {
-	log42["Array.prototype.toString"] = true;
+	loggedBuiltIns["Array.prototype.toString"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Array.prototype.toString"].apply__(this, args);
 }}.toString
@@ -1178,7 +1180,7 @@ Object.defineProperty(Array.prototype.toString, "length", {value: wrappedFunctio
 
 wrappedFunctions["Array.prototype.unshift"] = Array.prototype.unshift;
 Array.prototype.unshift = { unshift () {
-	log42["Array.prototype.unshift"] = true;
+	loggedBuiltIns["Array.prototype.unshift"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Array.prototype.unshift"].apply__(this, args);
 }}.unshift
@@ -1187,7 +1189,7 @@ Object.defineProperty(Array.prototype.unshift, "length", {value: wrappedFunction
 
 wrappedFunctions["Array.prototype.values"] = Array.prototype.values;
 Array.prototype.values = { values () {
-	log42["Array.prototype.values"] = true;
+	loggedBuiltIns["Array.prototype.values"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Array.prototype.values"].apply__(this, args);
 }}.values
@@ -1196,7 +1198,7 @@ Object.defineProperty(Array.prototype.values, "length", {value: wrappedFunctions
 
 wrappedFunctions["TypedArray.prototype.copyWithin"] = Int8Array.prototype.copyWithin;
 generalTypedArrayPrototype.copyWithin = { copyWithin () {
-	log42["TypedArray.prototype.copyWithin"] = true;
+	loggedBuiltIns["TypedArray.prototype.copyWithin"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["TypedArray.prototype.copyWithin"].apply__(this, args);
 }}.copyWithin
@@ -1205,7 +1207,7 @@ Object.defineProperty(generalTypedArrayPrototype.copyWithin, "length", {value: w
 
 wrappedFunctions["TypedArray.prototype.entries"] = Int8Array.prototype.entries;
 generalTypedArrayPrototype.entries = { entries () {
-	log42["TypedArray.prototype.entries"] = true;
+	loggedBuiltIns["TypedArray.prototype.entries"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["TypedArray.prototype.entries"].apply__(this, args);
 }}.entries
@@ -1214,7 +1216,7 @@ Object.defineProperty(generalTypedArrayPrototype.entries, "length", {value: wrap
 
 wrappedFunctions["TypedArray.prototype.every"] = Int8Array.prototype.every;
 generalTypedArrayPrototype.every = { every () {
-	log42["TypedArray.prototype.every"] = true;
+	loggedBuiltIns["TypedArray.prototype.every"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["TypedArray.prototype.every"].apply__(this, args);
 }}.every
@@ -1223,7 +1225,7 @@ Object.defineProperty(generalTypedArrayPrototype.every, "length", {value: wrappe
 
 wrappedFunctions["TypedArray.prototype.fill"] = Int8Array.prototype.fill;
 generalTypedArrayPrototype.fill = { fill () {
-	log42["TypedArray.prototype.fill"] = true;
+	loggedBuiltIns["TypedArray.prototype.fill"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["TypedArray.prototype.fill"].apply__(this, args);
 }}.fill
@@ -1232,7 +1234,7 @@ Object.defineProperty(generalTypedArrayPrototype.fill, "length", {value: wrapped
 
 wrappedFunctions["TypedArray.prototype.filter"] = Int8Array.prototype.filter;
 generalTypedArrayPrototype.filter = { filter () {
-	log42["TypedArray.prototype.filter"] = true;
+	loggedBuiltIns["TypedArray.prototype.filter"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["TypedArray.prototype.filter"].apply__(this, args);
 }}.filter
@@ -1241,7 +1243,7 @@ Object.defineProperty(generalTypedArrayPrototype.filter, "length", {value: wrapp
 
 wrappedFunctions["TypedArray.prototype.find"] = Int8Array.prototype.find;
 generalTypedArrayPrototype.find = { find () {
-	log42["TypedArray.prototype.find"] = true;
+	loggedBuiltIns["TypedArray.prototype.find"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["TypedArray.prototype.find"].apply__(this, args);
 }}.find
@@ -1250,7 +1252,7 @@ Object.defineProperty(generalTypedArrayPrototype.find, "length", {value: wrapped
 
 wrappedFunctions["TypedArray.prototype.findIndex"] = Int8Array.prototype.findIndex;
 generalTypedArrayPrototype.findIndex = { findIndex () {
-	log42["TypedArray.prototype.findIndex"] = true;
+	loggedBuiltIns["TypedArray.prototype.findIndex"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["TypedArray.prototype.findIndex"].apply__(this, args);
 }}.findIndex
@@ -1259,7 +1261,7 @@ Object.defineProperty(generalTypedArrayPrototype.findIndex, "length", {value: wr
 
 wrappedFunctions["TypedArray.prototype.forEach"] = Int8Array.prototype.forEach;
 generalTypedArrayPrototype.forEach = { forEach () {
-	log42["TypedArray.prototype.forEach"] = true;
+	loggedBuiltIns["TypedArray.prototype.forEach"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["TypedArray.prototype.forEach"].apply__(this, args);
 }}.forEach
@@ -1268,7 +1270,7 @@ Object.defineProperty(generalTypedArrayPrototype.forEach, "length", {value: wrap
 
 wrappedFunctions["TypedArray.prototype.includes"] = Int8Array.prototype.includes;
 generalTypedArrayPrototype.includes = { includes () {
-	log42["TypedArray.prototype.includes"] = true;
+	loggedBuiltIns["TypedArray.prototype.includes"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["TypedArray.prototype.includes"].apply__(this, args);
 }}.includes
@@ -1277,7 +1279,7 @@ Object.defineProperty(generalTypedArrayPrototype.includes, "length", {value: wra
 
 wrappedFunctions["TypedArray.prototype.indexOf"] = Int8Array.prototype.indexOf;
 generalTypedArrayPrototype.indexOf = { indexOf () {
-	log42["TypedArray.prototype.indexOf"] = true;
+	loggedBuiltIns["TypedArray.prototype.indexOf"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["TypedArray.prototype.indexOf"].apply__(this, args);
 }}.indexOf
@@ -1286,7 +1288,7 @@ Object.defineProperty(generalTypedArrayPrototype.indexOf, "length", {value: wrap
 
 wrappedFunctions["TypedArray.prototype.join"] = Int8Array.prototype.join;
 generalTypedArrayPrototype.join = { join () {
-	log42["TypedArray.prototype.join"] = true;
+	loggedBuiltIns["TypedArray.prototype.join"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["TypedArray.prototype.join"].apply__(this, args);
 }}.join
@@ -1295,7 +1297,7 @@ Object.defineProperty(generalTypedArrayPrototype.join, "length", {value: wrapped
 
 wrappedFunctions["TypedArray.prototype.keys"] = Int8Array.prototype.keys;
 generalTypedArrayPrototype.keys = { keys () {
-	log42["TypedArray.prototype.keys"] = true;
+	loggedBuiltIns["TypedArray.prototype.keys"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["TypedArray.prototype.keys"].apply__(this, args);
 }}.keys
@@ -1304,7 +1306,7 @@ Object.defineProperty(generalTypedArrayPrototype.keys, "length", {value: wrapped
 
 wrappedFunctions["TypedArray.prototype.lastIndexOf"] = Int8Array.prototype.lastIndexOf;
 generalTypedArrayPrototype.lastIndexOf = { lastIndexOf () {
-	log42["TypedArray.prototype.lastIndexOf"] = true;
+	loggedBuiltIns["TypedArray.prototype.lastIndexOf"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["TypedArray.prototype.lastIndexOf"].apply__(this, args);
 }}.lastIndexOf
@@ -1313,7 +1315,7 @@ Object.defineProperty(generalTypedArrayPrototype.lastIndexOf, "length", {value: 
 
 wrappedFunctions["TypedArray.prototype.map"] = Int8Array.prototype.map;
 generalTypedArrayPrototype.map = { map () {
-	log42["TypedArray.prototype.map"] = true;
+	loggedBuiltIns["TypedArray.prototype.map"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["TypedArray.prototype.map"].apply__(this, args);
 }}.map
@@ -1322,7 +1324,7 @@ Object.defineProperty(generalTypedArrayPrototype.map, "length", {value: wrappedF
 
 wrappedFunctions["TypedArray.prototype.reduce"] = Int8Array.prototype.reduce;
 generalTypedArrayPrototype.reduce = { reduce () {
-	log42["TypedArray.prototype.reduce"] = true;
+	loggedBuiltIns["TypedArray.prototype.reduce"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["TypedArray.prototype.reduce"].apply__(this, args);
 }}.reduce
@@ -1331,7 +1333,7 @@ Object.defineProperty(generalTypedArrayPrototype.reduce, "length", {value: wrapp
 
 wrappedFunctions["TypedArray.prototype.reduceRight"] = Int8Array.prototype.reduceRight;
 generalTypedArrayPrototype.reduceRight = { reduceRight () {
-	log42["TypedArray.prototype.reduceRight"] = true;
+	loggedBuiltIns["TypedArray.prototype.reduceRight"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["TypedArray.prototype.reduceRight"].apply__(this, args);
 }}.reduceRight
@@ -1340,7 +1342,7 @@ Object.defineProperty(generalTypedArrayPrototype.reduceRight, "length", {value: 
 
 wrappedFunctions["TypedArray.prototype.reverse"] = Int8Array.prototype.reverse;
 generalTypedArrayPrototype.reverse = { reverse () {
-	log42["TypedArray.prototype.reverse"] = true;
+	loggedBuiltIns["TypedArray.prototype.reverse"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["TypedArray.prototype.reverse"].apply__(this, args);
 }}.reverse
@@ -1349,7 +1351,7 @@ Object.defineProperty(generalTypedArrayPrototype.reverse, "length", {value: wrap
 
 wrappedFunctions["TypedArray.prototype.set"] = Int8Array.prototype.set;
 generalTypedArrayPrototype.set = { set () {
-	log42["TypedArray.prototype.set"] = true;
+	loggedBuiltIns["TypedArray.prototype.set"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["TypedArray.prototype.set"].apply__(this, args);
 }}.set
@@ -1358,7 +1360,7 @@ Object.defineProperty(generalTypedArrayPrototype.set, "length", {value: wrappedF
 
 wrappedFunctions["TypedArray.prototype.slice"] = Int8Array.prototype.slice;
 generalTypedArrayPrototype.slice = { slice () {
-	log42["TypedArray.prototype.slice"] = true;
+	loggedBuiltIns["TypedArray.prototype.slice"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["TypedArray.prototype.slice"].apply__(this, args);
 }}.slice
@@ -1367,7 +1369,7 @@ Object.defineProperty(generalTypedArrayPrototype.slice, "length", {value: wrappe
 
 wrappedFunctions["TypedArray.prototype.some"] = Int8Array.prototype.some;
 generalTypedArrayPrototype.some = { some () {
-	log42["TypedArray.prototype.some"] = true;
+	loggedBuiltIns["TypedArray.prototype.some"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["TypedArray.prototype.some"].apply__(this, args);
 }}.some
@@ -1376,7 +1378,7 @@ Object.defineProperty(generalTypedArrayPrototype.some, "length", {value: wrapped
 
 wrappedFunctions["TypedArray.prototype.sort"] = Int8Array.prototype.sort;
 generalTypedArrayPrototype.sort = { sort () {
-	log42["TypedArray.prototype.sort"] = true;
+	loggedBuiltIns["TypedArray.prototype.sort"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["TypedArray.prototype.sort"].apply__(this, args);
 }}.sort
@@ -1385,7 +1387,7 @@ Object.defineProperty(generalTypedArrayPrototype.sort, "length", {value: wrapped
 
 wrappedFunctions["TypedArray.prototype.subarray"] = Int8Array.prototype.subarray;
 generalTypedArrayPrototype.subarray = { subarray () {
-	log42["TypedArray.prototype.subarray"] = true;
+	loggedBuiltIns["TypedArray.prototype.subarray"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["TypedArray.prototype.subarray"].apply__(this, args);
 }}.subarray
@@ -1394,7 +1396,7 @@ Object.defineProperty(generalTypedArrayPrototype.subarray, "length", {value: wra
 
 wrappedFunctions["TypedArray.prototype.toLocaleString"] = Int8Array.prototype.toLocaleString;
 generalTypedArrayPrototype.toLocaleString = { toLocaleString () {
-	log42["TypedArray.prototype.toLocaleString"] = true;
+	loggedBuiltIns["TypedArray.prototype.toLocaleString"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["TypedArray.prototype.toLocaleString"].apply__(this, args);
 }}.toLocaleString
@@ -1403,7 +1405,7 @@ Object.defineProperty(generalTypedArrayPrototype.toLocaleString, "length", {valu
 
 wrappedFunctions["TypedArray.prototype.toString"] = Int8Array.prototype.toString;
 generalTypedArrayPrototype.toString = { toString () {
-	log42["TypedArray.prototype.toString"] = true;
+	loggedBuiltIns["TypedArray.prototype.toString"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["TypedArray.prototype.toString"].apply__(this, args);
 }}.toString
@@ -1412,7 +1414,7 @@ Object.defineProperty(generalTypedArrayPrototype.toString, "length", {value: wra
 
 wrappedFunctions["TypedArray.prototype.values"] = Int8Array.prototype.values;
 generalTypedArrayPrototype.values = { values () {
-	log42["TypedArray.prototype.values"] = true;
+	loggedBuiltIns["TypedArray.prototype.values"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["TypedArray.prototype.values"].apply__(this, args);
 }}.values
@@ -1421,7 +1423,7 @@ Object.defineProperty(generalTypedArrayPrototype.values, "length", {value: wrapp
 
 wrappedFunctions["Map.prototype.clear"] = Map.prototype.clear;
 Map.prototype.clear = { clear () {
-	log42["Map.prototype.clear"] = true;
+	loggedBuiltIns["Map.prototype.clear"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Map.prototype.clear"].apply__(this, args);
 }}.clear
@@ -1430,7 +1432,7 @@ Object.defineProperty(Map.prototype.clear, "length", {value: wrappedFunctions["M
 
 wrappedFunctions["Map.prototype.delete"] = Map.prototype.delete;
 Map.prototype.delete = { delete () {
-	log42["Map.prototype.delete"] = true;
+	loggedBuiltIns["Map.prototype.delete"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Map.prototype.delete"].apply__(this, args);
 }}.delete
@@ -1439,7 +1441,7 @@ Object.defineProperty(Map.prototype.delete, "length", {value: wrappedFunctions["
 
 wrappedFunctions["Map.prototype.entries"] = Map.prototype.entries;
 Map.prototype.entries = { entries () {
-	log42["Map.prototype.entries"] = true;
+	loggedBuiltIns["Map.prototype.entries"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Map.prototype.entries"].apply__(this, args);
 }}.entries
@@ -1448,7 +1450,7 @@ Object.defineProperty(Map.prototype.entries, "length", {value: wrappedFunctions[
 
 wrappedFunctions["Map.prototype.forEach"] = Map.prototype.forEach;
 Map.prototype.forEach = { forEach () {
-	log42["Map.prototype.forEach"] = true;
+	loggedBuiltIns["Map.prototype.forEach"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Map.prototype.forEach"].apply__(this, args);
 }}.forEach
@@ -1457,7 +1459,7 @@ Object.defineProperty(Map.prototype.forEach, "length", {value: wrappedFunctions[
 
 wrappedFunctions["Map.prototype.get"] = Map.prototype.get;
 Map.prototype.get = { get () {
-	log42["Map.prototype.get"] = true;
+	loggedBuiltIns["Map.prototype.get"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Map.prototype.get"].apply__(this, args);
 }}.get
@@ -1466,7 +1468,7 @@ Object.defineProperty(Map.prototype.get, "length", {value: wrappedFunctions["Map
 
 wrappedFunctions["Map.prototype.has"] = Map.prototype.has;
 Map.prototype.has = { has () {
-	log42["Map.prototype.has"] = true;
+	loggedBuiltIns["Map.prototype.has"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Map.prototype.has"].apply__(this, args);
 }}.has
@@ -1475,7 +1477,7 @@ Object.defineProperty(Map.prototype.has, "length", {value: wrappedFunctions["Map
 
 wrappedFunctions["Map.prototype.keys"] = Map.prototype.keys;
 Map.prototype.keys = { keys () {
-	log42["Map.prototype.keys"] = true;
+	loggedBuiltIns["Map.prototype.keys"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Map.prototype.keys"].apply__(this, args);
 }}.keys
@@ -1484,7 +1486,7 @@ Object.defineProperty(Map.prototype.keys, "length", {value: wrappedFunctions["Ma
 
 wrappedFunctions["Map.prototype.set"] = Map.prototype.set;
 Map.prototype.set = { set () {
-	log42["Map.prototype.set"] = true;
+	loggedBuiltIns["Map.prototype.set"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Map.prototype.set"].apply__(this, args);
 }}.set
@@ -1493,7 +1495,7 @@ Object.defineProperty(Map.prototype.set, "length", {value: wrappedFunctions["Map
 
 wrappedFunctions["Map.prototype.values"] = Map.prototype.values;
 Map.prototype.values = { values () {
-	log42["Map.prototype.values"] = true;
+	loggedBuiltIns["Map.prototype.values"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Map.prototype.values"].apply__(this, args);
 }}.values
@@ -1502,7 +1504,7 @@ Object.defineProperty(Map.prototype.values, "length", {value: wrappedFunctions["
 
 wrappedFunctions["Set.prototype.add"] = Set.prototype.add;
 Set.prototype.add = { add () {
-	log42["Set.prototype.add"] = true;
+	loggedBuiltIns["Set.prototype.add"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Set.prototype.add"].apply__(this, args);
 }}.add
@@ -1511,7 +1513,7 @@ Object.defineProperty(Set.prototype.add, "length", {value: wrappedFunctions["Set
 
 wrappedFunctions["Set.prototype.clear"] = Set.prototype.clear;
 Set.prototype.clear = { clear () {
-	log42["Set.prototype.clear"] = true;
+	loggedBuiltIns["Set.prototype.clear"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Set.prototype.clear"].apply__(this, args);
 }}.clear
@@ -1520,7 +1522,7 @@ Object.defineProperty(Set.prototype.clear, "length", {value: wrappedFunctions["S
 
 wrappedFunctions["Set.prototype.delete"] = Set.prototype.delete;
 Set.prototype.delete = { delete () {
-	log42["Set.prototype.delete"] = true;
+	loggedBuiltIns["Set.prototype.delete"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Set.prototype.delete"].apply__(this, args);
 }}.delete
@@ -1529,7 +1531,7 @@ Object.defineProperty(Set.prototype.delete, "length", {value: wrappedFunctions["
 
 wrappedFunctions["Set.prototype.entries"] = Set.prototype.entries;
 Set.prototype.entries = { entries () {
-	log42["Set.prototype.entries"] = true;
+	loggedBuiltIns["Set.prototype.entries"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Set.prototype.entries"].apply__(this, args);
 }}.entries
@@ -1538,7 +1540,7 @@ Object.defineProperty(Set.prototype.entries, "length", {value: wrappedFunctions[
 
 wrappedFunctions["Set.prototype.forEach"] = Set.prototype.forEach;
 Set.prototype.forEach = { forEach () {
-	log42["Set.prototype.forEach"] = true;
+	loggedBuiltIns["Set.prototype.forEach"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Set.prototype.forEach"].apply__(this, args);
 }}.forEach
@@ -1547,7 +1549,7 @@ Object.defineProperty(Set.prototype.forEach, "length", {value: wrappedFunctions[
 
 wrappedFunctions["Set.prototype.has"] = Set.prototype.has;
 Set.prototype.has = { has () {
-	log42["Set.prototype.has"] = true;
+	loggedBuiltIns["Set.prototype.has"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Set.prototype.has"].apply__(this, args);
 }}.has
@@ -1556,7 +1558,7 @@ Object.defineProperty(Set.prototype.has, "length", {value: wrappedFunctions["Set
 
 wrappedFunctions["Set.prototype.keys"] = Set.prototype.keys;
 Set.prototype.keys = { keys () {
-	log42["Set.prototype.keys"] = true;
+	loggedBuiltIns["Set.prototype.keys"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Set.prototype.keys"].apply__(this, args);
 }}.keys
@@ -1565,7 +1567,7 @@ Object.defineProperty(Set.prototype.keys, "length", {value: wrappedFunctions["Se
 
 wrappedFunctions["Set.prototype.values"] = Set.prototype.values;
 Set.prototype.values = { values () {
-	log42["Set.prototype.values"] = true;
+	loggedBuiltIns["Set.prototype.values"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Set.prototype.values"].apply__(this, args);
 }}.values
@@ -1574,7 +1576,7 @@ Object.defineProperty(Set.prototype.values, "length", {value: wrappedFunctions["
 
 wrappedFunctions["WeakMap.prototype.delete"] = WeakMap.prototype.delete;
 WeakMap.prototype.delete = { delete () {
-	log42["WeakMap.prototype.delete"] = true;
+	loggedBuiltIns["WeakMap.prototype.delete"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["WeakMap.prototype.delete"].apply__(this, args);
 }}.delete
@@ -1583,7 +1585,7 @@ Object.defineProperty(WeakMap.prototype.delete, "length", {value: wrappedFunctio
 
 wrappedFunctions["WeakMap.prototype.get"] = WeakMap.prototype.get;
 WeakMap.prototype.get = { get () {
-	log42["WeakMap.prototype.get"] = true;
+	loggedBuiltIns["WeakMap.prototype.get"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["WeakMap.prototype.get"].apply__(this, args);
 }}.get
@@ -1592,7 +1594,7 @@ Object.defineProperty(WeakMap.prototype.get, "length", {value: wrappedFunctions[
 
 wrappedFunctions["WeakMap.prototype.has"] = WeakMap.prototype.has;
 WeakMap.prototype.has = { has () {
-	log42["WeakMap.prototype.has"] = true;
+	loggedBuiltIns["WeakMap.prototype.has"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["WeakMap.prototype.has"].apply__(this, args);
 }}.has
@@ -1601,7 +1603,7 @@ Object.defineProperty(WeakMap.prototype.has, "length", {value: wrappedFunctions[
 
 wrappedFunctions["WeakMap.prototype.set"] = WeakMap.prototype.set;
 WeakMap.prototype.set = { set () {
-	log42["WeakMap.prototype.set"] = true;
+	loggedBuiltIns["WeakMap.prototype.set"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["WeakMap.prototype.set"].apply__(this, args);
 }}.set
@@ -1610,7 +1612,7 @@ Object.defineProperty(WeakMap.prototype.set, "length", {value: wrappedFunctions[
 
 wrappedFunctions["WeakSet.prototype.add"] = WeakSet.prototype.add;
 WeakSet.prototype.add = { add () {
-	log42["WeakSet.prototype.add"] = true;
+	loggedBuiltIns["WeakSet.prototype.add"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["WeakSet.prototype.add"].apply__(this, args);
 }}.add
@@ -1619,7 +1621,7 @@ Object.defineProperty(WeakSet.prototype.add, "length", {value: wrappedFunctions[
 
 wrappedFunctions["WeakSet.prototype.delete"] = WeakSet.prototype.delete;
 WeakSet.prototype.delete = { delete () {
-	log42["WeakSet.prototype.delete"] = true;
+	loggedBuiltIns["WeakSet.prototype.delete"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["WeakSet.prototype.delete"].apply__(this, args);
 }}.delete
@@ -1628,7 +1630,7 @@ Object.defineProperty(WeakSet.prototype.delete, "length", {value: wrappedFunctio
 
 wrappedFunctions["WeakSet.prototype.has"] = WeakSet.prototype.has;
 WeakSet.prototype.has = { has () {
-	log42["WeakSet.prototype.has"] = true;
+	loggedBuiltIns["WeakSet.prototype.has"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["WeakSet.prototype.has"].apply__(this, args);
 }}.has
@@ -1637,7 +1639,7 @@ Object.defineProperty(WeakSet.prototype.has, "length", {value: wrappedFunctions[
 
 wrappedFunctions["ArrayBuffer.prototype.slice"] = ArrayBuffer.prototype.slice;
 ArrayBuffer.prototype.slice = { slice () {
-	log42["ArrayBuffer.prototype.slice"] = true;
+	loggedBuiltIns["ArrayBuffer.prototype.slice"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["ArrayBuffer.prototype.slice"].apply__(this, args);
 }}.slice
@@ -1646,7 +1648,7 @@ Object.defineProperty(ArrayBuffer.prototype.slice, "length", {value: wrappedFunc
 
 wrappedFunctions["SharedArrayBuffer.prototype.slice"] = SharedArrayBuffer.prototype.slice;
 SharedArrayBuffer.prototype.slice = { slice () {
-	log42["SharedArrayBuffer.prototype.slice"] = true;
+	loggedBuiltIns["SharedArrayBuffer.prototype.slice"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["SharedArrayBuffer.prototype.slice"].apply__(this, args);
 }}.slice
@@ -1655,7 +1657,7 @@ Object.defineProperty(SharedArrayBuffer.prototype.slice, "length", {value: wrapp
 
 wrappedFunctions["DataView.prototype.getBigInt64"] = DataView.prototype.getBigInt64;
 DataView.prototype.getBigInt64 = { getBigInt64 () {
-	log42["DataView.prototype.getBigInt64"] = true;
+	loggedBuiltIns["DataView.prototype.getBigInt64"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["DataView.prototype.getBigInt64"].apply__(this, args);
 }}.getBigInt64
@@ -1664,7 +1666,7 @@ Object.defineProperty(DataView.prototype.getBigInt64, "length", {value: wrappedF
 
 wrappedFunctions["DataView.prototype.getBigUint64"] = DataView.prototype.getBigUint64;
 DataView.prototype.getBigUint64 = { getBigUint64 () {
-	log42["DataView.prototype.getBigUint64"] = true;
+	loggedBuiltIns["DataView.prototype.getBigUint64"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["DataView.prototype.getBigUint64"].apply__(this, args);
 }}.getBigUint64
@@ -1673,7 +1675,7 @@ Object.defineProperty(DataView.prototype.getBigUint64, "length", {value: wrapped
 
 wrappedFunctions["DataView.prototype.getFloat32"] = DataView.prototype.getFloat32;
 DataView.prototype.getFloat32 = { getFloat32 () {
-	log42["DataView.prototype.getFloat32"] = true;
+	loggedBuiltIns["DataView.prototype.getFloat32"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["DataView.prototype.getFloat32"].apply__(this, args);
 }}.getFloat32
@@ -1682,7 +1684,7 @@ Object.defineProperty(DataView.prototype.getFloat32, "length", {value: wrappedFu
 
 wrappedFunctions["DataView.prototype.getFloat64"] = DataView.prototype.getFloat64;
 DataView.prototype.getFloat64 = { getFloat64 () {
-	log42["DataView.prototype.getFloat64"] = true;
+	loggedBuiltIns["DataView.prototype.getFloat64"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["DataView.prototype.getFloat64"].apply__(this, args);
 }}.getFloat64
@@ -1691,7 +1693,7 @@ Object.defineProperty(DataView.prototype.getFloat64, "length", {value: wrappedFu
 
 wrappedFunctions["DataView.prototype.getInt8"] = DataView.prototype.getInt8;
 DataView.prototype.getInt8 = { getInt8 () {
-	log42["DataView.prototype.getInt8"] = true;
+	loggedBuiltIns["DataView.prototype.getInt8"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["DataView.prototype.getInt8"].apply__(this, args);
 }}.getInt8
@@ -1700,7 +1702,7 @@ Object.defineProperty(DataView.prototype.getInt8, "length", {value: wrappedFunct
 
 wrappedFunctions["DataView.prototype.getInt16"] = DataView.prototype.getInt16;
 DataView.prototype.getInt16 = { getInt16 () {
-	log42["DataView.prototype.getInt16"] = true;
+	loggedBuiltIns["DataView.prototype.getInt16"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["DataView.prototype.getInt16"].apply__(this, args);
 }}.getInt16
@@ -1709,7 +1711,7 @@ Object.defineProperty(DataView.prototype.getInt16, "length", {value: wrappedFunc
 
 wrappedFunctions["DataView.prototype.getInt32"] = DataView.prototype.getInt32;
 DataView.prototype.getInt32 = { getInt32 () {
-	log42["DataView.prototype.getInt32"] = true;
+	loggedBuiltIns["DataView.prototype.getInt32"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["DataView.prototype.getInt32"].apply__(this, args);
 }}.getInt32
@@ -1718,7 +1720,7 @@ Object.defineProperty(DataView.prototype.getInt32, "length", {value: wrappedFunc
 
 wrappedFunctions["DataView.prototype.getUint8"] = DataView.prototype.getUint8;
 DataView.prototype.getUint8 = { getUint8 () {
-	log42["DataView.prototype.getUint8"] = true;
+	loggedBuiltIns["DataView.prototype.getUint8"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["DataView.prototype.getUint8"].apply__(this, args);
 }}.getUint8
@@ -1727,7 +1729,7 @@ Object.defineProperty(DataView.prototype.getUint8, "length", {value: wrappedFunc
 
 wrappedFunctions["DataView.prototype.getUint16"] = DataView.prototype.getUint16;
 DataView.prototype.getUint16 = { getUint16 () {
-	log42["DataView.prototype.getUint16"] = true;
+	loggedBuiltIns["DataView.prototype.getUint16"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["DataView.prototype.getUint16"].apply__(this, args);
 }}.getUint16
@@ -1736,7 +1738,7 @@ Object.defineProperty(DataView.prototype.getUint16, "length", {value: wrappedFun
 
 wrappedFunctions["DataView.prototype.getUint32"] = DataView.prototype.getUint32;
 DataView.prototype.getUint32 = { getUint32 () {
-	log42["DataView.prototype.getUint32"] = true;
+	loggedBuiltIns["DataView.prototype.getUint32"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["DataView.prototype.getUint32"].apply__(this, args);
 }}.getUint32
@@ -1745,7 +1747,7 @@ Object.defineProperty(DataView.prototype.getUint32, "length", {value: wrappedFun
 
 wrappedFunctions["DataView.prototype.setBigInt64"] = DataView.prototype.setBigInt64;
 DataView.prototype.setBigInt64 = { setBigInt64 () {
-	log42["DataView.prototype.setBigInt64"] = true;
+	loggedBuiltIns["DataView.prototype.setBigInt64"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["DataView.prototype.setBigInt64"].apply__(this, args);
 }}.setBigInt64
@@ -1754,7 +1756,7 @@ Object.defineProperty(DataView.prototype.setBigInt64, "length", {value: wrappedF
 
 wrappedFunctions["DataView.prototype.setBigUint64"] = DataView.prototype.setBigUint64;
 DataView.prototype.setBigUint64 = { setBigUint64 () {
-	log42["DataView.prototype.setBigUint64"] = true;
+	loggedBuiltIns["DataView.prototype.setBigUint64"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["DataView.prototype.setBigUint64"].apply__(this, args);
 }}.setBigUint64
@@ -1763,7 +1765,7 @@ Object.defineProperty(DataView.prototype.setBigUint64, "length", {value: wrapped
 
 wrappedFunctions["DataView.prototype.setFloat32"] = DataView.prototype.setFloat32;
 DataView.prototype.setFloat32 = { setFloat32 () {
-	log42["DataView.prototype.setFloat32"] = true;
+	loggedBuiltIns["DataView.prototype.setFloat32"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["DataView.prototype.setFloat32"].apply__(this, args);
 }}.setFloat32
@@ -1772,7 +1774,7 @@ Object.defineProperty(DataView.prototype.setFloat32, "length", {value: wrappedFu
 
 wrappedFunctions["DataView.prototype.setFloat64"] = DataView.prototype.setFloat64;
 DataView.prototype.setFloat64 = { setFloat64 () {
-	log42["DataView.prototype.setFloat64"] = true;
+	loggedBuiltIns["DataView.prototype.setFloat64"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["DataView.prototype.setFloat64"].apply__(this, args);
 }}.setFloat64
@@ -1781,7 +1783,7 @@ Object.defineProperty(DataView.prototype.setFloat64, "length", {value: wrappedFu
 
 wrappedFunctions["DataView.prototype.setInt8"] = DataView.prototype.setInt8;
 DataView.prototype.setInt8 = { setInt8 () {
-	log42["DataView.prototype.setInt8"] = true;
+	loggedBuiltIns["DataView.prototype.setInt8"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["DataView.prototype.setInt8"].apply__(this, args);
 }}.setInt8
@@ -1790,7 +1792,7 @@ Object.defineProperty(DataView.prototype.setInt8, "length", {value: wrappedFunct
 
 wrappedFunctions["DataView.prototype.setInt16"] = DataView.prototype.setInt16;
 DataView.prototype.setInt16 = { setInt16 () {
-	log42["DataView.prototype.setInt16"] = true;
+	loggedBuiltIns["DataView.prototype.setInt16"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["DataView.prototype.setInt16"].apply__(this, args);
 }}.setInt16
@@ -1799,7 +1801,7 @@ Object.defineProperty(DataView.prototype.setInt16, "length", {value: wrappedFunc
 
 wrappedFunctions["DataView.prototype.setInt32"] = DataView.prototype.setInt32;
 DataView.prototype.setInt32 = { setInt32 () {
-	log42["DataView.prototype.setInt32"] = true;
+	loggedBuiltIns["DataView.prototype.setInt32"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["DataView.prototype.setInt32"].apply__(this, args);
 }}.setInt32
@@ -1808,7 +1810,7 @@ Object.defineProperty(DataView.prototype.setInt32, "length", {value: wrappedFunc
 
 wrappedFunctions["DataView.prototype.setUint8"] = DataView.prototype.setUint8;
 DataView.prototype.setUint8 = { setUint8 () {
-	log42["DataView.prototype.setUint8"] = true;
+	loggedBuiltIns["DataView.prototype.setUint8"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["DataView.prototype.setUint8"].apply__(this, args);
 }}.setUint8
@@ -1817,7 +1819,7 @@ Object.defineProperty(DataView.prototype.setUint8, "length", {value: wrappedFunc
 
 wrappedFunctions["DataView.prototype.setUint16"] = DataView.prototype.setUint16;
 DataView.prototype.setUint16 = { setUint16 () {
-	log42["DataView.prototype.setUint16"] = true;
+	loggedBuiltIns["DataView.prototype.setUint16"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["DataView.prototype.setUint16"].apply__(this, args);
 }}.setUint16
@@ -1826,7 +1828,7 @@ Object.defineProperty(DataView.prototype.setUint16, "length", {value: wrappedFun
 
 wrappedFunctions["DataView.prototype.setUint32"] = DataView.prototype.setUint32;
 DataView.prototype.setUint32 = { setUint32 () {
-	log42["DataView.prototype.setUint32"] = true;
+	loggedBuiltIns["DataView.prototype.setUint32"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["DataView.prototype.setUint32"].apply__(this, args);
 }}.setUint32
@@ -1835,7 +1837,7 @@ Object.defineProperty(DataView.prototype.setUint32, "length", {value: wrappedFun
 
 wrappedFunctions["WeakRef.prototype.deref"] = WeakRef.prototype.deref;
 WeakRef.prototype.deref = { deref () {
-	log42["WeakRef.prototype.deref"] = true;
+	loggedBuiltIns["WeakRef.prototype.deref"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["WeakRef.prototype.deref"].apply__(this, args);
 }}.deref
@@ -1844,7 +1846,7 @@ Object.defineProperty(WeakRef.prototype.deref, "length", {value: wrappedFunction
 
 wrappedFunctions["FinalizationRegistry.prototype.register"] = FinalizationRegistry.prototype.register;
 FinalizationRegistry.prototype.register = { register () {
-	log42["FinalizationRegistry.prototype.register"] = true;
+	loggedBuiltIns["FinalizationRegistry.prototype.register"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["FinalizationRegistry.prototype.register"].apply__(this, args);
 }}.register
@@ -1853,7 +1855,7 @@ Object.defineProperty(FinalizationRegistry.prototype.register, "length", {value:
 
 wrappedFunctions["FinalizationRegistry.prototype.unregister"] = FinalizationRegistry.prototype.unregister;
 FinalizationRegistry.prototype.unregister = { unregister () {
-	log42["FinalizationRegistry.prototype.unregister"] = true;
+	loggedBuiltIns["FinalizationRegistry.prototype.unregister"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["FinalizationRegistry.prototype.unregister"].apply__(this, args);
 }}.unregister
@@ -1862,7 +1864,7 @@ Object.defineProperty(FinalizationRegistry.prototype.unregister, "length", {valu
 
 wrappedFunctions["Promise.prototype.catch"] = Promise.prototype.catch;
 Promise.prototype.catch = { catch () {
-	log42["Promise.prototype.catch"] = true;
+	loggedBuiltIns["Promise.prototype.catch"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Promise.prototype.catch"].apply__(this, args);
 }}.catch
@@ -1871,7 +1873,7 @@ Object.defineProperty(Promise.prototype.catch, "length", {value: wrappedFunction
 
 wrappedFunctions["Promise.prototype.finally"] = Promise.prototype.finally;
 Promise.prototype.finally = { finally () {
-	log42["Promise.prototype.finally"] = true;
+	loggedBuiltIns["Promise.prototype.finally"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Promise.prototype.finally"].apply__(this, args);
 }}.finally
@@ -1880,7 +1882,7 @@ Object.defineProperty(Promise.prototype.finally, "length", {value: wrappedFuncti
 
 wrappedFunctions["Promise.prototype.then"] = Promise.prototype.then;
 Promise.prototype.then = { then () {
-	log42["Promise.prototype.then"] = true;
+	loggedBuiltIns["Promise.prototype.then"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Promise.prototype.then"].apply__(this, args);
 }}.then
@@ -1889,7 +1891,7 @@ Object.defineProperty(Promise.prototype.then, "length", {value: wrappedFunctions
 
 wrappedFunctions["Object.prototype.__defineGetter__"] = Object.prototype.__defineGetter__;
 Object.prototype.__defineGetter__ = { __defineGetter__ () {
-	log42["Object.prototype.__defineGetter__"] = true;
+	loggedBuiltIns["Object.prototype.__defineGetter__"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Object.prototype.__defineGetter__"].apply__(this, args);
 }}.__defineGetter__
@@ -1898,7 +1900,7 @@ Object.defineProperty(Object.prototype.__defineGetter__, "length", {value: wrapp
 
 wrappedFunctions["Object.prototype.__defineSetter__"] = Object.prototype.__defineSetter__;
 Object.prototype.__defineSetter__ = { __defineSetter__ () {
-	log42["Object.prototype.__defineSetter__"] = true;
+	loggedBuiltIns["Object.prototype.__defineSetter__"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Object.prototype.__defineSetter__"].apply__(this, args);
 }}.__defineSetter__
@@ -1907,7 +1909,7 @@ Object.defineProperty(Object.prototype.__defineSetter__, "length", {value: wrapp
 
 wrappedFunctions["Object.prototype.__lookupGetter__"] = Object.prototype.__lookupGetter__;
 Object.prototype.__lookupGetter__ = { __lookupGetter__ () {
-	log42["Object.prototype.__lookupGetter__"] = true;
+	loggedBuiltIns["Object.prototype.__lookupGetter__"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Object.prototype.__lookupGetter__"].apply__(this, args);
 }}.__lookupGetter__
@@ -1916,7 +1918,7 @@ Object.defineProperty(Object.prototype.__lookupGetter__, "length", {value: wrapp
 
 wrappedFunctions["Object.prototype.__lookupSetter__"] = Object.prototype.__lookupSetter__;
 Object.prototype.__lookupSetter__ = { __lookupSetter__ () {
-	log42["Object.prototype.__lookupSetter__"] = true;
+	loggedBuiltIns["Object.prototype.__lookupSetter__"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Object.prototype.__lookupSetter__"].apply__(this, args);
 }}.__lookupSetter__
@@ -1925,7 +1927,7 @@ Object.defineProperty(Object.prototype.__lookupSetter__, "length", {value: wrapp
 
 wrappedFunctions["String.prototype.substr"] = String.prototype.substr;
 String.prototype.substr = { substr () {
-	log42["String.prototype.substr"] = true;
+	loggedBuiltIns["String.prototype.substr"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["String.prototype.substr"].apply__(this, args);
 }}.substr
@@ -1934,7 +1936,7 @@ Object.defineProperty(String.prototype.substr, "length", {value: wrappedFunction
 
 wrappedFunctions["String.prototype.anchor"] = String.prototype.anchor;
 String.prototype.anchor = { anchor () {
-	log42["String.prototype.anchor"] = true;
+	loggedBuiltIns["String.prototype.anchor"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["String.prototype.anchor"].apply__(this, args);
 }}.anchor
@@ -1943,7 +1945,7 @@ Object.defineProperty(String.prototype.anchor, "length", {value: wrappedFunction
 
 wrappedFunctions["String.prototype.big"] = String.prototype.big;
 String.prototype.big = { big () {
-	log42["String.prototype.big"] = true;
+	loggedBuiltIns["String.prototype.big"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["String.prototype.big"].apply__(this, args);
 }}.big
@@ -1952,7 +1954,7 @@ Object.defineProperty(String.prototype.big, "length", {value: wrappedFunctions["
 
 wrappedFunctions["String.prototype.blink"] = String.prototype.blink;
 String.prototype.blink = { blink () {
-	log42["String.prototype.blink"] = true;
+	loggedBuiltIns["String.prototype.blink"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["String.prototype.blink"].apply__(this, args);
 }}.blink
@@ -1961,7 +1963,7 @@ Object.defineProperty(String.prototype.blink, "length", {value: wrappedFunctions
 
 wrappedFunctions["String.prototype.bold"] = String.prototype.bold;
 String.prototype.bold = { bold () {
-	log42["String.prototype.bold"] = true;
+	loggedBuiltIns["String.prototype.bold"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["String.prototype.bold"].apply__(this, args);
 }}.bold
@@ -1970,7 +1972,7 @@ Object.defineProperty(String.prototype.bold, "length", {value: wrappedFunctions[
 
 wrappedFunctions["String.prototype.fixed"] = String.prototype.fixed;
 String.prototype.fixed = { fixed () {
-	log42["String.prototype.fixed"] = true;
+	loggedBuiltIns["String.prototype.fixed"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["String.prototype.fixed"].apply__(this, args);
 }}.fixed
@@ -1979,7 +1981,7 @@ Object.defineProperty(String.prototype.fixed, "length", {value: wrappedFunctions
 
 wrappedFunctions["String.prototype.fontcolor"] = String.prototype.fontcolor;
 String.prototype.fontcolor = { fontcolor () {
-	log42["String.prototype.fontcolor"] = true;
+	loggedBuiltIns["String.prototype.fontcolor"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["String.prototype.fontcolor"].apply__(this, args);
 }}.fontcolor
@@ -1988,7 +1990,7 @@ Object.defineProperty(String.prototype.fontcolor, "length", {value: wrappedFunct
 
 wrappedFunctions["String.prototype.fontsize"] = String.prototype.fontsize;
 String.prototype.fontsize = { fontsize () {
-	log42["String.prototype.fontsize"] = true;
+	loggedBuiltIns["String.prototype.fontsize"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["String.prototype.fontsize"].apply__(this, args);
 }}.fontsize
@@ -1997,7 +1999,7 @@ Object.defineProperty(String.prototype.fontsize, "length", {value: wrappedFuncti
 
 wrappedFunctions["String.prototype.italics"] = String.prototype.italics;
 String.prototype.italics = { italics () {
-	log42["String.prototype.italics"] = true;
+	loggedBuiltIns["String.prototype.italics"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["String.prototype.italics"].apply__(this, args);
 }}.italics
@@ -2006,7 +2008,7 @@ Object.defineProperty(String.prototype.italics, "length", {value: wrappedFunctio
 
 wrappedFunctions["String.prototype.link"] = String.prototype.link;
 String.prototype.link = { link () {
-	log42["String.prototype.link"] = true;
+	loggedBuiltIns["String.prototype.link"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["String.prototype.link"].apply__(this, args);
 }}.link
@@ -2015,7 +2017,7 @@ Object.defineProperty(String.prototype.link, "length", {value: wrappedFunctions[
 
 wrappedFunctions["String.prototype.small"] = String.prototype.small;
 String.prototype.small = { small () {
-	log42["String.prototype.small"] = true;
+	loggedBuiltIns["String.prototype.small"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["String.prototype.small"].apply__(this, args);
 }}.small
@@ -2024,7 +2026,7 @@ Object.defineProperty(String.prototype.small, "length", {value: wrappedFunctions
 
 wrappedFunctions["String.prototype.strike"] = String.prototype.strike;
 String.prototype.strike = { strike () {
-	log42["String.prototype.strike"] = true;
+	loggedBuiltIns["String.prototype.strike"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["String.prototype.strike"].apply__(this, args);
 }}.strike
@@ -2033,7 +2035,7 @@ Object.defineProperty(String.prototype.strike, "length", {value: wrappedFunction
 
 wrappedFunctions["String.prototype.sub"] = String.prototype.sub;
 String.prototype.sub = { sub () {
-	log42["String.prototype.sub"] = true;
+	loggedBuiltIns["String.prototype.sub"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["String.prototype.sub"].apply__(this, args);
 }}.sub
@@ -2042,7 +2044,7 @@ Object.defineProperty(String.prototype.sub, "length", {value: wrappedFunctions["
 
 wrappedFunctions["String.prototype.sup"] = String.prototype.sup;
 String.prototype.sup = { sup () {
-	log42["String.prototype.sup"] = true;
+	loggedBuiltIns["String.prototype.sup"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["String.prototype.sup"].apply__(this, args);
 }}.sup
@@ -2051,7 +2053,7 @@ Object.defineProperty(String.prototype.sup, "length", {value: wrappedFunctions["
 
 wrappedFunctions["String.prototype.trimLeft"] = String.prototype.trimLeft;
 String.prototype.trimLeft = { trimLeft () {
-	log42["String.prototype.trimLeft"] = true;
+	loggedBuiltIns["String.prototype.trimLeft"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["String.prototype.trimLeft"].apply__(this, args);
 }}.trimLeft
@@ -2060,7 +2062,7 @@ Object.defineProperty(String.prototype.trimLeft, "length", {value: wrappedFuncti
 
 wrappedFunctions["String.prototype.trimRight"] = String.prototype.trimRight;
 String.prototype.trimRight = { trimRight () {
-	log42["String.prototype.trimRight"] = true;
+	loggedBuiltIns["String.prototype.trimRight"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["String.prototype.trimRight"].apply__(this, args);
 }}.trimRight
@@ -2069,7 +2071,7 @@ Object.defineProperty(String.prototype.trimRight, "length", {value: wrappedFunct
 
 wrappedFunctions["Date.prototype.getYear"] = Date.prototype.getYear;
 Date.prototype.getYear = { getYear () {
-	log42["Date.prototype.getYear"] = true;
+	loggedBuiltIns["Date.prototype.getYear"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Date.prototype.getYear"].apply__(this, args);
 }}.getYear
@@ -2078,7 +2080,7 @@ Object.defineProperty(Date.prototype.getYear, "length", {value: wrappedFunctions
 
 wrappedFunctions["Date.prototype.setYear"] = Date.prototype.setYear;
 Date.prototype.setYear = { setYear () {
-	log42["Date.prototype.setYear"] = true;
+	loggedBuiltIns["Date.prototype.setYear"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Date.prototype.setYear"].apply__(this, args);
 }}.setYear
@@ -2087,7 +2089,7 @@ Object.defineProperty(Date.prototype.setYear, "length", {value: wrappedFunctions
 
 wrappedFunctions["Date.prototype.toGMTString"] = Date.prototype.toGMTString;
 Date.prototype.toGMTString = { toGMTString () {
-	log42["Date.prototype.toGMTString"] = true;
+	loggedBuiltIns["Date.prototype.toGMTString"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["Date.prototype.toGMTString"].apply__(this, args);
 }}.toGMTString
@@ -2096,7 +2098,7 @@ Object.defineProperty(Date.prototype.toGMTString, "length", {value: wrappedFunct
 
 wrappedFunctions["RegExp.prototype.compile"] = RegExp.prototype.compile;
 RegExp.prototype.compile = { compile () {
-	log42["RegExp.prototype.compile"] = true;
+	loggedBuiltIns["RegExp.prototype.compile"] = true;
 	let args = copyArgs(arguments);
 	return wrappedFunctions["RegExp.prototype.compile"].apply__(this, args);
 }}.compile

@@ -3,7 +3,7 @@ const collectBuiltInSignatures = require('./collectBuiltInSignatures');
 
 const getStringToReplaceTypedArray = '\nwrappedFunctions[\"$1\.$2\.$3\"] = Int8Array.$2.$3;\n'+
 	'generalTypedArrayPrototype.$3 = { $3 () {\n' +
-		'\tlog42[\"$1\.$2\.$3\"] = true;\n' +
+		'\tloggedBuiltIns[\"$1\.$2\.$3\"] = true;\n' +
 		'\tlet args = copyArgs(arguments);\n' +
 		'\treturn wrappedFunctions[\"$1\.$2\.$3\"].apply__(this, args);\n' +
 	'}}.$3\n' +
@@ -12,7 +12,7 @@ const getStringToReplaceTypedArray = '\nwrappedFunctions[\"$1\.$2\.$3\"] = Int8A
 
 const getStringToReplaceFunction = '\n$1.$2.$3__= $1.$2.$3;\n' +
 	'$1.$2.$3 = { $3 () {\n' +
-		'\tlog42[\"$1\.$2\.$3\"] = true;' +
+		'\tloggedBuiltIns[\"$1\.$2\.$3\"] = true;' +
 		'\tlet args = copyArgs(arguments);\n' +
 		'\treturn $1.$2.$3__.apply__(this, args);\n' +
 	'}}.$3\n' +
@@ -21,7 +21,7 @@ const getStringToReplaceFunction = '\n$1.$2.$3__= $1.$2.$3;\n' +
 
 const getStringToReplace = '\nwrappedFunctions[\"$1\.$2\.$3\"] = $1.$2.$3;\n'+
 	'$1.$2.$3 = { $3 () {\n' +
-		'\tlog42[\"$1\.$2\.$3\"] = true;\n' +
+		'\tloggedBuiltIns[\"$1\.$2\.$3\"] = true;\n' +
 		'\tlet args = copyArgs(arguments);\n' +
 		'\treturn wrappedFunctions[\"$1\.$2\.$3\"].apply__(this, args);\n' +
 	'}}.$3\n' +
@@ -46,7 +46,7 @@ function generateBuiltInWrappers(versions) {
     const regex = /(\w+)\.(\w+)\.(\w+)\s\((.*?)\)/;
 
     let stream = fs.createWriteStream(__dirname + "/results/builtInsWrappers.js", { flags: 'w' });
-    stream.write("var log42 = {};\n"+
+    stream.write("var loggedBuiltIns = {};\n"+
 		"const stringify__ = JSON.stringify;\n"+
 		"const wrappedFunctions = {};\n"+
 		"function copyArgs(from){\n"+
@@ -57,7 +57,7 @@ function generateBuiltInWrappers(versions) {
 			"\tto.length = from.length;\n"+
 			"\treturn to\n"+
 		"}\n"+
-		"const generalTypedArrayPrototype = Object.getPrototypeOf(Int8Array.prototype)");
+		"const generalTypedArrayPrototype = Object.getPrototypeOf(Int8Array.prototype)\n\n");
 
     for (let line in lines) {
         if (lines[line].includes('.prototype.') && !lines[line].includes("Generator")) {
