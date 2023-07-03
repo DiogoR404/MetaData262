@@ -10,7 +10,7 @@ rows = []
 versions = []
 subFolders = [[],[]]
 
-with open('metadata_version.json', 'r') as file:
+with open('../../computation/main/results/metadata_version.json', 'r') as file:
     metadata = json.load(file)
 
 # metadata = list(filter(lambda x: None != x.get("flags") and "async" in x['flags'], metadata))
@@ -53,11 +53,11 @@ for i in range(len(subFolders)):
         separateCSV[i].append([folder] + temp)
 
 
-with open('aggregation_formatted_builtIns.csv', 'w') as file:
+with open('results/aggregation_formatted_builtIns.csv', 'w') as file:
     writer = csv.writer(file)
     writer.writerows(separateCSV[0])
 
-with open('aggregation_formatted_language.csv', 'w') as file:
+with open('results/aggregation_formatted_language.csv', 'w') as file:
     writer = csv.writer(file)
     writer.writerows(separateCSV[1])
 
@@ -68,10 +68,10 @@ for folder in range(len(cumulativeCSV)):
         for j in range(2,len(cumulativeCSV[folder][i]) - 1):
             cumulativeCSV[folder][i][j] += cumulativeCSV[folder][i][j-1]
 
-with open('aggregation_formatted_cumulative_builtIns.csv', 'w') as file:
+with open('results/aggregation_formatted_cumulative_builtIns.csv', 'w') as file:
     writer = csv.writer(file)
     writer.writerows(separateCSV[0])
 
-with open('aggregation_formatted_cumulative_language.csv', 'w') as file:
+with open('results/aggregation_formatted_cumulative_language.csv', 'w') as file:
     writer = csv.writer(file)
     writer.writerows(separateCSV[1])

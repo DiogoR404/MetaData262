@@ -1,9 +1,12 @@
+######################################################################################
+# compare the built-in tests that fail with the ones that fail with the version computation of the lastest version only
+######################################################################################
 import json
 
-with open('../builtIns/results/dynamic.json', 'r') as f:
+with open('../../computation/builtIns/results/dynamic.json', 'r') as f:
     builts = json.load(f)
 
-with open('../version/results/dynamic/v8/result_lastVersion.json', 'r') as f:
+with open('../../computation/version/results/dynamic/v8/result_lastVersion.json', 'r') as f:
     vers = json.load(f)
 
 vers1 = dict(filter(lambda x: x[1] != 'notSupported', vers.items()))
@@ -20,5 +23,5 @@ print(len(diff))
 print(len(s))
 
 
-with open('diffDynamicPass2.json','w') as f:
+with open('results/diffDynamicPass2.json','w') as f:
     f.write(json.dumps(diff, indent=4))

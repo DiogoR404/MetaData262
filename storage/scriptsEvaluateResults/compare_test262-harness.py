@@ -1,6 +1,10 @@
+##########################################################################################################
+# check how many tests are passed per version
+# this script has not been tested with the latest changes to the engine and is very likely not to run but is kept so for future analysis of the results
+##########################################################################################################
 import json
 
-with open('out6.txt', 'r') as f:
+with open('test262-harness_results/out6.txt', 'r') as f:
     file_lines = f.readlines()
 
 

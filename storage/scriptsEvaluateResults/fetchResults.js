@@ -1,4 +1,6 @@
-// This script gets the results of the tests passed by each engine from `www.test262.report`
+/****************************************************************************************
+* This script gets the results of the tests passed by each engine from `www.test262.report`
+****************************************************************************************/
 var fs = require('fs');
 
 function getStats (path, date) {

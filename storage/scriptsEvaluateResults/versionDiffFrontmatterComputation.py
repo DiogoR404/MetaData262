@@ -1,3 +1,7 @@
+######################################################################################
+# filters tests with different version retreived from the frontmatter and computed
+######################################################################################
+
 import json
 
 with open('/home/diogo/MetaData262/computation/main/results/metadata_version.json', 'r') as f:

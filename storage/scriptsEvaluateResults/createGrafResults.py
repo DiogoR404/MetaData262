@@ -1,7 +1,10 @@
+######################################################################################
+# create a graph with the number of test per version for each folder of test262
+######################################################################################
 import json
 import sys
 
-with open('metadata_version.json', 'r') as file:
+with open('../../computation/main/results/metadata_version.json', 'r') as file:
     metadata = json.load(file)
 
 
@@ -33,5 +36,5 @@ def generateGraf(pathDepth, name, tests):
 
 graf = generateGraf(0, 'test', metadata)
 
-with open('graf.json', 'w') as file:
+with open('results/graf.json', 'w') as file:
     json.dump(graf, file, indent=4)
